@@ -41,7 +41,7 @@
     NSMutableURLRequest *request = [NSMutableURLRequest JBRSSSubsUnreadRequest];
     [ISHTTPOperation sendRequest:request
                          handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-        NSLog(@"%@", [object JSON]);
+        JBLog(@"%@", [object JSON]);
     }];
 }
 
