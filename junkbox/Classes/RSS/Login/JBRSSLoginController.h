@@ -7,8 +7,6 @@
 #pragma mark - property
 /// ログインフォーム
 @property (nonatomic, weak) IBOutlet UIView *loginFormView;
-/// RSS Reader 種類
-@property (nonatomic, weak) IBOutlet UILabel *RSSReaderTypeLabel;
 /// ログインID入力
 @property (nonatomic, weak) IBOutlet UITextField *IDTextField;
 /// ログインパスワード入力
@@ -18,6 +16,9 @@
 /// ログインパスワード入力欄 placeholder
 @property (nonatomic, weak) IBOutlet UILabel *passwordPlaceholderLabel;
 
+/// 閉じる
+@property (nonatomic, strong) UIButton *closeButton;
+
 
 #pragma mark - event listener
 /**
@@ -25,6 +26,12 @@
  * @param button button
  */
 - (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button;
+
+/**
+ * 閉じるボタン押下
+ * @param button button
+ */
+- (IBAction)touchedUpInsideWithCloseButton:(UIButton *)button;
 
 
 @end

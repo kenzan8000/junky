@@ -10,11 +10,11 @@
 
 #pragma mark - synthesize
 @synthesize loginFormView;
-@synthesize RSSReaderTypeLabel;
 @synthesize IDTextField;
 @synthesize passwordTextField;
 @synthesize IDPlaceholderLabel;
 @synthesize passwordPlaceholderLabel;
+@synthesize closeButton;
 
 
 #pragma mark - initializer
@@ -34,6 +34,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.closeButton = nil;
 }
 
 
@@ -58,6 +59,17 @@
                                                  name:kNotificationRSSLoginFailure
                                                object:nil];
     [self.IDTextField becomeFirstResponder];
+
+    // 閉じるボタン
+    self.closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.closeButton setFrame:kDefaultNavigationItemFrame];
+    [self.closeButton setTitle:NSLocalizedString(@"Close", @"閉じるボタンのタイトル")
+                      forState:UIControlStateNormal];
+    [self.closeButton addTarget:self
+                         action:@selector(touchedUpInsideWithCloseButton:)
+               forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.closeButton]]
+                                       animated:NO];
 }
 
 - (void)viewDidLoad
@@ -183,6 +195,12 @@ shouldChangeCharactersInRange:(NSRange)range
     [self login];
 }
 
+- (IBAction)touchedUpInsideWithCloseButton:(UIButton *)button
+{
+    [self.navigationController dismissViewControllerAnimated:YES
+                                                  completion:^ () {}];
+}
+
 
 #pragma mark - private api
 /**
@@ -203,8 +221,8 @@ shouldChangeCharactersInRange:(NSRange)range
                                          handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // 成功
         if (error == nil) {
-            [bself dismissViewControllerAnimated:YES
-                                      completion:^ () {}];
+            [bself.navigationController dismissViewControllerAnimated:YES
+                                                           completion:^ () {}];
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginSuccess
                                                                 object:nil
                                                               userInfo:@{}];
