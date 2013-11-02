@@ -10,10 +10,10 @@
 
 
 #pragma mark - api
-+ (NSMutableURLRequest *)JBRSSLoginRequestWithLivedoorId:(NSString *)livedoorId
++ (NSMutableURLRequest *)JBRSSLoginRequestWithLivedoorID:(NSString *)livedoorID
                                                 password:(NSString *)password
 {
-    NSString *URLString = [NSString stringWithFormat:kURLLivedoorReaderLogin, livedoorId, password];
+    NSString *URLString = [NSString stringWithFormat:kURLLivedoorReaderLogin, livedoorID, password];
     NSMutableURLRequest *request = [NSMutableURLRequest JBPostRequestWithURL:[NSURL URLWithString:URLString]];
     return request;
 }
@@ -32,4 +32,3 @@
 
 
 @end
-

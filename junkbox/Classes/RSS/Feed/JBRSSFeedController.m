@@ -36,13 +36,6 @@
 - (void)loadView
 {
     [super loadView];
-
-    // 未読フィード一覧
-    NSMutableURLRequest *request = [NSMutableURLRequest JBRSSSubsUnreadRequest];
-    [ISHTTPOperation sendRequest:request
-                         handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-        JBLog(@"%@", [object JSON]);
-    }];
 }
 
 - (void)viewDidLoad
@@ -98,6 +91,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //        cell = [UINib UIKitFromClassName:className];
     }
     return cell;
+}
+
+
+#pragma mark - api
+- (void)loadFeed
+{
+    // 未読フィード一覧
+    NSMutableURLRequest *request = [NSMutableURLRequest JBRSSSubsUnreadRequest];
+    [ISHTTPOperation sendRequest:request
+                         handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+        JBLog(@"%@", [object JSON]);
+    }];
 }
 
 

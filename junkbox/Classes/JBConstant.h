@@ -11,11 +11,11 @@
 
 
 #pragma mark - Notification
-/// Livedoor Reader ログイン開始
+/// RSS Reader ログイン開始
 #define kNotificationRSSLoginStart                  @"JBNotificationRSSLoginStart"
-/// Livedoor Reader ログイン成功
+/// RSS Reader ログイン成功
 #define kNotificationRSSLoginSuccess                @"JBNotificationRSSLoginSuccess"
-/// Livedoor Reader ログイン失敗
+/// RSS Reader ログイン失敗
 #define kNotificationRSSLoginFailure                @"JBNotificationRSSLoginFailure"
-/// Livedoor Reader セッション無効
+/// RSS Reader セッション無効
 #define kNotificationRSSLoginInvalid                @"JBNotificationRSSLoginInvalid"

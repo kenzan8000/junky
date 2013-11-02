@@ -6,11 +6,11 @@
 #pragma mark - api
 /**
  * ログイン
- * @param livedoorId livedoorId
+ * @param livedoorID livedoorID
  * @param password passowrd
  * @return request
  */
-+ (NSMutableURLRequest *)JBRSSLoginRequestWithLivedoorId:(NSString *)livedoorId
++ (NSMutableURLRequest *)JBRSSLoginRequestWithLivedoorID:(NSString *)livedoorID
                                                 password:(NSString *)password;
 
 /**

@@ -33,7 +33,7 @@
 - (void)loadView
 {
     [super loadView];
-    [self setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
+    [self setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSFeed]]];
 
     // login
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -75,10 +75,12 @@
  **/
 - (void)loginDidSuccess:(NSNotification *)notification
 {
-    __block __weak typeof(self) bself = self;
-    dispatch_async(dispatch_get_main_queue(), ^ () {
-        [bself setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSFeed]]];
-    });
+    //[UIStoryboard UIKitFromName:kStoryboardRSSLogin]
+
+//    __block __weak typeof(self) bself = self;
+//    dispatch_async(dispatch_get_main_queue(), ^ () {
+//        [bself setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSFeed]]];
+//    });
 }
 
 

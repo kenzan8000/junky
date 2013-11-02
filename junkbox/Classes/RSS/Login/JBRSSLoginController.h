@@ -5,13 +5,17 @@
 
 
 #pragma mark - property
-/// livedoor id入力
-@property (nonatomic, weak) IBOutlet UITextField *livedoorIdTextField;
-/// password 入力
+/// ログインフォーム
+@property (nonatomic, weak) IBOutlet UIView *loginFormView;
+/// RSS Reader 種類
+@property (nonatomic, weak) IBOutlet UILabel *RSSReaderTypeLabel;
+/// ログインID入力
+@property (nonatomic, weak) IBOutlet UITextField *IDTextField;
+/// ログインパスワード入力
 @property (nonatomic, weak) IBOutlet UITextField *passwordTextField;
-/// livedoor id placeholder
-@property (nonatomic, weak) IBOutlet UILabel *livedoorIdPlaceholderLabel;
-/// password placeholder
+/// ログインID入力欄  placeholder
+@property (nonatomic, weak) IBOutlet UILabel *IDPlaceholderLabel;
+/// ログインパスワード入力欄 placeholder
 @property (nonatomic, weak) IBOutlet UILabel *passwordPlaceholderLabel;
 
 

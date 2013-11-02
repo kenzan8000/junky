@@ -10,4 +10,11 @@
 #pragma mark - property
 
 
+#pragma mark - api
+/**
+ * 未読一覧フィードをロードする
+ */
+- (void)loadFeed;
+
+
 @end

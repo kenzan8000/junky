@@ -20,4 +20,9 @@ namespace http {
         static const int INTERNAL_SERVER_ERROR = 500;
         static const int SERVICE_UNAVAILABLE = 503;
     }
+
+    // not reachable
+    static const int NOT_REACHABLE = 600;
+    // connection timeout
+    static const int TIMEOUT = 601;
 }
