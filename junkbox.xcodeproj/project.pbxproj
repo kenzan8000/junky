@@ -31,7 +31,6 @@
 		E6C8D79D17B15521007B6C16 /* NSURLRequest+Junkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78E17B15521007B6C16 /* NSURLRequest+Junkbox.m */; };
 		E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D79217B15521007B6C16 /* UIColor+Hexadecimal.m */; };
 		E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D79417B15521007B6C16 /* UINavigationBar+Custom.m */; };
-		E6C8D7A017B15521007B6C16 /* UINavigationItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D79617B15521007B6C16 /* UINavigationItem+Custom.m */; };
 		E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA936B17B54E6D00697604 /* UIKit+Localize.m */; };
 		E6EA937517B5573100697604 /* JBRSSFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA937417B5573100697604 /* JBRSSFeedController.m */; };
 		E6FC100917B16FA800A12BED /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100617B16FA800A12BED /* TableViewController.m */; };
@@ -91,8 +90,6 @@
 		E6C8D79217B15521007B6C16 /* UIColor+Hexadecimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hexadecimal.m"; sourceTree = "<group>"; };
 		E6C8D79317B15521007B6C16 /* UINavigationBar+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Custom.h"; sourceTree = "<group>"; };
 		E6C8D79417B15521007B6C16 /* UINavigationBar+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Custom.m"; sourceTree = "<group>"; };
-		E6C8D79517B15521007B6C16 /* UINavigationItem+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Custom.h"; sourceTree = "<group>"; };
-		E6C8D79617B15521007B6C16 /* UINavigationItem+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Custom.m"; sourceTree = "<group>"; };
 		E6EA936A17B54E6D00697604 /* UIKit+Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Localize.h"; sourceTree = "<group>"; };
 		E6EA936B17B54E6D00697604 /* UIKit+Localize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+Localize.m"; sourceTree = "<group>"; };
 		E6EA937317B5573100697604 /* JBRSSFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedController.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedController.h; sourceTree = SOURCE_ROOT; };
@@ -318,8 +315,6 @@
 				E6EA936B17B54E6D00697604 /* UIKit+Localize.m */,
 				E6C8D79317B15521007B6C16 /* UINavigationBar+Custom.h */,
 				E6C8D79417B15521007B6C16 /* UINavigationBar+Custom.m */,
-				E6C8D79517B15521007B6C16 /* UINavigationItem+Custom.h */,
-				E6C8D79617B15521007B6C16 /* UINavigationItem+Custom.m */,
 				E6FC100B17B1729B00A12BED /* UINib+UIKit.h */,
 				E6FC100C17B1729B00A12BED /* UINib+UIKit.m */,
 				E6FC101C17B1781700A12BED /* UIStoryboard+UIKit.h */,
@@ -502,7 +497,6 @@
 				E6C8D79D17B15521007B6C16 /* NSURLRequest+Junkbox.m in Sources */,
 				E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */,
 				E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */,
-				E6C8D7A017B15521007B6C16 /* UINavigationItem+Custom.m in Sources */,
 				E6FC100917B16FA800A12BED /* TableViewController.m in Sources */,
 				E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */,
 				E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */,

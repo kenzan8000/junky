@@ -75,12 +75,6 @@
  **/
 - (void)loginDidSuccess:(NSNotification *)notification
 {
-    //[UIStoryboard UIKitFromName:kStoryboardRSSLogin]
-
-//    __block __weak typeof(self) bself = self;
-//    dispatch_async(dispatch_get_main_queue(), ^ () {
-//        [bself setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSFeed]]];
-//    });
 }
 
 

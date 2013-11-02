@@ -62,7 +62,6 @@
 
         handler(response, object, loginError);
     }];
-
 }
 
 
