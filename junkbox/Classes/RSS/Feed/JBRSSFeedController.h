@@ -8,6 +8,16 @@
 
 
 #pragma mark - property
+/// ログインボタン
+@property (nonatomic, strong) UIButton *loginButton;
+
+
+#pragma mark - event listener
+/**
+ * ログインボタン押下
+ * @param button button
+ */
+- (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button;
 
 
 #pragma mark - api

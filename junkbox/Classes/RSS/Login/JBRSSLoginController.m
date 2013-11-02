@@ -1,12 +1,7 @@
 #import "JBRSSLoginController.h"
 #import "JBRSSLoginTask.h"
-//#import "JBRSSConstant.h"
-//#import "NSURLRequest+JBRSS.h"
 /// Connection
 #import "StatusCode.h"
-//#import "ISHTTPOperation.h"
-/// NSFoundation-Extension
-#import "NSHTTPCookieStorage+Cookie.h"
 
 
 #pragma mark - JBRSSLoginController
@@ -200,7 +195,7 @@ shouldChangeCharactersInRange:(NSRange)range
                                                         object:nil
                                                       userInfo:@{}];
 
-    // ログイン
+    // ログイン処理
     __block __weak typeof(self) bself = self;
     JBRSSLoginTask *loginTask = [JBRSSLoginTask new];
     [loginTask livedoorReaderLoginWithLivedoorID:self.IDTextField.text

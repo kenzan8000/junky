@@ -5,6 +5,8 @@
 /// NSFoundation-Extension
 #import "NSData+JSON.h"
 #import "NSURLRequest+JBRSS.h"
+/// UIKit-Extension
+#import "UIStoryboard+UIKit.h"
 
 
 #pragma mark - JBRSSFeedController
@@ -12,6 +14,7 @@
 
 
 #pragma mark - synthesize
+@synthesize loginButton;
 
 
 #pragma mark - initializer
@@ -29,6 +32,7 @@
 #pragma mark - release
 - (void)dealloc
 {
+    self.loginButton = nil;
 }
 
 
@@ -36,6 +40,17 @@
 - (void)loadView
 {
     [super loadView];
+
+    // ログインボタン
+    self.loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.loginButton setFrame:kDefaultNavigationItemFrame];
+    [self.loginButton setTitle:NSLocalizedString(@"Login", @"ログインボタンのタイトル")
+                      forState:UIControlStateNormal];
+    [self.loginButton addTarget:self
+                         action:@selector(touchedUpInsideWithLoginButton:)
+               forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButton]]
+                                       animated:NO];
 }
 
 - (void)viewDidLoad
@@ -91,6 +106,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //        cell = [UINib UIKitFromClassName:className];
     }
     return cell;
+}
+
+
+#pragma mark - event listener
+- (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button
+{
+    [self presentViewController:[UIStoryboard UIKitFromName:kStoryboardRSSLogin]
+                       animated:YES
+                     completion:^ () {}];
 }
 
 
