@@ -112,8 +112,7 @@
 		E6FC101A17B176B000A12BED /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		E6FC101C17B1781700A12BED /* UIStoryboard+UIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStoryboard+UIKit.h"; sourceTree = "<group>"; };
 		E6FC101D17B1781700A12BED /* UIStoryboard+UIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboard+UIKit.m"; sourceTree = "<group>"; };
-		E6FC101F17B179C700A12BED /* debug.info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = debug.info.plist; sourceTree = "<group>"; };
-		E6FC102017B179C700A12BED /* release.info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = release.info.plist; sourceTree = "<group>"; };
+		E6FC101F17B179C700A12BED /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = JBRSSFeed.storyboard; path = junkbox/Classes/RSS/Feed/JBRSSFeed.storyboard; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -193,8 +192,7 @@
 		E68EB9E117B01624006711A6 /* Plists */ = {
 			isa = PBXGroup;
 			children = (
-				E6FC101F17B179C700A12BED /* debug.info.plist */,
-				E6FC102017B179C700A12BED /* release.info.plist */,
+				E6FC101F17B179C700A12BED /* info.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -567,7 +565,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
-				INFOPLIST_FILE = junkbox/Resources/Plists/debug.info.plist;
+				INFOPLIST_FILE = junkbox/Resources/Plists/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "debug.$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
