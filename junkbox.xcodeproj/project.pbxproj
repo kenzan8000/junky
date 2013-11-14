@@ -31,6 +31,7 @@
 		E6C8D79D17B15521007B6C16 /* NSURLRequest+Junkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78E17B15521007B6C16 /* NSURLRequest+Junkbox.m */; };
 		E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D79217B15521007B6C16 /* UIColor+Hexadecimal.m */; };
 		E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D79417B15521007B6C16 /* UINavigationBar+Custom.m */; };
+		E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */; };
 		E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA936B17B54E6D00697604 /* UIKit+Localize.m */; };
 		E6EA937517B5573100697604 /* JBRSSFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA937417B5573100697604 /* JBRSSFeedController.m */; };
 		E6FC100917B16FA800A12BED /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100617B16FA800A12BED /* TableViewController.m */; };
@@ -90,6 +91,8 @@
 		E6C8D79217B15521007B6C16 /* UIColor+Hexadecimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hexadecimal.m"; sourceTree = "<group>"; };
 		E6C8D79317B15521007B6C16 /* UINavigationBar+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Custom.h"; sourceTree = "<group>"; };
 		E6C8D79417B15521007B6C16 /* UINavigationBar+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Custom.m"; sourceTree = "<group>"; };
+		E6E271B51834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SSGentleAlertView+Junkbox.h"; sourceTree = "<group>"; };
+		E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SSGentleAlertView+Junkbox.m"; sourceTree = "<group>"; };
 		E6EA936A17B54E6D00697604 /* UIKit+Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Localize.h"; sourceTree = "<group>"; };
 		E6EA936B17B54E6D00697604 /* UIKit+Localize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+Localize.m"; sourceTree = "<group>"; };
 		E6EA937317B5573100697604 /* JBRSSFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedController.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedController.h; sourceTree = SOURCE_ROOT; };
@@ -136,6 +139,7 @@
 			children = (
 				E6C8D78017B15520007B6C16 /* NSFoundation-Extension */,
 				E6C8D79017B15521007B6C16 /* UIKit-Extension */,
+				E6E271B11834A8F400F0E6A4 /* Pods-Extension */,
 				E6FC100317B16FA800A12BED /* UIKit */,
 				E6C8D77E17B15520007B6C16 /* Connection */,
 				E6C8D78F17B15521007B6C16 /* RSS */,
@@ -319,6 +323,23 @@
 				E6FC101D17B1781700A12BED /* UIStoryboard+UIKit.m */,
 			);
 			path = "UIKit-Extension";
+			sourceTree = "<group>";
+		};
+		E6E271B11834A8F400F0E6A4 /* Pods-Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E6E271B21834A8F400F0E6A4 /* SSGentleAlertView */,
+			);
+			path = "Pods-Extension";
+			sourceTree = "<group>";
+		};
+		E6E271B21834A8F400F0E6A4 /* SSGentleAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				E6E271B51834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.h */,
+				E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */,
+			);
+			path = SSGentleAlertView;
 			sourceTree = "<group>";
 		};
 		E6EA936D17B5544800697604 /* Feed */ = {
@@ -505,6 +526,7 @@
 				E6FC101E17B1781700A12BED /* UIStoryboard+UIKit.m in Sources */,
 				E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */,
 				E6EA937517B5573100697604 /* JBRSSFeedController.m in Sources */,
+				E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */,
 				E62747E217B5BFEC007B41B2 /* JBRSSLoginController.m in Sources */,
 				E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */,
 				E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */,

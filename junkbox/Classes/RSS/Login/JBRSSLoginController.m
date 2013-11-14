@@ -2,6 +2,8 @@
 #import "JBRSSLoginTask.h"
 /// Connection
 #import "StatusCode.h"
+/// Pods-Extension
+#import "SSGentleAlertView+Junkbox.h"
 
 
 #pragma mark - JBRSSLoginController
@@ -186,8 +188,20 @@ shouldChangeCharactersInRange:(NSRange)range
 #pragma mark - event listener
 - (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button
 {
-    // 未入力
-    if ([self.IDTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""]) {
+    // フォームの入力チェック
+    BOOL canStartLogin = YES;
+        // ユーザー名未入力
+    canStartLogin = canStartLogin && ([self.IDTextField.text isEqualToString:@""] == NO);
+    if (canStartLogin == NO) {
+        [SSGentleAlertView showWithMessage:NSLocalizedString(@"Input Livedoor ID", @"Livedoor IDが未入力の場合")
+                              buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]];
+        return;
+    }
+        // パスワード未入力
+    canStartLogin = canStartLogin && ([self.passwordTextField.text isEqualToString:@""] == NO);
+    if (canStartLogin == NO) {
+        [SSGentleAlertView showWithMessage:NSLocalizedString(@"Input password", @"パスワードが未入力の場合")
+                              buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]];
         return;
     }
 
