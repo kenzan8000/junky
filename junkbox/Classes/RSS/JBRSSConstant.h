@@ -10,18 +10,22 @@
  * @param livedoor_id livedoor_id
  * @param password password
  * @param .sv 値は"reader"
- * @responceにmember_sidというcookieが入る
+ * @responceにcookieが入る
  */
 #define kURLLivedoorReaderLogin                  [NSString stringWithFormat:@"https://member.livedoor.com/login/index?livedoor_id=%@&password=%@", @"%@", @"%@"]
 /// セッションのCookie名
-#define kSessionNameLivedoorReaderLogin          @"member_sid"
+#define kSessionNamesLivedoorReaderLogin         @[@".LRC", @".LH", @".LL",]
 /// セッションのCookieドメイン
-#define kSessionDomainLivedoorReaderLogin        @".member.livedoor.com"
+#define kSessionDomainsLivedoorReaderLogin       @[@".livedoor.com", @".livedoor.com", @".livedoor.com",]
+/// ApiKey
+#define kApiKeyLivedoorReader                    @"member_sid"
+/// ApiKeyのCookieのドメイン
+#define kApiKeyDomainLivedoorReader              @".member.Livedoor.com"
 
 
 /// Livedoor Reader API
 #define kAPILivedoorReader                       [NSString stringWithFormat:@"%@api/", kURLLivedoorReader]
-/// ApiKey(Cookieの中にあるセッションmember_sid) %@=ApiKey
+/// ApiKey %@=ApiKey
 #define kQueryLivedoorReaderApiKey               [NSString stringWithFormat:@"&ApiKey=%@", @"%@"]
 
 

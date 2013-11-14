@@ -6,6 +6,8 @@
 #import "ISHTTPOperation.h"
 /// NSFoundation-Extension
 #import "NSHTTPCookieStorage+Cookie.h"
+/// Pods
+#import "Reachability.h"
 
 
 #pragma mark - JBRSSLoginTask
@@ -31,13 +33,18 @@
                                  handler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))handler
 {
     // ネットワークに接続できない
-    if ([self reachableWithHandler:handler] == NO) {
+    if ([[Reachability reachabilityForInternetConnection] isReachable] == NO) {
+        handler(nil,
+                @{},
+                [[NSError alloc] initWithDomain:NSMachErrorDomain
+                                           code:http::NOT_REACHABLE
+                                           userInfo:@{}]);
         return;
     }
 
     // セッションクリア
-    [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookieWithName:kSessionNameLivedoorReaderLogin
-                                                                 domain:kSessionDomainLivedoorReaderLogin];
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookieWithNames:kSessionNamesLivedoorReaderLogin
+                                                                 domains:kSessionDomainsLivedoorReaderLogin];
 
     // ログイン
     NSMutableURLRequest *request = [NSMutableURLRequest JBRSSLoginRequestWithLivedoorID:livedoorID
@@ -49,8 +56,8 @@
 
         // セッションを持っているか
         if (fail == NO) {
-            fail = ![[NSHTTPCookieStorage sharedHTTPCookieStorage] hasCookieWithName:kSessionNameLivedoorReaderLogin
-                                                                              domain:kSessionDomainLivedoorReaderLogin];
+            fail = ![[NSHTTPCookieStorage sharedHTTPCookieStorage] hasCookieWithNames:kSessionNamesLivedoorReaderLogin
+                                                                              domains:kSessionDomainsLivedoorReaderLogin];
         }
 
         // 失敗
@@ -66,22 +73,6 @@
 
 
 #pragma mark - private api
-/**
- * ネットワークに接続できるかどうか
- * @return BOOL
- */
-- (BOOL)reachableWithHandler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))handler
-{
-    return YES;
-/*
-    handler(nil,
-            @{},
-            [[NSError alloc] initWithDomain:NSMachErrorDomain
-                                       code:http::NOT_REACHABLE
-                                       userInfo:@{}]);
-    return NO;
-*/
-}
 
 
 @end

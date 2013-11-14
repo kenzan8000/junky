@@ -5,6 +5,7 @@ PODS:
     - SFHFKeychainUtils
   - ISHTTPOperation (1.1.0)
   - NJKWebViewProgress (0.1.8)
+  - Reachability (3.1.1)
   - RNFrostedSidebar (0.2.0)
   - SFHFKeychainUtils (0.0.1)
   - SSGentleAlertView (1.0.1)
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - HatenaBookmarkSDK (from `https://github.com/hatena/Hatena-Bookmark-iOS-SDK.git`)
   - ISHTTPOperation (~> 1.1.0)
   - NJKWebViewProgress
+  - Reachability
   - RNFrostedSidebar (~> 0.2.0)
   - SSGentleAlertView
 
@@ -25,6 +27,7 @@ SPEC CHECKSUMS:
   HatenaBookmarkSDK: b98ef6c0a9d01b11e9cbe2f070310fa56512a506
   ISHTTPOperation: a6c80ecc70ddb92fdd7f9dfa290dead9b74eafa2
   NJKWebViewProgress: e009e9ec4837fcad3959e2672d5282f78148f6b9
+  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   RNFrostedSidebar: 36339438a07088fd3ee3926db03af499477ee048
   SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
   SSGentleAlertView: e0125bbbf78938be5426546d2cde6128936ceef8

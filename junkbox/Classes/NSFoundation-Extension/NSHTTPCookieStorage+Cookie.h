@@ -10,16 +10,16 @@
  * @param domain Cookieのドメイン
  * @return BOOL
  */
-- (BOOL)hasCookieWithName:(NSString *)name
-                   domain:(NSString *)domain;
+- (BOOL)hasCookieWithNames:(NSArray *)names
+                   domains:(NSArray *)domains;
 
 /**
  * Cookieを削除
  * @param name Cookieの名前
  * @param domain Cookieのドメイン
  */
-- (void)deleteCookieWithName:(NSString *)name
-                      domain:(NSString *)domain;
+- (void)deleteCookieWithNames:(NSArray *)names
+                      domains:(NSArray *)domains;
 
 /**
  * Cookieの値

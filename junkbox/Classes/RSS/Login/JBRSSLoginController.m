@@ -188,16 +188,16 @@ shouldChangeCharactersInRange:(NSRange)range
 #pragma mark - event listener
 - (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button
 {
-    // フォームの入力チェック
     BOOL canStartLogin = YES;
-        // ユーザー名未入力
+
+    // ユーザー名未入力
     canStartLogin = canStartLogin && ([self.IDTextField.text isEqualToString:@""] == NO);
     if (canStartLogin == NO) {
         [SSGentleAlertView showWithMessage:NSLocalizedString(@"Input Livedoor ID", @"Livedoor IDが未入力の場合")
                               buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]];
         return;
     }
-        // パスワード未入力
+    // パスワード未入力
     canStartLogin = canStartLogin && ([self.passwordTextField.text isEqualToString:@""] == NO);
     if (canStartLogin == NO) {
         [SSGentleAlertView showWithMessage:NSLocalizedString(@"Input password", @"パスワードが未入力の場合")
@@ -206,7 +206,9 @@ shouldChangeCharactersInRange:(NSRange)range
     }
 
     // ログイン
-    [self login];
+    if (canStartLogin) {
+        [self login];
+    }
 }
 
 - (IBAction)touchedUpInsideWithCloseButton:(UIButton *)button

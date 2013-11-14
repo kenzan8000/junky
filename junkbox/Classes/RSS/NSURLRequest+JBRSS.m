@@ -20,8 +20,8 @@
 
 + (NSMutableURLRequest *)JBRSSSubsUnreadRequest
 {
-    NSString *apiKey = [[NSHTTPCookieStorage sharedHTTPCookieStorage] valueWithName:kSessionNameLivedoorReaderLogin
-                                                                             domain:kSessionDomainLivedoorReaderLogin];
+    NSString *apiKey = [[NSHTTPCookieStorage sharedHTTPCookieStorage] valueWithName:kApiKeyLivedoorReader
+                                                                             domain:kApiKeyDomainLivedoorReader];
 
     NSString *URLString = [NSString stringWithFormat:@"%@%@",
         kAPILivedoorReaderSubsUnread,
