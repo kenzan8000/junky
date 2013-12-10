@@ -2,6 +2,8 @@
 #import "JBRSSLoginTask.h"
 /// Connection
 #import "StatusCode.h"
+/// Pods
+#import "DejalActivityView.h"
 /// Pods-Extension
 #import "SSGentleAlertView+Junkbox.h"
 
@@ -35,7 +37,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-//    self.closeButton = nil;
 }
 
 
@@ -157,6 +158,8 @@ clickedButtonAtIndex:(NSInteger)index
  **/
 - (void)loginWillStart:(NSNotification *)notification
 {
+    [DejalActivityView activityViewForView:self.view
+                                 withLabel:NSLocalizedString(@"Authorizing...", @"ログイン中インジケータ")];
 }
 
 /**
@@ -165,6 +168,7 @@ clickedButtonAtIndex:(NSInteger)index
  **/
 - (void)loginDidFailure:(NSNotification *)notification
 {
+    [DejalActivityView removeView];
 }
 
 

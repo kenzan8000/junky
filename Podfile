@@ -4,5 +4,6 @@ pod 'HatenaBookmarkSDK', :git => 'https://github.com/hatena/Hatena-Bookmark-iOS-
 pod 'ISHTTPOperation', '~> 1.1.0'
 pod 'NJKWebViewProgress'
 pod 'SSGentleAlertView'
+pod 'DejalActivityView'
 pod 'Reachability'
 pod 'RNFrostedSidebar', '~> 0.2.0'

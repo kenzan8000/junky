@@ -17,17 +17,18 @@
 "Cannot access the Network." = "通信環境の良いところで、もう一度お試しください。";
 /* ***** 4xx ***** */
 /* ***** 5xx ***** */
-"Failure occurred in the system. Place the time and try again." = "システム側に不具合が発生しました。時間を置いて、もう一度お試しください。";
+"Failure occurred in the system. Place the time and try again." = "システム側で不具合が発生しています。時間を置いて、もう一度お試しください。";
 
 
 /* **************************************************
  *                    ログイン
  * *************************************************/
 "Login" = "ログイン";
-"Input ID" = "IDを入力してください。";
+"Authorizing..." = "ログイン中...";
+"Input username" = "ユーザー名を入力してください。";
 "Input password" = "パスワードを入力してください。";
 "Forgot password?" = "パスワードをお忘れですか？";
-"Your ID and password could not be authenticated. Double check that you entered them correctly and try again." = "IDまたはパスワードが違います。ご確認の上、もう一度お試しください。";
+"Your username and password could not be authenticated. Double check that you entered them correctly and try again." = "ユーザー名またはパスワードが違います。ご確認の上、もう一度お試しください。";
 
 
 /* **************************************************

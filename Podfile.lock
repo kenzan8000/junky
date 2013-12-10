@@ -1,16 +1,22 @@
 PODS:
   - AFNetworking (1.3.3)
-  - HatenaBookmarkSDK (1.1):
+  - DejalActivityView (1.1)
+  - HatenaBookmarkSDK (1.1.1):
     - AFNetworking (~> 1.0)
     - SFHFKeychainUtils
-  - ISHTTPOperation (1.1.0)
-  - NJKWebViewProgress (0.1.8)
+  - ISHTTPOperation (1.1.1)
+  - NJKWebViewProgress (0.2):
+    - NJKWebViewProgress/Core
+    - NJKWebViewProgress/ProgressView
+  - NJKWebViewProgress/Core (0.2)
+  - NJKWebViewProgress/ProgressView (0.2)
   - Reachability (3.1.1)
   - RNFrostedSidebar (0.2.0)
   - SFHFKeychainUtils (0.0.1)
   - SSGentleAlertView (1.0.1)
 
 DEPENDENCIES:
+  - DejalActivityView
   - HatenaBookmarkSDK (from `https://github.com/hatena/Hatena-Bookmark-iOS-SDK.git`)
   - ISHTTPOperation (~> 1.1.0)
   - NJKWebViewProgress
@@ -24,9 +30,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0700ec7a58c36ad217173e167f6e4df7270df66b
-  HatenaBookmarkSDK: b98ef6c0a9d01b11e9cbe2f070310fa56512a506
-  ISHTTPOperation: a6c80ecc70ddb92fdd7f9dfa290dead9b74eafa2
-  NJKWebViewProgress: e009e9ec4837fcad3959e2672d5282f78148f6b9
+  DejalActivityView: 4cb7aacb4334003203f297d6cc7dcc233a7f3d86
+  HatenaBookmarkSDK: 2447855afdf5e36131ca7a4f1c57a5e52983664c
+  ISHTTPOperation: 6268956d564f3cab0584838e996f2f4520d903b2
+  NJKWebViewProgress: fd46c9489d799d97f3b09210886bf83884f6c725
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   RNFrostedSidebar: 36339438a07088fd3ee3926db03af499477ee048
   SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
