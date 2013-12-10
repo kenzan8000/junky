@@ -16,9 +16,6 @@
 /// ログインパスワード入力欄 placeholder
 @property (nonatomic, weak) IBOutlet UILabel *passwordPlaceholderLabel;
 
-/// 閉じる
-@property (nonatomic, strong) UIButton *closeButton;
-
 
 #pragma mark - event listener
 /**
@@ -26,12 +23,6 @@
  * @param button button
  */
 - (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button;
-
-/**
- * 閉じるボタン押下
- * @param button button
- */
-- (IBAction)touchedUpInsideWithCloseButton:(UIButton *)button;
 
 
 @end

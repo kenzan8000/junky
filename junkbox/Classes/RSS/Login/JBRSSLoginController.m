@@ -16,7 +16,6 @@
 @synthesize passwordTextField;
 @synthesize IDPlaceholderLabel;
 @synthesize passwordPlaceholderLabel;
-@synthesize closeButton;
 
 
 #pragma mark - initializer
@@ -36,7 +35,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.closeButton = nil;
+//    self.closeButton = nil;
 }
 
 
@@ -61,17 +60,6 @@
                                                  name:kNotificationRSSLoginFailure
                                                object:nil];
     [self.IDTextField becomeFirstResponder];
-
-    // 閉じるボタン
-    self.closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.closeButton setFrame:kDefaultNavigationItemFrame];
-    [self.closeButton setTitle:NSLocalizedString(@"Close", @"閉じるボタンのタイトル")
-                      forState:UIControlStateNormal];
-    [self.closeButton addTarget:self
-                         action:@selector(touchedUpInsideWithCloseButton:)
-               forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.closeButton]]
-                                       animated:NO];
 }
 
 - (void)viewDidLoad
@@ -113,23 +101,10 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if (textField == self.IDTextField) {
-        [self.IDPlaceholderLabel setHidden:YES];
-    }
-    else if (textField == self.passwordTextField) {
-        [self.passwordPlaceholderLabel setHidden:YES];
-    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    BOOL hidden = ([textField.text isEqualToString:@""]) ? NO : YES;
-    if (textField == self.IDTextField) {
-        [self.IDPlaceholderLabel setHidden:hidden];
-    }
-    else if (textField == self.passwordTextField) {
-        [self.passwordPlaceholderLabel setHidden:hidden];
-    }
 }
 
 - (BOOL)textField:(UITextField *)textField
@@ -221,12 +196,6 @@ clickedButtonAtIndex:(NSInteger)index
     }
 }
 
-- (IBAction)touchedUpInsideWithCloseButton:(UIButton *)button
-{
-    [self.navigationController dismissViewControllerAnimated:YES
-                                                  completion:^ () {}];
-}
-
 
 #pragma mark - private api
 /**
@@ -247,8 +216,7 @@ clickedButtonAtIndex:(NSInteger)index
                                          handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // 成功
         if (error == nil) {
-            [bself.navigationController dismissViewControllerAnimated:YES
-                                                           completion:^ () {}];
+            [bself.navigationController popViewControllerAnimated:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginSuccess
                                                                 object:nil
                                                               userInfo:@{}];
@@ -282,12 +250,12 @@ clickedButtonAtIndex:(NSInteger)index
                 }
                 break;
         }
-        [SSGentleAlertView showWithMessage:alertViewMessage
-                              buttonTitles:alertViewButtons
-                                  delegate:alertViewDelegate];
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginFailure
                                                             object:nil
                                                           userInfo:@{}];
+        [SSGentleAlertView showWithMessage:alertViewMessage
+                              buttonTitles:alertViewButtons
+                                  delegate:alertViewDelegate];
     }];
 }
 

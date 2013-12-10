@@ -112,11 +112,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - event listener
 - (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button
 {
-    UINavigationController *navigationController = [UINavigationController new];
-    [navigationController setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
-    [self presentViewController:navigationController
-                       animated:YES
-                     completion:^ () {}];
+    [self.navigationController pushViewController:[UIStoryboard UIKitFromName:kStoryboardRSSLogin]
+                                         animated:YES];
 }
 
 
