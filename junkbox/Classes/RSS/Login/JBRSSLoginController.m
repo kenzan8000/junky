@@ -156,6 +156,14 @@ shouldChangeCharactersInRange:(NSRange)range
 }
 
 
+#pragma mark - SSGentleAlertViewDelegate
+- (void)alertView:(SSGentleAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)index
+{
+
+}
+
+
 #pragma mark - notification
 /**
  * キーボード表示
@@ -193,15 +201,17 @@ shouldChangeCharactersInRange:(NSRange)range
     // ユーザー名未入力
     canStartLogin = canStartLogin && ([self.IDTextField.text isEqualToString:@""] == NO);
     if (canStartLogin == NO) {
-        [SSGentleAlertView showWithMessage:NSLocalizedString(@"Input Livedoor ID", @"Livedoor IDが未入力の場合")
-                              buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]];
+        [SSGentleAlertView showWithMessage:NSLocalizedString(@"Input ID", @"IDが未入力の場合")
+                              buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]
+                                  delegate:nil];
         return;
     }
     // パスワード未入力
     canStartLogin = canStartLogin && ([self.passwordTextField.text isEqualToString:@""] == NO);
     if (canStartLogin == NO) {
         [SSGentleAlertView showWithMessage:NSLocalizedString(@"Input password", @"パスワードが未入力の場合")
-                              buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]];
+                              buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]
+                                  delegate:nil];
         return;
     }
 
@@ -246,16 +256,35 @@ shouldChangeCharactersInRange:(NSRange)range
         }
 
         // 失敗
+        NSString *alertViewMessage = nil;
+        NSArray *alertViewButtons = @[NSLocalizedString(@"Confirm", @"確認")];
+        id alertViewDelegate = nil;
         switch (error.code) {
             case http::statusCode::UNAUTHORIZED:
+                alertViewMessage = NSLocalizedString(@"Your ID and password could not be authenticated. Double check that you entered them correctly and try again.", @"IDかパスワードが違う場合");
+                alertViewButtons = @[NSLocalizedString(@"Forgot password?", @"パスワードを忘れた"), NSLocalizedString(@"Confirm", @"確認")];
+                alertViewDelegate = self;
                 break;
             case http::NOT_REACHABLE:
+                alertViewMessage = NSLocalizedString(@"Cannot access the Network.", @"通信できない");
                 break;
             case http::TIMEOUT:
+                alertViewMessage = NSLocalizedString(@"Cannot access the Network.", @"タイムアウト");
                 break;
             default:
+                // 4xx
+                if (error.code < http::statusCode::SERVER_ERROR) {
+                    alertViewMessage = NSLocalizedString(@"Cannot access the Network.", @"4xx");
+                }
+                // 5xx
+                else {
+                    alertViewMessage = NSLocalizedString(@"Failure occurred in the system. Place the time and try again.", @"5xx");
+                }
                 break;
         }
+        [SSGentleAlertView showWithMessage:alertViewMessage
+                              buttonTitles:alertViewButtons
+                                  delegate:alertViewDelegate];
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginFailure
                                                             object:nil
                                                           userInfo:@{}];

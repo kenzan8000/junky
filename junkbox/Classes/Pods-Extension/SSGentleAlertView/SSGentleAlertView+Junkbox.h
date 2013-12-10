@@ -12,10 +12,11 @@
  * アラート表示
  * @param message アラートメッセージ
  * @param buttonTitles アラートボタンタイトル
+ * @param delegate delegate
  */
 + (void)showWithMessage:(NSString *)message
-           buttonTitles:(NSArray *)buttonTitles;
-
+           buttonTitles:(NSArray *)buttonTitles
+               delegate:(id)delegate;
 
 
 @end
