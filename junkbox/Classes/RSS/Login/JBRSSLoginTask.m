@@ -52,18 +52,21 @@
     [ISHTTPOperation sendRequest:request
                          handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         NSError *loginError = error;
-        BOOL fail = (loginError || response.statusCode >= http::statusCode::ERROR) ? YES : NO;
+        NSInteger loginErrorCode = http::statusCode::SUCCESS;
+        loginErrorCode = (loginError) ? loginError.code : loginErrorCode;
+        loginErrorCode = (response.statusCode >= http::statusCode::ERROR) ? response.statusCode : loginErrorCode;
 
         // セッションを持っているか
-        if (fail == NO) {
-            fail = ![[NSHTTPCookieStorage sharedHTTPCookieStorage] hasCookieWithNames:kSessionNamesLivedoorReaderLogin
-                                                                              domains:kSessionDomainsLivedoorReaderLogin];
+        if (loginErrorCode == http::statusCode::SUCCESS) {
+            BOOL hasSession = [[NSHTTPCookieStorage sharedHTTPCookieStorage] hasCookieWithNames:kSessionNamesLivedoorReaderLogin
+                                                                                        domains:kSessionDomainsLivedoorReaderLogin];
+            if (hasSession == NO) { loginErrorCode = http::statusCode::UNAUTHORIZED; }
         }
 
         // 失敗
-        if (fail) {
+        if (loginErrorCode >= http::statusCode::ERROR) {
             loginError = [[NSError alloc] initWithDomain:NSMachErrorDomain
-                                                    code:response.statusCode
+                                                    code:loginErrorCode
                                                 userInfo:@{}];;
         }
 
