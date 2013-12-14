@@ -3,7 +3,7 @@
 /// Connection
 #import "StatusCode.h"
 /// Pods
-#import "DejalActivityView.h"
+#import "MTStatusBarOverlay.h"
 /// Pods-Extension
 #import "SSGentleAlertView+Junkbox.h"
 
@@ -167,8 +167,6 @@ clickedButtonAtIndex:(NSInteger)index
  **/
 - (void)loginWillStart:(NSNotification *)notification
 {
-    [DejalActivityView activityViewForView:self.view
-                                 withLabel:NSLocalizedString(@"Authorizing...", @"ログイン中インジケータ")];
 }
 
 /**
@@ -177,7 +175,6 @@ clickedButtonAtIndex:(NSInteger)index
  **/
 - (void)loginDidFailure:(NSNotification *)notification
 {
-    [DejalActivityView removeView];
 }
 
 
@@ -228,10 +225,9 @@ clickedButtonAtIndex:(NSInteger)index
     [self.navigationController dismissModalViewControllerAnimated:YES];
 
     // ログイン処理
-    JBRSSLoginTask *loginTask = [JBRSSLoginTask new];
-    [loginTask livedoorReaderLoginWithLivedoorID:self.IDTextField.text
-                                        password:self.passwordTextField.text
-                                         handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+    JBRSSLoginTask *loginTask = [[JBRSSLoginTask alloc] initWithUsername:self.IDTextField.text
+                                                                password:self.passwordTextField.text];
+    [loginTask livedoorReaderLoginWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // 成功
         if (error == nil) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginSuccess

@@ -15,10 +15,27 @@
 
 
 #pragma mark - synthesize
+@synthesize username;
+@synthesize password;
 
 
 #pragma mark - initializer
-
+/**
+ * construct
+ * @param username username
+ * @param password password
+ * @return id
+ */
+- (id)initWithUsername:(NSString *)u
+              password:(NSString *)p
+{
+    self = [super init];
+    if (self) {
+        self.username = u;
+        self.password = p;
+    }
+    return self;
+}
 
 
 #pragma mark - release
@@ -28,9 +45,7 @@
 
 
 #pragma mark - api (Livedoor Reader)
--(void)livedoorReaderLoginWithLivedoorID:(NSString *)livedoorID
-                                password:(NSString *)password
-                                 handler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))handler
+-(void)livedoorReaderLoginWithHandler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))handler
 {
     // ネットワークに接続できない
     if ([[Reachability reachabilityForInternetConnection] isReachable] == NO) {
@@ -47,8 +62,8 @@
                                                                  domains:kSessionDomainsLivedoorReaderLogin];
 
     // ログイン
-    NSMutableURLRequest *request = [NSMutableURLRequest JBRSSLoginRequestWithLivedoorID:livedoorID
-                                                                               password:password];
+    NSMutableURLRequest *request = [NSMutableURLRequest JBRSSLoginRequestWithLivedoorID:self.username
+                                                                               password:self.password];
     [ISHTTPOperation sendRequest:request
                          handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         NSError *loginError = error;
