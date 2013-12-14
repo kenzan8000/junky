@@ -14,7 +14,6 @@
 
 
 #pragma mark - synthesize
-@synthesize loginButton;
 
 
 #pragma mark - initializer
@@ -32,7 +31,6 @@
 #pragma mark - release
 - (void)dealloc
 {
-    self.loginButton = nil;
 }
 
 
@@ -42,15 +40,15 @@
     [super loadView];
 
     // ログインボタン
-    self.loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.loginButton setFrame:kDefaultNavigationItemFrame];
-    [self.loginButton setTitle:NSLocalizedString(@"Login", @"ログインボタンのタイトル")
-                      forState:UIControlStateNormal];
-    [self.loginButton addTarget:self
-                         action:@selector(touchedUpInsideWithLoginButton:)
-               forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButton]]
-                                       animated:NO];
+    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [loginButton setFrame:kDefaultNavigationItemFrame];
+    [loginButton setTitle:NSLocalizedString(@"Login", @"ログインボタンのタイトル")
+                 forState:UIControlStateNormal];
+    [loginButton addTarget:self
+                    action:@selector(touchedUpInsideWithLoginButton:)
+          forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:loginButton]]
+                                      animated:NO];
 }
 
 - (void)viewDidLoad
@@ -112,8 +110,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - event listener
 - (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button
 {
-    [self.navigationController pushViewController:[UIStoryboard UIKitFromName:kStoryboardRSSLogin]
-                                         animated:YES];
+    UINavigationController *vc = [UINavigationController new];
+    [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
+    [self presentModalViewController:vc
+                            animated:YES];
 }
 
 

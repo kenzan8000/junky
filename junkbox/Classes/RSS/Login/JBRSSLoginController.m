@@ -45,6 +45,18 @@
 {
     [super loadView];
 
+    // 閉じるボタン
+    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [closeButton setFrame:kDefaultNavigationItemFrame];
+    [closeButton setTitle:NSLocalizedString(@"Close", @"モーダルを閉じる")
+                 forState:UIControlStateNormal];
+    [closeButton addTarget:self
+                    action:@selector(touchedUpInsideWithCloseButton:)
+          forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:closeButton]]
+                                      animated:NO];
+
+    // パスワード
     self.passwordTextField.secureTextEntry = YES;
     // keyboard
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -147,9 +159,6 @@ clickedButtonAtIndex:(NSInteger)index
  **/
 - (void)keyboardWillShow:(NSNotification *)notification
 {
-    // キーボードの大きさに合わせて、入力欄の位置を調整
-    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    [self designFormWithHeight:keyboardFrame.origin.y];
 }
 
 /**
@@ -173,6 +182,11 @@ clickedButtonAtIndex:(NSInteger)index
 
 
 #pragma mark - event listener
+- (IBAction)touchedUpInsideWithCloseButton:(UIButton *)button
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
 - (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button
 {
     BOOL canStartLogin = YES;
@@ -211,16 +225,15 @@ clickedButtonAtIndex:(NSInteger)index
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginStart
                                                         object:nil
                                                       userInfo:@{}];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 
     // ログイン処理
-    __block __weak typeof(self) bself = self;
     JBRSSLoginTask *loginTask = [JBRSSLoginTask new];
     [loginTask livedoorReaderLoginWithLivedoorID:self.IDTextField.text
                                         password:self.passwordTextField.text
                                          handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // 成功
         if (error == nil) {
-            [bself.navigationController popViewControllerAnimated:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginSuccess
                                                                 object:nil
                                                               userInfo:@{}];
@@ -261,17 +274,6 @@ clickedButtonAtIndex:(NSInteger)index
                               buttonTitles:alertViewButtons
                                   delegate:alertViewDelegate];
     }];
-}
-
-/**
- * ログインフォームを変形させる
- * @param height フォームの高さ
- */
-- (void)designFormWithHeight:(CGFloat)height
-{
-    CGRect newFrame = self.loginFormView.frame;
-    newFrame.size.height = height;
-    self.loginFormView.frame = newFrame;
 }
 
 

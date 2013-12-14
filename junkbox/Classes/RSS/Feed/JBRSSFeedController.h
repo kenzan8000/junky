@@ -8,8 +8,6 @@
 
 
 #pragma mark - property
-/// ログインボタン
-@property (nonatomic, strong) UIButton *loginButton;
 
 
 #pragma mark - event listener
