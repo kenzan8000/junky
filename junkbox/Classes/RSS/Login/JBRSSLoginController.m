@@ -1,9 +1,8 @@
 #import "JBRSSLoginController.h"
-#import "JBRSSLoginTask.h"
+#import "JBRSSLoginOperation.h"
+#import "JBRSSOperationQueue.h"
 /// Connection
 #import "StatusCode.h"
-/// Pods
-#import "MTStatusBarOverlay.h"
 /// Pods-Extension
 #import "SSGentleAlertView+Junkbox.h"
 
@@ -225,9 +224,9 @@ clickedButtonAtIndex:(NSInteger)index
     [self.navigationController dismissModalViewControllerAnimated:YES];
 
     // ログイン処理
-    JBRSSLoginTask *loginTask = [[JBRSSLoginTask alloc] initWithUsername:self.IDTextField.text
-                                                                password:self.passwordTextField.text];
-    [loginTask livedoorReaderLoginWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+    JBRSSLoginOperation *loginOperation = [[JBRSSLoginOperation alloc] initWithUsername:self.IDTextField.text
+                                                                               password:self.passwordTextField.text
+                                                                                handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // 成功
         if (error == nil) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginSuccess
@@ -270,6 +269,7 @@ clickedButtonAtIndex:(NSInteger)index
                               buttonTitles:alertViewButtons
                                   delegate:alertViewDelegate];
     }];
+    [[JBRSSOperationQueue defaultQueue] addOperation:loginOperation];
 }
 
 

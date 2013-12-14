@@ -12,7 +12,8 @@
 		E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */ = {isa = PBXBuildFile; fileRef = E62C107117B9314A0081007A /* NSHTTPCookieStorage+Cookie.m */; };
 		E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7BE17B6237000B0407A /* NSDictionary+HTTPBody.m */; };
 		E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */; };
-		E681E76318251954001323DB /* JBRSSLoginTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E681E76218251954001323DB /* JBRSSLoginTask.m */; };
+		E681E76318251954001323DB /* JBRSSLoginOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E681E76218251954001323DB /* JBRSSLoginOperation.m */; };
+		E6893814185C1090004B0050 /* JBRSSOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E6893813185C1090004B0050 /* JBRSSOperationQueue.m */; };
 		E68EB9E417B01624006711A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E68EB9D717B01624006711A6 /* AppDelegate.m */; };
 		E68EB9E517B01624006711A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E68EB9D817B01624006711A6 /* main.m */; };
 		E68EB9E617B01624006711A6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E68EB9DE17B01624006711A6 /* Default-568h@2x.png */; };
@@ -59,8 +60,10 @@
 		E630B7BE17B6237000B0407A /* NSDictionary+HTTPBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HTTPBody.m"; sourceTree = "<group>"; };
 		E630B7C017B62E7800B0407A /* NSURLRequest+JBRSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+JBRSS.h"; sourceTree = "<group>"; };
 		E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+JBRSS.m"; sourceTree = "<group>"; };
-		E681E76118251954001323DB /* JBRSSLoginTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSLoginTask.h; sourceTree = "<group>"; };
-		E681E76218251954001323DB /* JBRSSLoginTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSLoginTask.m; sourceTree = "<group>"; };
+		E681E76118251954001323DB /* JBRSSLoginOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSLoginOperation.h; sourceTree = "<group>"; };
+		E681E76218251954001323DB /* JBRSSLoginOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSLoginOperation.m; sourceTree = "<group>"; };
+		E6893812185C0E8A004B0050 /* JBRSSOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSOperationQueue.h; sourceTree = "<group>"; };
+		E6893813185C1090004B0050 /* JBRSSOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSOperationQueue.m; sourceTree = "<group>"; };
 		E68EB9D617B01624006711A6 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E68EB9D717B01624006711A6 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E68EB9D817B01624006711A6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				E6EA937717B5645700697604 /* JBRSSConstant.h */,
+				E6893812185C0E8A004B0050 /* JBRSSOperationQueue.h */,
+				E6893813185C1090004B0050 /* JBRSSOperationQueue.m */,
 				E630B7C017B62E7800B0407A /* NSURLRequest+JBRSS.h */,
 				E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */,
 				E6FC100E17B1748900A12BED /* JBRSSController.h */,
@@ -359,8 +364,8 @@
 				E62747DE17B5BF14007B41B2 /* JBRSSLogin.storyboard */,
 				E62747E017B5BFB8007B41B2 /* JBRSSLoginController.h */,
 				E62747E117B5BFEC007B41B2 /* JBRSSLoginController.m */,
-				E681E76118251954001323DB /* JBRSSLoginTask.h */,
-				E681E76218251954001323DB /* JBRSSLoginTask.m */,
+				E681E76118251954001323DB /* JBRSSLoginOperation.h */,
+				E681E76218251954001323DB /* JBRSSLoginOperation.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -525,13 +530,14 @@
 				E6FC101917B174AC00A12BED /* JBSettingController.m in Sources */,
 				E6FC101E17B1781700A12BED /* UIStoryboard+UIKit.m in Sources */,
 				E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */,
+				E6893814185C1090004B0050 /* JBRSSOperationQueue.m in Sources */,
 				E6EA937517B5573100697604 /* JBRSSFeedController.m in Sources */,
 				E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */,
 				E62747E217B5BFEC007B41B2 /* JBRSSLoginController.m in Sources */,
 				E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */,
 				E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */,
 				E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */,
-				E681E76318251954001323DB /* JBRSSLoginTask.m in Sources */,
+				E681E76318251954001323DB /* JBRSSLoginOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
