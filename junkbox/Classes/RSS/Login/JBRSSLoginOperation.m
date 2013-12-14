@@ -58,8 +58,8 @@
             [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
         }
     };
-    self = [super initWithRequest:[NSMutableURLRequest JBRSSLoginRequestWithLivedoorID:self.username
-                                                                              password:self.password]
+    self = [super initWithRequest:[NSMutableURLRequest JBRSSLoginRequestWithLivedoorID:u
+                                                                              password:p]
                           handler:handler];
     if (self) {
         self.username = u;
