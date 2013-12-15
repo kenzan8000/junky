@@ -24,11 +24,13 @@
  *                    ログイン
  * *************************************************/
 "Login" = "ログイン";
-"Authorizing..." = "ログイン中...";
 "Input username" = "ユーザー名を入力してください。";
 "Input password" = "パスワードを入力してください。";
 "Forgot password?" = "パスワードをお忘れですか？";
 "Your username and password could not be authenticated. Double check that you entered them correctly and try again." = "ユーザー名またはパスワードが違います。ご確認の上、もう一度お試しください。";
+"Authorizing..." = "ログイン中...";
+"Authentication succeeded" = "ログインに成功しました";
+"Authentication failed" = "ログインに失敗しました";
 
 
 /* **************************************************

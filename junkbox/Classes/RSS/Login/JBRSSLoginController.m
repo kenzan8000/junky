@@ -234,7 +234,6 @@ clickedButtonAtIndex:(NSInteger)index
                                                               userInfo:@{}];
             return;
         }
-
         // 失敗
         NSString *alertViewMessage = nil;
         NSArray *alertViewButtons = @[NSLocalizedString(@"Confirm", @"確認")];
@@ -262,12 +261,14 @@ clickedButtonAtIndex:(NSInteger)index
                 }
                 break;
         }
+        dispatch_async(dispatch_get_main_queue(), ^ () {
+            [SSGentleAlertView showWithMessage:alertViewMessage
+                                  buttonTitles:alertViewButtons
+                                      delegate:alertViewDelegate];
+        });
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginFailure
                                                             object:nil
                                                           userInfo:@{}];
-        [SSGentleAlertView showWithMessage:alertViewMessage
-                              buttonTitles:alertViewButtons
-                                  delegate:alertViewDelegate];
     }];
     [[JBRSSOperationQueue defaultQueue] addOperation:loginOperation];
 }

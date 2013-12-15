@@ -9,6 +9,7 @@
 #import "NSHTTPCookieStorage+Cookie.h"
 /// Pods
 #import "Reachability.h"
+#import "MTStatusBarOverlay.h"
 
 
 #pragma mark - JBRSSLoginOperation
@@ -58,7 +59,23 @@
         h(response, object, loginError);
 
         if (loginError) {
+            // ログインに失敗した場合、他のRSS関連の通信をすべて止める
             [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
+
+            // 失敗をステータスバーに表示
+            dispatch_async(dispatch_get_main_queue(), ^ () {
+                [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Authentication failed", @"失敗")
+                                                                      duration:1.5f
+                                                                      animated:YES];
+            });
+        }
+        else {
+            // 成功をステータスバーに表示
+            dispatch_async(dispatch_get_main_queue(), ^ () {
+                [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Authentication succeeded", @"成功")
+                                                                       duration:1.5f
+                                                                       animated:YES];
+            });
         }
     };
 
@@ -92,6 +109,12 @@
     // セッションクリア
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookieWithNames:kSessionNamesLivedoorReaderLogin
                                                                  domains:kSessionDomainsLivedoorReaderLogin];
+
+    // ステータスバーにログイン中の表示
+    dispatch_async(dispatch_get_main_queue(), ^ () {
+        [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Authorizing...", @"ログイン中")
+                                                animated:YES];
+    });
 
     [super start];
 }
