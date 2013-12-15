@@ -31,6 +31,9 @@
               password:(NSString *)p
                handler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))h
 {
+    // RSS Readerに新しくログインする場合、他のRSS関連の通信をすべて止める
+    [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
+
     // 通信後の処理
     void (^ handler)(NSHTTPURLResponse *, id, NSError *) = ^ (NSHTTPURLResponse *response, id object, NSError *error) {
         NSError *loginError = error;
@@ -73,9 +76,6 @@
 #pragma mark - api
 - (void)start
 {
-    // ログイン以外のRSS関連の通信をすべて止める
-    [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
-
     // ネットワークに接続できない
     if ([[Reachability reachabilityForInternetConnection] isReachable] == NO) {
         [self willChangeValueForKey:@"isFinished"];
