@@ -17,7 +17,7 @@
 "Cannot access the Network." = "通信環境の良いところで、もう一度お試しください。";
 /* ***** 4xx ***** */
 /* ***** 5xx ***** */
-"Failure occurred in the system. Place the time and try again." = "システム側で不具合が発生しています。時間を置いて、もう一度お試しください。";
+"Failure occurred in the system. Place the time and try again." = "システム側に不具合が発生しています。時間をおいて、もう一度お試しください。";
 
 
 /* **************************************************

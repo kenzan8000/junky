@@ -3,6 +3,9 @@
 #import "JBRSSOperationQueue.h"
 /// Connection
 #import "StatusCode.h"
+/// Pods
+#import "Reachability.h"
+#import "MTStatusBarOverlay.h"
 /// Pods-Extension
 #import "SSGentleAlertView+Junkbox.h"
 
@@ -221,7 +224,16 @@ clickedButtonAtIndex:(NSInteger)index
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginStart
                                                         object:nil
                                                       userInfo:@{}];
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+
+    // ネットワークに接続できる場合
+    if ([[Reachability reachabilityForInternetConnection] isReachable]) {
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+        // ステータスバーにログイン中の表示
+        dispatch_async(dispatch_get_main_queue(), ^ () {
+            [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Authorizing...", @"ログイン中")
+                                                    animated:YES];
+        });
+    }
 
     // ログイン処理
     JBRSSLoginOperation *loginOperation = [[JBRSSLoginOperation alloc] initWithUsername:self.IDTextField.text
@@ -232,6 +244,12 @@ clickedButtonAtIndex:(NSInteger)index
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginSuccess
                                                                 object:nil
                                                               userInfo:@{}];
+            // 成功をステータスバーに表示
+            dispatch_async(dispatch_get_main_queue(), ^ () {
+                [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Authentication succeeded", @"成功")
+                                                                       duration:1.5f
+                                                                       animated:YES];
+            });
             return;
         }
         // 失敗
@@ -262,9 +280,12 @@ clickedButtonAtIndex:(NSInteger)index
                 break;
         }
         dispatch_async(dispatch_get_main_queue(), ^ () {
+            // アラート
             [SSGentleAlertView showWithMessage:alertViewMessage
                                   buttonTitles:alertViewButtons
                                       delegate:alertViewDelegate];
+            // ステータスバー
+            [[MTStatusBarOverlay sharedInstance] hide];
         });
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginFailure
                                                             object:nil
