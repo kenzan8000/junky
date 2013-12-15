@@ -73,12 +73,14 @@
 #pragma mark - api
 - (void)start
 {
+    // ログイン以外のRSS関連の通信をすべて止める
+    [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
+
     // ネットワークに接続できない
     if ([[Reachability reachabilityForInternetConnection] isReachable] == NO) {
         [self willChangeValueForKey:@"isFinished"];
         _finished = YES;
         [self didChangeValueForKey:@"isFinished"];
-        [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
         self.handler(nil,
                      @{},
                      [[NSError alloc] initWithDomain:NSMachErrorDomain
