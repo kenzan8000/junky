@@ -1,5 +1,5 @@
 #pragma mark - NSURLRequest+JBRSS
-/// NSMutableURLRequest Junkbox拡張(Livedoor Reader API)
+/// NSMutableURLRequest Junkbox拡張(RSS Reader API)
 @interface NSMutableURLRequest (JBRSS)
 
 

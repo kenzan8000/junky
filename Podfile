@@ -1,10 +1,13 @@
 platform :ios, "5.0"
 xcodeproj 'junkbox.xcodeproj'
-pod 'HatenaBookmarkSDK', :git => 'https://github.com/hatena/Hatena-Bookmark-iOS-SDK.git'
-pod 'ISHTTPOperation', '~> 1.1.0'
-pod 'NJKWebViewProgress'
-pod 'SSGentleAlertView'
-pod 'DejalActivityView'
+# Connection
 pod 'Reachability'
-pod 'RNFrostedSidebar', '~> 0.2.0'
+pod 'ISHTTPOperation', '~> 1.1.0'
+# Social Bookmark
+pod 'HatenaBookmarkSDK', :git => 'https://github.com/hatena/Hatena-Bookmark-iOS-SDK.git'
+# User Interface
+pod 'DejalActivityView'
 pod 'MTStatusBarOverlay'
+pod 'NJKWebViewProgress'
+pod 'RNFrostedSidebar', '~> 0.2.0'
+pod 'SSGentleAlertView'

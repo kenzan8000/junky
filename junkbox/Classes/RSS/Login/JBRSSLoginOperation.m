@@ -58,6 +58,7 @@
             [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
         }
     };
+
     self = [super initWithRequest:[NSMutableURLRequest JBRSSLoginRequestWithLivedoorID:u
                                                                               password:p]
                           handler:handler];
@@ -70,7 +71,7 @@
 
 
 #pragma mark - api
--(void)start
+- (void)start
 {
     // ネットワークに接続できない
     if ([[Reachability reachabilityForInternetConnection] isReachable] == NO) {
@@ -78,6 +79,11 @@
         _finished = YES;
         [self didChangeValueForKey:@"isFinished"];
         [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
+        self.handler(nil,
+                     @{},
+                     [[NSError alloc] initWithDomain:NSMachErrorDomain
+                                                code:http::NOT_REACHABLE
+                                                userInfo:@{}]);
         return;
     }
 
