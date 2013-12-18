@@ -1,4 +1,4 @@
-#import "JBRSSFeedController.h"
+#import "JBRSSFeedSubsUnreadController.h"
 #import "JBRSSFeedSubsUnreadOperation.h"
 /// Connection
 #import "StatusCode.h"
@@ -15,8 +15,8 @@
 #import "JBRSSOperationQueue.h"
 
 
-#pragma mark - JBRSSFeedController
-@implementation JBRSSFeedController
+#pragma mark - JBRSSFeedSubsUnreadController
+@implementation JBRSSFeedSubsUnreadController
 
 
 #pragma mark - synthesize

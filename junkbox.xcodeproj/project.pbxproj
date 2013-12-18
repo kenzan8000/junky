@@ -37,7 +37,7 @@
 		E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D79417B15521007B6C16 /* UINavigationBar+Custom.m */; };
 		E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */; };
 		E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA936B17B54E6D00697604 /* UIKit+Localize.m */; };
-		E6EA937517B5573100697604 /* JBRSSFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA937417B5573100697604 /* JBRSSFeedController.m */; };
+		E6EA937517B5573100697604 /* JBRSSFeedSubsUnreadController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA937417B5573100697604 /* JBRSSFeedSubsUnreadController.m */; };
 		E6FC100917B16FA800A12BED /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100617B16FA800A12BED /* TableViewController.m */; };
 		E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100817B16FA800A12BED /* WebViewController.m */; };
 		E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100C17B1729B00A12BED /* UINib+UIKit.m */; };
@@ -106,8 +106,8 @@
 		E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SSGentleAlertView+Junkbox.m"; sourceTree = "<group>"; };
 		E6EA936A17B54E6D00697604 /* UIKit+Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Localize.h"; sourceTree = "<group>"; };
 		E6EA936B17B54E6D00697604 /* UIKit+Localize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+Localize.m"; sourceTree = "<group>"; };
-		E6EA937317B5573100697604 /* JBRSSFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedController.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedController.h; sourceTree = SOURCE_ROOT; };
-		E6EA937417B5573100697604 /* JBRSSFeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedController.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedController.m; sourceTree = SOURCE_ROOT; };
+		E6EA937317B5573100697604 /* JBRSSFeedSubsUnreadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnreadController.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadController.h; sourceTree = SOURCE_ROOT; };
+		E6EA937417B5573100697604 /* JBRSSFeedSubsUnreadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnreadController.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadController.m; sourceTree = SOURCE_ROOT; };
 		E6EA937717B5645700697604 /* JBRSSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSConstant.h; sourceTree = "<group>"; };
 		E6FC100517B16FA800A12BED /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		E6FC100617B16FA800A12BED /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
@@ -361,8 +361,8 @@
 				E6BEC3DD18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.h */,
 				E6BEC3DE18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m */,
 				E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */,
-				E6EA937317B5573100697604 /* JBRSSFeedController.h */,
-				E6EA937417B5573100697604 /* JBRSSFeedController.m */,
+				E6EA937317B5573100697604 /* JBRSSFeedSubsUnreadController.h */,
+				E6EA937417B5573100697604 /* JBRSSFeedSubsUnreadController.m */,
 				E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib */,
 				E6BEC3D81861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.h */,
 				E6BEC3D91861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m */,
@@ -546,7 +546,7 @@
 				E6FC101E17B1781700A12BED /* UIStoryboard+UIKit.m in Sources */,
 				E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */,
 				E6893814185C1090004B0050 /* JBRSSOperationQueue.m in Sources */,
-				E6EA937517B5573100697604 /* JBRSSFeedController.m in Sources */,
+				E6EA937517B5573100697604 /* JBRSSFeedSubsUnreadController.m in Sources */,
 				E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */,
 				E62747E217B5BFEC007B41B2 /* JBRSSLoginController.m in Sources */,
 				E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */,

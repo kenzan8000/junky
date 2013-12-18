@@ -1,9 +1,9 @@
 #import "TableViewController.h"
 
 
-#pragma mark - JBRSSFeedController
+#pragma mark - JBRSSFeedSubsUnreadController
 /// RSSフィード詳細
-@interface JBRSSFeedController : TableViewController {
+@interface JBRSSFeedSubsUnreadController : TableViewController {
 }
 
 
