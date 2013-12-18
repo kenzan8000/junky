@@ -1,8 +1,8 @@
-#import "JBRSSFeedBaseTableViewCell.h"
+#import "JBRSSFeedSubsUnreadTableViewCell.h"
 
 
-#pragma mark - JBRSSFeedBaseTableViewCell
-@implementation JBRSSFeedBaseTableViewCell
+#pragma mark - JBRSSFeedSubsUnreadTableViewCell
+@implementation JBRSSFeedSubsUnreadTableViewCell
 
 
 #pragma mark - synthesize

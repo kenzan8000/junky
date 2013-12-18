@@ -1,9 +1,6 @@
-#import "JBRSSFeedBaseTableViewCell.h"
-
-
-#pragma mark - JBRSSFeedBaseTableViewCell
+#pragma mark - JBRSSFeedSubsUnreadTableViewCell
 /// フィード一覧
-@interface JBRSSFeedBaseTableViewCell : UITableViewCell {
+@interface JBRSSFeedSubsUnreadTableViewCell : UITableViewCell {
 }
 
 
