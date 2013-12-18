@@ -24,8 +24,8 @@
 		E6BAB8C617B0131300C1FEC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C517B0131300C1FEC1 /* UIKit.framework */; };
 		E6BAB8C817B0131300C1FEC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C717B0131300C1FEC1 /* Foundation.framework */; };
 		E6BAB8CA17B0131300C1FEC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C917B0131300C1FEC1 /* CoreGraphics.framework */; };
-		E6BEC3DB1861F073002B09F7 /* JBRSSFeedBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3D91861F073002B09F7 /* JBRSSFeedBaseTableViewCell.m */; };
-		E6BEC3DC1861F073002B09F7 /* JBRSSFeedBaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6BEC3DA1861F073002B09F7 /* JBRSSFeedBaseTableViewCell.xib */; };
+		E6BEC3DB1861F073002B09F7 /* JBRSSFeedSubsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3D91861F073002B09F7 /* JBRSSFeedSubsTableViewCell.m */; };
+		E6BEC3DC1861F073002B09F7 /* JBRSSFeedSubsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsTableViewCell.xib */; };
 		E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78217B15520007B6C16 /* NSData+JSON.m */; };
 		E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78417B15520007B6C16 /* NSNull+IgnoreMessages.m */; };
 		E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78817B15521007B6C16 /* NSString+PercentEncoding.m */; };
@@ -79,9 +79,9 @@
 		E6BAB8C517B0131300C1FEC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E6BAB8C717B0131300C1FEC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E6BAB8C917B0131300C1FEC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E6BEC3D81861F073002B09F7 /* JBRSSFeedBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedBaseTableViewCell.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedBaseTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		E6BEC3D91861F073002B09F7 /* JBRSSFeedBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedBaseTableViewCell.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedBaseTableViewCell.m; sourceTree = SOURCE_ROOT; };
-		E6BEC3DA1861F073002B09F7 /* JBRSSFeedBaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JBRSSFeedBaseTableViewCell.xib; path = junkbox/Classes/RSS/Feed/JBRSSFeedBaseTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		E6BEC3D81861F073002B09F7 /* JBRSSFeedSubsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsTableViewCell.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		E6BEC3D91861F073002B09F7 /* JBRSSFeedSubsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsTableViewCell.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JBRSSFeedSubsTableViewCell.xib; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		E6C8D77F17B15520007B6C16 /* StatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCode.h; sourceTree = "<group>"; };
 		E6C8D78117B15520007B6C16 /* NSData+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JSON.h"; sourceTree = "<group>"; };
 		E6C8D78217B15520007B6C16 /* NSData+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JSON.m"; sourceTree = "<group>"; };
@@ -358,9 +358,9 @@
 				E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */,
 				E6EA937317B5573100697604 /* JBRSSFeedController.h */,
 				E6EA937417B5573100697604 /* JBRSSFeedController.m */,
-				E6BEC3DA1861F073002B09F7 /* JBRSSFeedBaseTableViewCell.xib */,
-				E6BEC3D81861F073002B09F7 /* JBRSSFeedBaseTableViewCell.h */,
-				E6BEC3D91861F073002B09F7 /* JBRSSFeedBaseTableViewCell.m */,
+				E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsTableViewCell.xib */,
+				E6BEC3D81861F073002B09F7 /* JBRSSFeedSubsTableViewCell.h */,
+				E6BEC3D91861F073002B09F7 /* JBRSSFeedSubsTableViewCell.m */,
 			);
 			name = Feed;
 			path = Folder;
@@ -474,7 +474,7 @@
 				E68EB9E817B01624006711A6 /* Default@2x.png in Resources */,
 				E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */,
 				E6FC101B17B176B000A12BED /* MainStoryboard.storyboard in Resources */,
-				E6BEC3DC1861F073002B09F7 /* JBRSSFeedBaseTableViewCell.xib in Resources */,
+				E6BEC3DC1861F073002B09F7 /* JBRSSFeedSubsTableViewCell.xib in Resources */,
 				E62747DF17B5BF14007B41B2 /* JBRSSLogin.storyboard in Resources */,
 				E6FC983E17BBD53D0082047A /* JBRSSFeed.storyboard in Resources */,
 			);
@@ -545,7 +545,7 @@
 				E62747E217B5BFEC007B41B2 /* JBRSSLoginController.m in Sources */,
 				E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */,
 				E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */,
-				E6BEC3DB1861F073002B09F7 /* JBRSSFeedBaseTableViewCell.m in Sources */,
+				E6BEC3DB1861F073002B09F7 /* JBRSSFeedSubsTableViewCell.m in Sources */,
 				E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */,
 				E681E76318251954001323DB /* JBRSSLoginOperation.m in Sources */,
 			);
