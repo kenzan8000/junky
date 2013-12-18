@@ -1,18 +1,12 @@
 #import "JBRSSFeedSubsUnreadController.h"
-#import "JBRSSFeedSubsUnreadOperation.h"
+#import "JBRSSFeedSubsUnreadTableViewCell.h"
 /// Connection
 #import "StatusCode.h"
 /// Pods
 #import "MTStatusBarOverlay.h"
-/// NSFoundation-Extension
-#import "NSData+JSON.h"
-#import "NSURLRequest+JBRSS.h"
 /// UIKit-Extension
 #import "UIStoryboard+UIKit.h"
-/// Pods-Extension
-#import "SSGentleAlertView+Junkbox.h"
-#import "JBRSSLoginOperation.h"
-#import "JBRSSOperationQueue.h"
+#import "UINib+UIKit.h"
 
 
 #pragma mark - JBRSSFeedSubsUnreadController
@@ -20,6 +14,7 @@
 
 
 #pragma mark - synthesize
+@synthesize unreadList;
 
 
 #pragma mark - initializer
@@ -38,6 +33,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.unreadList = nil;
 }
 
 
@@ -45,6 +41,9 @@
 - (void)loadView
 {
     [super loadView];
+
+    // 未読フィード一覧
+    self.unreadList = [[JBRSSFeedSubsUnreadList alloc] initWithDelegate:self];
 
     // ログイン成功イベント
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -105,18 +104,68 @@
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return kJBRSSFeedSubsUnreadTableViewCellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *className = NSStringFromClass([UITableViewCell class]);
+    NSString *className = NSStringFromClass([JBRSSFeedSubsUnreadTableViewCell class]);
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
     if (!cell) {
-//        cell = [UINib UIKitFromClassName:className];
+        cell = [UINib UIKitFromClassName:className];
     }
     return cell;
+}
+
+#pragma mark - JBRSSFeedSubsUnreadListDelegate
+/**
+ * 未読フィード一覧取得成功
+ * @param list 一覧
+ */
+- (void)feedDidFinishLoadWithList:(JBRSSFeedSubsUnreadList *)list
+{
+    // ステータスバー
+    [[MTStatusBarOverlay sharedInstance] hide];
+}
+
+/**
+ * 未読フィード一覧取得失敗
+ * @param error error
+ */
+- (void)feedDidFailLoadWithError:(NSError *)error
+{
+    // エラー処理
+    NSString *message = nil;
+    switch (error.code) {
+        case http::statusCode::UNAUTHORIZED: // 401
+            // 再度ログイン後、未読フィード一覧ロード
+            [self login];
+            [self.unreadList loadFeed];
+            break;
+        case http::NOT_REACHABLE:
+            message = NSLocalizedString(@"Cannot access the Network.", @"通信できない");
+            break;
+        case http::TIMEOUT:
+            message = NSLocalizedString(@"Cannot access the Network.", @"タイムアウト");
+            break;
+        default:
+            // 4xx
+            if (error.code < http::statusCode::SERVER_ERROR) {
+                message = NSLocalizedString(@"Cannot access the Network.", @"4xx");
+            }
+            // 5xx
+            else {
+                message = NSLocalizedString(@"Failure occurred in the system. Place the time and try again.", @"5xx");
+            }
+            break;
+    }
+    if (message && error.code != http::statusCode::UNAUTHORIZED) {
+        // ステータスバー
+        [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:message
+                                                              duration:2.5f
+                                                              animated:YES];
+    }
 }
 
 
@@ -139,63 +188,24 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self performSelector:@selector(loadFeed)
                withObject:nil
-               afterDelay:1.5f];
-}
-
-
-#pragma mark - api
-- (void)loadFeed
-{
-    // 未読フィード一覧
-    JBRSSFeedSubsUnreadOperation *operation = [[JBRSSFeedSubsUnreadOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-        // 成功
-        if (error == nil) {
-            JBLog(@"%@", [object JSON]);
-            return;
-        }
-
-        // エラー処理
-        NSString *alertViewMessage = nil;
-        switch (error.code) {
-            case http::statusCode::UNAUTHORIZED:
-                // 再度ログイン後、未読フィード一覧ロード
-                [self login];
-                [self loadFeed];
-                break;
-            case http::NOT_REACHABLE:
-                alertViewMessage = NSLocalizedString(@"Cannot access the Network.", @"通信できない");
-                break;
-            case http::TIMEOUT:
-                alertViewMessage = NSLocalizedString(@"Cannot access the Network.", @"タイムアウト");
-                break;
-            default:
-                // 4xx
-                if (error.code < http::statusCode::SERVER_ERROR) {
-                    alertViewMessage = NSLocalizedString(@"Cannot access the Network.", @"4xx");
-                }
-                // 5xx
-                else {
-                    alertViewMessage = NSLocalizedString(@"Failure occurred in the system. Place the time and try again.", @"5xx");
-                }
-                break;
-        }
-        if (alertViewMessage) {
-            dispatch_async(dispatch_get_main_queue(), ^ () {
-                // アラート
-                [SSGentleAlertView showWithMessage:alertViewMessage
-                                      buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]
-                                          delegate:nil];
-            });
-        }
-    }];
-
-    [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the unread feed list...", @"未読フィード一覧読み込み")
-                                            animated:YES];
-    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
+               afterDelay:1.0f];
 }
 
 
 #pragma mark - private api
+/**
+ * 未読フィード読み込み
+ */
+- (void)loadFeed
+{
+    [self.unreadList loadFeed];
+    dispatch_async(dispatch_get_main_queue(), ^ () {
+        // ステータスバー
+        [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the unread feed list...", @"未読フィード一覧読み込み")
+                                                animated:YES];
+    });
+}
+
 /**
  * 認証切れの場合の再ログイン
  */
@@ -208,6 +218,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         // ログインに失敗した場合、他のRSS関連の通信をすべて止める
         if (error) {
             [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
+            // ステータスバー
+            [[MTStatusBarOverlay sharedInstance] hide];
         }
     }];
     [[JBRSSOperationQueue defaultQueue] addOperation:operation];

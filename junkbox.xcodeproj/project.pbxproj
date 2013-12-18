@@ -27,6 +27,8 @@
 		E6BEC3DB1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3D91861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m */; };
 		E6BEC3DC1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib */; };
 		E6BEC3DF18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3DE18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m */; };
+		E6BEC3E218625499002B09F7 /* JBRSSFeedSubsUnreadList.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3E118625499002B09F7 /* JBRSSFeedSubsUnreadList.m */; };
+		E6BEC3E5186256C6002B09F7 /* JBRSSFeedSubsUnread.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3E4186256C6002B09F7 /* JBRSSFeedSubsUnread.m */; };
 		E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78217B15520007B6C16 /* NSData+JSON.m */; };
 		E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78417B15520007B6C16 /* NSNull+IgnoreMessages.m */; };
 		E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78817B15521007B6C16 /* NSString+PercentEncoding.m */; };
@@ -85,6 +87,10 @@
 		E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JBRSSFeedSubsUnreadTableViewCell.xib; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		E6BEC3DD18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnreadOperation.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadOperation.h; sourceTree = SOURCE_ROOT; };
 		E6BEC3DE18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnreadOperation.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadOperation.m; sourceTree = SOURCE_ROOT; };
+		E6BEC3E018625499002B09F7 /* JBRSSFeedSubsUnreadList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnreadList.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadList.h; sourceTree = SOURCE_ROOT; };
+		E6BEC3E118625499002B09F7 /* JBRSSFeedSubsUnreadList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnreadList.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadList.m; sourceTree = SOURCE_ROOT; };
+		E6BEC3E3186256C6002B09F7 /* JBRSSFeedSubsUnread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnread.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnread.h; sourceTree = SOURCE_ROOT; };
+		E6BEC3E4186256C6002B09F7 /* JBRSSFeedSubsUnread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnread.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnread.m; sourceTree = SOURCE_ROOT; };
 		E6C8D77F17B15520007B6C16 /* StatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCode.h; sourceTree = "<group>"; };
 		E6C8D78117B15520007B6C16 /* NSData+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JSON.h"; sourceTree = "<group>"; };
 		E6C8D78217B15520007B6C16 /* NSData+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JSON.m"; sourceTree = "<group>"; };
@@ -360,6 +366,10 @@
 			children = (
 				E6BEC3DD18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.h */,
 				E6BEC3DE18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m */,
+				E6BEC3E018625499002B09F7 /* JBRSSFeedSubsUnreadList.h */,
+				E6BEC3E118625499002B09F7 /* JBRSSFeedSubsUnreadList.m */,
+				E6BEC3E3186256C6002B09F7 /* JBRSSFeedSubsUnread.h */,
+				E6BEC3E4186256C6002B09F7 /* JBRSSFeedSubsUnread.m */,
 				E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */,
 				E6EA937317B5573100697604 /* JBRSSFeedSubsUnreadController.h */,
 				E6EA937417B5573100697604 /* JBRSSFeedSubsUnreadController.m */,
@@ -535,8 +545,10 @@
 				E6C8D79C17B15521007B6C16 /* NSURL+Query.m in Sources */,
 				E6C8D79D17B15521007B6C16 /* NSURLRequest+Junkbox.m in Sources */,
 				E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */,
+				E6BEC3E5186256C6002B09F7 /* JBRSSFeedSubsUnread.m in Sources */,
 				E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */,
 				E6FC100917B16FA800A12BED /* TableViewController.m in Sources */,
+				E6BEC3E218625499002B09F7 /* JBRSSFeedSubsUnreadList.m in Sources */,
 				E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */,
 				E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */,
 				E6FC101017B1748900A12BED /* JBRSSController.m in Sources */,

@@ -1,3 +1,7 @@
+#pragma mark - constant
+#define kJBRSSFeedSubsUnreadTableViewCellHeight 44
+
+
 #pragma mark - JBRSSFeedSubsUnreadTableViewCell
 /// フィード一覧
 @interface JBRSSFeedSubsUnreadTableViewCell : UITableViewCell {

@@ -236,6 +236,7 @@ clickedButtonAtIndex:(NSInteger)index
     }
 
     // ログイン処理
+    __weak __typeof(self) weakSelf = self;
     JBRSSLoginOperation *loginOperation = [[JBRSSLoginOperation alloc] initWithUsername:self.IDTextField.text
                                                                                password:self.passwordTextField.text
                                                                                 handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
@@ -256,12 +257,10 @@ clickedButtonAtIndex:(NSInteger)index
         // 失敗
         NSString *alertViewMessage = nil;
         NSArray *alertViewButtons = @[NSLocalizedString(@"Confirm", @"確認")];
-        id alertViewDelegate = nil;
         switch (error.code) {
             case http::statusCode::UNAUTHORIZED:
                 alertViewMessage = NSLocalizedString(@"Your ID and password could not be authenticated. Double check that you entered them correctly and try again.", @"IDかパスワードが違う場合");
                 alertViewButtons = @[NSLocalizedString(@"Forgot password?", @"パスワードを忘れた"), NSLocalizedString(@"Confirm", @"確認")];
-                alertViewDelegate = self;
                 break;
             case http::NOT_REACHABLE:
                 alertViewMessage = NSLocalizedString(@"Cannot access the Network.", @"通信できない");
@@ -284,7 +283,7 @@ clickedButtonAtIndex:(NSInteger)index
             // アラート
             [SSGentleAlertView showWithMessage:alertViewMessage
                                   buttonTitles:alertViewButtons
-                                      delegate:alertViewDelegate];
+                                      delegate:weakSelf];
             // ステータスバー
             [[MTStatusBarOverlay sharedInstance] hide];
         });
