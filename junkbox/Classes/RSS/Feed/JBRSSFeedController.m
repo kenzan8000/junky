@@ -7,6 +7,10 @@
 #import "NSURLRequest+JBRSS.h"
 /// UIKit-Extension
 #import "UIStoryboard+UIKit.h"
+/// Pods-Extension
+#import "SSGentleAlertView+Junkbox.h"
+#import "JBRSSLoginOperation.h"
+#import "JBRSSOperationQueue.h"
 
 
 #pragma mark - JBRSSFeedController
@@ -31,6 +35,7 @@
 #pragma mark - release
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -38,6 +43,12 @@
 - (void)loadView
 {
     [super loadView];
+
+    // ログイン成功イベント
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loginDidSuccess:)
+                                                 name:kNotificationRSSLoginSuccess
+                                               object:nil];
 
     // ログインボタン
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -117,13 +128,81 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 
+#pragma mark - notification
+/**
+ * ログイン成功
+ * @param notification notification
+ **/
+- (void)loginDidSuccess:(NSNotification *)notification
+{
+    [self loadFeed];
+}
+
+
 #pragma mark - api
 - (void)loadFeed
 {
     // 未読フィード一覧
-    [[JBRSSFeedSubsUnreadOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+    JBRSSFeedSubsUnreadOperation *operation = [[JBRSSFeedSubsUnreadOperation alloc] initWithHandler:
+    ^ (NSHTTPURLResponse *response, id object, NSError *error) {
+        // エラー処理
+        NSString *alertViewMessage = nil;
+        switch (error.code) {
+            case http::statusCode::UNAUTHORIZED:
+                // 再度ログイン後、未読フィード一覧ロード
+                [self login];
+                [self loadFeed];
+                break;
+            case http::NOT_REACHABLE:
+                alertViewMessage = NSLocalizedString(@"Cannot access the Network.", @"通信できない");
+                break;
+            case http::TIMEOUT:
+                alertViewMessage = NSLocalizedString(@"Cannot access the Network.", @"タイムアウト");
+                break;
+            default:
+                // 4xx
+                if (error.code < http::statusCode::SERVER_ERROR) {
+                    alertViewMessage = NSLocalizedString(@"Cannot access the Network.", @"4xx");
+                }
+                // 5xx
+                else {
+                    alertViewMessage = NSLocalizedString(@"Failure occurred in the system. Place the time and try again.", @"5xx");
+                }
+                break;
+        }
+        if (alertViewMessage) {
+            dispatch_async(dispatch_get_main_queue(), ^ () {
+                // アラート
+                [SSGentleAlertView showWithMessage:alertViewMessage
+                                      buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]
+                                          delegate:nil];
+            });
+        }
+
         JBLog(@"%@", [object JSON]);
     }];
+
+    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
+}
+
+
+#pragma mark - private api
+/**
+ * 認証切れの場合の再ログイン
+ */
+- (void)login
+{
+/*
+    JBRSSLoginOperation *operation = [[JBRSSLoginOperation alloc] initWithUsername:
+                                                                          password:
+                                                                           handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+        // ログインに失敗した場合、他のRSS関連の通信をすべて止める
+        if (error) {
+            [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
+        }
+    }];
+    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
+*/
 }
 
 

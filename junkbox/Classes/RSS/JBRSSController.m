@@ -25,7 +25,6 @@
 #pragma mark - release
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -34,12 +33,6 @@
 {
     [super loadView];
     [self setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSFeed]]];
-
-    // login
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(loginDidSuccess:)
-                                                 name:kNotificationRSSLoginSuccess
-                                               object:nil];
 }
 
 - (void)viewDidLoad
@@ -69,13 +62,6 @@
 
 
 #pragma mark - notification
-/**
- * ログイン成功
- * @param notification notification
- **/
-- (void)loginDidSuccess:(NSNotification *)notification
-{
-}
 
 
 @end
