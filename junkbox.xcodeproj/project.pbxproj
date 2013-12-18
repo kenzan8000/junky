@@ -26,6 +26,7 @@
 		E6BAB8CA17B0131300C1FEC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C917B0131300C1FEC1 /* CoreGraphics.framework */; };
 		E6BEC3DB1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3D91861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m */; };
 		E6BEC3DC1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib */; };
+		E6BEC3DF18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3DE18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m */; };
 		E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78217B15520007B6C16 /* NSData+JSON.m */; };
 		E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78417B15520007B6C16 /* NSNull+IgnoreMessages.m */; };
 		E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78817B15521007B6C16 /* NSString+PercentEncoding.m */; };
@@ -82,6 +83,8 @@
 		E6BEC3D81861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnreadTableViewCell.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		E6BEC3D91861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnreadTableViewCell.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JBRSSFeedSubsUnreadTableViewCell.xib; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		E6BEC3DD18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnreadOperation.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadOperation.h; sourceTree = SOURCE_ROOT; };
+		E6BEC3DE18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnreadOperation.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadOperation.m; sourceTree = SOURCE_ROOT; };
 		E6C8D77F17B15520007B6C16 /* StatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCode.h; sourceTree = "<group>"; };
 		E6C8D78117B15520007B6C16 /* NSData+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JSON.h"; sourceTree = "<group>"; };
 		E6C8D78217B15520007B6C16 /* NSData+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JSON.m"; sourceTree = "<group>"; };
@@ -154,10 +157,10 @@
 				E6FC100117B16FA800A12BED /* ReadLater */,
 				E6C8D77D17B15520007B6C16 /* Bookmark */,
 				E6FC100217B16FA800A12BED /* Setting */,
-				E6FC101A17B176B000A12BED /* MainStoryboard.storyboard */,
 				E62747E317B5CEBF007B41B2 /* JBConstant.h */,
 				E68EB9D617B01624006711A6 /* AppDelegate.h */,
 				E68EB9D717B01624006711A6 /* AppDelegate.m */,
+				E6FC101A17B176B000A12BED /* MainStoryboard.storyboard */,
 				E68EB9D817B01624006711A6 /* main.m */,
 				E68EB9D917B01624006711A6 /* prefix.pch */,
 			);
@@ -355,6 +358,8 @@
 		E6EA936D17B5544800697604 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				E6BEC3DD18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.h */,
+				E6BEC3DE18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m */,
 				E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */,
 				E6EA937317B5573100697604 /* JBRSSFeedController.h */,
 				E6EA937417B5573100697604 /* JBRSSFeedController.m */,
@@ -370,10 +375,10 @@
 			isa = PBXGroup;
 			children = (
 				E62747DE17B5BF14007B41B2 /* JBRSSLogin.storyboard */,
-				E62747E017B5BFB8007B41B2 /* JBRSSLoginController.h */,
-				E62747E117B5BFEC007B41B2 /* JBRSSLoginController.m */,
 				E681E76118251954001323DB /* JBRSSLoginOperation.h */,
 				E681E76218251954001323DB /* JBRSSLoginOperation.m */,
+				E62747E017B5BFB8007B41B2 /* JBRSSLoginController.h */,
+				E62747E117B5BFEC007B41B2 /* JBRSSLoginController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -522,6 +527,7 @@
 			files = (
 				E68EB9E417B01624006711A6 /* AppDelegate.m in Sources */,
 				E68EB9E517B01624006711A6 /* main.m in Sources */,
+				E6BEC3DF18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m in Sources */,
 				E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */,
 				E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */,
 				E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */,

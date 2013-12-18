@@ -4,7 +4,6 @@
 #import "NSURLRequest+JBRSS.h"
 /// Connection
 #import "StatusCode.h"
-#import "ISHTTPOperation.h"
 /// NSFoundation-Extension
 #import "NSHTTPCookieStorage+Cookie.h"
 /// Pods
@@ -21,12 +20,6 @@
 
 
 #pragma mark - initializer
-/**
- * construct
- * @param username username
- * @param password password
- * @return id
- */
 - (id)initWithUsername:(NSString *)u
               password:(NSString *)p
                handler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))h

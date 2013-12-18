@@ -1,7 +1,7 @@
 #import "JBRSSFeedController.h"
+#import "JBRSSFeedSubsUnreadOperation.h"
 /// Connection
 #import "StatusCode.h"
-#import "ISHTTPOperation.h"
 /// NSFoundation-Extension
 #import "NSData+JSON.h"
 #import "NSURLRequest+JBRSS.h"
@@ -121,9 +121,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)loadFeed
 {
     // 未読フィード一覧
-    NSMutableURLRequest *request = [NSMutableURLRequest JBRSSSubsUnreadRequest];
-    [ISHTTPOperation sendRequest:request
-                         handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+    [[JBRSSFeedSubsUnreadOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         JBLog(@"%@", [object JSON]);
     }];
 }
