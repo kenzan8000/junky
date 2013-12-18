@@ -42,7 +42,6 @@
 /// POST subscribe_idのフィードの未読件数取得 %@=subscribe_id
 #define kAPILivedoorReaderUnread                 [NSString stringWithFormat:@"%@unread?subscribe_id=%@",  kAPILivedoorReader, @"%@"]
 /// POST subscribe_idのフィードを既読化 %@=subscribe_id
-
 #define kAPILivedoorReaderTouchAll               [NSString stringWithFormat:@"%@touch_all?subscribe_id=%@",  kAPILivedoorReader, @"%@"]
 
 /// POST ピンに登録している一覧を取得

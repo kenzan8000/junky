@@ -241,15 +241,16 @@ clickedButtonAtIndex:(NSInteger)index
                                                                                 handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // 成功
         if (error == nil) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginSuccess
-                                                                object:nil
-                                                              userInfo:@{}];
-            // 成功をステータスバーに表示
+            // ステータスバーに表示
             dispatch_async(dispatch_get_main_queue(), ^ () {
                 [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Authentication succeeded", @"成功")
                                                                        duration:1.5f
                                                                        animated:YES];
             });
+            // イベント
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginSuccess
+                                                                object:nil
+                                                              userInfo:@{}];
             return;
         }
         // 失敗

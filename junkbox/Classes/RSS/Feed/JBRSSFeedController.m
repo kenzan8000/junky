@@ -2,6 +2,8 @@
 #import "JBRSSFeedSubsUnreadOperation.h"
 /// Connection
 #import "StatusCode.h"
+/// Pods
+#import "MTStatusBarOverlay.h"
 /// NSFoundation-Extension
 #import "NSData+JSON.h"
 #import "NSURLRequest+JBRSS.h"
@@ -135,7 +137,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
  **/
 - (void)loginDidSuccess:(NSNotification *)notification
 {
-    [self loadFeed];
+    [self performSelector:@selector(loadFeed)
+               withObject:nil
+               afterDelay:1.5f];
 }
 
 
@@ -143,8 +147,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)loadFeed
 {
     // 未読フィード一覧
-    JBRSSFeedSubsUnreadOperation *operation = [[JBRSSFeedSubsUnreadOperation alloc] initWithHandler:
-    ^ (NSHTTPURLResponse *response, id object, NSError *error) {
+    JBRSSFeedSubsUnreadOperation *operation = [[JBRSSFeedSubsUnreadOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+        // 成功
+        if (error == nil) {
+            JBLog(@"%@", [object JSON]);
+            return;
+        }
+
         // エラー処理
         NSString *alertViewMessage = nil;
         switch (error.code) {
@@ -178,10 +187,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                                           delegate:nil];
             });
         }
-
-        JBLog(@"%@", [object JSON]);
     }];
 
+    [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the unread feed list...", @"未読フィード一覧読み込み")
+                                            animated:YES];
     [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
