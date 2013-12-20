@@ -11,6 +11,7 @@ PODS:
     - NJKWebViewProgress/ProgressView
   - NJKWebViewProgress/Core (0.2)
   - NJKWebViewProgress/ProgressView (0.2)
+  - NLCoreData (0.5.3)
   - Reachability (3.1.1)
   - RNFrostedSidebar (0.2.0)
   - SFHFKeychainUtils (0.0.1)
@@ -22,6 +23,7 @@ DEPENDENCIES:
   - ISHTTPOperation (~> 1.1.0)
   - MTStatusBarOverlay
   - NJKWebViewProgress
+  - NLCoreData
   - Reachability
   - RNFrostedSidebar (~> 0.2.0)
   - SSGentleAlertView
@@ -37,6 +39,7 @@ SPEC CHECKSUMS:
   ISHTTPOperation: 6268956d564f3cab0584838e996f2f4520d903b2
   MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
   NJKWebViewProgress: fd46c9489d799d97f3b09210886bf83884f6c725
+  NLCoreData: bde75667607f7b66a08ef1d78d39b8bc5eed433f
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   RNFrostedSidebar: 36339438a07088fd3ee3926db03af499477ee048
   SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
