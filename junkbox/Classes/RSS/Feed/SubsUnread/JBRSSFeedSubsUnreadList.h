@@ -34,7 +34,7 @@
 /// Delegate
 @property (nonatomic, weak) id<JBRSSFeedSubsUnreadListDelegate> delegate;
 /// 一覧
-@property (nonatomic, strong) NSArray *list;
+@property (nonatomic, strong) NSMutableArray *list;
 
 
 #pragma mark - initializer

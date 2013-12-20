@@ -24,11 +24,6 @@
 		E6BAB8C617B0131300C1FEC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C517B0131300C1FEC1 /* UIKit.framework */; };
 		E6BAB8C817B0131300C1FEC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C717B0131300C1FEC1 /* Foundation.framework */; };
 		E6BAB8CA17B0131300C1FEC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C917B0131300C1FEC1 /* CoreGraphics.framework */; };
-		E6BEC3DB1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3D91861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m */; };
-		E6BEC3DC1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib */; };
-		E6BEC3DF18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3DE18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m */; };
-		E6BEC3E218625499002B09F7 /* JBRSSFeedSubsUnreadList.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3E118625499002B09F7 /* JBRSSFeedSubsUnreadList.m */; };
-		E6BEC3E5186256C6002B09F7 /* JBRSSFeedSubsUnread.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BEC3E4186256C6002B09F7 /* JBRSSFeedSubsUnread.m */; };
 		E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78217B15520007B6C16 /* NSData+JSON.m */; };
 		E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78417B15520007B6C16 /* NSNull+IgnoreMessages.m */; };
 		E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78817B15521007B6C16 /* NSString+PercentEncoding.m */; };
@@ -37,9 +32,14 @@
 		E6C8D79D17B15521007B6C16 /* NSURLRequest+Junkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78E17B15521007B6C16 /* NSURLRequest+Junkbox.m */; };
 		E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D79217B15521007B6C16 /* UIColor+Hexadecimal.m */; };
 		E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D79417B15521007B6C16 /* UINavigationBar+Custom.m */; };
+		E6C90071186400840007449D /* JBRSSFeedSubsUnread.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C90067186400840007449D /* JBRSSFeedSubsUnread.m */; };
+		E6C90072186400840007449D /* JBRSSFeedSubsUnreadController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C90069186400840007449D /* JBRSSFeedSubsUnreadController.m */; };
+		E6C90073186400840007449D /* JBRSSFeedSubsUnreadList.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C9006B186400840007449D /* JBRSSFeedSubsUnreadList.m */; };
+		E6C90074186400840007449D /* JBRSSFeedSubsUnreadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C9006D186400840007449D /* JBRSSFeedSubsUnreadOperation.m */; };
+		E6C90075186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C9006F186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m */; };
+		E6C90076186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6C90070186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib */; };
 		E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */; };
 		E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA936B17B54E6D00697604 /* UIKit+Localize.m */; };
-		E6EA937517B5573100697604 /* JBRSSFeedSubsUnreadController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA937417B5573100697604 /* JBRSSFeedSubsUnreadController.m */; };
 		E6FC100917B16FA800A12BED /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100617B16FA800A12BED /* TableViewController.m */; };
 		E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100817B16FA800A12BED /* WebViewController.m */; };
 		E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100C17B1729B00A12BED /* UINib+UIKit.m */; };
@@ -82,15 +82,6 @@
 		E6BAB8C517B0131300C1FEC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E6BAB8C717B0131300C1FEC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E6BAB8C917B0131300C1FEC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E6BEC3D81861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnreadTableViewCell.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		E6BEC3D91861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnreadTableViewCell.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadTableViewCell.m; sourceTree = SOURCE_ROOT; };
-		E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JBRSSFeedSubsUnreadTableViewCell.xib; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadTableViewCell.xib; sourceTree = SOURCE_ROOT; };
-		E6BEC3DD18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnreadOperation.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadOperation.h; sourceTree = SOURCE_ROOT; };
-		E6BEC3DE18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnreadOperation.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadOperation.m; sourceTree = SOURCE_ROOT; };
-		E6BEC3E018625499002B09F7 /* JBRSSFeedSubsUnreadList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnreadList.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadList.h; sourceTree = SOURCE_ROOT; };
-		E6BEC3E118625499002B09F7 /* JBRSSFeedSubsUnreadList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnreadList.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadList.m; sourceTree = SOURCE_ROOT; };
-		E6BEC3E3186256C6002B09F7 /* JBRSSFeedSubsUnread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnread.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnread.h; sourceTree = SOURCE_ROOT; };
-		E6BEC3E4186256C6002B09F7 /* JBRSSFeedSubsUnread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnread.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnread.m; sourceTree = SOURCE_ROOT; };
 		E6C8D77F17B15520007B6C16 /* StatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCode.h; sourceTree = "<group>"; };
 		E6C8D78117B15520007B6C16 /* NSData+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JSON.h"; sourceTree = "<group>"; };
 		E6C8D78217B15520007B6C16 /* NSData+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JSON.m"; sourceTree = "<group>"; };
@@ -108,12 +99,21 @@
 		E6C8D79217B15521007B6C16 /* UIColor+Hexadecimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hexadecimal.m"; sourceTree = "<group>"; };
 		E6C8D79317B15521007B6C16 /* UINavigationBar+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Custom.h"; sourceTree = "<group>"; };
 		E6C8D79417B15521007B6C16 /* UINavigationBar+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Custom.m"; sourceTree = "<group>"; };
+		E6C90066186400840007449D /* JBRSSFeedSubsUnread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedSubsUnread.h; sourceTree = "<group>"; };
+		E6C90067186400840007449D /* JBRSSFeedSubsUnread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedSubsUnread.m; sourceTree = "<group>"; };
+		E6C90068186400840007449D /* JBRSSFeedSubsUnreadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedSubsUnreadController.h; sourceTree = "<group>"; };
+		E6C90069186400840007449D /* JBRSSFeedSubsUnreadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedSubsUnreadController.m; sourceTree = "<group>"; };
+		E6C9006A186400840007449D /* JBRSSFeedSubsUnreadList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedSubsUnreadList.h; sourceTree = "<group>"; };
+		E6C9006B186400840007449D /* JBRSSFeedSubsUnreadList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedSubsUnreadList.m; sourceTree = "<group>"; };
+		E6C9006C186400840007449D /* JBRSSFeedSubsUnreadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedSubsUnreadOperation.h; sourceTree = "<group>"; };
+		E6C9006D186400840007449D /* JBRSSFeedSubsUnreadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedSubsUnreadOperation.m; sourceTree = "<group>"; };
+		E6C9006E186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedSubsUnreadTableViewCell.h; sourceTree = "<group>"; };
+		E6C9006F186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedSubsUnreadTableViewCell.m; sourceTree = "<group>"; };
+		E6C90070186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBRSSFeedSubsUnreadTableViewCell.xib; sourceTree = "<group>"; };
 		E6E271B51834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SSGentleAlertView+Junkbox.h"; sourceTree = "<group>"; };
 		E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SSGentleAlertView+Junkbox.m"; sourceTree = "<group>"; };
 		E6EA936A17B54E6D00697604 /* UIKit+Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Localize.h"; sourceTree = "<group>"; };
 		E6EA936B17B54E6D00697604 /* UIKit+Localize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+Localize.m"; sourceTree = "<group>"; };
-		E6EA937317B5573100697604 /* JBRSSFeedSubsUnreadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedSubsUnreadController.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadController.h; sourceTree = SOURCE_ROOT; };
-		E6EA937417B5573100697604 /* JBRSSFeedSubsUnreadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedSubsUnreadController.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedSubsUnreadController.m; sourceTree = SOURCE_ROOT; };
 		E6EA937717B5645700697604 /* JBRSSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSConstant.h; sourceTree = "<group>"; };
 		E6FC100517B16FA800A12BED /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		E6FC100617B16FA800A12BED /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
@@ -344,6 +344,25 @@
 			path = "UIKit-Extension";
 			sourceTree = "<group>";
 		};
+		E6C90065186400840007449D /* SubsUnread */ = {
+			isa = PBXGroup;
+			children = (
+				E6C90066186400840007449D /* JBRSSFeedSubsUnread.h */,
+				E6C90067186400840007449D /* JBRSSFeedSubsUnread.m */,
+				E6C9006A186400840007449D /* JBRSSFeedSubsUnreadList.h */,
+				E6C9006B186400840007449D /* JBRSSFeedSubsUnreadList.m */,
+				E6C9006C186400840007449D /* JBRSSFeedSubsUnreadOperation.h */,
+				E6C9006D186400840007449D /* JBRSSFeedSubsUnreadOperation.m */,
+				E6C90068186400840007449D /* JBRSSFeedSubsUnreadController.h */,
+				E6C90069186400840007449D /* JBRSSFeedSubsUnreadController.m */,
+				E6C9006E186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.h */,
+				E6C9006F186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m */,
+				E6C90070186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib */,
+			);
+			name = SubsUnread;
+			path = junkbox/Classes/RSS/Feed/SubsUnread;
+			sourceTree = SOURCE_ROOT;
+		};
 		E6E271B11834A8F400F0E6A4 /* Pods-Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,18 +383,8 @@
 		E6EA936D17B5544800697604 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				E6BEC3DD18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.h */,
-				E6BEC3DE18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m */,
-				E6BEC3E018625499002B09F7 /* JBRSSFeedSubsUnreadList.h */,
-				E6BEC3E118625499002B09F7 /* JBRSSFeedSubsUnreadList.m */,
-				E6BEC3E3186256C6002B09F7 /* JBRSSFeedSubsUnread.h */,
-				E6BEC3E4186256C6002B09F7 /* JBRSSFeedSubsUnread.m */,
+				E6C90065186400840007449D /* SubsUnread */,
 				E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */,
-				E6EA937317B5573100697604 /* JBRSSFeedSubsUnreadController.h */,
-				E6EA937417B5573100697604 /* JBRSSFeedSubsUnreadController.m */,
-				E6BEC3DA1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib */,
-				E6BEC3D81861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.h */,
-				E6BEC3D91861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m */,
 			);
 			name = Feed;
 			path = Folder;
@@ -488,8 +497,8 @@
 				E68EB9E717B01624006711A6 /* Default.png in Resources */,
 				E68EB9E817B01624006711A6 /* Default@2x.png in Resources */,
 				E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */,
+				E6C90076186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */,
 				E6FC101B17B176B000A12BED /* MainStoryboard.storyboard in Resources */,
-				E6BEC3DC1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */,
 				E62747DF17B5BF14007B41B2 /* JBRSSLogin.storyboard in Resources */,
 				E6FC983E17BBD53D0082047A /* JBRSSFeed.storyboard in Resources */,
 			);
@@ -537,35 +546,35 @@
 			files = (
 				E68EB9E417B01624006711A6 /* AppDelegate.m in Sources */,
 				E68EB9E517B01624006711A6 /* main.m in Sources */,
-				E6BEC3DF18620006002B09F7 /* JBRSSFeedSubsUnreadOperation.m in Sources */,
 				E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */,
 				E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */,
 				E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */,
 				E6C8D79B17B15521007B6C16 /* NSString+UUID.m in Sources */,
+				E6C90072186400840007449D /* JBRSSFeedSubsUnreadController.m in Sources */,
 				E6C8D79C17B15521007B6C16 /* NSURL+Query.m in Sources */,
 				E6C8D79D17B15521007B6C16 /* NSURLRequest+Junkbox.m in Sources */,
 				E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */,
-				E6BEC3E5186256C6002B09F7 /* JBRSSFeedSubsUnread.m in Sources */,
 				E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */,
 				E6FC100917B16FA800A12BED /* TableViewController.m in Sources */,
-				E6BEC3E218625499002B09F7 /* JBRSSFeedSubsUnreadList.m in Sources */,
 				E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */,
 				E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */,
 				E6FC101017B1748900A12BED /* JBRSSController.m in Sources */,
+				E6C90075186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */,
 				E6FC101317B1749700A12BED /* JBReadLaterController.m in Sources */,
+				E6C90071186400840007449D /* JBRSSFeedSubsUnread.m in Sources */,
 				E6FC101617B174A200A12BED /* JBBookmarkController.m in Sources */,
 				E6FC101917B174AC00A12BED /* JBSettingController.m in Sources */,
 				E6FC101E17B1781700A12BED /* UIStoryboard+UIKit.m in Sources */,
 				E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */,
 				E6893814185C1090004B0050 /* JBRSSOperationQueue.m in Sources */,
-				E6EA937517B5573100697604 /* JBRSSFeedSubsUnreadController.m in Sources */,
 				E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */,
 				E62747E217B5BFEC007B41B2 /* JBRSSLoginController.m in Sources */,
 				E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */,
 				E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */,
-				E6BEC3DB1861F073002B09F7 /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */,
 				E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */,
 				E681E76318251954001323DB /* JBRSSLoginOperation.m in Sources */,
+				E6C90074186400840007449D /* JBRSSFeedSubsUnreadOperation.m in Sources */,
+				E6C90073186400840007449D /* JBRSSFeedSubsUnreadList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

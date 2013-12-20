@@ -7,6 +7,8 @@
 /// NSFoundation-Extension
 #import "NSData+JSON.h"
 #import "NSURLRequest+JBRSS.h"
+/// Pods
+#import "NLCoreData.h"
 
 
 #pragma mark - JBRSSFeedSubsUnreadList
@@ -25,7 +27,7 @@
     self = [super init];
     if (self) {
         self.delegate = del;
-        self.list = @[];
+        self.list = [NSMutableArray arrayWithArray:@[]];
     }
     return self;
 }
@@ -45,7 +47,8 @@
     JBRSSFeedSubsUnreadOperation *operation = [[JBRSSFeedSubsUnreadOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // 成功
         if (error == nil) {
-            JBLog(@"%@", [object JSON]);
+            NSArray *JSON = [object JSON];
+            [weakSelf createListWithJSON:JSON];
 
             dispatch_async(dispatch_get_main_queue(), ^ () {
                 if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(feedDidFinishLoadWithList:)]) {
@@ -73,6 +76,34 @@
 {
     if (index < 0 || index >= [self count]) { return nil; }
     return self.list[index];
+}
+
+
+#pragma makr - private api
+/**
+ * API戻り値のJSONからモデルのリストを生成
+ * @param JSON JSON
+ */
+- (void)createListWithJSON:(NSArray *)JSON
+{
+    // check JSON
+    JBLog(@"%@", JSON);
+    if (JSON == nil) { return; }
+/*
+    // create list and save
+    self.list = [NSMutableArray arrayWithArray:@[]];
+    for (NSDictionary *dict in JSON) {
+        NSManagedObjectContext *context = [NSManagedObjectContext mainContext];
+        JBRSSFeedSubsUnread *subsUnread = [JBRSSFeedSubsUnread insertInContext:context];
+        subsUnread.subscribeId = [NSString stringWithFormat:@"%@", dict[@"subscribe_id"]];
+        context.saveNested;
+        [self.list addObject:subsUnread];
+    }
+
+    // sort by star
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"self.lifeTime" ascending:YES];
+    self.list = (NSMutableArray *)[self.list sortedArrayUsingDescriptors:@[descriptor]];
+*/
 }
 
 

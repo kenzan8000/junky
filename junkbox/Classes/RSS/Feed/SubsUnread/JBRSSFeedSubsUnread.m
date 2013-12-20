@@ -6,6 +6,7 @@
 
 
 #pragma mark - synthesize
+@synthesize subscribeId;
 
 
 @end
