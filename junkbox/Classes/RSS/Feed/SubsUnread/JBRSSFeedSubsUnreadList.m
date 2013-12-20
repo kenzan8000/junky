@@ -42,12 +42,39 @@
 #pragma mark - api
 - (void)loadFeed
 {
+//    if () {
+//        [self loadFeedFromLocal];
+//    }
+//    else {
+        [self loadFeedFromWebAPI];
+//    }
+}
+
+- (NSInteger)count
+{
+    return [self.list count];
+}
+
+- (JBRSSFeedSubsUnread *)unreadWithIndex:(NSInteger)index
+{
+    if (index < 0 || index >= [self count]) { return nil; }
+    return self.list[index];
+}
+
+
+#pragma makr - private api
+/**
+ * WebAPIからフィードをロード
+ */
+- (void)loadFeedFromWebAPI
+{
     __weak __typeof(self) weakSelf = self;
     // 未読フィード一覧
     JBRSSFeedSubsUnreadOperation *operation = [[JBRSSFeedSubsUnreadOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // 成功
         if (error == nil) {
             NSArray *JSON = [object JSON];
+            JBLog(@"%@", JSON);
             [weakSelf createListWithJSON:JSON];
 
             dispatch_async(dispatch_get_main_queue(), ^ () {
@@ -67,19 +94,13 @@
     [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
-- (NSInteger)count
+/**
+ * ローカルに保存されていたフィードをロード
+ */
+- (void)loadFeedFromLocal
 {
-    return [self.list count];
 }
 
-- (JBRSSFeedSubsUnread *)unreadWithIndex:(NSInteger)index
-{
-    if (index < 0 || index >= [self count]) { return nil; }
-    return self.list[index];
-}
-
-
-#pragma makr - private api
 /**
  * API戻り値のJSONからモデルのリストを生成
  * @param JSON JSON
@@ -87,7 +108,6 @@
 - (void)createListWithJSON:(NSArray *)JSON
 {
     // check JSON
-    JBLog(@"%@", JSON);
     if (JSON == nil) { return; }
 /*
     // create list and save
