@@ -8,11 +8,22 @@
 
 
 #pragma mark - property
-/// ID (on Livedoor Reader case -> subscribe_id)
+/// subscribe_id (Livedoor Reader)
 @property (nonatomic, strong) NSString *subscribeId;
 /// フィード名
+@property (nonatomic, strong) NSString *title;
 /// 未読件数
-/// フィード評価(スター)
+@property (nonatomic, strong) NSNumber *unreadCount;
+/// スター (Livedoor Reader)
+@property (nonatomic, strong) NSNumber *rate;
+/// フォルダ (Livedoor Reader)
+@property (nonatomic, strong) NSString *folder;
+/// フィードのatom,rssのリンク
+@property (nonatomic, strong) NSString *feedlink;
+/// フィードのリンク
+@property (nonatomic, strong) NSString *link;
+/// ファビコンなどのアイコン
+@property (nonatomic, strong) NSString *icon;
 
 
 @end

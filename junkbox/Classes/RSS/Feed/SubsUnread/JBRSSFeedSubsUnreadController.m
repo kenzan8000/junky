@@ -1,5 +1,6 @@
 #import "JBRSSFeedSubsUnreadController.h"
 #import "JBRSSFeedSubsUnreadTableViewCell.h"
+#import "JBRSSFeedSubsUnread.h"
 /// Connection
 #import "StatusCode.h"
 /// Pods
@@ -98,7 +99,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.unreadList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
@@ -111,9 +112,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *className = NSStringFromClass([JBRSSFeedSubsUnreadTableViewCell class]);
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
+    JBRSSFeedSubsUnreadTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
     if (!cell) {
         cell = [UINib UIKitFromClassName:className];
+        JBRSSFeedSubsUnread *unread = [self.unreadList unreadWithIndex:indexPath.row];
+        cell.feedNameLabel.text = unread.title;
+        cell.unreadCountLabel.text = [unread.unreadCount stringValue];
     }
     return cell;
 }
@@ -127,6 +131,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // ステータスバー
     [[MTStatusBarOverlay sharedInstance] hide];
+
+    [self.tableView reloadData];
 }
 
 /**

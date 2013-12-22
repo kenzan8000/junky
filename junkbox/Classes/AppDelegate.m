@@ -1,6 +1,8 @@
-			#import "AppDelegate.h"
+#import "AppDelegate.h"
 /// UIkit-Extension
 #import "UIStoryboard+UIKit.h"
+/// Pods
+#import "NLCoreData.h"
 
 
 #pragma mark - AppDelegate
@@ -11,9 +13,18 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // CoreData
+    if ([[NLCoreData shared] storeExists] == NO) {
+        NSURL *URL = [[NSBundle mainBundle] URLForResource:@"JBRSSFeedSubsUnread"
+                                             withExtension:@"momd"];
+        [[NLCoreData shared] useDatabaseFile:[URL absoluteString]];
+    }
+
+    //
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:[UIStoryboard UIKitFromName:kStoryboardMainStoryboard]];
     [self.window makeKeyAndVisible];
+
     return YES;
 }
 

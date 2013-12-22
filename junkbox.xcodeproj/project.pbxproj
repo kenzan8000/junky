@@ -40,6 +40,7 @@
 		E6C90076186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6C90070186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib */; };
 		E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */; };
 		E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA936B17B54E6D00697604 /* UIKit+Localize.m */; };
+		E6F083501867A57B007FEDD4 /* JBRSSFeedSubsUnread.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6F0834E1867A57B007FEDD4 /* JBRSSFeedSubsUnread.xcdatamodeld */; };
 		E6FC100917B16FA800A12BED /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100617B16FA800A12BED /* TableViewController.m */; };
 		E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100817B16FA800A12BED /* WebViewController.m */; };
 		E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100C17B1729B00A12BED /* UINib+UIKit.m */; };
@@ -115,6 +116,7 @@
 		E6EA936A17B54E6D00697604 /* UIKit+Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Localize.h"; sourceTree = "<group>"; };
 		E6EA936B17B54E6D00697604 /* UIKit+Localize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+Localize.m"; sourceTree = "<group>"; };
 		E6EA937717B5645700697604 /* JBRSSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSConstant.h; sourceTree = "<group>"; };
+		E6F0834F1867A57B007FEDD4 /* JBRSSFeedSubsUnread.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JBRSSFeedSubsUnread.xcdatamodel; sourceTree = "<group>"; };
 		E6FC100517B16FA800A12BED /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		E6FC100617B16FA800A12BED /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		E6FC100717B16FA800A12BED /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -349,6 +351,8 @@
 			children = (
 				E6C90066186400840007449D /* JBRSSFeedSubsUnread.h */,
 				E6C90067186400840007449D /* JBRSSFeedSubsUnread.m */,
+				E6F0834E1867A57B007FEDD4 /* JBRSSFeedSubsUnread.xcdatamodeld */,
+				E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */,
 				E6C9006A186400840007449D /* JBRSSFeedSubsUnreadList.h */,
 				E6C9006B186400840007449D /* JBRSSFeedSubsUnreadList.m */,
 				E6C9006C186400840007449D /* JBRSSFeedSubsUnreadOperation.h */,
@@ -384,7 +388,6 @@
 			isa = PBXGroup;
 			children = (
 				E6C90065186400840007449D /* SubsUnread */,
-				E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */,
 			);
 			name = Feed;
 			path = Folder;
@@ -545,6 +548,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68EB9E417B01624006711A6 /* AppDelegate.m in Sources */,
+				E6F083501867A57B007FEDD4 /* JBRSSFeedSubsUnread.xcdatamodeld in Sources */,
 				E68EB9E517B01624006711A6 /* main.m in Sources */,
 				E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */,
 				E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */,
@@ -697,6 +701,19 @@
 			defaultConfigurationName = release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E6F0834E1867A57B007FEDD4 /* JBRSSFeedSubsUnread.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E6F0834F1867A57B007FEDD4 /* JBRSSFeedSubsUnread.xcdatamodel */,
+			);
+			currentVersion = E6F0834F1867A57B007FEDD4 /* JBRSSFeedSubsUnread.xcdatamodel */;
+			path = JBRSSFeedSubsUnread.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E6BAB8BA17B0131300C1FEC1 /* Project object */;
 }

@@ -23,4 +23,3 @@
 #define kNotificationRSSLoginFailure                @"JBNotificationRSSLoginFailure"
 /// RSS Reader セッション無効
 #define kNotificationRSSLoginInvalid                @"JBNotificationRSSLoginInvalid"
-
