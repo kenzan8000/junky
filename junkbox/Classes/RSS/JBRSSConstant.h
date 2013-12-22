@@ -21,6 +21,10 @@
 #define kApiKeyLivedoorReader                    @"member_sid"
 /// ApiKeyのCookieのドメイン
 #define kApiKeyDomainLivedoorReader              @".member.Livedoor.com"
+/// Livedoor Reader Username NSUserDefaults Key
+#define kUserDefaultsLivedoorReaderUsername      @"UserDefaultsLivedoorReaderUsername"
+/// Livedoor Reader Password NSUserDefaults Key
+#define kUserDefaultsLivedoorReaderPassword      @"UserDefaultsLivedoorReaderPassword"
 
 
 /// Livedoor Reader API

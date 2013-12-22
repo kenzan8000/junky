@@ -1,3 +1,4 @@
+#import "JBRSSConstant.h"
 #import "JBRSSLoginController.h"
 #import "JBRSSLoginOperation.h"
 #import "JBRSSOperationQueue.h"
@@ -75,6 +76,9 @@
                                                  name:kNotificationRSSLoginFailure
                                                object:nil];
     [self.IDTextField becomeFirstResponder];
+
+    self.IDTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderUsername];
+    self.passwordTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderPassword];
 }
 
 - (void)viewDidLoad
@@ -220,6 +224,12 @@ clickedButtonAtIndex:(NSInteger)index
  */
 - (void)login
 {
+    // Username,Password記録
+    [[NSUserDefaults standardUserDefaults] setObject:self.IDTextField.text
+                                              forKey:kUserDefaultsLivedoorReaderUsername];
+    [[NSUserDefaults standardUserDefaults] setObject:self.passwordTextField.text
+                                              forKey:kUserDefaultsLivedoorReaderPassword];
+
     // ログイン開始
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginStart
                                                         object:nil
