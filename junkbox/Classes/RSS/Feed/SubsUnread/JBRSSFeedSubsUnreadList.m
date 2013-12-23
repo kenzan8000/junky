@@ -12,13 +12,43 @@
 
 
 #pragma mark - JBRSSFeedSubsUnreadList
-/// 未読フィード一覧
+@interface JBRSSFeedSubsUnreadList ()
+
+
+/// 一覧の更新処理のためのQueue
+@property (nonatomic, assign) dispatch_queue_t updateQueue;
+
+
+@end
+
+
+#pragma mark - JBRSSFeedSubsUnreadList
 @implementation JBRSSFeedSubsUnreadList
 
 
 #pragma mark - property
 @synthesize delegate;
 @synthesize list;
+@synthesize updateQueue;
+
+
+#pragma mark - class meethod
+/**
+ * 一覧更新処理用のmanagedObjectContext
+ * @return NSManagedObjectContext
+ */
++ (NSManagedObjectContext *)managedObjectContext
+{
+    static dispatch_once_t onceToken = NULL;
+    static NSManagedObjectContext *_JBRSSFeedSubsUnreadListManagedObjectContext = nil;
+
+    dispatch_once(&onceToken, ^ () {
+        _JBRSSFeedSubsUnreadListManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [_JBRSSFeedSubsUnreadListManagedObjectContext setParentContext:[NSManagedObjectContext mainContext]];
+    });
+
+    return _JBRSSFeedSubsUnreadListManagedObjectContext;
+}
 
 
 #pragma mark - initializer
@@ -28,6 +58,12 @@
     if (self) {
         self.delegate = del;
         self.list = [NSMutableArray arrayWithArray:@[]];
+
+        NSString *queueName = [NSString stringWithFormat:@"%@.%@",
+            [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
+            NSStringFromClass([JBRSSFeedSubsUnreadList class])
+        ];
+        self.updateQueue = dispatch_queue_create([queueName cStringUsingEncoding:[NSString defaultCStringEncoding]], NULL);
         [[NLCoreData shared] setModelName:NSStringFromClass([JBRSSFeedSubsUnread class])];
     }
     return self;
@@ -37,6 +73,7 @@
 #pragma mark - release
 - (void)dealloc
 {
+    dispatch_release(self.updateQueue);
 }
 
 
@@ -76,21 +113,12 @@
         if (error == nil) {
             NSArray *JSON = [object JSON];
             JBLog(@"%@", JSON);
-            [weakSelf createListWithJSON:JSON];
+            [weakSelf finishLoadListWithJSON:JSON];
 
-            dispatch_async(dispatch_get_main_queue(), ^ () {
-                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(feedDidFinishLoadWithList:)]) {
-                    [weakSelf.delegate feedDidFinishLoadWithList:weakSelf];
-                }
-            });
             return;
         }
         // 失敗
-        dispatch_async(dispatch_get_main_queue(), ^ () {
-            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(feedDidFailLoadWithError:)]) {
-                [weakSelf.delegate feedDidFailLoadWithError:error];
-            }
-        });
+        [weakSelf failLoadListWithError:error];
     }];
     [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
@@ -103,35 +131,62 @@
 }
 
 /**
- * API戻り値のJSONからモデルのリストを生成
+ * フィードのロード完了後処理
  * @param JSON JSON
  */
-- (void)createListWithJSON:(NSArray *)JSON
+- (void)finishLoadListWithJSON:(NSArray *)JSON
 {
     if (JSON == nil) { return; }
 
-    // create list and save
-    self.list = [NSMutableArray arrayWithArray:@[]];
-    NSManagedObjectContext *context = [NSManagedObjectContext mainContext];
-    for (NSDictionary *dict in JSON) {
-        JBRSSFeedSubsUnread *subsUnread = [JBRSSFeedSubsUnread insertInContext:context];
-        subsUnread.subscribeId = [NSString stringWithFormat:@"%@", dict[@"subscribe_id"]];
-        subsUnread.title = [NSString stringWithFormat:@"%@", dict[@"title"]];
-        subsUnread.unreadCount = @([dict[@"unread_count"] integerValue]);
-        subsUnread.rate = @([dict[@"rate"] integerValue]);
-        subsUnread.folder = [NSString stringWithFormat:@"%@", dict[@"folder"]];
-        subsUnread.feedlink = [NSString stringWithFormat:@"%@", dict[@"feedlink"]];
-        subsUnread.link = [NSString stringWithFormat:@"%@", dict[@"link"]];
-        subsUnread.icon = [NSString stringWithFormat:@"%@", dict[@"icon"]];
-        if (context.saveNested) {
-            [self.list addObject:subsUnread];
-        }
-    }
+    __weak __typeof(self) weakSelf = self;
 
-    // sort by star
-    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"subscribeId"
-                                                                 ascending:YES];
-    self.list = (NSMutableArray *)[self.list sortedArrayUsingDescriptors:@[descriptor]];
+    dispatch_async(weakSelf.updateQueue, ^ () {
+
+        // create list and save
+        weakSelf.list = [NSMutableArray arrayWithArray:@[]];
+        NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContext];
+        NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:@[]];
+        for (NSDictionary *dict in JSON) {
+            JBRSSFeedSubsUnread *subsUnread = [JBRSSFeedSubsUnread insertInContext:context];
+            subsUnread.subscribeId = [NSString stringWithFormat:@"%@", dict[@"subscribe_id"]];
+            subsUnread.title = [NSString stringWithFormat:@"%@", dict[@"title"]];
+            subsUnread.unreadCount = @([dict[@"unread_count"] integerValue]);
+            subsUnread.rate = @([dict[@"rate"] integerValue]);
+            subsUnread.folder = [NSString stringWithFormat:@"%@", dict[@"folder"]];
+            subsUnread.feedlink = [NSString stringWithFormat:@"%@", dict[@"feedlink"]];
+            subsUnread.link = [NSString stringWithFormat:@"%@", dict[@"link"]];
+            subsUnread.icon = [NSString stringWithFormat:@"%@", dict[@"icon"]];
+
+            if (context.saveNested) {
+                [temporaryArray addObject:subsUnread];
+            }
+        }
+
+        // sort by star
+        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"rate"
+                                                                     ascending:NO];
+        temporaryArray = (NSMutableArray *)[temporaryArray sortedArrayUsingDescriptors:@[descriptor]];
+        dispatch_async(dispatch_get_main_queue(), ^ () {
+            weakSelf.list = temporaryArray;
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(feedDidFinishLoadWithList:)]) {
+                [weakSelf.delegate feedDidFinishLoadWithList:weakSelf];
+            }
+        });
+    });
+}
+
+/**
+ * フィードの読み込み失敗処理
+ * @param error error
+ */
+- (void)failLoadListWithError:(NSError *)error
+{
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^ () {
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(feedDidFailLoadWithError:)]) {
+            [weakSelf.delegate feedDidFailLoadWithError:error];
+        }
+    });
 }
 
 
