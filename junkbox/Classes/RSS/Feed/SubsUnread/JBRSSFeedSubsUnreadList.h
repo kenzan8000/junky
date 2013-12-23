@@ -48,9 +48,14 @@
 
 #pragma mark - api
 /**
- * フィード一覧を取得
+ * WebAPIからフィードをロード
  */
-- (void)loadFeed;
+- (void)loadFeedFromWebAPI;
+
+/**
+ * ローカルに保存されていたフィードをロード
+ */
+- (void)loadFeedFromLocal;
 
 /**
  * 未読フィード数

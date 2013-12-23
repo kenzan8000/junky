@@ -62,6 +62,9 @@
           forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:loginButton]]
                                       animated:NO];
+
+    // 前回の起動で読み込み完了していたデータを読み込み
+    [self.unreadList loadFeedFromLocal];
 }
 
 - (void)viewDidLoad
@@ -147,7 +150,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         case http::statusCode::UNAUTHORIZED: // 401
             // 再度ログイン後、未読フィード一覧ロード
             [self login];
-            [self.unreadList loadFeed];
+            [self.unreadList loadFeedFromWebAPI];
             break;
         case http::NOT_REACHABLE:
             message = NSLocalizedString(@"Cannot access the Network.", @"通信できない");
@@ -192,7 +195,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
  **/
 - (void)loginDidSuccess:(NSNotification *)notification
 {
-    [self performSelector:@selector(loadFeed)
+    [self performSelector:@selector(loadFeedFromWebAPI)
                withObject:nil
                afterDelay:1.0f];
 }
@@ -202,9 +205,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 /**
  * 未読フィード読み込み
  */
-- (void)loadFeed
+- (void)loadFeedFromWebAPI
 {
-    [self.unreadList loadFeed];
+    [self.unreadList loadFeedFromWebAPI];
     dispatch_async(dispatch_get_main_queue(), ^ () {
         // ステータスバー
         [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the unread feed list...", @"未読フィード一覧読み込み")

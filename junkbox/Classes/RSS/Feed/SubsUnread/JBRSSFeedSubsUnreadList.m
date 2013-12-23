@@ -78,32 +78,6 @@
 
 
 #pragma mark - api
-- (void)loadFeed
-{
-//    if () {
-//        [self loadFeedFromLocal];
-//    }
-//    else {
-        [self loadFeedFromWebAPI];
-//    }
-}
-
-- (NSInteger)count
-{
-    return [self.list count];
-}
-
-- (JBRSSFeedSubsUnread *)unreadWithIndex:(NSInteger)index
-{
-    if (index < 0 || index >= [self count]) { return nil; }
-    return self.list[index];
-}
-
-
-#pragma makr - private api
-/**
- * WebAPIからフィードをロード
- */
 - (void)loadFeedFromWebAPI
 {
     __weak __typeof(self) weakSelf = self;
@@ -123,13 +97,39 @@
     [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
-/**
- * ローカルに保存されていたフィードをロード
- */
 - (void)loadFeedFromLocal
 {
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(weakSelf.updateQueue, ^ () {
+        NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:
+            [JBRSSFeedSubsUnread fetchInContext:[JBRSSFeedSubsUnreadList managedObjectContext]
+                                      predicate:nil]
+            //[JBRSSFeedSubsUnread fetchWithRequest:^ (NSFetchRequest *request) { [request setReturnsObjectsAsFaults:NO]; }
+            //                              context:[JBRSSFeedSubsUnreadList managedObjectContext]]
+
+        ];
+        dispatch_async(dispatch_get_main_queue(), ^ () {
+            weakSelf.list = temporaryArray;
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(feedDidFinishLoadWithList:)]) {
+                [weakSelf.delegate feedDidFinishLoadWithList:weakSelf];
+            }
+        });
+    });
 }
 
+- (NSInteger)count
+{
+    return [self.list count];
+}
+
+- (JBRSSFeedSubsUnread *)unreadWithIndex:(NSInteger)index
+{
+    if (index < 0 || index >= [self count]) { return nil; }
+    return self.list[index];
+}
+
+
+#pragma makr - private api
 /**
  * フィードのロード完了後処理
  * @param JSON JSON
@@ -139,12 +139,12 @@
     if (JSON == nil) { return; }
 
     __weak __typeof(self) weakSelf = self;
-
     dispatch_async(weakSelf.updateQueue, ^ () {
-
         // create list and save
         weakSelf.list = [NSMutableArray arrayWithArray:@[]];
         NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContext];
+        [JBRSSFeedSubsUnread deleteInContext:context
+                                   predicate:nil];
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:@[]];
         for (NSDictionary *dict in JSON) {
             JBRSSFeedSubsUnread *subsUnread = [JBRSSFeedSubsUnread insertInContext:context];
@@ -162,10 +162,11 @@
             }
         }
 
-        // sort by star
+        // sort by rate
         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"rate"
                                                                      ascending:NO];
         temporaryArray = (NSMutableArray *)[temporaryArray sortedArrayUsingDescriptors:@[descriptor]];
+
         dispatch_async(dispatch_get_main_queue(), ^ () {
             weakSelf.list = temporaryArray;
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(feedDidFinishLoadWithList:)]) {
