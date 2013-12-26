@@ -19,5 +19,12 @@
               password:(NSString *)password
                handler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))handler;
 
+/**
+ * 401の時用 再認証
+ * @param handler handler
+ * @return id
+ */
+- (id)initReauthenticationWithHandler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))h;
+
 
 @end

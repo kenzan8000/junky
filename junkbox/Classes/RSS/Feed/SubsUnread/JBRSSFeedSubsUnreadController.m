@@ -1,6 +1,8 @@
 #import "JBRSSFeedSubsUnreadController.h"
 #import "JBRSSFeedSubsUnreadTableViewCell.h"
 #import "JBRSSFeedSubsUnread.h"
+#import "JBRSSOperationQueue.h"
+#import "JBRSSLoginOperation.h"
 /// Connection
 #import "StatusCode.h"
 /// Pods
@@ -220,10 +222,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)login
 {
-/*
-    JBRSSLoginOperation *operation = [[JBRSSLoginOperation alloc] initWithUsername:
-                                                                          password:
-                                                                           handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+    JBRSSLoginOperation *operation = [[JBRSSLoginOperation alloc] initReauthenticationWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // ログインに失敗した場合、他のRSS関連の通信をすべて止める
         if (error) {
             [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
@@ -232,7 +231,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
     }];
     [[JBRSSOperationQueue defaultQueue] addOperation:operation];
-*/
 }
 
 

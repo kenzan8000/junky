@@ -61,6 +61,16 @@
     return self;
 }
 
+- (id)initReauthenticationWithHandler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))h
+{
+    self = [self initWithUsername:[[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderUsername]
+                         password:[[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderPassword]
+                          handler:h];
+    if (self) {
+    }
+    return self;
+}
+
 
 #pragma mark - api
 - (void)start
