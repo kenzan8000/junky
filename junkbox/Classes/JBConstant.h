@@ -8,6 +8,8 @@
 #define kStoryboardRSSLogin                         @"JBRSSLogin"
 /// RSSフィード遷移
 #define kStoryboardRSSFeed                          @"JBRSSFeed"
+/// ブックマーク遷移
+#define kStoryboardBookmark                         @"JBBookmark"
 
 
 #pragma mark - UI

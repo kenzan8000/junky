@@ -1,6 +1,6 @@
 #import "JBBookmarkController.h"
 /// UIKit-Extension
-#import "UINib+UIKit.h"
+#import "UIStoryboard+UIKit.h"
 
 
 #pragma mark - JBBookmarkController
@@ -32,6 +32,7 @@
 - (void)loadView
 {
     [super loadView];
+    [self setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardBookmark]]];
 }
 
 - (void)viewDidLoad
@@ -57,36 +58,6 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-}
-
-
-#pragma mark - UITableViewDelegate
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section
-{
-    return 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 44;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *className = NSStringFromClass([UITableViewCell class]);
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
-    if (!cell) {
-//        cell = [UINib UIKitFromClassName:className];
-    }
-    return cell;
 }
 
 

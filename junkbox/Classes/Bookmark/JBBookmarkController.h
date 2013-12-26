@@ -1,9 +1,6 @@
-#import "TableViewController.h"
-
-
 #pragma mark - JBBookmarkController
 /// ブックマーク
-@interface JBBookmarkController : TableViewController {
+@interface JBBookmarkController : UINavigationController {
 }
 
 

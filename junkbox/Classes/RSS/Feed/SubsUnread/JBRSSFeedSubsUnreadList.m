@@ -106,7 +106,6 @@
                                       predicate:nil]
             //[JBRSSFeedSubsUnread fetchWithRequest:^ (NSFetchRequest *request) { [request setReturnsObjectsAsFaults:NO]; }
             //                              context:[JBRSSFeedSubsUnreadList managedObjectContext]]
-
         ];
         dispatch_async(dispatch_get_main_queue(), ^ () {
             weakSelf.list = temporaryArray;

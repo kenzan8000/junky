@@ -15,8 +15,6 @@
 
 
 #pragma mark - synthesize
-@synthesize username;
-@synthesize password;
 
 
 #pragma mark - initializer
@@ -29,23 +27,20 @@
 
     // 通信後の処理
     void (^ handler)(NSHTTPURLResponse *, id, NSError *) = ^ (NSHTTPURLResponse *response, id object, NSError *error) {
-        NSError *loginError = error;
-        NSInteger loginErrorCode = http::statusCode::SUCCESS;
-        loginErrorCode = (loginError) ? loginError.code : loginErrorCode;
-        loginErrorCode = (response.statusCode >= http::statusCode::ERROR) ? response.statusCode : loginErrorCode;
-
+        NSInteger errorCode = error.code;
         // セッションを持っているか
-        if (loginErrorCode == http::statusCode::SUCCESS) {
+        if (errorCode == http::statusCode::SUCCESS) {
            BOOL hasSession = [[NSHTTPCookieStorage sharedHTTPCookieStorage] hasCookieWithNames:kSessionNamesLivedoorReaderLogin
                                                                                         domains:kSessionDomainsLivedoorReaderLogin];
-            if (hasSession == NO) { loginErrorCode = http::statusCode::UNAUTHORIZED; }
+            if (hasSession == NO) { errorCode = http::statusCode::UNAUTHORIZED; }
         }
 
         // 失敗
-        if (loginErrorCode >= http::statusCode::ERROR) {
+        NSError *loginError = error;
+        if (errorCode >= http::statusCode::ERROR) {
             loginError = [[NSError alloc] initWithDomain:NSMachErrorDomain
-                                                    code:loginErrorCode
-                                                userInfo:@{}];;
+                                                    code:errorCode
+                                                userInfo:@{}];
         }
 
         h(response, object, loginError);
@@ -56,12 +51,12 @@
         }
     };
 
-    self = [super initWithRequest:[NSMutableURLRequest JBRSSLoginRequestWithLivedoorID:u
-                                                                              password:p]
-                          handler:handler];
+    self = [super initWithUsername:u
+                          password:p
+                           handler:handler
+                           request:[NSMutableURLRequest JBRSSLoginRequestWithLivedoorID:u password:p]];
+
     if (self) {
-        self.username = u;
-        self.password = p;
     }
     return self;
 }

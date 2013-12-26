@@ -1,18 +1,10 @@
-/// Pods
-#import "ISHTTPOperation.h"
+#import "JBLoginOperation.h"
 
 
 #pragma mark - JBRSSLoginOperation
-/// ログイン
-@interface JBRSSLoginOperation : ISHTTPOperation {
+/// RSS Reader ログイン
+@interface JBRSSLoginOperation : JBLoginOperation {
 }
-
-
-#pragma mark - property
-/// ユーザー名
-@property (strong) NSString *username;
-/// パスワード
-@property (strong) NSString *password;
 
 
 #pragma mark - initializer
