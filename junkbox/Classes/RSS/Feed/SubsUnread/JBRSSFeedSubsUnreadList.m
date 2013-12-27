@@ -29,6 +29,7 @@
 #pragma mark - property
 @synthesize delegate;
 @synthesize list;
+@synthesize feedCountOfEachRate;
 @synthesize updateQueue;
 
 
@@ -58,6 +59,7 @@
     if (self) {
         self.delegate = del;
         self.list = [NSMutableArray arrayWithArray:@[]];
+        self.feedCountOfEachRate = @[@(0), @(0), @(0), @(0), @(0), @(0)];
 
         NSString *queueName = [NSString stringWithFormat:@"%@.%@",
             [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
@@ -104,9 +106,12 @@
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:
             [JBRSSFeedSubsUnread fetchInContext:[JBRSSFeedSubsUnreadList managedObjectContext]
                                       predicate:nil]
-            //[JBRSSFeedSubsUnread fetchWithRequest:^ (NSFetchRequest *request) { [request setReturnsObjectsAsFaults:NO]; }
-            //                              context:[JBRSSFeedSubsUnreadList managedObjectContext]]
         ];
+        // sort by rate
+        temporaryArray = [weakSelf rateSortedListWithSubsUnreadList:temporaryArray];
+        // count fo each rate
+        [weakSelf setFeedCountOfEachRateWithSubsUnreadList:temporaryArray];
+        // delegate
         dispatch_async(dispatch_get_main_queue(), ^ () {
             weakSelf.list = temporaryArray;
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(feedDidFinishLoadWithList:)]) {
@@ -121,10 +126,27 @@
     return [self.list count];
 }
 
+- (NSInteger)feedCountWithRate:(NSInteger)rate
+{
+    if (rate < 0 || rate >= self.feedCountOfEachRate.count) {
+        return 0;
+    }
+    return [self.feedCountOfEachRate[rate] integerValue];
+}
+
 - (JBRSSFeedSubsUnread *)unreadWithIndex:(NSInteger)index
 {
     if (index < 0 || index >= [self count]) { return nil; }
     return self.list[index];
+}
+
+- (JBRSSFeedSubsUnread *)unreadWithIndexPath:(NSIndexPath *)indexPath;
+{
+    NSInteger offset = 0;
+    for (NSInteger i = 0; i < indexPath.section; i++) {
+        offset += [self feedCountWithRate:i];
+    }
+    return [self unreadWithIndex:indexPath.row + offset];
 }
 
 
@@ -140,10 +162,10 @@
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
         // create list and save
-        weakSelf.list = [NSMutableArray arrayWithArray:@[]];
         NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContext];
         [JBRSSFeedSubsUnread deleteInContext:context
                                    predicate:nil];
+        weakSelf.list = [NSMutableArray arrayWithArray:@[]];
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:@[]];
         for (NSDictionary *dict in JSON) {
             JBRSSFeedSubsUnread *subsUnread = [JBRSSFeedSubsUnread insertInContext:context];
@@ -160,12 +182,11 @@
                 [temporaryArray addObject:subsUnread];
             }
         }
-
         // sort by rate
-        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"rate"
-                                                                     ascending:NO];
-        temporaryArray = (NSMutableArray *)[temporaryArray sortedArrayUsingDescriptors:@[descriptor]];
-
+        temporaryArray = [weakSelf rateSortedListWithSubsUnreadList:temporaryArray];
+        // count fo each rate
+        [weakSelf setFeedCountOfEachRateWithSubsUnreadList:temporaryArray];
+        // delegate
         dispatch_async(dispatch_get_main_queue(), ^ () {
             weakSelf.list = temporaryArray;
             if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(feedDidFinishLoadWithList:)]) {
@@ -187,6 +208,37 @@
             [weakSelf.delegate feedDidFailLoadWithError:error];
         }
     });
+}
+
+/**
+ * feedCountOfEachRateをセット
+ * @param unreadList JBRSSFeedSubsUnreadのリスト
+ */
+- (void)setFeedCountOfEachRateWithSubsUnreadList:(NSArray *)unreadList
+{
+    NSInteger feedCount[] = {0, 0, 0, 0, 0, 0}; // count feed of each rate
+    for (JBRSSFeedSubsUnread *subsUnread in unreadList) {
+        NSInteger rate = [subsUnread.rate integerValue];
+        if (rate < 0 || rate >= [self.feedCountOfEachRate count]) { continue; }
+        feedCount[rate]++;
+    }
+
+    self.feedCountOfEachRate = @[
+        @(feedCount[5]), @(feedCount[4]), @(feedCount[3]), @(feedCount[2]), @(feedCount[1]), @(feedCount[0])
+    ];
+}
+
+/**
+ * レイティングでソート済みのSubsUnreadを返す
+ * @param list JBRSSFeedSubsUnreadのリスト
+ * @return unreadList
+ */
+- (NSMutableArray *)rateSortedListWithSubsUnreadList:(NSArray *)unreadList
+{
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"rate"
+                                                                 ascending:NO];
+    NSMutableArray *sortedList = (NSMutableArray *)[unreadList sortedArrayUsingDescriptors:@[descriptor]];
+    return sortedList;
 }
 
 

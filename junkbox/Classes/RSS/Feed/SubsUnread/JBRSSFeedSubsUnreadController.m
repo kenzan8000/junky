@@ -1,4 +1,5 @@
 #import "JBRSSFeedSubsUnreadController.h"
+#import "JBRSSConstant.h"
 #import "JBRSSFeedSubsUnreadTableViewCell.h"
 #import "JBRSSFeedSubsUnread.h"
 #import "JBRSSOperationQueue.h"
@@ -98,13 +99,19 @@
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return kLivedoorReaderMaxRate+1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section
+{
+    return kLivedoorReaderRateLabels[section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return self.unreadList.count;
+    return [self.unreadList feedCountWithRate:section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
@@ -120,7 +127,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     JBRSSFeedSubsUnreadTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
     if (!cell) {
         cell = [UINib UIKitFromClassName:className];
-        JBRSSFeedSubsUnread *unread = [self.unreadList unreadWithIndex:indexPath.row];
+        JBRSSFeedSubsUnread *unread = [self.unreadList unreadWithIndexPath:indexPath];
         cell.feedNameLabel.text = unread.title;
         cell.unreadCountLabel.text = [unread.unreadCount stringValue];
     }

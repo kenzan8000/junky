@@ -1,6 +1,10 @@
 #pragma mark - constant
 
 
+/* **************************************************
+                    Livedoor Reader
+************************************************** */
+
 /// Livedoor Reader
 #define kURLLivedoorReader                       @"http://reader.livedoor.com/"
 
@@ -40,7 +44,6 @@
 /// POST subscribe_idのフィードのレートを変更 %@=subscribe_id
 #define kAPILivedoorReaderFeedSetRate            [NSString stringWithFormat:@"%@feed/set_rate?subscribe_id=%@",  kAPILivedoorReader, @"%@"]
 
-
 /// POST 未読フィード一覧を取得
 #define kAPILivedoorReaderSubsUnread             [NSString stringWithFormat:@"%@subs?unread=1",  kAPILivedoorReader]
 /// POST subscribe_idのフィードの未読件数取得 %@=subscribe_id
@@ -58,3 +61,14 @@
 #define kAPILivedoorReaderPinClear                [NSString stringWithFormat:@"%@pin/clear",  kAPILivedoorReader]
 
 
+/// スターの種類数
+#define kLivedoorReaderMaxRate                    5
+/// スターのラベル
+#define kLivedoorReaderRateLabels                 @[ \
+    @"★★★★★", \
+    @"★★★★☆", \
+    @"★★★☆☆", \
+    @"★★☆☆☆", \
+    @"★☆☆☆☆", \
+    @"☆☆☆☆☆", \
+]

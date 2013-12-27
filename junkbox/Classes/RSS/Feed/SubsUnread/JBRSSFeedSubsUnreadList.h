@@ -35,6 +35,8 @@
 @property (nonatomic, weak) id<JBRSSFeedSubsUnreadListDelegate> delegate;
 /// 一覧
 @property (nonatomic, strong) NSMutableArray *list;
+/// レイティングとそのレイティングに該当したフィード数(配列の添字が0のときmax, 配列.lengthのとき0)
+@property (nonatomic, strong) NSArray *feedCountOfEachRate;
 
 
 #pragma mark - initializer
@@ -64,11 +66,25 @@
 - (NSInteger)count;
 
 /**
+ * フィード数を取得
+ * @param rate レイティング
+ * @return feedCount
+ */
+- (NSInteger)feedCountWithRate:(NSInteger)rate;
+
+/**
  * 未読フィードを取得
  * @param index index
  * @return unread
  */
 - (JBRSSFeedSubsUnread *)unreadWithIndex:(NSInteger)index;
+
+/**
+ * 未読フィードを取得
+ * @param indexPath indexPath
+ * @return unread
+ */
+- (JBRSSFeedSubsUnread *)unreadWithIndexPath:(NSIndexPath *)indexPath;
 
 
 @end
