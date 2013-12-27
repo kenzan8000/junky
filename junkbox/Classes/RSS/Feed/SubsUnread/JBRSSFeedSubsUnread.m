@@ -5,15 +5,15 @@
 @implementation JBRSSFeedSubsUnread
 
 
-#pragma mark - synthesize
-@synthesize subscribeId;
-@synthesize title;
-@synthesize unreadCount;
-@synthesize rate;
-@synthesize folder;
-@synthesize feedlink;
-@synthesize link;
-@synthesize icon;
+#pragma mark - dynamic
+@dynamic subscribeId;
+@dynamic title;
+@dynamic unreadCount;
+@dynamic rate;
+@dynamic folder;
+@dynamic feedlink;
+@dynamic link;
+@dynamic icon;
 
 
 @end
