@@ -134,6 +134,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath
+                                  animated:YES];
+    [self performSegueWithIdentifier:kStoryboardSeguePushRSSFeedUnreadController
+                              sender:self];
+}
+
+
 #pragma mark - JBRSSFeedSubsUnreadListDelegate
 /**
  * 未読フィード一覧取得成功

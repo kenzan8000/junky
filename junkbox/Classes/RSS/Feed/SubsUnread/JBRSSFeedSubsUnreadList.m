@@ -76,6 +76,9 @@
 - (void)dealloc
 {
     dispatch_release(self.updateQueue);
+    self.list = nil;
+    self.feedCountOfEachRate = nil;
+
 }
 
 

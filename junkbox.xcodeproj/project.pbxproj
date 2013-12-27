@@ -44,6 +44,7 @@
 		E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F08351186AE5D2007FEDD4 /* JBBookmark.storyboard */; };
 		E6F0835A186AE734007FEDD4 /* JBBookmarkCatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F08357186AE734007FEDD4 /* JBBookmarkCatalogController.m */; };
 		E6F0835D186CF15F007FEDD4 /* JBLoginOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F0835C186CF15F007FEDD4 /* JBLoginOperation.m */; };
+		E6F08363186E3041007FEDD4 /* JBRSSFeedUnreadController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F08361186E3041007FEDD4 /* JBRSSFeedUnreadController.m */; };
 		E6FC100917B16FA800A12BED /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100617B16FA800A12BED /* TableViewController.m */; };
 		E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100817B16FA800A12BED /* WebViewController.m */; };
 		E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100C17B1729B00A12BED /* UINib+UIKit.m */; };
@@ -125,6 +126,8 @@
 		E6F08357186AE734007FEDD4 /* JBBookmarkCatalogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkCatalogController.m; sourceTree = "<group>"; };
 		E6F0835B186CF15F007FEDD4 /* JBLoginOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLoginOperation.h; sourceTree = "<group>"; };
 		E6F0835C186CF15F007FEDD4 /* JBLoginOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLoginOperation.m; sourceTree = "<group>"; };
+		E6F08360186E3041007FEDD4 /* JBRSSFeedUnreadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedUnreadController.h; sourceTree = "<group>"; };
+		E6F08361186E3041007FEDD4 /* JBRSSFeedUnreadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedUnreadController.m; sourceTree = "<group>"; };
 		E6FC100517B16FA800A12BED /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		E6FC100617B16FA800A12BED /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		E6FC100717B16FA800A12BED /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -400,6 +403,7 @@
 			children = (
 				E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */,
 				E6C90065186400840007449D /* SubsUnread */,
+				E6F0835E186E3041007FEDD4 /* Unread */,
 			);
 			name = Feed;
 			path = Folder;
@@ -425,6 +429,16 @@
 			);
 			path = Catalog;
 			sourceTree = "<group>";
+		};
+		E6F0835E186E3041007FEDD4 /* Unread */ = {
+			isa = PBXGroup;
+			children = (
+				E6F08360186E3041007FEDD4 /* JBRSSFeedUnreadController.h */,
+				E6F08361186E3041007FEDD4 /* JBRSSFeedUnreadController.m */,
+			);
+			name = Unread;
+			path = junkbox/Classes/RSS/Feed/Unread;
+			sourceTree = SOURCE_ROOT;
 		};
 		E6FC100117B16FA800A12BED /* ReadLater */ = {
 			isa = PBXGroup;
@@ -589,6 +603,7 @@
 				E6C90075186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */,
 				E6FC101317B1749700A12BED /* JBReadLaterController.m in Sources */,
 				E6C90071186400840007449D /* JBRSSFeedSubsUnread.m in Sources */,
+				E6F08363186E3041007FEDD4 /* JBRSSFeedUnreadController.m in Sources */,
 				E6FC101617B174A200A12BED /* JBBookmarkController.m in Sources */,
 				E6FC101917B174AC00A12BED /* JBSettingController.m in Sources */,
 				E6FC101E17B1781700A12BED /* UIStoryboard+UIKit.m in Sources */,

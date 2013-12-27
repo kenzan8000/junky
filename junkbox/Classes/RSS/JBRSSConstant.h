@@ -25,10 +25,6 @@
 #define kApiKeyLivedoorReader                    @"member_sid"
 /// ApiKeyのCookieのドメイン
 #define kApiKeyDomainLivedoorReader              @".member.Livedoor.com"
-/// Livedoor Reader Username NSUserDefaults Key
-#define kUserDefaultsLivedoorReaderUsername      @"UserDefaultsLivedoorReaderUsername"
-/// Livedoor Reader Password NSUserDefaults Key
-#define kUserDefaultsLivedoorReaderPassword      @"UserDefaultsLivedoorReaderPassword"
 
 
 /// Livedoor Reader API
@@ -61,7 +57,13 @@
 #define kAPILivedoorReaderPinClear                [NSString stringWithFormat:@"%@pin/clear",  kAPILivedoorReader]
 
 
-/// スターの種類数
+/// Livedoor Reader Username NSUserDefaults Key
+#define kUserDefaultsLivedoorReaderUsername      @"UserDefaultsLivedoorReaderUsername"
+/// Livedoor Reader Password NSUserDefaults Key
+#define kUserDefaultsLivedoorReaderPassword      @"UserDefaultsLivedoorReaderPassword"
+
+
+/// スターの最大(5つ星)
 #define kLivedoorReaderMaxRate                    5
 /// スターのラベル
 #define kLivedoorReaderRateLabels                 @[ \

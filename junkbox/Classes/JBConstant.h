@@ -11,6 +11,9 @@
 /// ブックマーク遷移
 #define kStoryboardBookmark                         @"JBBookmark"
 
+/// segue identifier
+#define kStoryboardSeguePushRSSFeedUnreadController @"pushJBRSSFeedUnreadController"
+
 
 #pragma mark - UI
 #define kDefaultNavigationItemFrame { {0, 0,}, {64, 44}, }
