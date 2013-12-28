@@ -1,0 +1,19 @@
+[user]
+    name = kenzan8000
+    email = kenzan8000@gmail.com
+
+[core]
+	editor = vim -c \"set fenc=utf-8\"
+    excludesfile = ~/.gitignore
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    grep = auto
+
+[alias]
+    co = checkout
+    ft = fetch
+    so = remote show origin
+    st = status

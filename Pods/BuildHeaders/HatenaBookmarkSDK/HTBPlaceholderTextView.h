@@ -1,0 +1,1 @@
+../../HatenaBookmarkSDK/SDK/UI/View/HTBPlaceholderTextView.h

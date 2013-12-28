@@ -1,0 +1,1 @@
+../../NLCoreData/NLCoreData/NSManagedObject+NLCoreData.h

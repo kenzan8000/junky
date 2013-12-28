@@ -1,0 +1,1 @@
+../../HatenaBookmarkSDK/SDK/UI/Util/HTBMacro.h

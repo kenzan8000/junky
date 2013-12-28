@@ -1,0 +1,1 @@
+../../NLCoreData/NLCoreData/NSFetchedResultsController+NLCoreData.h
