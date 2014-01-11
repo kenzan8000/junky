@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0931F1A156C54DF683928BD4"
+               BlueprintIdentifier = "D8B2B92B32B749A693E3ED3B"
                BuildableName = "libPods-ISHTTPOperation.a"
                BlueprintName = "Pods-ISHTTPOperation"
                ReferencedContainer = "container:Pods.xcodeproj">

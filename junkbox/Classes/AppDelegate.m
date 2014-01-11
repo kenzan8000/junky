@@ -1,4 +1,6 @@
 #import "AppDelegate.h"
+#import "JBRSSConstant.h"
+#import "JBRSSOperationQueue.h"
 /// UIkit-Extension
 #import "UIStoryboard+UIKit.h"
 /// Pods
@@ -19,6 +21,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                              withExtension:@"momd"];
         [[NLCoreData shared] useDatabaseFile:[URL absoluteString]];
     }
+
+    // Connection
+    [[JBRSSOperationQueue defaultQueue] setMaxConcurrentOperationCount:kMaxOperationCountOfRSSConnection];
 
     //
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

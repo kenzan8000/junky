@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8FFB8C7705C9447481477987"
+               BlueprintIdentifier = "F8A427D18E284997BB443AC1"
                BuildableName = "libPods-HatenaBookmarkSDK.a"
                BlueprintName = "Pods-HatenaBookmarkSDK"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -54,4 +54,14 @@
     return nil;
 }
 
+- (void)addCookiesWithURLResponse:(NSURLResponse *)URLResponse
+{
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)URLResponse;
+    NSArray *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:httpResponse.allHeaderFields
+                                                              forURL:URLResponse.URL];
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in cookies) { [storage setCookie:cookie]; }
+}
+
+
 @end

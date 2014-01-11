@@ -1,6 +1,6 @@
 #import "JBRSSConstant.h"
 #import "JBRSSLoginController.h"
-#import "JBRSSLoginOperation.h"
+#import "JBRSSLoginOperations.h"
 #import "JBRSSOperationQueue.h"
 /// Connection
 #import "StatusCode.h"
@@ -21,6 +21,7 @@
 @synthesize passwordTextField;
 @synthesize IDPlaceholderLabel;
 @synthesize passwordPlaceholderLabel;
+@synthesize loginOperation;
 
 
 #pragma mark - initializer
@@ -40,6 +41,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.loginOperation = nil;
 }
 
 
@@ -247,9 +249,9 @@ clickedButtonAtIndex:(NSInteger)index
 
     // ログイン処理
     __weak __typeof(self) weakSelf = self;
-    JBRSSLoginOperation *loginOperation = [[JBRSSLoginOperation alloc] initWithUsername:self.IDTextField.text
-                                                                               password:self.passwordTextField.text
-                                                                                handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+    JBRSSLoginOperations *operation = [[JBRSSLoginOperations alloc] initWithUsername:self.IDTextField.text
+                                                                            password:self.passwordTextField.text
+                                                                             handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // 成功
         if (error == nil) {
             // ステータスバーに表示
@@ -262,6 +264,7 @@ clickedButtonAtIndex:(NSInteger)index
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginSuccess
                                                                 object:nil
                                                               userInfo:@{}];
+            [weakSelf setLoginOperation:nil];
             return;
         }
         // 失敗
@@ -300,8 +303,10 @@ clickedButtonAtIndex:(NSInteger)index
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginFailure
                                                             object:nil
                                                           userInfo:@{}];
+        [weakSelf setLoginOperation:nil];
     }];
-    [[JBRSSOperationQueue defaultQueue] addOperation:loginOperation];
+    self.loginOperation = operation;
+    [operation start];
 }
 
 

@@ -1,9 +1,11 @@
 #import "JBRSSFeedSubsUnreadController.h"
+#import "JBRSSFeedUnreadController.h"
 #import "JBRSSConstant.h"
 #import "JBRSSFeedSubsUnreadTableViewCell.h"
 #import "JBRSSFeedSubsUnread.h"
 #import "JBRSSOperationQueue.h"
-#import "JBRSSLoginOperation.h"
+#import "JBRSSLoginOperations.h"
+#import "JBRSSFeedUnreadLists.h"
 /// Connection
 #import "StatusCode.h"
 /// Pods
@@ -18,7 +20,10 @@
 
 
 #pragma mark - synthesize
-@synthesize unreadList;
+@synthesize subsUnreadList;
+@synthesize unreadLists;
+@synthesize indexOfselectCell;
+@synthesize loginOperation;
 
 
 #pragma mark - initializer
@@ -37,7 +42,9 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.unreadList = nil;
+    self.loginOperation = nil;
+    self.unreadLists = nil;
+    self.subsUnreadList = nil;
 }
 
 
@@ -47,7 +54,7 @@
     [super loadView];
 
     // 未読フィード一覧
-    self.unreadList = [[JBRSSFeedSubsUnreadList alloc] initWithDelegate:self];
+    self.subsUnreadList = [[JBRSSFeedSubsUnreadList alloc] initWithDelegate:self];
 
     // ログイン成功イベント
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -67,7 +74,7 @@
                                       animated:NO];
 
     // 前回の起動で読み込み完了していたデータを読み込み
-    [self.unreadList loadFeedFromLocal];
+    [self.subsUnreadList loadFeedFromLocal];
 }
 
 - (void)viewDidLoad
@@ -95,6 +102,16 @@
     [super viewDidDisappear:animated];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kStoryboardSeguePushRSSFeedUnreadController]) {
+        JBRSSFeedUnreadController *vc = (JBRSSFeedUnreadController *)[segue destinationViewController];
+        JBRSSFeedUnreadList *unread = [self.unreadLists listWithIndex:self.indexOfselectCell];
+        [vc setUnreadList:unread];
+    }
+}
+
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -111,7 +128,7 @@ titleForHeaderInSection:(NSInteger)section
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [self.unreadList feedCountWithRate:section];
+    return [self.subsUnreadList feedCountWithRate:section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
@@ -127,9 +144,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     JBRSSFeedSubsUnreadTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
     if (!cell) {
         cell = [UINib UIKitFromClassName:className];
-        JBRSSFeedSubsUnread *unread = [self.unreadList unreadWithIndexPath:indexPath];
-        cell.feedNameLabel.text = unread.title;
-        cell.unreadCountLabel.text = [unread.unreadCount stringValue];
+        {// テキスト
+        JBRSSFeedSubsUnread *unread = [self.subsUnreadList unreadWithIndexPath:indexPath];
+        [cell setFeedName:unread.title];
+        [cell setUnreadCount:unread.unreadCount];
+        }
+        {// デザイン
+        JBRSSFeedUnreadList *unread = [self.unreadLists listWithIndex:[self.subsUnreadList indexWithIndexPath:indexPath]];
+        [cell designWithIsFinishedLoading:[unread isFinishedLoading]
+                                 isUnread:[unread isUnread]];
+        }
     }
     return cell;
 }
@@ -137,8 +161,19 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // cell選択
+    self.indexOfselectCell = [self.subsUnreadList indexWithIndexPath:indexPath];
     [self.tableView deselectRowAtIndexPath:indexPath
                                   animated:YES];
+    // 既読化
+    JBRSSFeedSubsUnreadTableViewCell *cell = (JBRSSFeedSubsUnreadTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    JBRSSFeedUnreadList *unread = [self.unreadLists listWithIndex:[self.subsUnreadList indexWithIndexPath:indexPath]];
+    if ([unread isFinishedLoading]) {
+        [unread setIsUnread:NO];
+        [cell designWithIsFinishedLoading:[unread isFinishedLoading]
+                                 isUnread:[unread isUnread]];
+    }
+    // 遷移
     [self performSegueWithIdentifier:kStoryboardSeguePushRSSFeedUnreadController
                               sender:self];
 }
@@ -155,6 +190,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     [[MTStatusBarOverlay sharedInstance] hide];
 
     [self.tableView reloadData];
+
+    // 詳細フィード一覧
+    self.unreadLists = [[JBRSSFeedUnreadLists alloc] initWithSubsUnreadList:list
+                                                              listsDelegate:self];
+    for (NSInteger i = 0; i < [self.unreadLists count]; i++) {
+        [self.unreadLists loadWithIndex:i];
+    }
 }
 
 /**
@@ -169,7 +211,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         case http::statusCode::UNAUTHORIZED: // 401
             // 再度ログイン後、未読フィード一覧ロード
             [self login];
-            [self.unreadList loadFeedFromWebAPI];
+            [self.subsUnreadList loadFeedFromWebAPI];
             break;
         case http::NOT_REACHABLE:
             message = NSLocalizedString(@"Cannot access the Network.", @"通信できない");
@@ -193,6 +235,34 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:message
                                                               duration:2.5f
                                                               animated:YES];
+    }
+}
+
+
+#pragma mark - JBRSSFeedUnreadListsDelegate
+- (void)unreadListsDidFinishLoadWithList:(JBRSSFeedUnreadList *)list
+{
+    NSInteger index = [self.unreadLists indexWithList:list];
+    if (index < 0) { return; }
+
+    NSIndexPath *indexPath = [self.subsUnreadList indexPathWithIndex:index];
+    JBRSSFeedSubsUnreadTableViewCell *cell = (JBRSSFeedSubsUnreadTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    [cell designWithIsFinishedLoading:YES
+                             isUnread:YES];
+}
+
+- (void)unreadListsDidFailLoadWithError:(NSError *)error
+                                   list:(JBRSSFeedUnreadList *)list
+{
+    // エラー処理
+    switch (error.code) {
+        case http::statusCode::UNAUTHORIZED: // 401
+            // 再度ログイン後、フィードのリストをロード
+            [self login];
+            [list loadFeedFromWebAPI];
+            break;
+        default:
+            break;
     }
 }
 
@@ -226,7 +296,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)loadFeedFromWebAPI
 {
-    [self.unreadList loadFeedFromWebAPI];
+    // 詳細の読み込み停止
+    [self.unreadLists stopAllLoading];
+    // 一覧の読み込み開始
+    [self.subsUnreadList loadFeedFromWebAPI];
     dispatch_async(dispatch_get_main_queue(), ^ () {
         // ステータスバー
         [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the unread feed list...", @"未読フィード一覧読み込み")
@@ -239,15 +312,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)login
 {
-    JBRSSLoginOperation *operation = [[JBRSSLoginOperation alloc] initReauthenticationWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+    __weak __typeof(self) weakSelf = self;
+    JBRSSLoginOperations *operation = [[JBRSSLoginOperations alloc] initReauthenticationWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // ログインに失敗した場合、他のRSS関連の通信をすべて止める
         if (error) {
             [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
             // ステータスバー
             [[MTStatusBarOverlay sharedInstance] hide];
         }
+        [weakSelf setLoginOperation:nil];
     }];
-    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
+    self.loginOperation = operation;
+    [operation start];
+
 }
 
 

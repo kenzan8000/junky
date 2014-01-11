@@ -78,7 +78,6 @@
     dispatch_release(self.updateQueue);
     self.list = nil;
     self.feedCountOfEachRate = nil;
-
 }
 
 
@@ -143,13 +142,35 @@
     return self.list[index];
 }
 
-- (JBRSSFeedSubsUnread *)unreadWithIndexPath:(NSIndexPath *)indexPath;
+- (JBRSSFeedSubsUnread *)unreadWithIndexPath:(NSIndexPath *)indexPath
+{
+    return [self unreadWithIndex:[self indexWithIndexPath:indexPath]];
+}
+
+- (NSInteger)indexWithIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger offset = 0;
     for (NSInteger i = 0; i < indexPath.section; i++) {
         offset += [self feedCountWithRate:i];
     }
-    return [self unreadWithIndex:indexPath.row + offset];
+    return (indexPath.row + offset);
+}
+
+- (NSIndexPath *)indexPathWithIndex:(NSInteger)index
+{
+    if (index < 0 || index >= [self count]) { return nil; }
+
+    NSInteger row = index;
+    NSInteger section = 0;
+    for (NSInteger i = 0; i < self.feedCountOfEachRate.count; i++) {
+        NSInteger feedCountOfTheRate = [self feedCountWithRate:i];
+        if (row - feedCountOfTheRate) { break; }
+        row -= feedCountOfTheRate;
+        section++;
+    }
+
+    return [NSIndexPath indexPathForRow:row
+                              inSection:section];
 }
 
 
@@ -168,7 +189,6 @@
         NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContext];
         [JBRSSFeedSubsUnread deleteInContext:context
                                    predicate:nil];
-        weakSelf.list = [NSMutableArray arrayWithArray:@[]];
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:@[]];
         for (NSDictionary *dict in JSON) {
             JBRSSFeedSubsUnread *subsUnread = [JBRSSFeedSubsUnread insertInContext:context];
@@ -181,10 +201,9 @@
             subsUnread.link = [NSString stringWithFormat:@"%@", dict[@"link"]];
             subsUnread.icon = [NSString stringWithFormat:@"%@", dict[@"icon"]];
 
-            if (context.saveNested) {
-                [temporaryArray addObject:subsUnread];
-            }
+            [temporaryArray addObject:subsUnread];
         }
+        [context save];
         // sort by rate
         temporaryArray = [weakSelf rateSortedListWithSubsUnreadList:temporaryArray];
         // count fo each rate

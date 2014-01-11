@@ -1,3 +1,6 @@
+@class JBRSSLoginOperations;
+
+
 #pragma mark - JBRSSLoginController
 /// ログイン画面
 @interface JBRSSLoginController : UIViewController <UITextFieldDelegate> {
@@ -15,6 +18,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *IDPlaceholderLabel;
 /// ログインパスワード入力欄 placeholder
 @property (nonatomic, weak) IBOutlet UILabel *passwordPlaceholderLabel;
+/// ログイン処理
+@property (nonatomic, strong) JBRSSLoginOperations *loginOperation;
 
 
 #pragma mark - event listener

@@ -16,4 +16,18 @@
 @dynamic icon;
 
 
+#pragma mark - release
+- (void)dealloc
+{
+    self.subscribeId = nil;
+    self.title = nil;
+    self.unreadCount = nil;
+    self.rate = nil;
+    self.folder = nil;
+    self.feedlink = nil;
+    self.link = nil;
+    self.icon = nil;
+}
+
+
 @end

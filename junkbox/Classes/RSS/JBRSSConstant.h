@@ -1,6 +1,10 @@
 #pragma mark - constant
 
 
+/// 通信スレッド数最大
+#define kMaxOperationCountOfRSSConnection         5
+
+
 /* **************************************************
                     Livedoor Reader
 ************************************************** */
@@ -16,15 +20,23 @@
  * @param .sv 値は"reader"
  * @responceにcookieが入る
  */
-#define kURLLivedoorReaderLogin                  [NSString stringWithFormat:@"https://member.livedoor.com/login/index?livedoor_id=%@&password=%@", @"%@", @"%@"]
-/// セッションのCookie名
+#define kURLLivedoorReaderLogin1                 @"http://member.livedoor.com/login"
+/// Login2
+#define kURLLivedoorReaderLogin2                 @"https://member.livedoor.com/login/index"
+/// Login3
+#define kURLLivedoorReaderLogin3                 kURLLivedoorReader
+/// Cookie1
+#define kCookieNamesLivedoorReaderLogin          @[@"member_sid",]
+/// Cookie1のドメイン
+#define kCookieDomainsLivedoorReaderLogin        @[@".member.livedoor.com",]
+/// Cookie2
 #define kSessionNamesLivedoorReaderLogin         @[@".LRC", @".LH", @".LL",]
-/// セッションのCookieドメイン
+/// Cookieドメイン2
 #define kSessionDomainsLivedoorReaderLogin       @[@".livedoor.com", @".livedoor.com", @".livedoor.com",]
-/// ApiKey
-#define kApiKeyLivedoorReader                    @"member_sid"
-/// ApiKeyのCookieのドメイン
-#define kApiKeyDomainLivedoorReader              @".member.Livedoor.com"
+/// Cookie3(ApiKey)
+#define kApiKeyLivedoorReader                    @"reader_sid"
+/// Cookie3のドメイン
+#define kApiKeyDomainLivedoorReader              @".reader.livedoor.com"
 
 
 /// Livedoor Reader API

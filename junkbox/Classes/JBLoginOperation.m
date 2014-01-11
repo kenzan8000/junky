@@ -1,6 +1,8 @@
 #import "JBLoginOperation.h"
 /// Connection
 #import "StatusCode.h"
+/// NSFoundation+Extension
+#import "NSHTTPCookieStorage+Cookie.h"
 /// Pods
 #import "Reachability.h"
 
@@ -12,16 +14,22 @@
 #pragma mark - synthesize
 @synthesize username;
 @synthesize password;
+@synthesize cookieNames;
+@synthesize cookieDomains;
 
 
 #pragma mark - initializer
 - (id)initWithUsername:(NSString *)u
               password:(NSString *)p
+           cookieNames:(NSArray *)names
+         cookieDomains:(NSArray *)domains
                handler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))h
-               request:(NSURLRequest *)request
+               request:(NSURLRequest *)request;
 {
     // 通信後の処理
     void (^ handler)(NSHTTPURLResponse *, id, NSError *) = ^ (NSHTTPURLResponse *response, id object, NSError *error) {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] addCookiesWithURLResponse:response];
+
         NSError *loginError = error;
         NSInteger loginErrorCode = http::statusCode::SUCCESS;
         loginErrorCode = (loginError) ? loginError.code : loginErrorCode;
@@ -33,6 +41,15 @@
                                                     code:loginErrorCode
                                                 userInfo:@{}];;
         }
+        else {
+           BOOL hasSession = [[NSHTTPCookieStorage sharedHTTPCookieStorage] hasCookieWithNames:names
+                                                                                       domains:domains];
+            if (hasSession == NO) {
+                loginError = [[NSError alloc] initWithDomain:NSMachErrorDomain
+                                                        code:http::statusCode::UNAUTHORIZED
+                                                    userInfo:@{}];;
+            }
+        }
 
         h(response, object, loginError);
     };
@@ -42,6 +59,8 @@
     if (self) {
         self.username = u;
         self.password = p;
+        self.cookieNames = names;
+        self.cookieDomains = domains;
     }
     return self;
 }

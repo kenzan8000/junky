@@ -30,5 +30,11 @@
 - (NSString *)valueWithName:(NSString *)name
                      domain:(NSString *)domain;
 
+/**
+ * NSURLResponseからCookieを追加
+ * @param URLResponse NSURLResponse
+ */
+- (void)addCookiesWithURLResponse:(NSURLResponse *)URLResponse;
+
 
 @end

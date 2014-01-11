@@ -26,19 +26,15 @@
  * 未読件数をセット
  * @param unreadCount unreadCount
  */
- - (void)setUnreadCount:(NSNumber *)unreadCount;
+- (void)setUnreadCount:(NSNumber *)unreadCount;
 
 /**
- * ロード済みかロード中かでデザイン変更
- * @param
+ * ロード済みか、既読かでデザイン変更
+ * @param isFinishedLoading ロード済みか
+ * @param isUnread 既読か
  */
-- (void)designWithIsLoading:(BOOL)isLoading;
-
-/**
- * 既読か・未読かでデザイン変更
- * @param unread BOOL
- */
-- (void)designWithIsUnread:(BOOL)isUnread;
+- (void)designWithIsFinishedLoading:(BOOL)isFinishedLoading
+                           isUnread:(BOOL)isUnread;
 
 
 @end

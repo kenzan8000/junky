@@ -10,14 +10,28 @@
  * @param password passowrd
  * @return request
  */
-+ (NSMutableURLRequest *)JBRSSLoginRequestWithLivedoorID:(NSString *)livedoorID
-                                                password:(NSString *)password;
++ (NSMutableURLRequest *)JBRSSLoginRequest1WithLivedoorID:(NSString *)livedoorID
+                                                 password:(NSString *)password;
+
++ (NSMutableURLRequest *)JBRSSLoginRequest2WithLivedoorID:(NSString *)livedoorID
+                                                 password:(NSString *)password;
+
++ (NSMutableURLRequest *)JBRSSLoginRequest3WithLivedoorID:(NSString *)livedoorID
+                                                 password:(NSString *)password;
 
 /**
  * 未読フィード一覧を取得
  * @return request
  */
 + (NSMutableURLRequest *)JBRSSSubsUnreadRequest;
+
+
+/**
+ *
+ * @param subscribeId フィードのsubscribeId
+ * @return request
+ */
++ (NSMutableURLRequest *)JBRSSUnreadRequestWithSubscribeId:(NSString *)subscribeId;
 
 
 @end

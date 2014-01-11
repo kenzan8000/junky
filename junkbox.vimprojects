@@ -1,31 +1,29 @@
 
-junkbox=/Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly CD=. filter="*.m *.mm *.c *.h *.cpp *.cc *.js *.html *.css *.txt *.plist *.strings *.entitlements *.pch *.sh *.podspec *.md" {
- README.md
+junkbox=/Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly CD=. filter="*.m *.h *.mm *.cc *.hpp *.cpp *.html Podfile *.md *.css *.js *.md *.sh *.py .gitignore *.plist *.strings" {
  Podfile
+ README.md
  appledocs.sh
  graphviz.sh
  ipa.sh
+ .gitignore
  junkbox=junkbox {
   Classes=Classes {
-   prefix.pch
    JBConstant.h
    JBLoginOperation.m
-   JBLoginOperation.m
+   JBLoginOperation.h
    AppDelegate.m
    AppDelegate.h
-   UIKit-Extension=UIKit-Extension {
-    UIColor+Hexadecimal.m
-    UIColor+Hexadecimal.h
-    UINavigationBar+Custom.m
-    UINavigationBar+Custom.h
-    UINavigationItem+Custom.m
-    UINavigationItem+Custom.h
-    UIKit+Localize.m
-    UIKit+Localize.h
-    UINib+UIKit.m
-    UINib+UIKit.h
-    UIStoryboard+UIKit.m
-    UIStoryboard+UIKit.h
+   main.m
+   Bookmark=Bookmark {
+    JBBookmarkController.m
+    JBBookmarkController.h
+    Catalog=Catalog {
+     JBBookmarkCatalogController.m
+     JBBookmarkCatalogController.h
+    }
+   }
+   Connection=Connection {
+    StatusCode.h
    }
    NSFoundation-Extension=NSFoundation-Extension {
     NSData+JSON.m
@@ -51,17 +49,6 @@ junkbox=/Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly CD=. filter="*
      SSGentleAlertView+Junkbox.h
     }
    }
-   UIKit=UIKit {
-    ViewController=ViewController {
-     TableViewController.m
-     TableViewController.h
-     WebViewController.m
-     WebViewController.h
-    }
-   }
-   Connection=Connection {
-    StatusCode.h
-   }
    RSS=RSS {
     JBRSSConstant.h
     JBRSSOperationQueue.m
@@ -84,11 +71,21 @@ junkbox=/Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly CD=. filter="*
       JBRSSFeedSubsUnreadTableViewCell.h
      }
      Unread=Unread {
+      JBRSSFeedUnread.m
+      JBRSSFeedUnread.h
+      JBRSSFeedUnreadList.m
+      JBRSSFeedUnreadList.h
+      JBRSSFeedUnreadLists.m
+      JBRSSFeedUnreadLists.h
+      JBRSSFeedUnreadOperation.m
+      JBRSSFeedUnreadOperation.h
       JBRSSFeedUnreadController.m
       JBRSSFeedUnreadController.h
      }
     }
     Login=Login {
+     JBRSSLoginOperations.m
+     JBRSSLoginOperations.h
      JBRSSLoginOperation.m
      JBRSSLoginOperation.h
      JBRSSLoginController.m
@@ -99,25 +96,34 @@ junkbox=/Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly CD=. filter="*
     JBReadLaterController.m
     JBReadLaterController.h
    }
-   Bookmark=Bookmark {
-    JBBookmarkController.m
-    JBBookmarkController.h
-     Catalog=Catalog {
-      JBBookmarkCatalogController.m
-      JBBookmarkCatalogController.h
-     }
-    Login=Login {
-     JBBookmarkloginOperation.m
-     JBBookmarkloginOperation.h
-    }
-   }
    Setting=Setting {
     JBSettingController.m
     JBSettingController.h
    }
-   main.m
+   UIKit=UIKit {
+    ViewController=ViewController {
+     TableViewController.m
+     TableViewController.h
+     WebViewController.m
+     WebViewController.h
+    }
+   }
+   UIKit-Extension=UIKit-Extension {
+    UIColor+Hexadecimal.m
+    UIColor+Hexadecimal.h
+    UIKit+Localize.m
+    UIKit+Localize.h
+    UINavigationBar+Custom.m
+    UINavigationBar+Custom.h
+    UINib+UIKit.m
+    UINib+UIKit.h
+    UIStoryboard+UIKit.m
+    UIStoryboard+UIKit.h
+   }
   }
   Resources=Resources {
+   Fonts=Fonts {
+   }
    Images=Images {
     Icons=Icons {
     }
@@ -125,8 +131,9 @@ junkbox=/Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly CD=. filter="*
     }
    }
    Plists=Plists {
-    debug.info.plist
-    release.info.plist
+    info.plist
+   }
+   Sounds=Sounds {
    }
    Strings=Strings {
     en.lproj=en.lproj {
@@ -134,29 +141,6 @@ junkbox=/Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly CD=. filter="*
     }
     ja.lproj=ja.lproj {
      Localizable.strings
-    }
-   }
-  }
- }
- appledocs=appledocs {
- }
- graphviz=graphviz {
- }
- ipa=ipa {
-  provisioning=provisioning {
-  }
- }
- junkbox.xcodeproj=junkbox.xcodeproj {
-  project.xcworkspace=project.xcworkspace {
-   xcuserdata=xcuserdata {
-    kenzan8000.xcuserdatad=kenzan8000.xcuserdatad {
-    }
-   }
-  }
-  xcuserdata=xcuserdata {
-   kenzan8000.xcuserdatad=kenzan8000.xcuserdatad {
-    xcschemes=xcschemes {
-     xcschememanagement.plist
     }
    }
   }

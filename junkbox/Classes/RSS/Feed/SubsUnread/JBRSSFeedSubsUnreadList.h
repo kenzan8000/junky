@@ -86,5 +86,19 @@
  */
 - (JBRSSFeedSubsUnread *)unreadWithIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ * 未読フィードのcellが何番目か
+ * @param indexPath indexPath
+ * @return integer
+ */
+- (NSInteger)indexWithIndexPath:(NSIndexPath *)indexPath;
+
+/**
+ * 未読フィードのcellのindexPath
+ * @param index index
+ * @return indexPath
+ */
+- (NSIndexPath *)indexPathWithIndex:(NSInteger)index;
+
 
 @end

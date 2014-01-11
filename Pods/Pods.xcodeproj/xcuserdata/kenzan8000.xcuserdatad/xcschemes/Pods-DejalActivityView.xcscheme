@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1BEAC666BE874BB48DAA9FF1"
+               BlueprintIdentifier = "CEB93334C2C846508EB6E180"
                BuildableName = "libPods-DejalActivityView.a"
                BlueprintName = "Pods-DejalActivityView"
                ReferencedContainer = "container:Pods.xcodeproj">

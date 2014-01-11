@@ -38,27 +38,60 @@
         <!--Feed Unread Controller-->
         <scene sceneID="RH5-6Y-rxr">
             <objects>
-                <viewController id="nGA-IY-Ie1" customClass="JBRSSFeedUnreadController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="nGA-IY-Ie1" customClass="JBRSSFeedUnreadController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zae-dv-Kju">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2NA-y6-rZm">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <webView contentMode="scaleToFill" id="Pam-7s-c1a">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="nGA-IY-Ie1" id="UBp-sZ-xwf"/>
-                                    <outlet property="delegate" destination="nGA-IY-Ie1" id="nR6-jW-yZ0"/>
+                                    <outlet property="delegate" destination="nGA-IY-Ie1" id="tGr-ll-Qtu"/>
                                 </connections>
-                            </tableView>
+                            </webView>
+                            <view contentMode="scaleToFill" id="oEb-oS-1o5">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Qap-vB-R78">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                        <state key="normal" title="次のフィード"/>
+                                        <connections>
+                                            <action selector="touchedUpInsideWithNextFeedButton:" destination="nGA-IY-Ie1" eventType="touchUpInside" id="186-ow-Omq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nyL-Rh-vC3">
+                                        <rect key="frame" x="160" y="0.0" width="80" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="＜"/>
+                                        <connections>
+                                            <action selector="touchedUpInsideWithPreviousButton:" destination="nGA-IY-Ie1" eventType="touchUpInside" id="p3J-je-JUs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4Pv-qM-GFS">
+                                        <rect key="frame" x="240" y="0.0" width="80" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="＞"/>
+                                        <connections>
+                                            <action selector="touchedUpInsideWithNextButton:" destination="nGA-IY-Ie1" eventType="touchUpInside" id="XRm-a9-7Cj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ruV-Vg-z8Y"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="tableView" destination="2NA-y6-rZm" id="ayZ-FH-mTE"/>
+                        <outlet property="webView" destination="Pam-7s-c1a" id="NNj-fw-kYw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgA-sI-Lmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
