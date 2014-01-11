@@ -1,1 +1,0 @@
-../../HatenaBookmarkSDK/SDK/UI/Model/Entry/HTBBookmarkEntry.h

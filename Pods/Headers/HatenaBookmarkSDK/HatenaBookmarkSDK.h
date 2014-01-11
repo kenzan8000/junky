@@ -1,1 +1,0 @@
-../../HatenaBookmarkSDK/SDK/HatenaBookmarkSDK.h

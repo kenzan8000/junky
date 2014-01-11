@@ -1,1 +1,0 @@
-../../HatenaBookmarkSDK/SDK/UI/Util/UIAlertView+HTBNSError.h

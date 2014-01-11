@@ -1,1 +1,0 @@
-../../HatenaBookmarkSDK/SDK/API/HTBAFOAuth1Client.h
