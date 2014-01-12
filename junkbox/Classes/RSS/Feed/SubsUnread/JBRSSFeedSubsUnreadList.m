@@ -45,7 +45,7 @@
 
     dispatch_once(&onceToken, ^ () {
         _JBRSSFeedSubsUnreadListManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-        [_JBRSSFeedSubsUnreadListManagedObjectContext setParentContext:[NSManagedObjectContext mainContext]];
+		[_JBRSSFeedSubsUnreadListManagedObjectContext setPersistentStoreCoordinator:[[NLCoreData shared] storeCoordinator]];
     });
 
     return _JBRSSFeedSubsUnreadListManagedObjectContext;
@@ -203,7 +203,7 @@
 
             [temporaryArray addObject:subsUnread];
         }
-        [context saveNested];
+        [context save];
         // sort by rate
         temporaryArray = [weakSelf rateSortedListWithSubsUnreadList:temporaryArray];
         // count fo each rate
