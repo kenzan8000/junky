@@ -203,7 +203,7 @@
 
             [temporaryArray addObject:subsUnread];
         }
-        [context save];
+        [context saveNested];
         // sort by rate
         temporaryArray = [weakSelf rateSortedListWithSubsUnreadList:temporaryArray];
         // count fo each rate

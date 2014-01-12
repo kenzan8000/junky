@@ -121,15 +121,20 @@
                                                                      object:object
                                                                       error:error];
         if (loginError) {
+            // RSS系の通信スレッド数をデフォルトに戻す
+            [[JBRSSOperationQueue defaultQueue] setMaxConcurrentOperationCount:kMaxOperationCountOfRSSConnection];
+
             h(response, object, loginError);
         }
     };
     // 通信後の処理2
     void (^ h2)(NSHTTPURLResponse *, id, NSError *) = ^ (NSHTTPURLResponse *response, id object, NSError *error) {
+        // RSS系の通信スレッド数をデフォルトに戻す
+        [[JBRSSOperationQueue defaultQueue] setMaxConcurrentOperationCount:kMaxOperationCountOfRSSConnection];
+
         NSError *loginError = [JBRSSLoginOperations handleErrorWithResponse:response
                                                                      object:object
                                                                       error:error];
-        [[JBRSSOperationQueue defaultQueue] setMaxConcurrentOperationCount:kMaxOperationCountOfRSSConnection];
         h(response, object, loginError);
     };
 
