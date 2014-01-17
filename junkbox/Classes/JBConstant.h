@@ -13,7 +13,6 @@
 
 /// segue identifier
 #define kStoryboardSeguePushRSSFeedUnreadController @"pushJBRSSFeedUnreadController"
-#define kStoryboardSeguePushWebViewController       @"pushJBWebViewController"
 
 
 #pragma mark - UI

@@ -14,6 +14,15 @@
 
 
 #pragma mark - initializer
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil
+                           bundle:nibBundleOrNil];
+    if (self) {
+    }
+    return self;
+}
 
 
 #pragma mark - release
@@ -87,10 +96,14 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 shouldStartLoadWithRequest:request
     navigationType:navigationType];
 
-    NSInteger type = (NSInteger)navigationType;
-    switch (type) {
-        case UIWebViewNavigationTypeLinkClicked:
-            break;
+    // リンクをクリック
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        JBWebViewController *vc = [[JBWebViewController alloc] initWithNibName:NSStringFromClass([JBWebViewController class])
+                                                                        bundle:nil];
+        [vc setInitialURL:request.URL];
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+        return NO;
     }
 
     return YES;
@@ -127,10 +140,11 @@ didFailLoadWithError:error];
     // 読み込み完了
     NSInteger percent = 100 * (NSInteger)floor(progress);
     if (percent == 100) {
+        __weak __typeof(self) weakSelf = self;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*2), dispatch_get_current_queue(), ^ () {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWebViewProgressDidFinished
                                                                 object:nil
-                                                              userInfo:@{}];
+                                                              userInfo:@{@"initialURL":weakSelf.initialURL}];
         });
     }
 }
@@ -145,8 +159,10 @@ didFailLoadWithError:error];
 {
     __weak __typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^ () {
-        [weakSelf.webViewProgressView setProgress:0
-                                         animated:NO];
+        if (weakSelf.initialURL == [[notification userInfo] objectForKey:@"initialURL"]) {
+            [weakSelf.webViewProgressView setProgress:0
+                                             animated:NO];
+        }
     });
 }
 

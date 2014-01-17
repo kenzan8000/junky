@@ -16,6 +16,7 @@
 		E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7BE17B6237000B0407A /* NSDictionary+HTTPBody.m */; };
 		E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */; };
 		E67E6E7D1889AE8600D36A47 /* JBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E7C1889AE8600D36A47 /* JBWebViewController.m */; };
+		E67E6E7F1889C1FE00D36A47 /* JBWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E7E1889C1FE00D36A47 /* JBWebViewController.xib */; };
 		E681E76318251954001323DB /* JBRSSLoginOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = E681E76218251954001323DB /* JBRSSLoginOperations.m */; };
 		E6855E5B1882009B0045A6ED /* JBRSSLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6855E5A1882009B0045A6ED /* JBRSSLogin.storyboard */; };
 		E6855E6318820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6855E6118820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld */; };
@@ -84,6 +85,7 @@
 		E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+JBRSS.m"; sourceTree = "<group>"; };
 		E67E6E7B1889AE8600D36A47 /* JBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBWebViewController.h; sourceTree = "<group>"; };
 		E67E6E7C1889AE8600D36A47 /* JBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBWebViewController.m; sourceTree = "<group>"; };
+		E67E6E7E1889C1FE00D36A47 /* JBWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBWebViewController.xib; sourceTree = "<group>"; };
 		E681E76118251954001323DB /* JBRSSLoginOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSLoginOperations.h; sourceTree = "<group>"; };
 		E681E76218251954001323DB /* JBRSSLoginOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSLoginOperations.m; sourceTree = "<group>"; };
 		E6855E5A1882009B0045A6ED /* JBRSSLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBRSSLogin.storyboard; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				E6F0835C186CF15F007FEDD4 /* JBLoginOperation.m */,
 				E67E6E7B1889AE8600D36A47 /* JBWebViewController.h */,
 				E67E6E7C1889AE8600D36A47 /* JBWebViewController.m */,
+				E67E6E7E1889C1FE00D36A47 /* JBWebViewController.xib */,
 				E68EB9D617B01624006711A6 /* AppDelegate.h */,
 				E68EB9D717B01624006711A6 /* AppDelegate.m */,
 				E6FC101A17B176B000A12BED /* MainStoryboard.storyboard */,
@@ -557,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6855E5B1882009B0045A6ED /* JBRSSLogin.storyboard in Resources */,
+				E67E6E7F1889C1FE00D36A47 /* JBWebViewController.xib in Resources */,
 				E68EB9E617B01624006711A6 /* Default-568h@2x.png in Resources */,
 				E68EB9E717B01624006711A6 /* Default.png in Resources */,
 				E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */,

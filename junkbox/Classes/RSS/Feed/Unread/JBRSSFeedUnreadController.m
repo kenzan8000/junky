@@ -22,7 +22,6 @@
 @synthesize previousButton;
 @synthesize nextButton;
 @synthesize loginOperation;
-@synthesize openingURL;
 
 
 #pragma mark - initializer
@@ -43,7 +42,6 @@
 {
     self.unreadList = nil;
     self.loginOperation = nil;
-    self.openingURL = nil;
 }
 
 
@@ -78,15 +76,6 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue
-                 sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:kStoryboardSeguePushWebViewController]) {
-        JBWebViewController *vc = (JBWebViewController *)[segue destinationViewController];
-        [vc setInitialURL:self.openingURL];
-    }
 }
 
 
@@ -226,11 +215,12 @@ didFailLoadWithError:error];
  */
 - (void)openURL:(NSURL *)URL
 {
-    // URL
-    self.openingURL = URL;
     // 遷移
-    [self performSegueWithIdentifier:kStoryboardSeguePushWebViewController
-                              sender:self];
+    JBWebViewController *vc = [[JBWebViewController alloc] initWithNibName:NSStringFromClass([JBWebViewController class])
+                                                                    bundle:nil];
+    [vc setInitialURL:URL];
+    [self.navigationController pushViewController:vc
+                                         animated:YES];
 }
 
 
