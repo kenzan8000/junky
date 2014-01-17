@@ -9,6 +9,8 @@
 #import "MTStatusBarOverlay.h"
 /// Pods-Extension
 #import "SSGentleAlertView+Junkbox.h"
+/// UIKit-Extension
+#import "UINib+UIKit.h"
 
 
 #pragma mark - JBRSSLoginController
@@ -50,15 +52,12 @@
 {
     [super loadView];
 
-    // 閉じるボタン
-    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [closeButton setFrame:kDefaultNavigationItemFrame];
-    [closeButton setTitle:NSLocalizedString(@"Close", @"モーダルを閉じる")
-                 forState:UIControlStateNormal];
-    [closeButton addTarget:self
-                    action:@selector(touchedUpInsideWithCloseButton:)
-          forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:closeButton]]
+    // ナビゲーションバー
+        // 閉じるボタン
+    JBBarButtonView *closeButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
+    [closeButtonView setDelegate:self];
+    [closeButtonView setTitle:NSLocalizedString(@"Close", @"モーダルを閉じる")];
+    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:closeButtonView]]
                                       animated:NO];
 
     // パスワード
@@ -160,6 +159,17 @@ clickedButtonAtIndex:(NSInteger)index
 }
 
 
+#pragma mark - JBBarButtonViewDelegate
+/**
+ * ボタン押下
+ * @param barButtonView barButtonView
+ */
+- (void)touchedUpInsideButtonWithBarButtonView:(JBBarButtonView *)barButtonView
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+
 #pragma mark - notification
 /**
  * キーボード表示
@@ -187,11 +197,6 @@ clickedButtonAtIndex:(NSInteger)index
 
 
 #pragma mark - event listener
-- (IBAction)touchedUpInsideWithCloseButton:(UIButton *)button
-{
-    [self.navigationController dismissModalViewControllerAnimated:YES];
-}
-
 - (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button
 {
     BOOL canStartLogin = YES;

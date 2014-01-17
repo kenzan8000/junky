@@ -1,4 +1,7 @@
 #import "JBWebViewController.h"
+#import "JBNavigationBarTitleView.h"
+// UIKit-Extension
+#import "UINib+UIKit.h"
 // NSFoundation-Extension
 #import "NSURLRequest+Junkbox.h"
 
@@ -9,6 +12,7 @@
 
 #pragma mark - synthesize
 @synthesize webViewProgressView;
+@synthesize titleView;
 @synthesize initialURL;
 @synthesize webViewProgress;
 
@@ -30,6 +34,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.initialURL = nil;
+    self.titleView = nil;
 }
 
 
@@ -56,6 +61,11 @@
             self.webViewProgressView.frame.size.width, self.webViewProgressView.frame.size.height
         )
     ];
+
+    // ナビゲーションバー
+    self.titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
+    [self.titleView setTitle:[self.initialURL absoluteString]];
+    self.navigationItem.titleView = self.titleView;
 
     // 読み込み
     [self.webView loadRequest:[NSMutableURLRequest JBRequestWithURL:self.initialURL]];
@@ -117,6 +127,9 @@ shouldStartLoadWithRequest:request
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [super webViewDidFinishLoad:self.webView];
+
+    // タイトル
+    [self.titleView setTitle:[self.webView stringByEvaluatingJavaScriptFromString:@"document.title"]];
 }
 
 - (void)webView:(UIWebView *)webView

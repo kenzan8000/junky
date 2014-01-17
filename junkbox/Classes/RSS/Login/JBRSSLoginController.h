@@ -1,9 +1,13 @@
+#import "JBBarButtonView.h"
+
+
+#pragma mark - class
 @class JBRSSLoginOperations;
 
 
 #pragma mark - JBRSSLoginController
 /// ログイン画面
-@interface JBRSSLoginController : UIViewController <UITextFieldDelegate> {
+@interface JBRSSLoginController : UIViewController <UITextFieldDelegate, JBBarButtonViewDelegate> {
 }
 
 
@@ -23,12 +27,6 @@
 
 
 #pragma mark - event listener
-/**
- * 閉じるボタン押下
- * @param button button
- */
-- (IBAction)touchedUpInsideWithCloseButton:(UIButton *)button;
-
 /**
  * ログインボタン押下
  * @param button button

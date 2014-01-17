@@ -6,6 +6,7 @@
 #import "JBRSSOperationQueue.h"
 #import "JBRSSLoginOperations.h"
 #import "JBRSSFeedUnreadLists.h"
+#import "JBNavigationBarTitleView.h"
 /// Connection
 #import "StatusCode.h"
 /// Pods
@@ -45,6 +46,7 @@
     self.loginOperation = nil;
     self.unreadLists = nil;
     self.subsUnreadList = nil;
+    self.loginButtonView = nil;
 }
 
 
@@ -62,15 +64,16 @@
                                                  name:kNotificationRSSLoginSuccess
                                                object:nil];
 
-    // ログインボタン
-    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [loginButton setFrame:kDefaultNavigationItemFrame];
-    [loginButton setTitle:NSLocalizedString(@"Login", @"ログインボタンのタイトル")
-                 forState:UIControlStateNormal];
-    [loginButton addTarget:self
-                    action:@selector(touchedUpInsideWithLoginButton:)
-          forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:loginButton]]
+    // ナビゲーションバー
+        // タイトル
+    JBNavigationBarTitleView *titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
+    [titleView setTitle:NSLocalizedString(@"Feed", @"フィードタブ")];
+    self.navigationItem.titleView = titleView;
+        // ログインボタン
+    self.loginButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
+    [self.loginButtonView setDelegate:self];
+    [self.loginButtonView setTitle:NSLocalizedString(@"Login", @"ログインボタンのタイトル")];
+    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
                                       animated:NO];
 
     // 前回の起動で読み込み完了していたデータを読み込み
@@ -269,8 +272,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 
-#pragma mark - event listener
-- (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button
+#pragma mark - JBBarButtonViewDelegate
+/**
+ * ボタン押下
+ * @param barButtonView barButtonView
+ */
+- (void)touchedUpInsideButtonWithBarButtonView:(JBBarButtonView *)barButtonView
 {
     UINavigationController *vc = [UINavigationController new];
     [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
