@@ -73,6 +73,10 @@
 #define kUserDefaultsLivedoorReaderUsername      @"UserDefaultsLivedoorReaderUsername"
 /// Livedoor Reader Password NSUserDefaults Key
 #define kUserDefaultsLivedoorReaderPassword      @"UserDefaultsLivedoorReaderPassword"
+/// Livedoor Reader ApiKey
+#define kUserDefaultsLivedoorReaderApiKey        @"UserDefaultsLivedoorReader_reader_sid"
+/// Livedoor Reader Session
+#define kUserDefaultsLivedoorReaderSession       @"UserDefaultsLivedoorReader_session"
 
 
 /// スターの最大(5つ星)

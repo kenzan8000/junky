@@ -68,6 +68,13 @@
         self.password = p;
         self.handler = h;
         [self createConnectionsWithHandler:h];
+
+        // Username,Password記録
+        [[NSUserDefaults standardUserDefaults] setObject:u
+                                                  forKey:kUserDefaultsLivedoorReaderUsername];
+        [[NSUserDefaults standardUserDefaults] setObject:p
+                                                  forKey:kUserDefaultsLivedoorReaderPassword];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     return self;
 }
@@ -126,6 +133,16 @@
 
             h(response, object, loginError);
         }
+        else {
+            // セッションをセット
+            NSMutableString *cookie = [NSMutableString stringWithCapacity:0];
+            for (NSInteger i = 0; i < kSessionNamesLivedoorReaderLogin.count; i++) {
+                [cookie appendString:[NSString stringWithFormat:@"%@=%@;", kSessionNamesLivedoorReaderLogin[i], [[NSHTTPCookieStorage sharedHTTPCookieStorage] valueWithName:kSessionNamesLivedoorReaderLogin[i] domain:kSessionDomainsLivedoorReaderLogin[i]]]];
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:cookie
+                                                      forKey:kUserDefaultsLivedoorReaderSession];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     };
     // 通信後の処理2
     void (^ h2)(NSHTTPURLResponse *, id, NSError *) = ^ (NSHTTPURLResponse *response, id object, NSError *error) {
@@ -135,6 +152,14 @@
         NSError *loginError = [JBRSSLoginOperations handleErrorWithResponse:response
                                                                      object:object
                                                                       error:error];
+
+        // ApiKeyをセット
+        if (loginError == nil) {
+            [[NSUserDefaults standardUserDefaults] setObject:[[NSHTTPCookieStorage sharedHTTPCookieStorage] valueWithName:kApiKeyLivedoorReader domain:kApiKeyDomainLivedoorReader]
+                                                      forKey:kUserDefaultsLivedoorReaderApiKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+
         h(response, object, loginError);
     };
 

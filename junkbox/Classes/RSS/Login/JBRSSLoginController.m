@@ -226,12 +226,6 @@ clickedButtonAtIndex:(NSInteger)index
  */
 - (void)login
 {
-    // Username,Password記録
-    [[NSUserDefaults standardUserDefaults] setObject:self.IDTextField.text
-                                              forKey:kUserDefaultsLivedoorReaderUsername];
-    [[NSUserDefaults standardUserDefaults] setObject:self.passwordTextField.text
-                                              forKey:kUserDefaultsLivedoorReaderPassword];
-
     // ログイン開始
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRSSLoginStart
                                                         object:nil

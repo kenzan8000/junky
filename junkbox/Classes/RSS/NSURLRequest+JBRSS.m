@@ -40,7 +40,7 @@
         kAPILivedoorReaderSubsUnread,
         [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
     ];
-    return [NSMutableURLRequest JBPostRequestWithURL:[NSURL URLWithString:URLString]];
+    return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
 }
 
 + (NSMutableURLRequest *)JBRSSUnreadRequestWithSubscribeId:(NSString *)subscribeId
@@ -49,20 +49,44 @@
         [NSString stringWithFormat:kAPILivedoorReaderUnread, subscribeId],
         [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
     ];
-    return [NSMutableURLRequest JBPostRequestWithURL:[NSURL URLWithString:URLString]];
+    return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
 }
 
 
 #pragma mark - private api
+/**
+ * Livedoor reader POST Request
+ * @return request
+ */
++ (NSMutableURLRequest *)JBRSSPostRequestWithURL:(NSURL *)URL
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest JBPostRequestWithURL:URL];
+    [request setSessions];
+    return request;
+}
+
 /**
  * livedoor reader API Key Query文字列取得
  * @return APIKey
  */
 + (NSString *)queryStringLivedoorReaderAPIKey
 {
-    NSString *apiKey = [[NSHTTPCookieStorage sharedHTTPCookieStorage] valueWithName:kApiKeyLivedoorReader
-                                                                             domain:kApiKeyDomainLivedoorReader];
+    NSString *apiKey = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderApiKey];
     return [NSString stringWithFormat:kQueryLivedoorReaderApiKey, apiKey];
+}
+
+/**
+ * LivedoorReaderのセッションをセット
+ * session format:cookie名=value;
+ */
+- (void)setSessions
+{
+    NSString *sessions = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderSession];
+    if (sessions == nil) { return; }
+
+    NSString *cookieString = [NSString stringWithFormat:@"%@", sessions];
+    [self setValue:cookieString
+forHTTPHeaderField:@"Cookie"];
 }
 
 

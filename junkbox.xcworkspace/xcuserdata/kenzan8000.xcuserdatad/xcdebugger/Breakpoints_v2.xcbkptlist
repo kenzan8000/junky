@@ -2,4 +2,52 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "junkbox/Classes/RSS/Login/JBRSSLoginOperations.m"
+            timestampString = "411629225.494635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-createConnectionsWithHandler:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__53-[JBRSSLoginOperations createConnectionsWithHandler:]_block_invoke"
+                  moduleName = "debug.junkbox"
+                  urlString = "file://localhost/Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/RSS/Login/JBRSSLoginOperations.m"
+                  timestampString = "411629323.123535"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "1944">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__53-[JBRSSLoginOperations createConnectionsWithHandler:]_block_invoke"
+                  moduleName = "debug.junkbox"
+                  urlString = "file://localhost/Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/RSS/Login/JBRSSLoginOperations.m"
+                  timestampString = "411629323.123886"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "2111">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

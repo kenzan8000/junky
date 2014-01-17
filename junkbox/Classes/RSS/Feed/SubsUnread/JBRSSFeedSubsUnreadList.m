@@ -203,7 +203,6 @@
 
             [temporaryArray addObject:subsUnread];
         }
-        [context save];
         // sort by rate
         temporaryArray = [weakSelf rateSortedListWithSubsUnreadList:temporaryArray];
         // count fo each rate
@@ -215,6 +214,7 @@
                 [weakSelf.delegate feedDidFinishLoadWithList:weakSelf];
             }
         });
+        [context save];
     });
 }
 
