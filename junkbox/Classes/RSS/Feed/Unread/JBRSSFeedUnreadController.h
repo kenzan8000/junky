@@ -28,6 +28,9 @@
 /// 再認証処理
 @property (nonatomic, strong) JBRSSLoginOperations *loginOperation;
 
+/// 外部リンクで開くURL
+@property (nonatomic, strong) NSURL *openingURL;
+
 
 #pragma mark - event listener
 /**

@@ -13,6 +13,7 @@
 
 /// segue identifier
 #define kStoryboardSeguePushRSSFeedUnreadController @"pushJBRSSFeedUnreadController"
+#define kStoryboardSeguePushWebViewController       @"pushJBWebViewController"
 
 
 #pragma mark - UI
@@ -28,3 +29,6 @@
 #define kNotificationRSSLoginFailure                @"JBNotificationRSSLoginFailure"
 /// RSS Reader セッション無効
 #define kNotificationRSSLoginInvalid                @"JBNotificationRSSLoginInvalid"
+/// WebView読み込み完了
+#define kNotificationWebViewProgressDidFinished     @"JBNotificationWebViewProgressDidFinished"
+

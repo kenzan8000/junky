@@ -2,6 +2,7 @@
 #import "JBRSSFeedUnread.h"
 #import "JBRSSLoginOperations.h"
 #import "JBRSSOperationQueue.h"
+#import "JBWebViewController.h"
 /// Connection
 #import "StatusCode.h"
 /// UIKit=Extension
@@ -21,6 +22,7 @@
 @synthesize previousButton;
 @synthesize nextButton;
 @synthesize loginOperation;
+@synthesize openingURL;
 
 
 #pragma mark - initializer
@@ -41,6 +43,7 @@
 {
     self.unreadList = nil;
     self.loginOperation = nil;
+    self.openingURL = nil;
 }
 
 
@@ -77,6 +80,15 @@
     [super viewDidDisappear:animated];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kStoryboardSeguePushWebViewController]) {
+        JBWebViewController *vc = (JBWebViewController *)[segue destinationViewController];
+        [vc setInitialURL:self.openingURL];
+    }
+}
+
 
 #pragma mark - UIWebViewDelegate
 - (BOOL)webView:(UIWebView *)webView
@@ -87,10 +99,9 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 shouldStartLoadWithRequest:request
     navigationType:navigationType];
 
-    NSInteger type = (NSInteger)navigationType;
-    switch (type) {
-        case UIWebViewNavigationTypeLinkClicked:
-            break;
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        [self openURL:request.URL];
+        return NO;
     }
 
     return YES;
@@ -207,6 +218,19 @@ didFailLoadWithError:error];
         [self.previousButton setTitleColor:defaultColor forState:UIControlStateNormal];
         [self.nextButton setTitleColor:defaultColor forState:UIControlStateNormal];
     }
+}
+
+/**
+ * 外部リンクを押して、Webを開くときの挙動
+ * @param URL URL
+ */
+- (void)openURL:(NSURL *)URL
+{
+    // URL
+    self.openingURL = URL;
+    // 遷移
+    [self performSegueWithIdentifier:kStoryboardSeguePushWebViewController
+                              sender:self];
 }
 
 

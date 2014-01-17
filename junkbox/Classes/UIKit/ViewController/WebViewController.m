@@ -1,6 +1,4 @@
 #import "WebViewController.h"
-// NSFoundation-Extension
-#import "NSURLRequest+Junkbox.h"
 
 
 #pragma mark - WebViewController
@@ -18,8 +16,6 @@
 
     // スクロール速度
     self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
-
-    //[self.webView loadRequest:[NSMutableURLRequest JBRequestWithURL:URL]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

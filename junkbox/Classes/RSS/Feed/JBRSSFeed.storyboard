@@ -97,11 +97,45 @@
                         <outlet property="nextFeedButton" destination="Qap-vB-R78" id="dOO-jB-SMC"/>
                         <outlet property="previousButton" destination="nyL-Rh-vC3" id="fEu-lT-8un"/>
                         <outlet property="webView" destination="Pam-7s-c1a" id="NNj-fw-kYw"/>
+                        <segue destination="nge-lf-anL" kind="push" identifier="pushJBWebViewController" id="uzz-wO-Wer"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgA-sI-Lmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="535" y="26"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="clX-Js-Rko">
+            <objects>
+                <viewController id="nge-lf-anL" customClass="JBWebViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g8Q-Xq-cJB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="Js3-OH-JnQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nge-lf-anL" id="vbQ-qv-OGu"/>
+                                </connections>
+                            </webView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="CZC-7A-IUm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9uP-rd-hA6"/>
+                    <connections>
+                        <outlet property="webView" destination="Js3-OH-JnQ" id="URf-Wq-Nox"/>
+                        <outlet property="webViewProgressView" destination="CZC-7A-IUm" id="Bf0-zM-szB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pem-hT-H5f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="920" y="26"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
