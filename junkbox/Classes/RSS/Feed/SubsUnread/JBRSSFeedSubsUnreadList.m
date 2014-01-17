@@ -164,7 +164,7 @@
     NSInteger section = 0;
     for (NSInteger i = 0; i < self.feedCountOfEachRate.count; i++) {
         NSInteger feedCountOfTheRate = [self feedCountWithRate:i];
-        if (row - feedCountOfTheRate) { break; }
+        if (row - feedCountOfTheRate < 0) { break; }
         row -= feedCountOfTheRate;
         section++;
     }

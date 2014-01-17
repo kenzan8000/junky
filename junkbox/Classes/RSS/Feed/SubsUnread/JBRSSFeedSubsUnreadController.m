@@ -245,10 +245,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     NSInteger index = [self.unreadLists indexWithList:list];
     if (index < 0) { return; }
 
+    // 表示を更新
     NSIndexPath *indexPath = [self.subsUnreadList indexPathWithIndex:index];
-    JBRSSFeedSubsUnreadTableViewCell *cell = (JBRSSFeedSubsUnreadTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    [cell designWithIsFinishedLoading:YES
-                             isUnread:YES];
+    if ([[self.tableView indexPathsForVisibleRows] containsObject:indexPath]) {
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 - (void)unreadListsDidFailLoadWithError:(NSError *)error
