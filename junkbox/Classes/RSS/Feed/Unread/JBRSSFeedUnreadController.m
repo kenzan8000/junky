@@ -4,6 +4,8 @@
 #import "JBRSSOperationQueue.h"
 /// Connection
 #import "StatusCode.h"
+/// UIKit=Extension
+#import "UIColor+Hexadecimal.h"
 /// Pods
 #import "MTStatusBarOverlay.h"
 
@@ -16,6 +18,8 @@
 @synthesize unreadList;
 @synthesize indexOfUnreadList;
 @synthesize nextFeedButton;
+@synthesize previousButton;
+@synthesize nextButton;
 @synthesize loginOperation;
 
 
@@ -45,6 +49,7 @@
 {
     [super loadView];
     [self loadWebView];
+    [self designPreviousAndNextButton];
 }
 
 - (void)viewDidLoad
@@ -81,13 +86,13 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     [super webView:self.webView
 shouldStartLoadWithRequest:request
     navigationType:navigationType];
-/*
+
     NSInteger type = (NSInteger)navigationType;
     switch (type) {
         case UIWebViewNavigationTypeLinkClicked:
             break;
     }
-*/
+
     return YES;
 }
 
@@ -139,6 +144,7 @@ didFailLoadWithError:error];
     self.indexOfUnreadList--;
     if (self.indexOfUnreadList < 0) { self.indexOfUnreadList = 0; }
     else { [self loadWebView]; }
+    [self designPreviousAndNextButton];
 }
 
 - (IBAction)touchedUpInsideWithNextButton:(UIButton *)button
@@ -146,6 +152,7 @@ didFailLoadWithError:error];
     self.indexOfUnreadList++;
     if (self.indexOfUnreadList >= [self.unreadList count]) { self.indexOfUnreadList = [self.unreadList count]-1; }
     else { [self loadWebView]; }
+    [self designPreviousAndNextButton];
 }
 
 
@@ -154,6 +161,7 @@ didFailLoadWithError:error];
 {
     JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
     if (unread) {
+        self.navigationItem.title = unread.title;
         [self.webView loadHTMLString:unread.body
                              baseURL:unread.link];
     }
@@ -178,6 +186,27 @@ didFailLoadWithError:error];
     }];
     self.loginOperation = operation;
     [operation start];
+}
+
+/**
+ * 次の記事へ、前の記事へボタンデザイン
+ */
+- (void)designPreviousAndNextButton
+{
+    UIColor *defaultColor = [UIColor colorWithHexadecimal:0x4b96ffff];
+    UIColor *cornerColor = [UIColor colorWithHexadecimal:0xaaaaaaff];
+    if (self.indexOfUnreadList <= 0) {
+        [self.previousButton setTitleColor:cornerColor forState:UIControlStateNormal];
+        [self.nextButton setTitleColor:defaultColor forState:UIControlStateNormal];
+    }
+    else if (self.indexOfUnreadList >= [self.unreadList count]-1) {
+        [self.previousButton setTitleColor:defaultColor forState:UIControlStateNormal];
+        [self.nextButton setTitleColor:cornerColor forState:UIControlStateNormal];
+    }
+    else {
+        [self.previousButton setTitleColor:defaultColor forState:UIControlStateNormal];
+        [self.nextButton setTitleColor:defaultColor forState:UIControlStateNormal];
+    }
 }
 
 

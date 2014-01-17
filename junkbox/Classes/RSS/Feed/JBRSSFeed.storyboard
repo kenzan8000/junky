@@ -68,7 +68,9 @@
                                         <rect key="frame" x="160" y="0.0" width="80" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" title="＜"/>
+                                        <state key="normal" title="＜">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="touchedUpInsideWithPreviousButton:" destination="nGA-IY-Ie1" eventType="touchUpInside" id="p3J-je-JUs"/>
                                         </connections>
@@ -91,6 +93,9 @@
                     <navigationItem key="navigationItem" id="ruV-Vg-z8Y"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="nextButton" destination="4Pv-qM-GFS" id="dvT-h0-gQt"/>
+                        <outlet property="nextFeedButton" destination="Qap-vB-R78" id="dOO-jB-SMC"/>
+                        <outlet property="previousButton" destination="nyL-Rh-vC3" id="fEu-lT-8un"/>
                         <outlet property="webView" destination="Pam-7s-c1a" id="NNj-fw-kYw"/>
                     </connections>
                 </viewController>

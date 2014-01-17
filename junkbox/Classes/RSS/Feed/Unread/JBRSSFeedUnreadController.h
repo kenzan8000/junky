@@ -20,6 +20,10 @@
 
 /// 次のフィードへボタン
 @property (nonatomic, weak) IBOutlet UIButton *nextFeedButton;
+/// 前の記事へ
+@property (nonatomic, weak) IBOutlet UIButton *previousButton;
+/// 次の記事へ
+@property (nonatomic, weak) IBOutlet UIButton *nextButton;
 
 /// 再認証処理
 @property (nonatomic, strong) JBRSSLoginOperations *loginOperation;
