@@ -1,8 +1,8 @@
 #pragma mark - constant
 
 
-/// 通信スレッド数最大
-#define kMaxOperationCountOfRSSConnection         5
+/// RSS系通信の並列実行するスレッド数最大
+#define kMaxOperationCountOfRSSConnection        3
 
 
 /* **************************************************

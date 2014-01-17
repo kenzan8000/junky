@@ -90,6 +90,16 @@
 }
 
 
+#pragma mark - release
+- (void)dealloc
+{
+    self.operations = nil;
+    self.handler = NULL;
+    self.username = nil;
+    self.password = nil;
+}
+
+
 #pragma mark - api
 - (void)start
 {

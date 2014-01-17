@@ -1,3 +1,14 @@
+/**************************************************
+ *
+ * ログイン手順
+ *
+ * 1 : http://member.livedoor.com/login にPOSTして、クッキー member_sid を取得
+ * 2 : https://member.livedoor.com/login/index?livedoor_id=hoge&password=fuga にPOSTして、クッキー .LRC, .LH, .LL (Livedoor Readerのセッション)を取得
+ * 3 : http://reader.livedoor.com/ にPOSTして、クッキー reader_sid (Livedoor ReaderのApiKey)を取得
+ *
+ **************************************************/
+
+
 #pragma mark - JBRSSLoginOperations
 /// RSS Reader ログイン
 @interface JBRSSLoginOperations : NSObject {
