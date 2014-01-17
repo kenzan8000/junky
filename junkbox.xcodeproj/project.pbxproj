@@ -15,10 +15,10 @@
 		E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */ = {isa = PBXBuildFile; fileRef = E62C107117B9314A0081007A /* NSHTTPCookieStorage+Cookie.m */; };
 		E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7BE17B6237000B0407A /* NSDictionary+HTTPBody.m */; };
 		E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */; };
-		E67E6E7D1889AE8600D36A47 /* JBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E7C1889AE8600D36A47 /* JBWebViewController.m */; };
-		E67E6E7F1889C1FE00D36A47 /* JBWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E7E1889C1FE00D36A47 /* JBWebViewController.xib */; };
 		E67E6E831889CA2700D36A47 /* JBNavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E811889CA2700D36A47 /* JBNavigationBarTitleView.m */; };
 		E67E6E841889CA2700D36A47 /* JBNavigationBarTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E821889CA2700D36A47 /* JBNavigationBarTitleView.xib */; };
+		E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E871889D0A800D36A47 /* JBWebViewController.m */; };
+		E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E881889D0A800D36A47 /* JBWebViewController.xib */; };
 		E681E76318251954001323DB /* JBRSSLoginOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = E681E76218251954001323DB /* JBRSSLoginOperations.m */; };
 		E6855E5B1882009B0045A6ED /* JBRSSLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6855E5A1882009B0045A6ED /* JBRSSLogin.storyboard */; };
 		E6855E6318820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6855E6118820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld */; };
@@ -85,12 +85,12 @@
 		E630B7BE17B6237000B0407A /* NSDictionary+HTTPBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HTTPBody.m"; sourceTree = "<group>"; };
 		E630B7C017B62E7800B0407A /* NSURLRequest+JBRSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+JBRSS.h"; sourceTree = "<group>"; };
 		E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+JBRSS.m"; sourceTree = "<group>"; };
-		E67E6E7B1889AE8600D36A47 /* JBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBWebViewController.h; sourceTree = "<group>"; };
-		E67E6E7C1889AE8600D36A47 /* JBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBWebViewController.m; sourceTree = "<group>"; };
-		E67E6E7E1889C1FE00D36A47 /* JBWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBWebViewController.xib; sourceTree = "<group>"; };
 		E67E6E801889CA2700D36A47 /* JBNavigationBarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBNavigationBarTitleView.h; sourceTree = "<group>"; };
 		E67E6E811889CA2700D36A47 /* JBNavigationBarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBNavigationBarTitleView.m; sourceTree = "<group>"; };
 		E67E6E821889CA2700D36A47 /* JBNavigationBarTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBNavigationBarTitleView.xib; sourceTree = "<group>"; };
+		E67E6E861889D0A800D36A47 /* JBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBWebViewController.h; sourceTree = "<group>"; };
+		E67E6E871889D0A800D36A47 /* JBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBWebViewController.m; sourceTree = "<group>"; };
+		E67E6E881889D0A800D36A47 /* JBWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBWebViewController.xib; sourceTree = "<group>"; };
 		E681E76118251954001323DB /* JBRSSLoginOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSLoginOperations.h; sourceTree = "<group>"; };
 		E681E76218251954001323DB /* JBRSSLoginOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSLoginOperations.m; sourceTree = "<group>"; };
 		E6855E5A1882009B0045A6ED /* JBRSSLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBRSSLogin.storyboard; sourceTree = "<group>"; };
@@ -186,6 +186,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E67E6E851889D0A800D36A47 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				E67E6E861889D0A800D36A47 /* JBWebViewController.h */,
+				E67E6E871889D0A800D36A47 /* JBWebViewController.m */,
+				E67E6E881889D0A800D36A47 /* JBWebViewController.xib */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		E68EB9D517B01624006711A6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +204,7 @@
 				E6E271B11834A8F400F0E6A4 /* Pods-Extension */,
 				E6FC100317B16FA800A12BED /* UIKit */,
 				E6C8D77E17B15520007B6C16 /* Connection */,
+				E67E6E851889D0A800D36A47 /* WebView */,
 				E6C8D78F17B15521007B6C16 /* RSS */,
 				E6FC100117B16FA800A12BED /* ReadLater */,
 				E6C8D77D17B15520007B6C16 /* Bookmark */,
@@ -201,9 +212,6 @@
 				E62747E317B5CEBF007B41B2 /* JBConstant.h */,
 				E6F0835B186CF15F007FEDD4 /* JBLoginOperation.h */,
 				E6F0835C186CF15F007FEDD4 /* JBLoginOperation.m */,
-				E67E6E7B1889AE8600D36A47 /* JBWebViewController.h */,
-				E67E6E7C1889AE8600D36A47 /* JBWebViewController.m */,
-				E67E6E7E1889C1FE00D36A47 /* JBWebViewController.xib */,
 				E67E6E801889CA2700D36A47 /* JBNavigationBarTitleView.h */,
 				E67E6E811889CA2700D36A47 /* JBNavigationBarTitleView.m */,
 				E67E6E821889CA2700D36A47 /* JBNavigationBarTitleView.xib */,
@@ -568,8 +576,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E67E6E841889CA2700D36A47 /* JBNavigationBarTitleView.xib in Resources */,
+				E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */,
 				E6855E5B1882009B0045A6ED /* JBRSSLogin.storyboard in Resources */,
-				E67E6E7F1889C1FE00D36A47 /* JBWebViewController.xib in Resources */,
 				E68EB9E617B01624006711A6 /* Default-568h@2x.png in Resources */,
 				E68EB9E717B01624006711A6 /* Default.png in Resources */,
 				E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */,
@@ -622,7 +630,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68EB9E417B01624006711A6 /* AppDelegate.m in Sources */,
-				E67E6E7D1889AE8600D36A47 /* JBWebViewController.m in Sources */,
 				E68EB9E517B01624006711A6 /* main.m in Sources */,
 				E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */,
 				E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */,
@@ -632,6 +639,7 @@
 				E6C8D79C17B15521007B6C16 /* NSURL+Query.m in Sources */,
 				E6F0835A186AE734007FEDD4 /* JBBookmarkCatalogController.m in Sources */,
 				E6C8D79D17B15521007B6C16 /* NSURLRequest+Junkbox.m in Sources */,
+				E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */,
 				E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */,
 				E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */,
 				E6FC100917B16FA800A12BED /* TableViewController.m in Sources */,
