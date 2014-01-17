@@ -5,8 +5,9 @@
 #import "JBWebViewController.h"
 /// Connection
 #import "StatusCode.h"
-/// UIKit=Extension
+/// UIKit-Extension
 #import "UIColor+Hexadecimal.h"
+#import "UINib+UIKit.h"
 /// Pods
 #import "MTStatusBarOverlay.h"
 
@@ -18,6 +19,7 @@
 #pragma mark - synthesize
 @synthesize unreadList;
 @synthesize indexOfUnreadList;
+@synthesize titleView;
 @synthesize nextFeedButton;
 @synthesize previousButton;
 @synthesize nextButton;
@@ -42,6 +44,7 @@
 {
     self.unreadList = nil;
     self.loginOperation = nil;
+    self.titleView = nil;
 }
 
 
@@ -49,7 +52,15 @@
 - (void)loadView
 {
     [super loadView];
+
+    //
+    self.titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
+    self.titleView.delegate = self;
+    [self.titleView useButton];
+    self.navigationItem.titleView = self.titleView;
+    //
     [self loadWebView];
+    //
     [self designPreviousAndNextButton];
 }
 
@@ -134,6 +145,20 @@ didFailLoadWithError:error];
 }
 
 
+#pragma mark - JBNavigationBarTitleViewDelegate
+/**
+ * タイトルボタン押下
+ * @param titleView titleView
+ */
+- (void)touchedUpInsideTitleButtonWithNavigationBarTitleViewDelegate:(JBNavigationBarTitleView *)titleView
+{
+    JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
+    if (unread) {
+        [self openURL:unread.link];
+    }
+}
+
+
 #pragma mark - event listener
 - (IBAction)touchedUpInsideWithNextFeedButton:(UIButton *)button
 {
@@ -161,7 +186,7 @@ didFailLoadWithError:error];
 {
     JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
     if (unread) {
-        self.navigationItem.title = unread.title;
+        [self.titleView setTitle:unread.title];
         [self.webView loadHTMLString:unread.body
                              baseURL:unread.link];
     }

@@ -17,6 +17,8 @@
 		E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */; };
 		E67E6E7D1889AE8600D36A47 /* JBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E7C1889AE8600D36A47 /* JBWebViewController.m */; };
 		E67E6E7F1889C1FE00D36A47 /* JBWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E7E1889C1FE00D36A47 /* JBWebViewController.xib */; };
+		E67E6E831889CA2700D36A47 /* JBNavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E811889CA2700D36A47 /* JBNavigationBarTitleView.m */; };
+		E67E6E841889CA2700D36A47 /* JBNavigationBarTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E821889CA2700D36A47 /* JBNavigationBarTitleView.xib */; };
 		E681E76318251954001323DB /* JBRSSLoginOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = E681E76218251954001323DB /* JBRSSLoginOperations.m */; };
 		E6855E5B1882009B0045A6ED /* JBRSSLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6855E5A1882009B0045A6ED /* JBRSSLogin.storyboard */; };
 		E6855E6318820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6855E6118820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld */; };
@@ -86,6 +88,9 @@
 		E67E6E7B1889AE8600D36A47 /* JBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBWebViewController.h; sourceTree = "<group>"; };
 		E67E6E7C1889AE8600D36A47 /* JBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBWebViewController.m; sourceTree = "<group>"; };
 		E67E6E7E1889C1FE00D36A47 /* JBWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBWebViewController.xib; sourceTree = "<group>"; };
+		E67E6E801889CA2700D36A47 /* JBNavigationBarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBNavigationBarTitleView.h; sourceTree = "<group>"; };
+		E67E6E811889CA2700D36A47 /* JBNavigationBarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBNavigationBarTitleView.m; sourceTree = "<group>"; };
+		E67E6E821889CA2700D36A47 /* JBNavigationBarTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBNavigationBarTitleView.xib; sourceTree = "<group>"; };
 		E681E76118251954001323DB /* JBRSSLoginOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSLoginOperations.h; sourceTree = "<group>"; };
 		E681E76218251954001323DB /* JBRSSLoginOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSLoginOperations.m; sourceTree = "<group>"; };
 		E6855E5A1882009B0045A6ED /* JBRSSLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBRSSLogin.storyboard; sourceTree = "<group>"; };
@@ -199,6 +204,9 @@
 				E67E6E7B1889AE8600D36A47 /* JBWebViewController.h */,
 				E67E6E7C1889AE8600D36A47 /* JBWebViewController.m */,
 				E67E6E7E1889C1FE00D36A47 /* JBWebViewController.xib */,
+				E67E6E801889CA2700D36A47 /* JBNavigationBarTitleView.h */,
+				E67E6E811889CA2700D36A47 /* JBNavigationBarTitleView.m */,
+				E67E6E821889CA2700D36A47 /* JBNavigationBarTitleView.xib */,
 				E68EB9D617B01624006711A6 /* AppDelegate.h */,
 				E68EB9D717B01624006711A6 /* AppDelegate.m */,
 				E6FC101A17B176B000A12BED /* MainStoryboard.storyboard */,
@@ -559,6 +567,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E67E6E841889CA2700D36A47 /* JBNavigationBarTitleView.xib in Resources */,
 				E6855E5B1882009B0045A6ED /* JBRSSLogin.storyboard in Resources */,
 				E67E6E7F1889C1FE00D36A47 /* JBWebViewController.xib in Resources */,
 				E68EB9E617B01624006711A6 /* Default-568h@2x.png in Resources */,
@@ -631,6 +640,7 @@
 				E6FC101017B1748900A12BED /* JBRSSController.m in Sources */,
 				E6855E6318820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld in Sources */,
 				E6C90075186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */,
+				E67E6E831889CA2700D36A47 /* JBNavigationBarTitleView.m in Sources */,
 				E6FC101317B1749700A12BED /* JBReadLaterController.m in Sources */,
 				E6C90071186400840007449D /* JBRSSFeedSubsUnread.m in Sources */,
 				E6F08363186E3041007FEDD4 /* JBRSSFeedUnreadController.m in Sources */,

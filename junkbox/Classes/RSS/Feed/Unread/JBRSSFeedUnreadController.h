@@ -1,14 +1,16 @@
 #import "WebViewController.h"
 #import "JBRSSFeedUnreadList.h"
+#import "JBNavigationBarTitleView.h"
 
 
 #pragma mark - class
 @class JBRSSLoginOperations;
+@class JBNavigationBarTitleView;
 
 
 #pragma mark - JBRSSFeedUnreadController
 /// RSSフィード詳細
-@interface JBRSSFeedUnreadController : WebViewController <JBRSSFeedUnreadListDelegate> {
+@interface JBRSSFeedUnreadController : WebViewController <JBRSSFeedUnreadListDelegate, JBNavigationBarTitleViewDelegate> {
 }
 
 
@@ -18,6 +20,8 @@
 /// 今見ているリストindex
 @property (nonatomic, assign) NSInteger indexOfUnreadList;
 
+/// ナビゲーションバータイトル
+@property (nonatomic, strong) JBNavigationBarTitleView *titleView;
 /// 次のフィードへボタン
 @property (nonatomic, weak) IBOutlet UIButton *nextFeedButton;
 /// 前の記事へ
