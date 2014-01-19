@@ -6,6 +6,7 @@
 
 #pragma mark - class
 @class JBNavigationBarTitleView;
+@class JBSidebarMenu;
 
 
 #pragma mark - JBWebViewController
@@ -23,6 +24,8 @@
 @property (nonatomic, strong) JBBarButtonView *backButtonView;
 /// ナビゲーションバーメニューボタン
 @property (nonatomic, strong) JBBarButtonView *menuButtonView;
+/// メニュー
+@property (nonatomic, strong) JBSidebarMenu *sidebarMenu;
 /// WebView読み込みプログレス
 @property (nonatomic, strong) NJKWebViewProgress *webViewProgress;
 /// 初期URL

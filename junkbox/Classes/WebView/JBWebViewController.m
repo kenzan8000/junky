@@ -1,5 +1,6 @@
 #import "JBWebViewController.h"
 #import "JBNavigationBarTitleView.h"
+#import "JBSidebarMenu.h"
 // UIKit-Extension
 #import "UINib+UIKit.h"
 #import "UIColor+Hexadecimal.h"
@@ -18,6 +19,7 @@
 @synthesize titleView;
 @synthesize backButtonView;
 @synthesize menuButtonView;
+@synthesize sidebarMenu;
 @synthesize webViewProgress;
 @synthesize initialURL;
 
@@ -39,6 +41,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.initialURL = nil;
+    self.sidebarMenu = nil;
     self.titleView = nil;
     self.backButtonView = nil;
     self.menuButtonView = nil;
@@ -89,6 +92,8 @@
         [buttonViews[i] setTitle:buttonTitles[i]];
         [buttonViews[i] setFont:[IonIcons fontWithSize:20]];
     }
+        // メニュー
+    self.sidebarMenu = [[JBSidebarMenu alloc] initWithSidebarType:JBSidebarMenuTypeDefault];
 
     // 読み込み
     [self.webView loadRequest:[NSMutableURLRequest JBRequestWithURL:self.initialURL]];
@@ -197,6 +202,7 @@ didFailLoadWithError:error];
         [self.navigationController popViewControllerAnimated:YES];
     }
     else if (barButtonView == self.menuButtonView) {
+        [self.sidebarMenu show];
     }
 }
 
