@@ -20,6 +20,8 @@ typedef NS_ENUM(NSInteger, JBSidebarMenuType) {
 @property (nonatomic, strong) RNFrostedSidebar *sidebar;
 /// sidebarの種類
 @property (nonatomic, assign) JBSidebarMenuType type;
+/// Safari or Chrome で開く用URL
+@property (nonatomic, strong) NSURL *openingURL;
 
 
 #pragma mark - initializer

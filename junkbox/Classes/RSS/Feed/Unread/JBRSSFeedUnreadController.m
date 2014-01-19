@@ -3,6 +3,7 @@
 #import "JBRSSLoginOperations.h"
 #import "JBRSSOperationQueue.h"
 #import "JBWebViewController.h"
+#import "JBSidebarMenu.h"
 /// Connection
 #import "StatusCode.h"
 /// UIKit-Extension
@@ -26,6 +27,7 @@
 @synthesize nextButton;
 @synthesize backButtonView;
 @synthesize menuButtonView;
+@synthesize sidebarMenu;
 @synthesize loginOperation;
 
 
@@ -47,6 +49,7 @@
 {
     self.unreadList = nil;
     self.loginOperation = nil;
+    self.sidebarMenu = nil;
     self.titleView = nil;
     self.backButtonView = nil;
     self.menuButtonView = nil;
@@ -79,6 +82,7 @@
         [buttonViews[i] setTitle:buttonTitles[i]];
         [self.menuButtonView setFont:[IonIcons fontWithSize:20]];
     }
+    self.sidebarMenu = [[JBSidebarMenu alloc] initWithSidebarType:JBSidebarMenuTypeDefault];
 
     // WebView読み込み
     [self loadWebView];
@@ -195,6 +199,11 @@ didFailLoadWithError:error];
     }
     // メニュー
     else if (barButtonView == self.menuButtonView) {
+        JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
+        if (unread) {
+            [self.sidebarMenu setOpeningURL:unread.link];
+        }
+        [self.sidebarMenu show];
     }
 }
 

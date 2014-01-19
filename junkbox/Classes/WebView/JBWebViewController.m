@@ -94,6 +94,7 @@
     }
         // メニュー
     self.sidebarMenu = [[JBSidebarMenu alloc] initWithSidebarType:JBSidebarMenuTypeDefault];
+    [self.sidebarMenu setOpeningURL:self.initialURL];
 
     // 読み込み
     [self.webView loadRequest:[NSMutableURLRequest JBRequestWithURL:self.initialURL]];

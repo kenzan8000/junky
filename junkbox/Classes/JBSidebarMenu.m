@@ -12,6 +12,7 @@
 #pragma mark - synthesize
 @synthesize sidebar;
 @synthesize type;
+@synthesize openingURL;
 
 
 #pragma mark - initializer
@@ -29,6 +30,7 @@
 #pragma mark - release
 - (void)dealloc
 {
+    self.openingURL = nil;
     self.sidebar = nil;
 }
 
@@ -58,7 +60,7 @@ didDismissFromScreenAnimated:(BOOL)animatedYesOrNo
 didTapItemAtIndex:(NSUInteger)index
 {
     if (self.type == JBSidebarMenuTypeDefault) {
-        [self touchedUpInsideWithTapItemAtIndex:index];
+        [self touchedUpInsideTypeDefaultAtIndex:index];
     }
 }
 
@@ -91,7 +93,7 @@ didTapItemAtIndex:(NSUInteger)index
          ***************************** */
         images = @[
             [IonIcons imageWithIcon:icon_pin size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
-            [IonIcons imageWithIcon:icon_bookmark size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_ios7_bookmarks size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
             [IonIcons imageWithIcon:icon_social_rss size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
             [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
         ];
@@ -106,8 +108,10 @@ didTapItemAtIndex:(NSUInteger)index
  * JBSidebarMenuTypeDefaultの時、タップイベントハンドリング
  * @param index index
  */
-- (void)touchedUpInsideWithTapItemAtIndex:(NSInteger)index
+- (void)touchedUpInsideTypeDefaultAtIndex:(NSInteger)index
 {
+    [self.sidebar dismiss];
+
     switch (index) {
         case 0:// RSS PIN
             break;
@@ -116,6 +120,9 @@ didTapItemAtIndex:(NSUInteger)index
         case 2:// ADD RSS FEED
             break;
         case 3:// OPEN BROWSER
+            if ([[UIApplication sharedApplication] canOpenURL:self.openingURL]) {
+                [[UIApplication sharedApplication] openURL:self.openingURL];
+            }
             break;
        default:
             break;

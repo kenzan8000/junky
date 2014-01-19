@@ -7,6 +7,7 @@
 #pragma mark - class
 @class JBRSSLoginOperations;
 @class JBNavigationBarTitleView;
+@class JBSidebarMenu;
 
 
 #pragma mark - JBRSSFeedUnreadController
@@ -33,6 +34,9 @@
 @property (nonatomic, weak) IBOutlet UIButton *previousButton;
 /// 次の記事へ
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
+
+/// メニュー
+@property (nonatomic, strong) JBSidebarMenu *sidebarMenu;
 
 /// 再認証処理
 @property (nonatomic, strong) JBRSSLoginOperations *loginOperation;
