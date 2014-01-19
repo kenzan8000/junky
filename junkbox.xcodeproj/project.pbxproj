@@ -51,6 +51,7 @@
 		E6C90076186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6C90070186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib */; };
 		E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */; };
 		E6E4FEE0188C58E10068D929 /* JBSidebarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEDF188C58E10068D929 /* JBSidebarMenu.m */; };
+		E6E4FEE8188C64730068D929 /* JBRSSPinAddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEE5188C64730068D929 /* JBRSSPinAddOperation.m */; };
 		E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA936B17B54E6D00697604 /* UIKit+Localize.m */; };
 		E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F08351186AE5D2007FEDD4 /* JBBookmark.storyboard */; };
 		E6F0835A186AE734007FEDD4 /* JBBookmarkCatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F08357186AE734007FEDD4 /* JBBookmarkCatalogController.m */; };
@@ -148,6 +149,8 @@
 		E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SSGentleAlertView+Junkbox.m"; sourceTree = "<group>"; };
 		E6E4FEDE188C58E10068D929 /* JBSidebarMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSidebarMenu.h; sourceTree = "<group>"; };
 		E6E4FEDF188C58E10068D929 /* JBSidebarMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSidebarMenu.m; sourceTree = "<group>"; };
+		E6E4FEE4188C64730068D929 /* JBRSSPinAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinAddOperation.h; sourceTree = "<group>"; };
+		E6E4FEE5188C64730068D929 /* JBRSSPinAddOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinAddOperation.m; sourceTree = "<group>"; };
 		E6EA936A17B54E6D00697604 /* UIKit+Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Localize.h"; sourceTree = "<group>"; };
 		E6EA936B17B54E6D00697604 /* UIKit+Localize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+Localize.m"; sourceTree = "<group>"; };
 		E6EA937717B5645700697604 /* JBRSSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSConstant.h; sourceTree = "<group>"; };
@@ -395,6 +398,7 @@
 				E6FC100E17B1748900A12BED /* JBRSSController.h */,
 				E6FC100F17B1748900A12BED /* JBRSSController.m */,
 				E6EA936D17B5544800697604 /* Feed */,
+				E6E4FEE1188C64730068D929 /* Pin */,
 				E6EA937817B56A7400697604 /* Login */,
 			);
 			path = RSS;
@@ -452,6 +456,15 @@
 				E6E271B61834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m */,
 			);
 			path = SSGentleAlertView;
+			sourceTree = "<group>";
+		};
+		E6E4FEE1188C64730068D929 /* Pin */ = {
+			isa = PBXGroup;
+			children = (
+				E6E4FEE4188C64730068D929 /* JBRSSPinAddOperation.h */,
+				E6E4FEE5188C64730068D929 /* JBRSSPinAddOperation.m */,
+			);
+			path = Pin;
 			sourceTree = "<group>";
 		};
 		E6EA936D17B5544800697604 /* Feed */ = {
@@ -653,6 +666,7 @@
 			files = (
 				E68EB9E417B01624006711A6 /* AppDelegate.m in Sources */,
 				E68EB9E517B01624006711A6 /* main.m in Sources */,
+				E6E4FEE8188C64730068D929 /* JBRSSPinAddOperation.m in Sources */,
 				E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */,
 				E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */,
 				E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */,

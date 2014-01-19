@@ -94,7 +94,8 @@
     }
         // メニュー
     self.sidebarMenu = [[JBSidebarMenu alloc] initWithSidebarType:JBSidebarMenuTypeDefault];
-    [self.sidebarMenu setOpeningURL:self.initialURL];
+    [self.sidebarMenu setWebURL:self.initialURL];
+    [self.sidebarMenu setWebTitle:[self.initialURL absoluteString]];
 
     // 読み込み
     [self.webView loadRequest:[NSMutableURLRequest JBRequestWithURL:self.initialURL]];
@@ -203,6 +204,7 @@ didFailLoadWithError:error];
         [self.navigationController popViewControllerAnimated:YES];
     }
     else if (barButtonView == self.menuButtonView) {
+        [self.sidebarMenu setWebTitle:[self.webView stringByEvaluatingJavaScriptFromString:@"document.title"]];
         [self.sidebarMenu show];
     }
 }

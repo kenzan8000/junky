@@ -1,7 +1,10 @@
 #import "JBSidebarMenu.h"
+#import "JBRSSOperationQueue.h"
+#import "JBRSSPinAddOperation.h"
 /// UIKit-Extension
 #import "UIColor+Hexadecimal.h"
 /// Pods
+#import "MTStatusBarOverlay.h"
 #import "IonIcons.h"
 
 
@@ -12,7 +15,8 @@
 #pragma mark - synthesize
 @synthesize sidebar;
 @synthesize type;
-@synthesize openingURL;
+@synthesize webURL;
+@synthesize webTitle;
 
 
 #pragma mark - initializer
@@ -30,7 +34,8 @@
 #pragma mark - release
 - (void)dealloc
 {
-    self.openingURL = nil;
+    self.webURL = nil;
+    self.webTitle = nil;
     self.sidebar = nil;
 }
 
@@ -113,20 +118,70 @@ didTapItemAtIndex:(NSUInteger)index
     [self.sidebar dismiss];
 
     switch (index) {
-        case 0:// RSS PIN
+        case 0:// LivedoorReader Adding PIN
+            [self addPinToLocal];
+            [self addPinToWebAPI];
             break;
         case 1:// SOCIAL BOOKMARK
             break;
         case 2:// ADD RSS FEED
             break;
         case 3:// OPEN BROWSER
-            if ([[UIApplication sharedApplication] canOpenURL:self.openingURL]) {
-                [[UIApplication sharedApplication] openURL:self.openingURL];
+            if ([[UIApplication sharedApplication] canOpenURL:self.webURL]) {
+                [[UIApplication sharedApplication] openURL:self.webURL];
             }
             break;
        default:
             break;
     }
+}
+
+
+#pragma mark - LivedoorReader PIN
+/**
+ * PIN追加(Local)
+ */
+- (void)addPinToLocal
+{
+}
+
+/**
+ * PIN追加(WebAPI)
+ */
+- (void)addPinToWebAPI
+{
+    // ステータスバー
+    dispatch_async(dispatch_get_main_queue(), ^ () {
+        [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Adding Pin...", @"LivedoorReaderのPinを追加")
+                                                animated:YES];
+    });
+
+    // Pin追加
+    JBRSSPinAddOperation *operation = [[JBRSSPinAddOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error)
+        {
+            // ステータスバー
+            dispatch_async(dispatch_get_main_queue(), ^ () {
+                [[MTStatusBarOverlay sharedInstance] hide];
+            });
+
+            // 成功
+            if (error == nil) {
+                return;
+            }
+
+            // 失敗
+                // ステータスバー
+            dispatch_async(dispatch_get_main_queue(), ^ () {
+                [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Adding Pin Failed", @"失敗")
+                                                                       duration:1.5f
+                                                                       animated:YES];
+            });
+        }
+                                                                           pinTitle:self.webTitle
+                                                                            pinLink:[self.webURL absoluteString]
+    ];
+    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
 

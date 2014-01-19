@@ -27,11 +27,19 @@
 
 
 /**
- *
+ * フィードの記事一覧を取得
  * @param subscribeId フィードのsubscribeId
  * @return request
  */
 + (NSMutableURLRequest *)JBRSSUnreadRequestWithSubscribeId:(NSString *)subscribeId;
+
+/*
+ * LivedoorのPinにリンクを追加
+ * @param pinTitle pinTitleの名前でpinに追加される
+ * @param pinLink pinに追加されるURL
+ */
++ (NSMutableURLRequest *)JBRSSAddPinRequestWithTitle:(NSString *)title
+                                                link:(NSString *)link;
 
 
 @end

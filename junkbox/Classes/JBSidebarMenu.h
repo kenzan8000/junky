@@ -20,8 +20,10 @@ typedef NS_ENUM(NSInteger, JBSidebarMenuType) {
 @property (nonatomic, strong) RNFrostedSidebar *sidebar;
 /// sidebarの種類
 @property (nonatomic, assign) JBSidebarMenuType type;
-/// Safari or Chrome で開く用URL
-@property (nonatomic, strong) NSURL *openingURL;
+/// LivedoorReader PINに追加する、Safari or Chrome で開く用URL
+@property (nonatomic, strong) NSURL *webURL;
+/// LivedoorReader PINに追加する、Safari or Chrome で開く用ページタイトル
+@property (nonatomic, strong) NSString *webTitle;
 
 
 #pragma mark - initializer

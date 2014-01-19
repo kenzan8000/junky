@@ -201,7 +201,8 @@ didFailLoadWithError:error];
     else if (barButtonView == self.menuButtonView) {
         JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
         if (unread) {
-            [self.sidebarMenu setOpeningURL:unread.link];
+            [self.sidebarMenu setWebTitle:unread.title];
+            [self.sidebarMenu setWebURL:unread.link];
         }
         [self.sidebarMenu show];
     }

@@ -3,6 +3,7 @@
 /// NSFoundation-Extension
 #import "NSURLRequest+Junkbox.h"
 #import "NSHTTPCookieStorage+Cookie.h"
+#import "NSString+PercentEncoding.h"
 
 
 #pragma mark - NSURLRequest+JBRSS
@@ -47,6 +48,16 @@
 {
     NSString *URLString = [NSString stringWithFormat:@"%@%@",
         [NSString stringWithFormat:kAPILivedoorReaderUnread, subscribeId],
+        [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
+    ];
+    return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
+}
+
++ (NSMutableURLRequest *)JBRSSAddPinRequestWithTitle:(NSString *)title
+                                                link:(NSString *)link
+{
+    NSString *URLString = [NSString stringWithFormat:@"%@%@",
+        [NSString stringWithFormat:kAPILivedoorReaderPinAdd, [title encodeURIComponentString], [link encodeURIComponentString]],
         [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
     ];
     return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
