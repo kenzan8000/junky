@@ -7,10 +7,12 @@
 /// Pods
 #import "Reachability.h"
 #import "MTStatusBarOverlay.h"
+#import "IonIcons.h"
 /// Pods-Extension
 #import "SSGentleAlertView+Junkbox.h"
 /// UIKit-Extension
 #import "UINib+UIKit.h"
+#import "UIColor+Hexadecimal.h"
 
 
 #pragma mark - JBRSSLoginController
@@ -56,7 +58,16 @@
         // 閉じるボタン
     JBBarButtonView *closeButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
     [closeButtonView setDelegate:self];
-    [closeButtonView setTitle:NSLocalizedString(@"Close", @"モーダルを閉じる")];
+//    [closeButtonView setTitle:NSLocalizedString(@"Close", @"モーダルを閉じる")];
+/*
+    [closeButtonView setTitle:icon_close_round];
+    [closeButtonView setFont:[IonIcons fontWithSize:20]];
+*/
+    [closeButtonView setTitle:NSLocalizedString(@"Close", @"モーダルを閉じる")
+                        image:[IonIcons imageWithIcon:icon_close_round
+                                                 size:16
+                                                color:[UIColor colorWithHexadecimal:0x0080ffff]]
+                     forState:UIControlStateNormal];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:closeButtonView]]
                                       animated:NO];
 

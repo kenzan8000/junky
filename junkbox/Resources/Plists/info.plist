@@ -34,6 +34,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>Fonts provided by application</key>
+	<array>
+		<string>ionicons.ttf</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ionicons.ttf</string>

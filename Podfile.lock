@@ -1,9 +1,9 @@
 PODS:
   - AFNetworking (1.3.3)
-  - DejalActivityView (1.1)
   - HatenaBookmarkSDK (1.1.1):
     - AFNetworking (~> 1.0)
     - SFHFKeychainUtils
+  - ionicons (1.0)
   - ISHTTPOperation (1.1.1)
   - MTStatusBarOverlay (0.9.1)
   - NJKWebViewProgress (0.2):
@@ -18,8 +18,8 @@ PODS:
   - SSGentleAlertView (1.0.1)
 
 DEPENDENCIES:
-  - DejalActivityView
   - HatenaBookmarkSDK (from `https://github.com/hatena/Hatena-Bookmark-iOS-SDK.git`)
+  - ionicons
   - ISHTTPOperation (~> 1.1.0)
   - MTStatusBarOverlay
   - NJKWebViewProgress
@@ -34,8 +34,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
-  DejalActivityView: 4cb7aacb4334003203f297d6cc7dcc233a7f3d86
   HatenaBookmarkSDK: 2447855afdf5e36131ca7a4f1c57a5e52983664c
+  ionicons: 4883685aaf933bd542cc43f739a10759a1f62899
   ISHTTPOperation: 6268956d564f3cab0584838e996f2f4520d903b2
   MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
   NJKWebViewProgress: fd46c9489d799d97f3b09210886bf83884f6c725

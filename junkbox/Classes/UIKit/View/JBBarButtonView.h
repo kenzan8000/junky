@@ -25,8 +25,12 @@
 
 
 #pragma mark - property
-/// ボタン
-@property (nonatomic, strong) IBOutlet UIButton *button;
+/// ラベルボタン
+@property (nonatomic, weak) IBOutlet UIButton *labelButton;
+/// 画像ボタン
+@property (nonatomic, weak) IBOutlet UIButton *imageButton;
+/// ラベル&画像ボタン
+@property (nonatomic, weak) IBOutlet UIButton *labelAndImageButton;
 
 /// Delegate ボタン押下
 @property (nonatomic, weak) id<JBBarButtonViewDelegate> delegate;
@@ -46,6 +50,42 @@
  * @param title title
  */
 - (void)setTitle:(NSString *)title;
+
+/**
+ * フォントセット
+ * @param font font
+ */
+- (void)setFont:(UIFont *)font;
+
+/**
+ * タイトル、画像をセット
+ * @param title title
+ * @param image image
+ * @param state UIControlState
+ */
+- (void)setTitle:(NSString *)title
+           image:(UIImage *)image
+        forState:(UIControlState)state;
+
+/**
+ * タイトル、フォント、画像をセット
+ * @param title title
+ * @param font font
+ * @param image image
+ * @param state UIControlState
+ */
+- (void)setTitle:(NSString *)title
+            font:(UIFont *)font
+           image:(UIImage *)image
+        forState:(UIControlState)state;
+
+/**
+ * 画像セット
+ * @param image image
+ * @param state UIControlState
+ */
+- (void)setImage:(UIImage *)image
+        forState:(UIControlState)state;
 
 
 @end

@@ -32,17 +32,6 @@
 - (void)loadView
 {
     [super loadView];
-
-    // ログインボタン
-    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [loginButton setFrame:kDefaultNavigationItemFrame];
-    [loginButton setTitle:NSLocalizedString(@"Login", @"ログインボタンのタイトル")
-                 forState:UIControlStateNormal];
-    [loginButton addTarget:self
-                    action:@selector(touchedUpInsideWithLoginButton:)
-          forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:loginButton]]
-                                      animated:NO];
 }
 
 - (void)viewDidLoad

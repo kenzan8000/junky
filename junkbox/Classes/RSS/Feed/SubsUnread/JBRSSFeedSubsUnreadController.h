@@ -23,6 +23,8 @@
 @property (nonatomic, assign) NSInteger indexOfselectCell;
 /// ログインボタン
 @property (nonatomic, strong) JBBarButtonView *loginButtonView;
+/// メニューボタン
+@property (nonatomic, strong) JBBarButtonView *menuButtonView;
 
 /// 再認証処理
 @property (nonatomic, strong) JBRSSLoginOperations *loginOperation;

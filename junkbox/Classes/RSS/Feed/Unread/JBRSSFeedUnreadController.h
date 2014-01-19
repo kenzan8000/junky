@@ -1,6 +1,7 @@
 #import "WebViewController.h"
 #import "JBRSSFeedUnreadList.h"
 #import "JBNavigationBarTitleView.h"
+#import "JBBarButtonView.h"
 
 
 #pragma mark - class
@@ -10,7 +11,7 @@
 
 #pragma mark - JBRSSFeedUnreadController
 /// RSSフィード詳細
-@interface JBRSSFeedUnreadController : WebViewController <JBRSSFeedUnreadListDelegate, JBNavigationBarTitleViewDelegate> {
+@interface JBRSSFeedUnreadController : WebViewController <JBRSSFeedUnreadListDelegate, JBNavigationBarTitleViewDelegate, JBBarButtonViewDelegate> {
 }
 
 
@@ -22,6 +23,10 @@
 
 /// ナビゲーションバータイトル
 @property (nonatomic, strong) JBNavigationBarTitleView *titleView;
+/// ナビゲーションバー前の画面へ戻るボタン
+@property (nonatomic, strong) JBBarButtonView *backButtonView;
+/// ナビゲーションバーメニューボタン
+@property (nonatomic, strong) JBBarButtonView *menuButtonView;
 /// 次のフィードへボタン
 @property (nonatomic, weak) IBOutlet UIButton *nextFeedButton;
 /// 前の記事へ

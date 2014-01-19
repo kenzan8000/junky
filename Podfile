@@ -8,8 +8,9 @@ pod 'NLCoreData'
 # Social Bookmark
 pod 'HatenaBookmarkSDK', :git => 'https://github.com/hatena/Hatena-Bookmark-iOS-SDK.git'
 # User Interface
-pod 'DejalActivityView'
 pod 'MTStatusBarOverlay'
 pod 'NJKWebViewProgress'
 pod 'RNFrostedSidebar', '~> 0.2.0'
 pod 'SSGentleAlertView'
+# Font
+pod 'ionicons'

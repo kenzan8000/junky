@@ -15,10 +15,6 @@
 #define kStoryboardSeguePushRSSFeedUnreadController @"pushJBRSSFeedUnreadController"
 
 
-#pragma mark - UI
-#define kDefaultNavigationItemFrame { {0, 0,}, {64, 44}, }
-
-
 #pragma mark - Notification
 /// RSS Reader ログイン開始
 #define kNotificationRSSLoginStart                  @"JBNotificationRSSLoginStart"
@@ -30,4 +26,3 @@
 #define kNotificationRSSLoginInvalid                @"JBNotificationRSSLoginInvalid"
 /// WebView読み込み完了
 #define kNotificationWebViewProgressDidFinished     @"JBNotificationWebViewProgressDidFinished"
-

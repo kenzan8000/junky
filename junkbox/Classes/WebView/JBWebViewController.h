@@ -1,4 +1,5 @@
 #import "WebViewController.h"
+#import "JBBarButtonView.h"
 /// Pods
 #import "NJKWebViewProgress.h"
 
@@ -9,7 +10,7 @@
 
 #pragma mark - JBWebViewController
 /// 共通のWebView
-@interface JBWebViewController : WebViewController <NJKWebViewProgressDelegate> {
+@interface JBWebViewController : WebViewController <NJKWebViewProgressDelegate, JBBarButtonViewDelegate> {
 }
 
 
@@ -18,11 +19,14 @@
 @property (nonatomic, weak) IBOutlet UIProgressView *webViewProgressView;
 /// ナビゲーションバータイトル
 @property (nonatomic, strong) JBNavigationBarTitleView *titleView;
-/// 初期URL
-@property (nonatomic, strong) NSURL *initialURL;
+/// ナビゲーションバー戻るボタン
+@property (nonatomic, strong) JBBarButtonView *backButtonView;
+/// ナビゲーションバーメニューボタン
+@property (nonatomic, strong) JBBarButtonView *menuButtonView;
 /// WebView読み込みプログレス
 @property (nonatomic, strong) NJKWebViewProgress *webViewProgress;
-
+/// 初期URL
+@property (nonatomic, strong) NSURL *initialURL;
 
 #pragma mark - event listener
 

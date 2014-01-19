@@ -2,8 +2,11 @@
 #import "JBNavigationBarTitleView.h"
 // UIKit-Extension
 #import "UINib+UIKit.h"
+#import "UIColor+Hexadecimal.h"
 // NSFoundation-Extension
 #import "NSURLRequest+Junkbox.h"
+// Pods
+#import "IonIcons.h"
 
 
 #pragma mark - JBWebViewController
@@ -13,8 +16,10 @@
 #pragma mark - synthesize
 @synthesize webViewProgressView;
 @synthesize titleView;
-@synthesize initialURL;
+@synthesize backButtonView;
+@synthesize menuButtonView;
 @synthesize webViewProgress;
+@synthesize initialURL;
 
 
 #pragma mark - initializer
@@ -35,6 +40,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.initialURL = nil;
     self.titleView = nil;
+    self.backButtonView = nil;
+    self.menuButtonView = nil;
 }
 
 
@@ -63,9 +70,25 @@
     ];
 
     // ナビゲーションバー
+        // タイトル
     self.titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
     [self.titleView setTitle:[self.initialURL absoluteString]];
     self.navigationItem.titleView = self.titleView;
+        // 戻るボタン
+    self.backButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
+    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
+                                      animated:NO];
+        // メニューボタン
+    self.menuButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.menuButtonView]]
+                                       animated:NO];
+    NSArray *buttonViews = @[self.backButtonView, self.menuButtonView];
+    NSArray *buttonTitles = @[icon_chevron_left, icon_navicon_round];
+    for (NSInteger i = 0; i < buttonViews.count; i++) {
+        [buttonViews[i] setDelegate:self];
+        [buttonViews[i] setTitle:buttonTitles[i]];
+        [buttonViews[i] setFont:[IonIcons fontWithSize:20]];
+    }
 
     // 読み込み
     [self.webView loadRequest:[NSMutableURLRequest JBRequestWithURL:self.initialURL]];
@@ -159,6 +182,21 @@ didFailLoadWithError:error];
                                                                 object:nil
                                                               userInfo:@{@"initialURL":weakSelf.initialURL}];
         });
+    }
+}
+
+
+#pragma mark - JBBarButtonViewDelegate
+/**
+ * ボタン押下
+ * @param barButtonView barButtonView
+ */
+- (void)touchedUpInsideButtonWithBarButtonView:(JBBarButtonView *)barButtonView
+{
+    if (barButtonView == self.backButtonView) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else if (barButtonView == self.menuButtonView) {
     }
 }
 

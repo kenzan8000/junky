@@ -11,7 +11,9 @@
 #import "StatusCode.h"
 /// Pods
 #import "MTStatusBarOverlay.h"
+#import "IonIcons.h"
 /// UIKit-Extension
+#import "UIColor+Hexadecimal.h"
 #import "UIStoryboard+UIKit.h"
 #import "UINib+UIKit.h"
 
@@ -24,6 +26,8 @@
 @synthesize subsUnreadList;
 @synthesize unreadLists;
 @synthesize indexOfselectCell;
+@synthesize loginButtonView;
+@synthesize menuButtonView;
 @synthesize loginOperation;
 
 
@@ -47,6 +51,7 @@
     self.unreadLists = nil;
     self.subsUnreadList = nil;
     self.loginButtonView = nil;
+    self.menuButtonView = nil;
 }
 
 
@@ -72,9 +77,21 @@
         // ログインボタン
     self.loginButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
     [self.loginButtonView setDelegate:self];
-    [self.loginButtonView setTitle:NSLocalizedString(@"Login", @"ログインボタンのタイトル")];
+//    [self.loginButtonView setTitle:NSLocalizedString(@"Login", @"ログインボタン")];
+    [self.loginButtonView setTitle:NSLocalizedString(@"Login", @"ログインボタン")
+                             image:[IonIcons imageWithIcon:icon_log_in
+                                                      size:20
+                                                     color:[UIColor colorWithHexadecimal:0x0080ffff]]
+                           forState:UIControlStateNormal];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
                                       animated:NO];
+        // メニューボタン
+    self.menuButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
+    [self.menuButtonView setDelegate:self];
+    [self.menuButtonView setTitle:icon_navicon_round];
+    [self.menuButtonView setFont:[IonIcons fontWithSize:20]];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.menuButtonView]]
+                                       animated:NO];
 
     // 前回の起動で読み込み完了していたデータを読み込み
     [self.subsUnreadList loadFeedFromLocal];
@@ -279,10 +296,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)touchedUpInsideButtonWithBarButtonView:(JBBarButtonView *)barButtonView
 {
-    UINavigationController *vc = [UINavigationController new];
-    [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
-    [self presentModalViewController:vc
-                            animated:YES];
+    // ログイン
+    if (barButtonView == self.loginButtonView) {
+        UINavigationController *vc = [UINavigationController new];
+        [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
+        [self presentModalViewController:vc
+                                animated:YES];
+    }
+    // メニュー
+    else if (barButtonView == self.menuButtonView) {
+    }
 }
 
 

@@ -10,6 +10,7 @@
 #import "UINib+UIKit.h"
 /// Pods
 #import "MTStatusBarOverlay.h"
+#import "IonIcons.h"
 
 
 #pragma mark - JBRSSFeedUnreadController
@@ -23,6 +24,8 @@
 @synthesize nextFeedButton;
 @synthesize previousButton;
 @synthesize nextButton;
+@synthesize backButtonView;
+@synthesize menuButtonView;
 @synthesize loginOperation;
 
 
@@ -45,6 +48,8 @@
     self.unreadList = nil;
     self.loginOperation = nil;
     self.titleView = nil;
+    self.backButtonView = nil;
+    self.menuButtonView = nil;
 }
 
 
@@ -53,14 +58,32 @@
 {
     [super loadView];
 
-    //
+    // ナビゲーションバー
+        // タイトル
     self.titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
     self.titleView.delegate = self;
     [self.titleView useButton];
     self.navigationItem.titleView = self.titleView;
-    //
+        // 戻る
+    self.backButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
+    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
+                                      animated:NO];
+        // メニューボタン
+    self.menuButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.menuButtonView]]
+                                       animated:NO];
+    NSArray *buttonViews = @[self.backButtonView, self.menuButtonView];
+    NSArray *buttonTitles = @[icon_chevron_left, icon_navicon_round];
+    for (NSInteger i = 0; i < buttonViews.count; i++) {
+        [buttonViews[i] setDelegate:self];
+        [buttonViews[i] setTitle:buttonTitles[i]];
+        [self.menuButtonView setFont:[IonIcons fontWithSize:20]];
+    }
+
+    // WebView読み込み
     [self loadWebView];
-    //
+
+    // 画面下のバーのレイアウト
     [self designPreviousAndNextButton];
 }
 
@@ -155,6 +178,23 @@ didFailLoadWithError:error];
     JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
     if (unread) {
         [self openURL:unread.link];
+    }
+}
+
+
+#pragma mark - JBBarButtonViewDelegate
+/**
+ * ボタン押下
+ * @param barButtonView barButtonView
+ */
+- (void)touchedUpInsideButtonWithBarButtonView:(JBBarButtonView *)barButtonView
+{
+    // ログイン
+    if (barButtonView == self.backButtonView) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    // メニュー
+    else if (barButtonView == self.menuButtonView) {
     }
 }
 
