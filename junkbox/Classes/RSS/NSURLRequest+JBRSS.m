@@ -95,7 +95,13 @@
     NSString *sessions = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderSession];
     if (sessions == nil) { return; }
 
-    NSString *cookieString = [NSString stringWithFormat:@"%@", sessions];
+    NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSMutableString *cookieString = [NSMutableString stringWithCapacity:0];
+    for (NSHTTPCookie* cookie in [storage cookies]) {
+        [cookieString appendFormat:@"%@=%@;", [cookie name], [cookie value]];
+    }
+    [cookieString appendString:sessions];
+
     [self setValue:cookieString
 forHTTPHeaderField:@"Cookie"];
 }

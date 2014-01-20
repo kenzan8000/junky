@@ -1,10 +1,11 @@
 #import "JBRSSConstant.h"
 #import "JBRSSPinAddOperation.h"
 #import "JBRSSOperationQueue.h"
+// NSFoundation-Extension
 #import "NSURLRequest+JBRSS.h"
-/// Connection
+// Connection
 #import "StatusCode.h"
-/// Pods
+// Pods
 #import "Reachability.h"
 
 
@@ -30,7 +31,6 @@
                                                          code:subsUnreadErrorCode
                                                      userInfo:@{}];
         }
-
         h(response, object, subsUnreadError);
     };
 

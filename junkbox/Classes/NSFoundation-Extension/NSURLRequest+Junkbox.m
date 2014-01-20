@@ -11,7 +11,7 @@
 + (NSMutableURLRequest *)JBRequestWithURL:(NSURL *)url
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setCookie];
+    [request setCookies];
     return request;
 }
 
@@ -47,7 +47,7 @@
 
 
 #pragma mark - private api
-- (void)setCookie
+- (void)setCookies
 {
     NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSMutableString *cookieString = [NSMutableString stringWithCapacity:0];
