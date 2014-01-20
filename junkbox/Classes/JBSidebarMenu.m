@@ -1,6 +1,9 @@
 #import "JBSidebarMenu.h"
 #import "JBRSSOperationQueue.h"
 #import "JBRSSPinAddOperation.h"
+#import "JBRSSFeedDiscoverOperation.h"
+/// NSFoundation-Extension
+#import "NSData+JSON.h"
 /// UIKit-Extension
 #import "UIColor+Hexadecimal.h"
 /// Pods
@@ -125,6 +128,7 @@ didTapItemAtIndex:(NSUInteger)index
         case 1:// SOCIAL BOOKMARK
             break;
         case 2:// ADD RSS FEED
+            [self discoverFeed];
             break;
         case 3:// OPEN BROWSER
             if ([[UIApplication sharedApplication] canOpenURL:self.webURL]) {
@@ -165,7 +169,9 @@ didTapItemAtIndex:(NSUInteger)index
             });
 
             // 成功
-            if (error == nil) {
+            NSDictionary *JSON = [object JSON];
+            JBLog(@"%@", JSON);
+            if (error == nil && [[JSON allKeys] containsObject:@"isSuccess"] && [JSON[@"isSuccess"] boolValue]) {
                 return;
             }
 
@@ -179,6 +185,47 @@ didTapItemAtIndex:(NSUInteger)index
         }
                                                                            pinTitle:self.webTitle
                                                                             pinLink:[self.webURL absoluteString]
+    ];
+    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
+}
+
+
+#pragma mark - LivedoorReader Feed Discover and Add
+/**
+ * URLからRSS Feedを探す
+ */
+- (void)discoverFeed
+{
+    // ステータスバー
+    dispatch_async(dispatch_get_main_queue(), ^ () {
+        [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Discovering RSS Feed...", @"URLからRSS Feedを探しています...")
+                                                animated:YES];
+    });
+
+    JBRSSFeedDiscoverOperation *operation = [[JBRSSFeedDiscoverOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error)
+        {
+            // ステータスバー
+            dispatch_async(dispatch_get_main_queue(), ^ () {
+                [[MTStatusBarOverlay sharedInstance] hide];
+            });
+
+            // 成功
+            NSDictionary *JSON = [object JSON];
+            JBLog(@"%@", JSON);
+            if (error == nil) {
+                return;
+            }
+
+            // 失敗
+                // ステータスバー
+            dispatch_async(dispatch_get_main_queue(), ^ () {
+                [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Discovering RSS Feed Failed", @"RSS Feedの探索に失敗しました")
+                                                                       duration:1.5f
+                                                                       animated:YES];
+            });
+        }
+                                                                                            URL:self.webURL
     ];
     [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
     [[JBRSSOperationQueue defaultQueue] addOperation:operation];

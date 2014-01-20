@@ -4,7 +4,6 @@
 #import "JBRSSFeedSubsUnreadTableViewCell.h"
 #import "JBRSSFeedSubsUnread.h"
 #import "JBRSSOperationQueue.h"
-#import "JBRSSLoginOperations.h"
 #import "JBRSSFeedUnreadLists.h"
 #import "JBNavigationBarTitleView.h"
 /// Connection
@@ -28,7 +27,6 @@
 @synthesize indexOfselectCell;
 @synthesize loginButtonView;
 @synthesize menuButtonView;
-@synthesize loginOperation;
 
 
 #pragma mark - initializer
@@ -47,7 +45,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.loginOperation = nil;
     self.unreadLists = nil;
     self.subsUnreadList = nil;
     self.loginButtonView = nil;
@@ -229,9 +226,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     NSString *message = nil;
     switch (error.code) {
         case http::statusCode::UNAUTHORIZED: // 401
-            // 再度ログイン後、未読フィード一覧ロード
-            [self login];
-            [self.subsUnreadList loadFeedFromWebAPI];
             break;
         case http::NOT_REACHABLE:
             message = NSLocalizedString(@"Cannot access the Network.", @"通信できない");
@@ -280,8 +274,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     switch (error.code) {
         case http::statusCode::UNAUTHORIZED: // 401
             // 再度ログイン後、フィードのリストをロード
-            [self login];
-            [list loadFeedFromWebAPI];
             break;
         default:
             break;
@@ -337,26 +329,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the unread feed list...", @"未読フィード一覧読み込み")
                                                 animated:YES];
     });
-}
-
-/**
- * 認証切れの場合の再ログイン
- */
-- (void)login
-{
-    __weak __typeof(self) weakSelf = self;
-    JBRSSLoginOperations *operation = [[JBRSSLoginOperations alloc] initReauthenticationWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-        // ログインに失敗した場合、他のRSS関連の通信をすべて止める
-        if (error) {
-            [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
-            // ステータスバー
-            [[MTStatusBarOverlay sharedInstance] hide];
-        }
-        [weakSelf setLoginOperation:nil];
-    }];
-    self.loginOperation = operation;
-    [operation start];
-
 }
 
 

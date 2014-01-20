@@ -5,7 +5,6 @@
 
 
 #pragma mark - class
-@class JBRSSLoginOperations;
 @class JBNavigationBarTitleView;
 @class JBSidebarMenu;
 
@@ -37,9 +36,6 @@
 
 /// メニュー
 @property (nonatomic, strong) JBSidebarMenu *sidebarMenu;
-
-/// 再認証処理
-@property (nonatomic, strong) JBRSSLoginOperations *loginOperation;
 
 
 #pragma mark - event listener

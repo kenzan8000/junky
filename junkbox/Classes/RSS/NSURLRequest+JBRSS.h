@@ -25,13 +25,19 @@
  */
 + (NSMutableURLRequest *)JBRSSSubsUnreadRequest;
 
-
 /**
  * フィードの記事一覧を取得
  * @param subscribeId フィードのsubscribeId
  * @return request
  */
 + (NSMutableURLRequest *)JBRSSUnreadRequestWithSubscribeId:(NSString *)subscribeId;
+
+/**
+ * URLからフィードを探す
+ * @param URL URL
+ * @return request
+ */
++ (NSMutableURLRequest *)JBRSSFeedDiscoverRequestWithURL:(NSURL *)URL;
 
 /*
  * LivedoorのPinにリンクを追加

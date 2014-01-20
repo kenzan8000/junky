@@ -1,6 +1,5 @@
 #import "JBRSSFeedUnreadController.h"
 #import "JBRSSFeedUnread.h"
-#import "JBRSSLoginOperations.h"
 #import "JBRSSOperationQueue.h"
 #import "JBWebViewController.h"
 #import "JBSidebarMenu.h"
@@ -28,7 +27,6 @@
 @synthesize backButtonView;
 @synthesize menuButtonView;
 @synthesize sidebarMenu;
-@synthesize loginOperation;
 
 
 #pragma mark - initializer
@@ -48,7 +46,6 @@
 - (void)dealloc
 {
     self.unreadList = nil;
-    self.loginOperation = nil;
     self.sidebarMenu = nil;
     self.titleView = nil;
     self.backButtonView = nil;
@@ -162,9 +159,6 @@ didFailLoadWithError:error];
     // エラー処理
     switch (error.code) {
         case http::statusCode::UNAUTHORIZED: // 401
-            // 再度ログイン後、フィードのリストをロード
-            [self login];
-            [self.unreadList loadFeedFromWebAPI];
             break;
         default:
             break;
@@ -244,25 +238,6 @@ didFailLoadWithError:error];
 
 
 #pragma mark - private api
-/**
- * 認証切れの場合の再ログイン
- */
-- (void)login
-{
-    __weak __typeof(self) weakSelf = self;
-    JBRSSLoginOperations *operation = [[JBRSSLoginOperations alloc] initReauthenticationWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-        // ログインに失敗した場合、他のRSS関連の通信をすべて止める
-        if (error) {
-            [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
-            // ステータスバー
-            [[MTStatusBarOverlay sharedInstance] hide];
-        }
-        [weakSelf setLoginOperation:nil];
-    }];
-    self.loginOperation = operation;
-    [operation start];
-}
-
 /**
  * 次の記事へ、前の記事へボタンデザイン
  */

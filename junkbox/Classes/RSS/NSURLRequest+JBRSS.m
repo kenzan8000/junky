@@ -53,6 +53,15 @@
     return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
 }
 
++ (NSMutableURLRequest *)JBRSSFeedDiscoverRequestWithURL:(NSURL *)URL
+{
+    NSString *URLString = [NSString stringWithFormat:@"%@%@",
+        [NSString stringWithFormat:kAPILivedoorReaderFeedDiscover, [[URL absoluteString] encodeURIComponentString]],
+        [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
+    ];
+    return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
+}
+
 + (NSMutableURLRequest *)JBRSSAddPinRequestWithTitle:(NSString *)title
                                                 link:(NSString *)link
 {
@@ -92,15 +101,16 @@
  */
 - (void)setSessions
 {
-    NSString *sessions = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderSession];
-    if (sessions == nil) { return; }
-
     NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSMutableString *cookieString = [NSMutableString stringWithCapacity:0];
     for (NSHTTPCookie* cookie in [storage cookies]) {
         [cookieString appendFormat:@"%@=%@;", [cookie name], [cookie value]];
     }
-    [cookieString appendString:sessions];
+
+    NSString *sessions = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderSession];
+    if (sessions) {
+        [cookieString appendString:sessions];
+    }
 
     [self setValue:cookieString
 forHTTPHeaderField:@"Cookie"];

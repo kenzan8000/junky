@@ -4,10 +4,6 @@
 #import "JBBarButtonView.h"
 
 
-#pragma mark - class
-@class JBRSSLoginOperations;
-
-
 #pragma mark - JBRSSFeedSubsUnreadController
 /// RSSフィード未読一覧
 @interface JBRSSFeedSubsUnreadController : TableViewController <JBRSSFeedSubsUnreadListDelegate, JBRSSFeedUnreadListsDelegate, JBBarButtonViewDelegate> {
@@ -25,9 +21,6 @@
 @property (nonatomic, strong) JBBarButtonView *loginButtonView;
 /// メニューボタン
 @property (nonatomic, strong) JBBarButtonView *menuButtonView;
-
-/// 再認証処理
-@property (nonatomic, strong) JBRSSLoginOperations *loginOperation;
 
 
 #pragma mark - api
