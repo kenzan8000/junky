@@ -78,20 +78,17 @@
     [self.titleView setTitle:[self.initialURL absoluteString]];
     self.navigationItem.titleView = self.titleView;
         // 戻るボタン
-    self.backButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
+    self.backButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                  title:NSLocalizedString(@"Back", @"戻る")
+                                                                   icon:icon_chevron_left];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
                                       animated:NO];
         // メニューボタン
-    self.menuButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
+    self.menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                  title:NSLocalizedString(@"Menu", @"メニューボタン")
+                                                                   icon:icon_navicon_round];
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.menuButtonView]]
                                        animated:NO];
-    NSArray *buttonViews = @[self.backButtonView, self.menuButtonView];
-    NSArray *buttonTitles = @[icon_chevron_left, icon_navicon_round];
-    for (NSInteger i = 0; i < buttonViews.count; i++) {
-        [buttonViews[i] setDelegate:self];
-        [buttonViews[i] setTitle:buttonTitles[i]];
-        [buttonViews[i] setFont:[IonIcons fontWithSize:20]];
-    }
         // メニュー
     self.sidebarMenu = [[JBSidebarMenu alloc] initWithSidebarType:JBSidebarMenuTypeDefault];
     [self.sidebarMenu setWebURL:self.initialURL];

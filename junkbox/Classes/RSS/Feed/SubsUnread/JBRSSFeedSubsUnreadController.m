@@ -72,21 +72,15 @@
     [titleView setTitle:NSLocalizedString(@"Feed", @"フィードタブ")];
     self.navigationItem.titleView = titleView;
         // ログインボタン
-    self.loginButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
-    [self.loginButtonView setDelegate:self];
-//    [self.loginButtonView setTitle:NSLocalizedString(@"Login", @"ログインボタン")];
-    [self.loginButtonView setTitle:NSLocalizedString(@"Login", @"ログインボタン")
-                             image:[IonIcons imageWithIcon:icon_log_in
-                                                      size:20
-                                                     color:[UIColor colorWithHexadecimal:0x0080ffff]]
-                           forState:UIControlStateNormal];
+    self.loginButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                   title:NSLocalizedString(@"Login", @"ログインボタン")
+                                                                    icon:icon_log_in];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
                                       animated:NO];
         // メニューボタン
-    self.menuButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
-    [self.menuButtonView setDelegate:self];
-    [self.menuButtonView setTitle:icon_navicon_round];
-    [self.menuButtonView setFont:[IonIcons fontWithSize:20]];
+    self.menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                  title:NSLocalizedString(@"Menu", @"メニューボタン")
+                                                                   icon:icon_navicon_round];
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.menuButtonView]]
                                        animated:NO];
 

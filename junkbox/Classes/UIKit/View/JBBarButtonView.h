@@ -38,6 +38,17 @@
 
 #pragma mark - event listener
 /**
+ * デフォルトのバーボタンを生成
+ * @param del delegate
+ * @param title ボタンのtitle
+ * @param icon ioiconsの名前
+ * @return barButtonView
+ */
++ (JBBarButtonView *)defaultBarButtonWithDelegate:(id<JBBarButtonViewDelegate>)del
+                                            title:(NSString *)title
+                                             icon:(NSString *)icon;
+
+/**
  * ボタン押下
  * @param button button
  */

@@ -1,4 +1,9 @@
 #import "JBBarButtonView.h"
+// UIKit-Extension
+#import "UINib+UIKit.h"
+#import "UIColor+Hexadecimal.h"
+// Pods
+#import "IonIcons.h"
 
 
 #pragma mark - JBBarButtonView
@@ -42,6 +47,20 @@
 
 
 #pragma mark - api
++ (JBBarButtonView *)defaultBarButtonWithDelegate:(id<JBBarButtonViewDelegate>)del
+                                            title:(NSString *)title
+                                             icon:(NSString *)icon
+{
+    JBBarButtonView *barButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
+    [barButtonView setDelegate:del];
+    [barButtonView setTitle:title
+                      image:[IonIcons imageWithIcon:icon
+                                               size:20
+                                              color:[UIColor colorWithHexadecimal:0x0080ffff]]
+                   forState:UIControlStateNormal];
+    return barButtonView;
+}
+
 - (void)setTitle:(NSString *)title
 {
     [self.labelButton setTitle:title forState:UIControlStateNormal];
