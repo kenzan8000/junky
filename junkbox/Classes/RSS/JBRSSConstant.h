@@ -42,6 +42,8 @@
 /// Livedoor Reader API
 #define kAPILivedoorReader                       [NSString stringWithFormat:@"%@api/", kURLLivedoorReader]
 /// ApiKey %@=ApiKey
+#define kQueryLivedoorReaderApiKeyFirstParameter [NSString stringWithFormat:@"?ApiKey=%@", @"%@"]
+/// ApiKey %@=ApiKey
 #define kQueryLivedoorReaderApiKey               [NSString stringWithFormat:@"&ApiKey=%@", @"%@"]
 
 

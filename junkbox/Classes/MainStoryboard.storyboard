@@ -5,24 +5,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Read Later Controller - あとで読む-->
+        <!--Read Later Navigation Controller - あとで読む-->
         <scene sceneID="IsI-Sn-aYF">
             <objects>
-                <viewController storyboardIdentifier="JBReadLaterController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8iQ-wp-W6e" customClass="JBReadLaterController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JBReadLaterNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8iQ-wp-W6e" customClass="JBReadLaterNavigationController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xZz-Ff-LJD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" id="ugB-et-1HO">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="8iQ-wp-W6e" id="e1y-Pi-2oH"/>
-                                    <outlet property="delegate" destination="8iQ-wp-W6e" id="9If-nB-6cX"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="あとで読む" id="Ujg-g1-q0i"/>

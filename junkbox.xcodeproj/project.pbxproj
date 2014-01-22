@@ -53,6 +53,8 @@
 		E6E4FEE0188C58E10068D929 /* JBSidebarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEDF188C58E10068D929 /* JBSidebarMenu.m */; };
 		E6E4FEE8188C64730068D929 /* JBRSSPinAddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEE5188C64730068D929 /* JBRSSPinAddOperation.m */; };
 		E6E4FEEB188D29D70068D929 /* JBRSSFeedDiscoverOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEEA188D29D70068D929 /* JBRSSFeedDiscoverOperation.m */; };
+		E6E4FEEE188FD5ED0068D929 /* JBReadLaterNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEED188FD5ED0068D929 /* JBReadLaterNavigationController.m */; };
+		E6E4FEF0188FD65E0068D929 /* JBReadLater.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E4FEEF188FD65E0068D929 /* JBReadLater.storyboard */; };
 		E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA936B17B54E6D00697604 /* UIKit+Localize.m */; };
 		E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F08351186AE5D2007FEDD4 /* JBBookmark.storyboard */; };
 		E6F0835A186AE734007FEDD4 /* JBBookmarkCatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F08357186AE734007FEDD4 /* JBBookmarkCatalogController.m */; };
@@ -154,6 +156,9 @@
 		E6E4FEE5188C64730068D929 /* JBRSSPinAddOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinAddOperation.m; sourceTree = "<group>"; };
 		E6E4FEE9188D29D70068D929 /* JBRSSFeedDiscoverOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedDiscoverOperation.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedDiscoverOperation.h; sourceTree = SOURCE_ROOT; };
 		E6E4FEEA188D29D70068D929 /* JBRSSFeedDiscoverOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedDiscoverOperation.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedDiscoverOperation.m; sourceTree = SOURCE_ROOT; };
+		E6E4FEEC188FD5ED0068D929 /* JBReadLaterNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBReadLaterNavigationController.h; sourceTree = "<group>"; };
+		E6E4FEED188FD5ED0068D929 /* JBReadLaterNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBReadLaterNavigationController.m; sourceTree = "<group>"; };
+		E6E4FEEF188FD65E0068D929 /* JBReadLater.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBReadLater.storyboard; sourceTree = "<group>"; };
 		E6EA936A17B54E6D00697604 /* UIKit+Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Localize.h"; sourceTree = "<group>"; };
 		E6EA936B17B54E6D00697604 /* UIKit+Localize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+Localize.m"; sourceTree = "<group>"; };
 		E6EA937717B5645700697604 /* JBRSSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSConstant.h; sourceTree = "<group>"; };
@@ -525,8 +530,11 @@
 		E6FC100117B16FA800A12BED /* ReadLater */ = {
 			isa = PBXGroup;
 			children = (
+				E6E4FEEC188FD5ED0068D929 /* JBReadLaterNavigationController.h */,
+				E6E4FEED188FD5ED0068D929 /* JBReadLaterNavigationController.m */,
 				E6FC101117B1749700A12BED /* JBReadLaterController.h */,
 				E6FC101217B1749700A12BED /* JBReadLaterController.m */,
+				E6E4FEEF188FD65E0068D929 /* JBReadLater.storyboard */,
 			);
 			path = ReadLater;
 			sourceTree = "<group>";
@@ -619,6 +627,7 @@
 				E68EB9E617B01624006711A6 /* Default-568h@2x.png in Resources */,
 				E68EB9E717B01624006711A6 /* Default.png in Resources */,
 				E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */,
+				E6E4FEF0188FD65E0068D929 /* JBReadLater.storyboard in Resources */,
 				E68EB9E817B01624006711A6 /* Default@2x.png in Resources */,
 				E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */,
 				E67E6E981889DFF200D36A47 /* JBBarButtonView.xib in Resources */,
@@ -707,6 +716,7 @@
 				E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */,
 				E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */,
 				E6272FC6186F6C0000FC9C2D /* JBRSSFeedUnreadOperation.m in Sources */,
+				E6E4FEEE188FD5ED0068D929 /* JBReadLaterNavigationController.m in Sources */,
 				E6272FC3186F659600FC9C2D /* JBRSSFeedUnread.m in Sources */,
 				E6272FC0186F635B00FC9C2D /* JBRSSFeedUnreadList.m in Sources */,
 				E681E76318251954001323DB /* JBRSSLoginOperations.m in Sources */,

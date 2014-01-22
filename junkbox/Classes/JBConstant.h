@@ -8,6 +8,8 @@
 #define kStoryboardRSSLogin                         @"JBRSSLogin"
 /// RSSフィード遷移
 #define kStoryboardRSSFeed                          @"JBRSSFeed"
+/// あとで読む遷移
+#define kStoryboardReadLater                        @"JBReadLater"
 /// ブックマーク遷移
 #define kStoryboardBookmark                         @"JBBookmark"
 

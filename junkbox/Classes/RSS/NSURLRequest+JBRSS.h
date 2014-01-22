@@ -40,12 +40,25 @@
 + (NSMutableURLRequest *)JBRSSFeedDiscoverRequestWithURL:(NSURL *)URL;
 
 /*
- * LivedoorのPinにリンクを追加
+ * Livedoor ReaderのPinにリンクを追加
  * @param pinTitle pinTitleの名前でpinに追加される
  * @param pinLink pinに追加されるURL
+ * @return request
  */
 + (NSMutableURLRequest *)JBRSSAddPinRequestWithTitle:(NSString *)title
                                                 link:(NSString *)link;
+/*
+ * Livedoor ReaderのPinにリンクを削除
+ * @param link pinに追加されるURL
+ * @return request
+ */
++ (NSMutableURLRequest *)JBRSSRemovePinRequestWithLink:(NSString *)link;
+
+/**
+ * Livedoor Readerのピン一覧取得
+ * @return request
+ */
++ (NSMutableURLRequest *)JBRSSPinAllRequest;
 
 
 @end

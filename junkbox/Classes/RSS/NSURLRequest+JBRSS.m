@@ -72,6 +72,24 @@
     return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
 }
 
++ (NSMutableURLRequest *)JBRSSRemovePinRequestWithLink:(NSString *)link
+{
+    NSString *URLString = [NSString stringWithFormat:@"%@%@",
+             [NSString stringWithFormat:kAPILivedoorReaderPinRemove, [link encodeURIComponentString]],
+             [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
+    ];
+    return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
+}
+
++ (NSMutableURLRequest *)JBRSSPinAllRequest
+{
+    NSString *URLString = [NSString stringWithFormat:@"%@%@",
+             kAPILivedoorReaderPinAll,
+             [NSMutableURLRequest queryStringLivedoorReaderAPIKeyWithIsFirstParameter:YES]
+    ];
+    return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
+}
+
 
 #pragma mark - private api
 /**
@@ -85,6 +103,17 @@
     return request;
 }
 
+/**
+ * livedoor reader API Key Query文字列取得
+ * @param isFirstParameter パラメーターが最初のパラメーターかどうか
+ * @return APIKey
+ */
++ (NSString *)queryStringLivedoorReaderAPIKeyWithIsFirstParameter:(BOOL)isFirstParameter
+{
+    return (isFirstParameter) ?
+        [NSString stringWithFormat:kQueryLivedoorReaderApiKeyFirstParameter, [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderApiKey]] :
+        [NSMutableURLRequest queryStringLivedoorReaderAPIKey];
+}
 /**
  * livedoor reader API Key Query文字列取得
  * @return APIKey
