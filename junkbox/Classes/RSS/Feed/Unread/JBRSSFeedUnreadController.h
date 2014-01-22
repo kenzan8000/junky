@@ -6,7 +6,6 @@
 
 #pragma mark - class
 @class JBNavigationBarTitleView;
-@class JBSidebarMenu;
 
 
 #pragma mark - JBRSSFeedUnreadController
@@ -25,17 +24,14 @@
 @property (nonatomic, strong) JBNavigationBarTitleView *titleView;
 /// ナビゲーションバー前の画面へ戻るボタン
 @property (nonatomic, strong) JBBarButtonView *backButtonView;
-/// ナビゲーションバーメニューボタン
-@property (nonatomic, strong) JBBarButtonView *menuButtonView;
+/// ナビゲーションバーPINボタン
+@property (nonatomic, strong) JBBarButtonView *pinButtonView;
 /// 次のフィードへボタン
 @property (nonatomic, weak) IBOutlet UIButton *nextFeedButton;
 /// 前の記事へ
 @property (nonatomic, weak) IBOutlet UIButton *previousButton;
 /// 次の記事へ
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
-
-/// メニュー
-@property (nonatomic, strong) JBSidebarMenu *sidebarMenu;
 
 
 #pragma mark - event listener

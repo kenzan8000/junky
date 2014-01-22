@@ -154,34 +154,16 @@ didTapItemAtIndex:(NSUInteger)index
  */
 - (void)addPinToWebAPI
 {
-    // ステータスバー
-    dispatch_async(dispatch_get_main_queue(), ^ () {
-        [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Adding Pin...", @"LivedoorReaderのPinを追加")
-                                                animated:YES];
-    });
-
     // Pin追加
     JBRSSPinAddOperation *operation = [[JBRSSPinAddOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error)
         {
-            // ステータスバー
-            dispatch_async(dispatch_get_main_queue(), ^ () {
-                [[MTStatusBarOverlay sharedInstance] hide];
-            });
-
             // 成功
             NSDictionary *JSON = [object JSON];
             JBLog(@"%@", JSON);
             if (error == nil && [[JSON allKeys] containsObject:@"isSuccess"] && [JSON[@"isSuccess"] boolValue]) {
                 return;
             }
-
             // 失敗
-                // ステータスバー
-            dispatch_async(dispatch_get_main_queue(), ^ () {
-                [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Adding Pin Failed", @"失敗")
-                                                                       duration:1.5f
-                                                                       animated:YES];
-            });
         }
                                                                            pinTitle:self.webTitle
                                                                             pinLink:[self.webURL absoluteString]

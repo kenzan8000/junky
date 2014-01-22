@@ -47,8 +47,8 @@
  *                    RSS
  * *************************************************/
 "Getting the unread feed list..." = "未読フィード一覧を読み込んでいます...";
-"Adding Pin..." = "Pinを追加しています...";
-"Adding Pin Failed" = "Pinの追加に失敗しました";
+"Adding Read Later..." = "あとで読むページを追加しています...";
+"Adding Read Later Failed" = "あとで読むページの追加に失敗しました";
 "Discovering RSS Feed..." = "URLからRSS Feedを探しています...";
 "Discovering RSS Feed Failed" = "RSS Feedの探索に失敗しました";
 
