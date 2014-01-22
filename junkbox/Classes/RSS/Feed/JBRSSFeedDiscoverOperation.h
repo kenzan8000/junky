@@ -1,10 +1,9 @@
-/// Pods
-#import "ISHTTPOperation.h"
+#import "JBRSSOperation.h"
 
 
 #pragma mark - JBRSSFeedDiscoverOperation
 /// URLからRSSフィードを探す
-@interface JBRSSFeedDiscoverOperation : ISHTTPOperation {
+@interface JBRSSFeedDiscoverOperation : JBRSSOperation {
 }
 
 

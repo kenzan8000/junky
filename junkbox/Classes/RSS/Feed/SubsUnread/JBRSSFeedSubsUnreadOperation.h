@@ -1,10 +1,9 @@
-/// Pods
-#import "ISHTTPOperation.h"
+#import "JBRSSOperation.h"
 
 
 #pragma mark - JBRSSFeedSubsUnreadOperation
 /// 未読フィード一覧
-@interface JBRSSFeedSubsUnreadOperation : ISHTTPOperation {
+@interface JBRSSFeedSubsUnreadOperation : JBRSSOperation {
 }
 
 

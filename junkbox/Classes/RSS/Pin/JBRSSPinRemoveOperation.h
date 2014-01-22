@@ -1,10 +1,9 @@
-/// Pods
-#import "ISHTTPOperation.h"
+#import "JBRSSOperation.h"
 
 
 #pragma mark - JBRSSPinRemoveOperation
 /// Livedoor Reader PIN削除
-@interface JBRSSPinRemoveOperation : ISHTTPOperation {
+@interface JBRSSPinRemoveOperation : JBRSSOperation {
 }
 
 

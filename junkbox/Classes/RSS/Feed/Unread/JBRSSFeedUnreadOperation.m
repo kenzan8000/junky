@@ -1,11 +1,5 @@
-#import "JBRSSConstant.h"
 #import "JBRSSFeedUnreadOperation.h"
-#import "JBRSSOperationQueue.h"
 #import "NSURLRequest+JBRSS.h"
-/// Connection
-#import "StatusCode.h"
-/// Pods
-#import "Reachability.h"
 
 
 #pragma mark - JBRSSFeedUnreadOperation
@@ -20,22 +14,8 @@
 - (id)initWithSubscribeId:(NSString *)sId
                   handler:(void (^)(NSHTTPURLResponse *response, id object, NSError *error))h
 {
-    // 通信後の処理
-    void (^ handler)(NSHTTPURLResponse *, id, NSError *) = ^ (NSHTTPURLResponse *response, id object, NSError *error) {
-        // エラー判定
-        NSInteger unreadErrorCode = (error) ? error.code : response.statusCode;
-        NSError *unreadError = nil;
-        if (unreadErrorCode >= http::statusCode::ERROR) {
-            unreadError = [[NSError alloc] initWithDomain:NSMachErrorDomain
-                                                     code:unreadErrorCode
-                                                 userInfo:@{}];
-        }
-
-        h(response, object, unreadError);
-    };
-
     self = [super initWithRequest:[NSMutableURLRequest JBRSSUnreadRequestWithSubscribeId:sId]
-                          handler:handler];
+                          handler:h];
     if (self) {
         self.subscribeId = sId;
     }
@@ -46,10 +26,6 @@
 #pragma mark - release
 - (void)dealloc
 {
-    if ([self APIURL]) {
-        [[JBRSSOperationQueue defaultQueue] cancelOperationsWithURL:[self APIURL]];
-    }
-
     self.subscribeId = nil;
 }
 
@@ -58,15 +34,8 @@
 - (void)start
 {
     // ネットワークに接続できない
-    if ([[Reachability reachabilityForInternetConnection] isReachable] == NO) {
-        [self willChangeValueForKey:@"isFinished"];
-        _finished = YES;
-        [self didChangeValueForKey:@"isFinished"];
-        self.handler(nil,
-                     @{},
-                     [[NSError alloc] initWithDomain:NSMachErrorDomain
-                                                code:http::NOT_REACHABLE
-                                                userInfo:@{}]);
+    if ([self isReachable] == NO) {
+        [self cancelBeforeConnectionIfNotReachable];
         return;
     }
 

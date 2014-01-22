@@ -1,10 +1,9 @@
-/// Pods
-#import "ISHTTPOperation.h"
+#import "JBRSSOperation.h"
 
 
 #pragma mark - JBRSSPinAddOperation
 /// Livedoor Reader PIN追加
-@interface JBRSSPinAddOperation : ISHTTPOperation {
+@interface JBRSSPinAddOperation : JBRSSOperation {
 }
 
 
