@@ -28,3 +28,7 @@
 #define kNotificationRSSLoginInvalid                @"JBNotificationRSSLoginInvalid"
 /// WebView読み込み完了
 #define kNotificationWebViewProgressDidFinished     @"JBNotificationWebViewProgressDidFinished"
+
+
+#pragma mark - Model
+#define kXCDataModelName                            @"JBModel"

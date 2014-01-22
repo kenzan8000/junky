@@ -22,18 +22,16 @@
         // エラー判定
         NSInteger eCode = (error) ? error.code : response.statusCode;
         NSError *e = nil;
+        if (eCode == http::statusCode::FORBIDDEN) {
+            NSString *errorMessage = [[NSString alloc] initWithData:object encoding:NSUTF8StringEncoding];
+            if ([errorMessage isEqualToString:@"Not Authorized"]) {
+                eCode = http::statusCode::UNAUTHORIZED;
+            }
+        }
         if (eCode >= http::statusCode::ERROR) {
             e = [[NSError alloc] initWithDomain:NSMachErrorDomain
                                            code:eCode
                                        userInfo:@{}];
-        }
-        if (eCode == http::statusCode::FORBIDDEN) {
-            NSString *errorMessage = [[NSString alloc] initWithData:object encoding:NSUTF8StringEncoding];
-            if ([errorMessage isEqualToString:@"Not Authorized"]) {
-                e = [[NSError alloc] initWithDomain:NSMachErrorDomain
-                                               code:http::statusCode::UNAUTHORIZED
-                                           userInfo:@{}];
-            }
         }
 
         h(response, object, e);

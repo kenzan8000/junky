@@ -17,7 +17,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // CoreData
     if ([[NLCoreData shared] storeExists] == NO) {
-        NSURL *URL = [[NSBundle mainBundle] URLForResource:@"JBRSSFeedSubsUnread"
+        NSURL *URL = [[NSBundle mainBundle] URLForResource:kXCDataModelName
                                              withExtension:@"momd"];
         [[NLCoreData shared] useDatabaseFile:[URL absoluteString]];
     }

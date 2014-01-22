@@ -23,7 +23,6 @@
 		E67E6E9A1889DFF200D36A47 /* JBNavigationBarTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E961889DFF200D36A47 /* JBNavigationBarTitleView.xib */; };
 		E681E76318251954001323DB /* JBRSSLoginOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = E681E76218251954001323DB /* JBRSSLoginOperations.m */; };
 		E6855E5B1882009B0045A6ED /* JBRSSLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6855E5A1882009B0045A6ED /* JBRSSLogin.storyboard */; };
-		E6855E6318820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6855E6118820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld */; };
 		E6893814185C1090004B0050 /* JBRSSOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E6893813185C1090004B0050 /* JBRSSOperationQueue.m */; };
 		E68EB9E417B01624006711A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E68EB9D717B01624006711A6 /* AppDelegate.m */; };
 		E68EB9E517B01624006711A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E68EB9D817B01624006711A6 /* main.m */; };
@@ -58,6 +57,9 @@
 		E6E4FEF5188FDB910068D929 /* JBRSSPinAllOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEF2188FDB910068D929 /* JBRSSPinAllOperation.m */; };
 		E6E4FEF6188FDB910068D929 /* JBRSSPinRemoveOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEF4188FDB910068D929 /* JBRSSPinRemoveOperation.m */; };
 		E6E4FEF9188FDEF10068D929 /* JBRSSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEF8188FDEF10068D929 /* JBRSSOperation.m */; };
+		E6E4FEFF189012F00068D929 /* JBModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEFD189012F00068D929 /* JBModel.xcdatamodeld */; };
+		E6E4FF0718901EB20068D929 /* JBRSSPin.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FF0418901EB20068D929 /* JBRSSPin.m */; };
+		E6E4FF0818901EB20068D929 /* JBRSSPinList.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FF0618901EB20068D929 /* JBRSSPinList.m */; };
 		E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA936B17B54E6D00697604 /* UIKit+Localize.m */; };
 		E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F08351186AE5D2007FEDD4 /* JBBookmark.storyboard */; };
 		E6F0835A186AE734007FEDD4 /* JBBookmarkCatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F08357186AE734007FEDD4 /* JBBookmarkCatalogController.m */; };
@@ -107,7 +109,6 @@
 		E681E76118251954001323DB /* JBRSSLoginOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSLoginOperations.h; sourceTree = "<group>"; };
 		E681E76218251954001323DB /* JBRSSLoginOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSLoginOperations.m; sourceTree = "<group>"; };
 		E6855E5A1882009B0045A6ED /* JBRSSLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBRSSLogin.storyboard; sourceTree = "<group>"; };
-		E6855E6218820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JBRSSFeedSubsUnread.xcdatamodel; sourceTree = "<group>"; };
 		E6893812185C0E8A004B0050 /* JBRSSOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSOperationQueue.h; sourceTree = "<group>"; };
 		E6893813185C1090004B0050 /* JBRSSOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSOperationQueue.m; sourceTree = "<group>"; };
 		E68EB9D617B01624006711A6 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -168,6 +169,11 @@
 		E6E4FEF4188FDB910068D929 /* JBRSSPinRemoveOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinRemoveOperation.m; sourceTree = "<group>"; };
 		E6E4FEF7188FDEF10068D929 /* JBRSSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSOperation.h; sourceTree = "<group>"; };
 		E6E4FEF8188FDEF10068D929 /* JBRSSOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSOperation.m; sourceTree = "<group>"; };
+		E6E4FEFE189012F00068D929 /* JBModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JBModel.xcdatamodel; sourceTree = "<group>"; };
+		E6E4FF0318901EB20068D929 /* JBRSSPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPin.h; sourceTree = "<group>"; };
+		E6E4FF0418901EB20068D929 /* JBRSSPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPin.m; sourceTree = "<group>"; };
+		E6E4FF0518901EB20068D929 /* JBRSSPinList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinList.h; sourceTree = "<group>"; };
+		E6E4FF0618901EB20068D929 /* JBRSSPinList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinList.m; sourceTree = "<group>"; };
 		E6EA936A17B54E6D00697604 /* UIKit+Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Localize.h"; sourceTree = "<group>"; };
 		E6EA936B17B54E6D00697604 /* UIKit+Localize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+Localize.m"; sourceTree = "<group>"; };
 		E6EA937717B5645700697604 /* JBRSSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSConstant.h; sourceTree = "<group>"; };
@@ -257,6 +263,7 @@
 				E6E4FEDF188C58E10068D929 /* JBSidebarMenu.m */,
 				E68EB9D617B01624006711A6 /* AppDelegate.h */,
 				E68EB9D717B01624006711A6 /* AppDelegate.m */,
+				E6E4FEFD189012F00068D929 /* JBModel.xcdatamodeld */,
 				E6FC101A17B176B000A12BED /* MainStoryboard.storyboard */,
 				E68EB9D817B01624006711A6 /* main.m */,
 				E68EB9D917B01624006711A6 /* prefix.pch */,
@@ -445,7 +452,6 @@
 			children = (
 				E6C90066186400840007449D /* JBRSSFeedSubsUnread.h */,
 				E6C90067186400840007449D /* JBRSSFeedSubsUnread.m */,
-				E6855E6118820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld */,
 				E6C9006A186400840007449D /* JBRSSFeedSubsUnreadList.h */,
 				E6C9006B186400840007449D /* JBRSSFeedSubsUnreadList.m */,
 				E6C9006C186400840007449D /* JBRSSFeedSubsUnreadOperation.h */,
@@ -480,6 +486,10 @@
 		E6E4FEE1188C64730068D929 /* Pin */ = {
 			isa = PBXGroup;
 			children = (
+				E6E4FF0318901EB20068D929 /* JBRSSPin.h */,
+				E6E4FF0418901EB20068D929 /* JBRSSPin.m */,
+				E6E4FF0518901EB20068D929 /* JBRSSPinList.h */,
+				E6E4FF0618901EB20068D929 /* JBRSSPinList.m */,
 				E6E4FEE4188C64730068D929 /* JBRSSPinAddOperation.h */,
 				E6E4FEE5188C64730068D929 /* JBRSSPinAddOperation.m */,
 				E6E4FEF3188FDB910068D929 /* JBRSSPinRemoveOperation.h */,
@@ -697,6 +707,7 @@
 				E68EB9E517B01624006711A6 /* main.m in Sources */,
 				E6E4FEE8188C64730068D929 /* JBRSSPinAddOperation.m in Sources */,
 				E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */,
+				E6E4FF0718901EB20068D929 /* JBRSSPin.m in Sources */,
 				E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */,
 				E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */,
 				E6C8D79B17B15521007B6C16 /* NSString+UUID.m in Sources */,
@@ -714,7 +725,6 @@
 				E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */,
 				E6FC101017B1748900A12BED /* JBRSSController.m in Sources */,
 				E6E4FEEB188D29D70068D929 /* JBRSSFeedDiscoverOperation.m in Sources */,
-				E6855E6318820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld in Sources */,
 				E6C90075186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */,
 				E6FC101317B1749700A12BED /* JBReadLaterController.m in Sources */,
 				E6C90071186400840007449D /* JBRSSFeedSubsUnread.m in Sources */,
@@ -724,12 +734,14 @@
 				E6FC101617B174A200A12BED /* JBBookmarkController.m in Sources */,
 				E6FC101917B174AC00A12BED /* JBSettingController.m in Sources */,
 				E6FC101E17B1781700A12BED /* UIStoryboard+UIKit.m in Sources */,
+				E6E4FEFF189012F00068D929 /* JBModel.xcdatamodeld in Sources */,
 				E6E4FEF6188FDB910068D929 /* JBRSSPinRemoveOperation.m in Sources */,
 				E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */,
 				E6893814185C1090004B0050 /* JBRSSOperationQueue.m in Sources */,
 				E6E4FEF5188FDB910068D929 /* JBRSSPinAllOperation.m in Sources */,
 				E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */,
 				E62747E217B5BFEC007B41B2 /* JBRSSLoginController.m in Sources */,
+				E6E4FF0818901EB20068D929 /* JBRSSPinList.m in Sources */,
 				E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */,
 				E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */,
 				E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */,
@@ -866,13 +878,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E6855E6118820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodeld */ = {
+		E6E4FEFD189012F00068D929 /* JBModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E6855E6218820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodel */,
+				E6E4FEFE189012F00068D929 /* JBModel.xcdatamodel */,
 			);
-			currentVersion = E6855E6218820F070045A6ED /* JBRSSFeedSubsUnread.xcdatamodel */;
-			path = JBRSSFeedSubsUnread.xcdatamodeld;
+			currentVersion = E6E4FEFE189012F00068D929 /* JBModel.xcdatamodel */;
+			path = JBModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

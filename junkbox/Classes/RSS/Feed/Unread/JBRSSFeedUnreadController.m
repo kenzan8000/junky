@@ -1,7 +1,6 @@
 #import "JBRSSFeedUnreadController.h"
 #import "JBRSSFeedUnread.h"
-#import "JBRSSOperationQueue.h"
-#import "JBRSSPinAddOperation.h"
+#import "JBRSSPinList.h"
 #import "JBWebViewController.h"
 /// Connection
 #import "StatusCode.h"
@@ -189,8 +188,10 @@ didFailLoadWithError:error];
     }
     // メニュー
     else if (barButtonView == self.pinButtonView) {
-        [self addPinToLocal];
-        [self addPinToWebAPI];
+        JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
+        if (unread == nil) { return; }
+        [[JBRSSPinList sharedInstance] addPinWithTitle:unread.title
+                                                  link:[unread.link absoluteString]];
     }
 }
 
@@ -263,47 +264,6 @@ didFailLoadWithError:error];
     [vc setInitialURL:URL];
     [self.navigationController pushViewController:vc
                                          animated:YES];
-}
-
-/**
- * PINを追加(Local)
- */
-- (void)addPinToLocal
-{
-    JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
-    if (unread == nil) {
-        return;
-    }
-//    unread.title;
-//    unread.link;
-}
-
-/**
- * PINを追加(WebAPI)
- */
-- (void)addPinToWebAPI
-{
-    JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
-    if (unread == nil) {
-        return;
-    }
-
-    // Pin追加
-    JBRSSPinAddOperation *operation = [[JBRSSPinAddOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error)
-        {
-            // 成功
-            NSDictionary *JSON = [object JSON];
-            JBLog(@"%@", JSON);
-            if (error == nil && [[JSON allKeys] containsObject:@"isSuccess"] && [JSON[@"isSuccess"] boolValue]) {
-                return;
-            }
-            // 失敗
-        }
-                                                                           pinTitle:unread.title
-                                                                            pinLink:[unread.link absoluteString]
-    ];
-    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
-    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
 

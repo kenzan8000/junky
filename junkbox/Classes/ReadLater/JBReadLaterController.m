@@ -1,4 +1,7 @@
 #import "JBReadLaterController.h"
+#import "JBRSSPinList.h"
+// NSFoundation-Extension
+#import "NSData+JSON.h"
 /// UIKit-Extension
 #import "UINib+UIKit.h"
 
@@ -8,6 +11,7 @@
 
 
 #pragma mark - synthesize
+@synthesize pinList;
 
 
 #pragma mark - initializer
@@ -25,6 +29,7 @@
 #pragma mark - release
 - (void)dealloc
 {
+    self.pinList = nil;
 }
 
 
@@ -32,7 +37,18 @@
 - (void)loadView
 {
     [super loadView];
-//    [self setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardReadLater]]];
+
+    self.pinList = [JBRSSPinList sharedInstance];
+    [self.pinList setDelegate:self];
+
+    // 前回の起動で読み込み完了していたデータを読み込み
+    [self.pinList loadAllPinFromLocal];
+
+    // ログイン成功イベント
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loginDidSuccess:)
+                                                 name:kNotificationRSSLoginSuccess
+                                               object:nil];
 }
 
 - (void)viewDidLoad
@@ -88,6 +104,35 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //        cell = [UINib UIKitFromClassName:className];
     }
     return cell;
+}
+
+
+#pragma mark - JBRSSPinListDelegate
+/**
+ * あとで読む(Livedoor Reader PIN)一覧取得成功
+ * @param list 一覧
+ */
+- (void)pinDidFinishLoadWithList:(JBRSSPinList *)list
+{
+}
+
+/**
+ * あとで読む(Livedoor Reader PIN)一覧取得失敗
+ * @param error error
+ */
+- (void)pinDidFailLoadWithError:(NSError *)error
+{
+}
+
+
+#pragma mark - notification
+/**
+ * ログイン成功
+ * @param notification notification
+ **/
+- (void)loginDidSuccess:(NSNotification *)notification
+{
+    [self.pinList loadAllPinFromWebAPI];
 }
 
 

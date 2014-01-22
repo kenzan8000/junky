@@ -1,7 +1,7 @@
 #import "JBSidebarMenu.h"
 #import "JBRSSOperationQueue.h"
-#import "JBRSSPinAddOperation.h"
 #import "JBRSSFeedDiscoverOperation.h"
+#import "JBRSSPinList.h"
 /// NSFoundation-Extension
 #import "NSData+JSON.h"
 /// UIKit-Extension
@@ -122,8 +122,8 @@ didTapItemAtIndex:(NSUInteger)index
 
     switch (index) {
         case 0:// LivedoorReader Adding PIN
-            [self addPinToLocal];
-            [self addPinToWebAPI];
+            [[JBRSSPinList sharedInstance] addPinWithTitle:self.webTitle
+                                                      link:[self.webURL absoluteString]];
             break;
         case 1:// SOCIAL BOOKMARK
             break;
@@ -138,38 +138,6 @@ didTapItemAtIndex:(NSUInteger)index
        default:
             break;
     }
-}
-
-
-#pragma mark - LivedoorReader PIN
-/**
- * PIN追加(Local)
- */
-- (void)addPinToLocal
-{
-}
-
-/**
- * PIN追加(WebAPI)
- */
-- (void)addPinToWebAPI
-{
-    // Pin追加
-    JBRSSPinAddOperation *operation = [[JBRSSPinAddOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error)
-        {
-            // 成功
-            NSDictionary *JSON = [object JSON];
-            JBLog(@"%@", JSON);
-            if (error == nil && [[JSON allKeys] containsObject:@"isSuccess"] && [JSON[@"isSuccess"] boolValue]) {
-                return;
-            }
-            // 失敗
-        }
-                                                                           pinTitle:self.webTitle
-                                                                            pinLink:[self.webURL absoluteString]
-    ];
-    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
-    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
 

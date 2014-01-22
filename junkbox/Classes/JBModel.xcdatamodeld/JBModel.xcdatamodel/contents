@@ -10,7 +10,13 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unreadCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="JBRSSPin" representedClassName="JBRSSPin" syncable="YES">
+        <attribute name="createdOn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="JBRSSFeedSubsUnread" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="JBRSSPin" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

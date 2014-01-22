@@ -66,7 +66,7 @@
             NSStringFromClass([JBRSSFeedSubsUnreadList class])
         ];
         self.updateQueue = dispatch_queue_create([queueName cStringUsingEncoding:[NSString defaultCStringEncoding]], NULL);
-        [[NLCoreData shared] setModelName:NSStringFromClass([JBRSSFeedSubsUnread class])];
+        [[NLCoreData shared] setModelName:kXCDataModelName];
     }
     return self;
 }
