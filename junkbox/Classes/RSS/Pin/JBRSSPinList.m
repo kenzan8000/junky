@@ -127,6 +127,7 @@
         // 失敗
         [weakSelf failLoadListWithError:error];
     }];
+    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
     [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
@@ -135,8 +136,11 @@
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:
-            [JBRSSPin fetchInContext:[JBRSSPinList managedObjectContext]
-                           predicate:nil]
+            [JBRSSPin fetchWithRequest:^ (NSFetchRequest *request) {
+                [request setPredicate:nil];
+                [request setReturnsObjectsAsFaults:NO];
+            }
+                              context:[JBRSSPinList managedObjectContext]]
         ];
         // delegate
         dispatch_async(dispatch_get_main_queue(), ^ () {
@@ -155,6 +159,12 @@
                              link:link];
     [self addPinToLocalWithTitle:title
                             link:link];
+}
+
+- (void)removePinWithLink:(NSString *)link
+{
+    [self removePinToWebAPIWithLink:link];
+    [self removePinToLocalWithLink:link];
 }
 
 
@@ -240,6 +250,34 @@
  */
 - (void)addPinToLocalWithTitle:(NSString *)title
                           link:(NSString *)link
+{
+}
+
+/**
+ * PIN削除(WebAPI)
+ */
+- (void)removePinToWebAPIWithLink:(NSString *)link
+{
+    JBRSSPinRemoveOperation *operation = [[JBRSSPinRemoveOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error)
+        {
+            // 成功
+            NSDictionary *JSON = [object JSON];
+            JBLog(@"%@", JSON);
+            if (error == nil && [[JSON allKeys] containsObject:@"isSuccess"] && [JSON[@"isSuccess"] boolValue]) {
+                return;
+            }
+            // 失敗
+        }
+                                                                            pinLink:link
+    ];
+    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
+}
+
+/**
+ * PIN削除(Local)
+ */
+- (void)removePinToLocalWithLink:(NSString *)link
 {
 }
 

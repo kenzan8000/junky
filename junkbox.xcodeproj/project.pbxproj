@@ -60,6 +60,8 @@
 		E6E4FEFF189012F00068D929 /* JBModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEFD189012F00068D929 /* JBModel.xcdatamodeld */; };
 		E6E4FF0718901EB20068D929 /* JBRSSPin.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FF0418901EB20068D929 /* JBRSSPin.m */; };
 		E6E4FF0818901EB20068D929 /* JBRSSPinList.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FF0618901EB20068D929 /* JBRSSPinList.m */; };
+		E6E4FF0C1890E29F0068D929 /* JBReadLaterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FF0A1890E29F0068D929 /* JBReadLaterTableViewCell.m */; };
+		E6E4FF0D1890E29F0068D929 /* JBReadLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6E4FF0B1890E29F0068D929 /* JBReadLaterTableViewCell.xib */; };
 		E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA936B17B54E6D00697604 /* UIKit+Localize.m */; };
 		E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F08351186AE5D2007FEDD4 /* JBBookmark.storyboard */; };
 		E6F0835A186AE734007FEDD4 /* JBBookmarkCatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F08357186AE734007FEDD4 /* JBBookmarkCatalogController.m */; };
@@ -174,6 +176,9 @@
 		E6E4FF0418901EB20068D929 /* JBRSSPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPin.m; sourceTree = "<group>"; };
 		E6E4FF0518901EB20068D929 /* JBRSSPinList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinList.h; sourceTree = "<group>"; };
 		E6E4FF0618901EB20068D929 /* JBRSSPinList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinList.m; sourceTree = "<group>"; };
+		E6E4FF091890E29F0068D929 /* JBReadLaterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBReadLaterTableViewCell.h; sourceTree = "<group>"; };
+		E6E4FF0A1890E29F0068D929 /* JBReadLaterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBReadLaterTableViewCell.m; sourceTree = "<group>"; };
+		E6E4FF0B1890E29F0068D929 /* JBReadLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBReadLaterTableViewCell.xib; sourceTree = "<group>"; };
 		E6EA936A17B54E6D00697604 /* UIKit+Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Localize.h"; sourceTree = "<group>"; };
 		E6EA936B17B54E6D00697604 /* UIKit+Localize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+Localize.m"; sourceTree = "<group>"; };
 		E6EA937717B5645700697604 /* JBRSSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSConstant.h; sourceTree = "<group>"; };
@@ -555,6 +560,9 @@
 		E6FC100117B16FA800A12BED /* ReadLater */ = {
 			isa = PBXGroup;
 			children = (
+				E6E4FF091890E29F0068D929 /* JBReadLaterTableViewCell.h */,
+				E6E4FF0A1890E29F0068D929 /* JBReadLaterTableViewCell.m */,
+				E6E4FF0B1890E29F0068D929 /* JBReadLaterTableViewCell.xib */,
 				E6E4FEEC188FD5ED0068D929 /* JBReadLaterNavigationController.h */,
 				E6E4FEED188FD5ED0068D929 /* JBReadLaterNavigationController.m */,
 				E6FC101117B1749700A12BED /* JBReadLaterController.h */,
@@ -653,6 +661,7 @@
 				E68EB9E717B01624006711A6 /* Default.png in Resources */,
 				E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */,
 				E6E4FEF0188FD65E0068D929 /* JBReadLater.storyboard in Resources */,
+				E6E4FF0D1890E29F0068D929 /* JBReadLaterTableViewCell.xib in Resources */,
 				E68EB9E817B01624006711A6 /* Default@2x.png in Resources */,
 				E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */,
 				E67E6E981889DFF200D36A47 /* JBBarButtonView.xib in Resources */,
@@ -719,6 +728,7 @@
 				E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */,
 				E6E4FEF9188FDEF10068D929 /* JBRSSOperation.m in Sources */,
 				E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */,
+				E6E4FF0C1890E29F0068D929 /* JBReadLaterTableViewCell.m in Sources */,
 				E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */,
 				E6FC100917B16FA800A12BED /* TableViewController.m in Sources */,
 				E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */,

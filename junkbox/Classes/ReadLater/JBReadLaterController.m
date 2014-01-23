@@ -1,5 +1,8 @@
 #import "JBReadLaterController.h"
+#import "JBReadLaterTableViewCell.h"
 #import "JBRSSPinList.h"
+#import "JBRSSPin.h"
+#import "JBWebViewController.h"
 // NSFoundation-Extension
 #import "NSData+JSON.h"
 /// UIKit-Extension
@@ -40,9 +43,6 @@
 
     self.pinList = [JBRSSPinList sharedInstance];
     [self.pinList setDelegate:self];
-
-    // 前回の起動で読み込み完了していたデータを読み込み
-    [self.pinList loadAllPinFromLocal];
 
     // ログイン成功イベント
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -86,24 +86,48 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.pinList count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return kJBReadLaterTableViewCellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *className = NSStringFromClass([UITableViewCell class]);
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
+    NSString *className = NSStringFromClass([JBReadLaterTableViewCell class]);
+    JBReadLaterTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
     if (!cell) {
-//        cell = [UINib UIKitFromClassName:className];
+        cell = [UINib UIKitFromClassName:className];
+        {// テキスト
+        JBRSSPin *pin = [self.pinList pinWithIndex:indexPath.row];
+        [cell setTitleName:pin.title];
+        }
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // cell選択
+    [self.tableView deselectRowAtIndexPath:indexPath
+                                  animated:YES];
+    // 既読化
+    JBRSSPin *pin = [self.pinList pinWithIndex:indexPath.row];
+    if (pin) {
+        [self.pinList removePinWithLink:pin.link];
+
+        // 遷移
+        JBWebViewController *vc = [[JBWebViewController alloc] initWithNibName:NSStringFromClass([JBWebViewController class])
+                                                                        bundle:nil];
+        [vc setInitialURL:[NSURL URLWithString:pin.link]];
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+    }
 }
 
 

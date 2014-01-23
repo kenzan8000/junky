@@ -86,5 +86,11 @@
 - (void)addPinWithTitle:(NSString *)title
                    link:(NSString *)link;
 
+/**
+ * PIN削除
+ * @param link link
+ */
+- (void)removePinWithLink:(NSString *)link;
+
 
 @end

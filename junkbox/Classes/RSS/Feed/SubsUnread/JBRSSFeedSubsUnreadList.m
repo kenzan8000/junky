@@ -98,6 +98,7 @@
         // 失敗
         [weakSelf failLoadListWithError:error];
     }];
+    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
     [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
@@ -106,8 +107,11 @@
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:
-            [JBRSSFeedSubsUnread fetchInContext:[JBRSSFeedSubsUnreadList managedObjectContext]
-                                      predicate:nil]
+            [JBRSSFeedSubsUnread fetchWithRequest:^ (NSFetchRequest *request) {
+                [request setPredicate:nil];
+                [request setReturnsObjectsAsFaults:NO];
+            }
+                                          context:[JBRSSFeedSubsUnreadList managedObjectContext]]
         ];
         // sort by rate
         temporaryArray = [weakSelf rateSortedListWithSubsUnreadList:temporaryArray];

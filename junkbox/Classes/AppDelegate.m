@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 #import "JBRSSConstant.h"
 #import "JBRSSOperationQueue.h"
+#import "JBRSSPinList.h"
 /// UIkit-Extension
 #import "UIStoryboard+UIKit.h"
 /// Pods
@@ -21,6 +22,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                              withExtension:@"momd"];
         [[NLCoreData shared] useDatabaseFile:[URL absoluteString]];
     }
+    [[JBRSSPinList sharedInstance] loadAllPinFromLocal];
 
     // Connection
     [[JBRSSOperationQueue defaultQueue] setMaxConcurrentOperationCount:kMaxOperationCountOfRSSConnection];
