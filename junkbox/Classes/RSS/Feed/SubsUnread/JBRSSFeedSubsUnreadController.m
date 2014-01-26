@@ -26,7 +26,6 @@
 @synthesize unreadLists;
 @synthesize indexOfselectCell;
 @synthesize loginButtonView;
-@synthesize menuButtonView;
 
 
 #pragma mark - initializer
@@ -48,7 +47,6 @@
     self.unreadLists = nil;
     self.subsUnreadList = nil;
     self.loginButtonView = nil;
-    self.menuButtonView = nil;
 }
 
 
@@ -77,11 +75,12 @@
                                                                     icon:icon_log_in];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
                                       animated:NO];
-        // メニューボタン
-    self.menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
-                                                                  title:NSLocalizedString(@"Menu", @"メニューボタン")
-                                                                   icon:icon_navicon_round];
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.menuButtonView]]
+        //
+    JBBarButtonView *menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                              title:NSLocalizedString(@"Menu", @"メニューボタン")
+                                                                               icon:icon_navicon_round];
+    [menuButtonView setHidden:YES];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
                                        animated:NO];
 
     // 前回の起動で読み込み完了していたデータを読み込み
@@ -288,9 +287,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
         [self presentModalViewController:vc
                                 animated:YES];
-    }
-    // メニュー
-    else if (barButtonView == self.menuButtonView) {
     }
 }
 

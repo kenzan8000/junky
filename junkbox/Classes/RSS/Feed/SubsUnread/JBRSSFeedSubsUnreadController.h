@@ -19,8 +19,6 @@
 @property (nonatomic, assign) NSInteger indexOfselectCell;
 /// ログインボタン
 @property (nonatomic, strong) JBBarButtonView *loginButtonView;
-/// メニューボタン
-@property (nonatomic, strong) JBBarButtonView *menuButtonView;
 
 
 #pragma mark - api
