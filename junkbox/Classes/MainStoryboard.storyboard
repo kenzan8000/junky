@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Read Later Navigation Controller - あとで読む-->
+        <!--Pin Navigation Controller - あとで読む-->
         <scene sceneID="IsI-Sn-aYF">
             <objects>
-                <viewController storyboardIdentifier="JBReadLaterNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8iQ-wp-W6e" customClass="JBReadLaterNavigationController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JBReadLaterNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8iQ-wp-W6e" customClass="JBRSSPinNavigationController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xZz-Ff-LJD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

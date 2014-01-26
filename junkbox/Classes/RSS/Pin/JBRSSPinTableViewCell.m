@@ -1,8 +1,8 @@
-#import "JBReadLaterTableViewCell.h"
+#import "JBRSSPinTableViewCell.h"
 
 
-#pragma mark - JBReadLaterTableViewCell
-@implementation JBReadLaterTableViewCell
+#pragma mark - JBRSSPinTableViewCell
+@implementation JBRSSPinTableViewCell
 
 
 #pragma mark - synthesize

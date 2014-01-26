@@ -1,10 +1,10 @@
 #pragma mark - constant
-#define kJBReadLaterTableViewCellHeight 44
+#define kJBRSSPinTableViewCellHeight 44
 
 
-#pragma mark - JBReadLaterTableViewCell
+#pragma mark - JBRSSPinTableViewCell
 /// あとで読む(Livedoor Reader PIN)
-@interface JBReadLaterTableViewCell : UITableViewCell {
+@interface JBRSSPinTableViewCell : UITableViewCell {
 }
 
 

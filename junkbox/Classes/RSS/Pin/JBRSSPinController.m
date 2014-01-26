@@ -1,5 +1,5 @@
-#import "JBReadLaterController.h"
-#import "JBReadLaterTableViewCell.h"
+#import "JBRSSPinController.h"
+#import "JBRSSPinTableViewCell.h"
 #import "JBRSSPinList.h"
 #import "JBRSSPin.h"
 #import "JBWebViewController.h"
@@ -9,8 +9,8 @@
 #import "UINib+UIKit.h"
 
 
-#pragma mark - JBReadLaterController
-@implementation JBReadLaterController
+#pragma mark - JBRSSPinController
+@implementation JBRSSPinController
 
 
 #pragma mark - synthesize
@@ -92,14 +92,14 @@
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return kJBReadLaterTableViewCellHeight;
+    return kJBRSSPinTableViewCellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *className = NSStringFromClass([JBReadLaterTableViewCell class]);
-    JBReadLaterTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
+    NSString *className = NSStringFromClass([JBRSSPinTableViewCell class]);
+    JBRSSPinTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
     if (!cell) {
         cell = [UINib UIKitFromClassName:className];
         {// テキスト

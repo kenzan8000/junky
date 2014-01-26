@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E60A4B85189592A5007AA0A7 /* JBRSSPin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E60A4B7D189592A5007AA0A7 /* JBRSSPin.storyboard */; };
+		E60A4B86189592A5007AA0A7 /* JBRSSPinController.m in Sources */ = {isa = PBXBuildFile; fileRef = E60A4B7F189592A5007AA0A7 /* JBRSSPinController.m */; };
+		E60A4B87189592A5007AA0A7 /* JBRSSPinNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E60A4B81189592A5007AA0A7 /* JBRSSPinNavigationController.m */; };
+		E60A4B88189592A5007AA0A7 /* JBRSSPinTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E60A4B83189592A5007AA0A7 /* JBRSSPinTableViewCell.m */; };
+		E60A4B89189592A5007AA0A7 /* JBRSSPinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E60A4B84189592A5007AA0A7 /* JBRSSPinTableViewCell.xib */; };
 		E6272FC0186F635B00FC9C2D /* JBRSSFeedUnreadList.m in Sources */ = {isa = PBXBuildFile; fileRef = E6272FBF186F635B00FC9C2D /* JBRSSFeedUnreadList.m */; };
 		E6272FC3186F659600FC9C2D /* JBRSSFeedUnread.m in Sources */ = {isa = PBXBuildFile; fileRef = E6272FC2186F659600FC9C2D /* JBRSSFeedUnread.m */; };
 		E6272FC6186F6C0000FC9C2D /* JBRSSFeedUnreadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6272FC5186F6C0000FC9C2D /* JBRSSFeedUnreadOperation.m */; };
@@ -52,16 +57,12 @@
 		E6E4FEE0188C58E10068D929 /* JBSidebarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEDF188C58E10068D929 /* JBSidebarMenu.m */; };
 		E6E4FEE8188C64730068D929 /* JBRSSPinAddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEE5188C64730068D929 /* JBRSSPinAddOperation.m */; };
 		E6E4FEEB188D29D70068D929 /* JBRSSFeedDiscoverOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEEA188D29D70068D929 /* JBRSSFeedDiscoverOperation.m */; };
-		E6E4FEEE188FD5ED0068D929 /* JBReadLaterNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEED188FD5ED0068D929 /* JBReadLaterNavigationController.m */; };
-		E6E4FEF0188FD65E0068D929 /* JBReadLater.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E4FEEF188FD65E0068D929 /* JBReadLater.storyboard */; };
 		E6E4FEF5188FDB910068D929 /* JBRSSPinAllOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEF2188FDB910068D929 /* JBRSSPinAllOperation.m */; };
 		E6E4FEF6188FDB910068D929 /* JBRSSPinRemoveOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEF4188FDB910068D929 /* JBRSSPinRemoveOperation.m */; };
 		E6E4FEF9188FDEF10068D929 /* JBRSSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEF8188FDEF10068D929 /* JBRSSOperation.m */; };
 		E6E4FEFF189012F00068D929 /* JBModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FEFD189012F00068D929 /* JBModel.xcdatamodeld */; };
 		E6E4FF0718901EB20068D929 /* JBRSSPin.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FF0418901EB20068D929 /* JBRSSPin.m */; };
 		E6E4FF0818901EB20068D929 /* JBRSSPinList.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FF0618901EB20068D929 /* JBRSSPinList.m */; };
-		E6E4FF0C1890E29F0068D929 /* JBReadLaterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E4FF0A1890E29F0068D929 /* JBReadLaterTableViewCell.m */; };
-		E6E4FF0D1890E29F0068D929 /* JBReadLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6E4FF0B1890E29F0068D929 /* JBReadLaterTableViewCell.xib */; };
 		E6EA936C17B54E6D00697604 /* UIKit+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA936B17B54E6D00697604 /* UIKit+Localize.m */; };
 		E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F08351186AE5D2007FEDD4 /* JBBookmark.storyboard */; };
 		E6F0835A186AE734007FEDD4 /* JBBookmarkCatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F08357186AE734007FEDD4 /* JBBookmarkCatalogController.m */; };
@@ -71,7 +72,6 @@
 		E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100817B16FA800A12BED /* WebViewController.m */; };
 		E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100C17B1729B00A12BED /* UINib+UIKit.m */; };
 		E6FC101017B1748900A12BED /* JBRSSController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100F17B1748900A12BED /* JBRSSController.m */; };
-		E6FC101317B1749700A12BED /* JBReadLaterController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC101217B1749700A12BED /* JBReadLaterController.m */; };
 		E6FC101617B174A200A12BED /* JBBookmarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC101517B174A200A12BED /* JBBookmarkController.m */; };
 		E6FC101917B174AC00A12BED /* JBSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC101817B174AC00A12BED /* JBSettingController.m */; };
 		E6FC101B17B176B000A12BED /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6FC101A17B176B000A12BED /* MainStoryboard.storyboard */; };
@@ -82,6 +82,15 @@
 /* Begin PBXFileReference section */
 		53D3013BD4F540AEB55F7CE7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		63C4A9E1051943D9BBC35D4B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E60A4B7C18928BAD007AA0A7 /* JBBookmarkConstant-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JBBookmarkConstant-Private.h"; sourceTree = "<group>"; };
+		E60A4B7D189592A5007AA0A7 /* JBRSSPin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBRSSPin.storyboard; sourceTree = "<group>"; };
+		E60A4B7E189592A5007AA0A7 /* JBRSSPinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinController.h; sourceTree = "<group>"; };
+		E60A4B7F189592A5007AA0A7 /* JBRSSPinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinController.m; sourceTree = "<group>"; };
+		E60A4B80189592A5007AA0A7 /* JBRSSPinNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinNavigationController.h; sourceTree = "<group>"; };
+		E60A4B81189592A5007AA0A7 /* JBRSSPinNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinNavigationController.m; sourceTree = "<group>"; };
+		E60A4B82189592A5007AA0A7 /* JBRSSPinTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinTableViewCell.h; sourceTree = "<group>"; };
+		E60A4B83189592A5007AA0A7 /* JBRSSPinTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinTableViewCell.m; sourceTree = "<group>"; };
+		E60A4B84189592A5007AA0A7 /* JBRSSPinTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBRSSPinTableViewCell.xib; sourceTree = "<group>"; };
 		E6272FBE186F635B00FC9C2D /* JBRSSFeedUnreadList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedUnreadList.h; sourceTree = "<group>"; };
 		E6272FBF186F635B00FC9C2D /* JBRSSFeedUnreadList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedUnreadList.m; sourceTree = "<group>"; };
 		E6272FC1186F659600FC9C2D /* JBRSSFeedUnread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedUnread.h; sourceTree = "<group>"; };
@@ -162,9 +171,6 @@
 		E6E4FEE5188C64730068D929 /* JBRSSPinAddOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinAddOperation.m; sourceTree = "<group>"; };
 		E6E4FEE9188D29D70068D929 /* JBRSSFeedDiscoverOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBRSSFeedDiscoverOperation.h; path = junkbox/Classes/RSS/Feed/JBRSSFeedDiscoverOperation.h; sourceTree = SOURCE_ROOT; };
 		E6E4FEEA188D29D70068D929 /* JBRSSFeedDiscoverOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBRSSFeedDiscoverOperation.m; path = junkbox/Classes/RSS/Feed/JBRSSFeedDiscoverOperation.m; sourceTree = SOURCE_ROOT; };
-		E6E4FEEC188FD5ED0068D929 /* JBReadLaterNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBReadLaterNavigationController.h; sourceTree = "<group>"; };
-		E6E4FEED188FD5ED0068D929 /* JBReadLaterNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBReadLaterNavigationController.m; sourceTree = "<group>"; };
-		E6E4FEEF188FD65E0068D929 /* JBReadLater.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBReadLater.storyboard; sourceTree = "<group>"; };
 		E6E4FEF1188FDB910068D929 /* JBRSSPinAllOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinAllOperation.h; sourceTree = "<group>"; };
 		E6E4FEF2188FDB910068D929 /* JBRSSPinAllOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinAllOperation.m; sourceTree = "<group>"; };
 		E6E4FEF3188FDB910068D929 /* JBRSSPinRemoveOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinRemoveOperation.h; sourceTree = "<group>"; };
@@ -176,9 +182,6 @@
 		E6E4FF0418901EB20068D929 /* JBRSSPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPin.m; sourceTree = "<group>"; };
 		E6E4FF0518901EB20068D929 /* JBRSSPinList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinList.h; sourceTree = "<group>"; };
 		E6E4FF0618901EB20068D929 /* JBRSSPinList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinList.m; sourceTree = "<group>"; };
-		E6E4FF091890E29F0068D929 /* JBReadLaterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBReadLaterTableViewCell.h; sourceTree = "<group>"; };
-		E6E4FF0A1890E29F0068D929 /* JBReadLaterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBReadLaterTableViewCell.m; sourceTree = "<group>"; };
-		E6E4FF0B1890E29F0068D929 /* JBReadLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBReadLaterTableViewCell.xib; sourceTree = "<group>"; };
 		E6EA936A17B54E6D00697604 /* UIKit+Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Localize.h"; sourceTree = "<group>"; };
 		E6EA936B17B54E6D00697604 /* UIKit+Localize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+Localize.m"; sourceTree = "<group>"; };
 		E6EA937717B5645700697604 /* JBRSSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSConstant.h; sourceTree = "<group>"; };
@@ -197,8 +200,6 @@
 		E6FC100C17B1729B00A12BED /* UINib+UIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+UIKit.m"; sourceTree = "<group>"; };
 		E6FC100E17B1748900A12BED /* JBRSSController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSController.h; sourceTree = "<group>"; };
 		E6FC100F17B1748900A12BED /* JBRSSController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSController.m; sourceTree = "<group>"; };
-		E6FC101117B1749700A12BED /* JBReadLaterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBReadLaterController.h; sourceTree = "<group>"; };
-		E6FC101217B1749700A12BED /* JBReadLaterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBReadLaterController.m; sourceTree = "<group>"; };
 		E6FC101417B174A200A12BED /* JBBookmarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkController.h; sourceTree = "<group>"; };
 		E6FC101517B174A200A12BED /* JBBookmarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkController.m; sourceTree = "<group>"; };
 		E6FC101717B174AC00A12BED /* JBSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingController.h; sourceTree = "<group>"; };
@@ -258,7 +259,6 @@
 				E6C8D77E17B15520007B6C16 /* Connection */,
 				E67E6E851889D0A800D36A47 /* WebView */,
 				E6C8D78F17B15521007B6C16 /* RSS */,
-				E6FC100117B16FA800A12BED /* ReadLater */,
 				E6C8D77D17B15520007B6C16 /* Bookmark */,
 				E6FC100217B16FA800A12BED /* Setting */,
 				E62747E317B5CEBF007B41B2 /* JBConstant.h */,
@@ -378,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				E6F08351186AE5D2007FEDD4 /* JBBookmark.storyboard */,
+				E60A4B7C18928BAD007AA0A7 /* JBBookmarkConstant-Private.h */,
 				E6FC101417B174A200A12BED /* JBBookmarkController.h */,
 				E6FC101517B174A200A12BED /* JBBookmarkController.m */,
 				E6F08353186AE734007FEDD4 /* Catalog */,
@@ -501,6 +502,14 @@
 				E6E4FEF4188FDB910068D929 /* JBRSSPinRemoveOperation.m */,
 				E6E4FEF1188FDB910068D929 /* JBRSSPinAllOperation.h */,
 				E6E4FEF2188FDB910068D929 /* JBRSSPinAllOperation.m */,
+				E60A4B84189592A5007AA0A7 /* JBRSSPinTableViewCell.xib */,
+				E60A4B7D189592A5007AA0A7 /* JBRSSPin.storyboard */,
+				E60A4B7E189592A5007AA0A7 /* JBRSSPinController.h */,
+				E60A4B7F189592A5007AA0A7 /* JBRSSPinController.m */,
+				E60A4B80189592A5007AA0A7 /* JBRSSPinNavigationController.h */,
+				E60A4B81189592A5007AA0A7 /* JBRSSPinNavigationController.m */,
+				E60A4B82189592A5007AA0A7 /* JBRSSPinTableViewCell.h */,
+				E60A4B83189592A5007AA0A7 /* JBRSSPinTableViewCell.m */,
 			);
 			path = Pin;
 			sourceTree = "<group>";
@@ -556,21 +565,6 @@
 			name = Unread;
 			path = junkbox/Classes/RSS/Feed/Unread;
 			sourceTree = SOURCE_ROOT;
-		};
-		E6FC100117B16FA800A12BED /* ReadLater */ = {
-			isa = PBXGroup;
-			children = (
-				E6E4FF091890E29F0068D929 /* JBReadLaterTableViewCell.h */,
-				E6E4FF0A1890E29F0068D929 /* JBReadLaterTableViewCell.m */,
-				E6E4FF0B1890E29F0068D929 /* JBReadLaterTableViewCell.xib */,
-				E6E4FEEC188FD5ED0068D929 /* JBReadLaterNavigationController.h */,
-				E6E4FEED188FD5ED0068D929 /* JBReadLaterNavigationController.m */,
-				E6FC101117B1749700A12BED /* JBReadLaterController.h */,
-				E6FC101217B1749700A12BED /* JBReadLaterController.m */,
-				E6E4FEEF188FD65E0068D929 /* JBReadLater.storyboard */,
-			);
-			path = ReadLater;
-			sourceTree = "<group>";
 		};
 		E6FC100217B16FA800A12BED /* Setting */ = {
 			isa = PBXGroup;
@@ -660,14 +654,14 @@
 				E68EB9E617B01624006711A6 /* Default-568h@2x.png in Resources */,
 				E68EB9E717B01624006711A6 /* Default.png in Resources */,
 				E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */,
-				E6E4FEF0188FD65E0068D929 /* JBReadLater.storyboard in Resources */,
-				E6E4FF0D1890E29F0068D929 /* JBReadLaterTableViewCell.xib in Resources */,
+				E60A4B85189592A5007AA0A7 /* JBRSSPin.storyboard in Resources */,
 				E68EB9E817B01624006711A6 /* Default@2x.png in Resources */,
 				E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */,
 				E67E6E981889DFF200D36A47 /* JBBarButtonView.xib in Resources */,
 				E6C90076186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */,
 				E6FC101B17B176B000A12BED /* MainStoryboard.storyboard in Resources */,
 				E6FC983E17BBD53D0082047A /* JBRSSFeed.storyboard in Resources */,
+				E60A4B89189592A5007AA0A7 /* JBRSSPinTableViewCell.xib in Resources */,
 				E67E6E9A1889DFF200D36A47 /* JBNavigationBarTitleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,6 +709,7 @@
 				E68EB9E417B01624006711A6 /* AppDelegate.m in Sources */,
 				E68EB9E517B01624006711A6 /* main.m in Sources */,
 				E6E4FEE8188C64730068D929 /* JBRSSPinAddOperation.m in Sources */,
+				E60A4B87189592A5007AA0A7 /* JBRSSPinNavigationController.m in Sources */,
 				E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */,
 				E6E4FF0718901EB20068D929 /* JBRSSPin.m in Sources */,
 				E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */,
@@ -728,15 +723,15 @@
 				E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */,
 				E6E4FEF9188FDEF10068D929 /* JBRSSOperation.m in Sources */,
 				E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */,
-				E6E4FF0C1890E29F0068D929 /* JBReadLaterTableViewCell.m in Sources */,
 				E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */,
 				E6FC100917B16FA800A12BED /* TableViewController.m in Sources */,
 				E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */,
+				E60A4B88189592A5007AA0A7 /* JBRSSPinTableViewCell.m in Sources */,
 				E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */,
 				E6FC101017B1748900A12BED /* JBRSSController.m in Sources */,
 				E6E4FEEB188D29D70068D929 /* JBRSSFeedDiscoverOperation.m in Sources */,
+				E60A4B86189592A5007AA0A7 /* JBRSSPinController.m in Sources */,
 				E6C90075186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */,
-				E6FC101317B1749700A12BED /* JBReadLaterController.m in Sources */,
 				E6C90071186400840007449D /* JBRSSFeedSubsUnread.m in Sources */,
 				E6F08363186E3041007FEDD4 /* JBRSSFeedUnreadController.m in Sources */,
 				E67E6E991889DFF200D36A47 /* JBNavigationBarTitleView.m in Sources */,
@@ -756,7 +751,6 @@
 				E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */,
 				E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */,
 				E6272FC6186F6C0000FC9C2D /* JBRSSFeedUnreadOperation.m in Sources */,
-				E6E4FEEE188FD5ED0068D929 /* JBReadLaterNavigationController.m in Sources */,
 				E6272FC3186F659600FC9C2D /* JBRSSFeedUnread.m in Sources */,
 				E6272FC0186F635B00FC9C2D /* JBRSSFeedUnreadList.m in Sources */,
 				E681E76318251954001323DB /* JBRSSLoginOperations.m in Sources */,

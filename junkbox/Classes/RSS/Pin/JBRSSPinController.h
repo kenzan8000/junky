@@ -2,9 +2,9 @@
 #import "JBRSSPinList.h"
 
 
-#pragma mark - JBReadLaterController
+#pragma mark - JBRSSPinController
 /// あとで読む(PIN)
-@interface JBReadLaterController : TableViewController <JBRSSPinListDelegate> {
+@interface JBRSSPinController : TableViewController <JBRSSPinListDelegate> {
 }
 
 

@@ -1,10 +1,10 @@
-#import "JBReadLaterNavigationController.h"
+#import "JBRSSPinNavigationController.h"
 /// UIKit-Extension
 #import "UIStoryboard+UIKit.h"
 
 
-#pragma mark - JBReadLaterNavigationController
-@implementation JBReadLaterNavigationController
+#pragma mark - JBRSSPinNavigationController
+@implementation JBRSSPinNavigationController
 
 
 #pragma mark - synthesize
@@ -32,7 +32,7 @@
 - (void)loadView
 {
     [super loadView];
-    [self setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardReadLater]]];
+    [self setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSPin]]];
 }
 
 - (void)viewDidLoad

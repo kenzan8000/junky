@@ -1,6 +1,9 @@
 #import "JBBookmarkCatalogController.h"
 /// UIKit-Extension
 #import "UINib+UIKit.h"
+/// Pods
+#import "HatenaBookmarkSDK.h"
+#import "IonIcons.h"
 
 
 #pragma mark - JBBookmarkCatalogController
@@ -8,6 +11,7 @@
 
 
 #pragma mark - synthesize
+@synthesize loginButtonView;
 
 
 #pragma mark - initializer
@@ -25,6 +29,7 @@
 #pragma mark - release
 - (void)dealloc
 {
+    self.loginButtonView = nil;
 }
 
 
@@ -32,6 +37,14 @@
 - (void)loadView
 {
     [super loadView];
+
+    // ナビゲーションバー
+        // ログインボタン
+    self.loginButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                   title:NSLocalizedString(@"Login", @"ログインボタン")
+                                                                    icon:icon_log_in];
+    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
+                                      animated:NO];
 }
 
 - (void)viewDidLoad
@@ -90,10 +103,26 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 
-#pragma mark - event listener
-- (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button
+#pragma mark - JBBarButtonViewDelegate
+/**
+ * ボタン押下
+ * @param barButtonView barButtonView
+ */
+- (void)touchedUpInsideButtonWithBarButtonView:(JBBarButtonView *)barButtonView
+{
+    // ログイン
+    if (barButtonView == self.loginButtonView) {
+    }
+}
+
+
+#pragma mark - notification
+-(void)showOAuthLoginView:(NSNotification *)notification
 {
 }
+
+
+#pragma mark - event listener
 
 
 @end

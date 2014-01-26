@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import "JBRSSConstant.h"
+#import "JBBookmarkConstant-Private.h"
 #import "JBRSSOperationQueue.h"
 #import "JBRSSPinList.h"
 /// UIkit-Extension
@@ -22,6 +23,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                              withExtension:@"momd"];
         [[NLCoreData shared] useDatabaseFile:[URL absoluteString]];
     }
+        // RSSのあとで読む一覧
     [[JBRSSPinList sharedInstance] loadAllPinFromLocal];
 
     // Connection

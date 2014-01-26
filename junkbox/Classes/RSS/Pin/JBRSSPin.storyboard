@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Read Later Controller-->
+        <!--Pin Controller-->
         <scene sceneID="dpj-73-rNb">
             <objects>
-                <viewController id="vbm-rh-LZz" customClass="JBReadLaterController" sceneMemberID="viewController">
+                <viewController id="vbm-rh-LZz" customClass="JBRSSPinController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lUV-Sg-0IC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

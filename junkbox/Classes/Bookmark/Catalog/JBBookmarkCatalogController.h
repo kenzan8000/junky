@@ -1,21 +1,18 @@
 #import "TableViewController.h"
+#import "JBBarButtonView.h"
 
 
 #pragma mark - JBBookmarkCatalogController
 /// ブックマーク一覧
-@interface JBBookmarkCatalogController : TableViewController {
+@interface JBBookmarkCatalogController : TableViewController <JBBarButtonViewDelegate> {
 }
 
 
 #pragma mark - property
+@property (nonatomic, strong) JBBarButtonView *loginButtonView;
 
 
 #pragma mark - event listener
-/**
- * ログインボタン押下
- * @param button button
- */
-- (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button;
 
 
 @end
