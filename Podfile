@@ -13,5 +13,6 @@ pod 'NJKWebViewProgress'
 pod 'RNFrostedSidebar', '~> 0.2.0'
 pod 'SSGentleAlertView'
 pod 'SAMBadgeView', :git => 'https://github.com/soffes/SAMBadgeView.git'
+pod 'QBFlatButton'
 # Font
 pod 'ionicons'

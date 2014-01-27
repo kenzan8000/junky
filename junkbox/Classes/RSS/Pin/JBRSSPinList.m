@@ -155,20 +155,52 @@
 - (void)addPinWithTitle:(NSString *)title
                    link:(NSString *)link
 {
-    [self addPinToWebAPIWithTitle:title
-                             link:link];
     [self addPinToLocalWithTitle:title
                             link:link];
+    [self addPinToWebAPIWithTitle:title
+                             link:link];
 }
 
 - (void)removePinWithLink:(NSString *)link
 {
-    [self removePinToWebAPIWithLink:link];
     [self removePinToLocalWithLink:link];
+    [self removePinToWebAPIWithLink:link];
 }
 
 
 #pragma makr - private api
+/**
+ * 同じPINがあるかどうか
+ * @param link link
+ * @return BOOL
+ */
+- (BOOL)hasPinWithLink:(NSString *)link
+{
+    for (JBRSSPin *pin in self.list) {
+        if ([pin.link isEqualToString:link]) { return YES; }
+    }
+    return NO;
+}
+
+/**
+ * indexのPINを削除
+ * @param link link
+ */
+- (void)removeListWithLink:(NSString *)link
+{
+    NSInteger index = -1;
+    for (NSInteger i = 0; i < self.list.count; i++) {
+        JBRSSPin *pin = self.list[i];
+        if ([pin.link isEqualToString:link]) {
+            index = i;
+            break;
+        }
+    }
+    if (index >= 0) {
+        [self.list removeObjectAtIndex:index];
+    }
+}
+
 /**
  * 一覧ロード完了後処理
  * @param JSON JSON
@@ -192,6 +224,7 @@
 
             [temporaryArray addObject:pin];
         }
+        [context save];
         // delegate
         dispatch_async(dispatch_get_main_queue(), ^ () {
             weakSelf.list = temporaryArray;
@@ -199,7 +232,6 @@
                 [weakSelf.delegate pinDidFinishLoadWithList:weakSelf];
             }
         });
-        [context save];
     });
 }
 
@@ -251,6 +283,30 @@
 - (void)addPinToLocalWithTitle:(NSString *)title
                           link:(NSString *)link
 {
+    // 既にPINに追加されている
+    if ([self hasPinWithLink:link]) {
+        return;
+    }
+
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(weakSelf.updateQueue, ^ () {
+        NSManagedObjectContext *context = [JBRSSPinList managedObjectContext];
+        JBRSSPin *pin = [JBRSSPin insertInContext:context];
+        pin.title = title;
+        pin.link = link;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyyMMddHHmmssSSS"];
+        pin.createdOn = [dateFormatter stringFromDate:[NSDate date]];
+        [context save];
+        // delegate
+        dispatch_async(dispatch_get_main_queue(), ^ () {
+            [weakSelf.list insertObject:pin
+                                atIndex:0];
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(pinDidFinishLoadWithList:)]) {
+                [weakSelf.delegate pinDidFinishLoadWithList:weakSelf];
+            }
+        });
+    });
 }
 
 /**
@@ -279,6 +335,26 @@
  */
 - (void)removePinToLocalWithLink:(NSString *)link
 {
+    // PINに追加されていない
+    if ([self hasPinWithLink:link] == NO) {
+        return;
+    }
+    [self removeListWithLink:link];
+
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(weakSelf.updateQueue, ^ () {
+        NSManagedObjectContext *context = [JBRSSPinList managedObjectContext];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"link = %@", link];
+        [JBRSSPin deleteInContext:context
+                        predicate:predicate];
+        [context save];
+        // delegate
+        dispatch_async(dispatch_get_main_queue(), ^ () {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(pinDidFinishLoadWithList:)]) {
+                [weakSelf.delegate pinDidFinishLoadWithList:weakSelf];
+            }
+        });
+    });
 }
 
 

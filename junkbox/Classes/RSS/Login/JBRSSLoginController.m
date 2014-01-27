@@ -8,6 +8,7 @@
 #import "Reachability.h"
 #import "MTStatusBarOverlay.h"
 #import "IonIcons.h"
+#import "QBFlatButton.h"
 /// Pods-Extension
 #import "SSGentleAlertView+Junkbox.h"
 /// UIKit-Extension
@@ -25,6 +26,7 @@
 @synthesize passwordTextField;
 @synthesize IDPlaceholderLabel;
 @synthesize passwordPlaceholderLabel;
+@synthesize loginButton;
 @synthesize loginOperation;
 
 
@@ -82,6 +84,15 @@
 
     self.IDTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderUsername];
     self.passwordTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderPassword];
+
+    // ログインボタン
+    [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0x2ecc71ff] forState:UIControlStateNormal];
+    [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0x27ae60ff] forState:UIControlStateHighlighted];
+    [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0x27ae60ff] forState:UIControlStateNormal];
+    [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0x209050ff] forState:UIControlStateHighlighted];
+    self.loginButton.depth = 0;
+    self.loginButton.margin = 0;
+    self.loginButton.radius = 2;
 }
 
 - (void)viewDidLoad

@@ -73,7 +73,7 @@
     self.pinButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                  title:@""//NSLocalizedString(@"Read Later", @"あとで読む")
                                                                   icon:icon_pin
-                                                                 color:[UIColor colorWithHexadecimal:0xff0000ff]];
+                                                                 color:[UIColor colorWithHexadecimal:0xe04080ff]];
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.pinButtonView]]
                                        animated:NO];
     [self.pinButtonView setBadgeText:[@([[JBRSSPinList sharedInstance] count]) stringValue]
@@ -204,8 +204,11 @@ didFailLoadWithError:error];
         if (unread == nil) { return; }
         [[JBRSSPinList sharedInstance] addPinWithTitle:unread.title
                                                   link:[unread.link absoluteString]];
-        [self.pinButtonView setBadgeText:[@([[JBRSSPinList sharedInstance] count]) stringValue]
-                                   color:[UIColor colorWithHexadecimal:0xaaaaaaff]];
+        __weak __typeof(self) weakSelf = self;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*0.2), dispatch_get_main_queue(), ^ () {
+            [weakSelf.pinButtonView setBadgeText:[@([[JBRSSPinList sharedInstance] count]) stringValue]
+                                           color:[UIColor colorWithHexadecimal:0xaaaaaaff]];
+        });
     }
 }
 

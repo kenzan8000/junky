@@ -12,6 +12,7 @@ PODS:
   - NJKWebViewProgress/Core (0.2)
   - NJKWebViewProgress/ProgressView (0.2)
   - NLCoreData (0.5.3)
+  - QBFlatButton (1.0)
   - Reachability (3.1.1)
   - RNFrostedSidebar (0.2.0)
   - SAMBadgeView (0.1.0)
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - MTStatusBarOverlay
   - NJKWebViewProgress
   - NLCoreData
+  - QBFlatButton
   - Reachability
   - RNFrostedSidebar (~> 0.2.0)
   - SAMBadgeView (from `https://github.com/soffes/SAMBadgeView.git`)
@@ -44,6 +46,7 @@ SPEC CHECKSUMS:
   MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
   NJKWebViewProgress: fd46c9489d799d97f3b09210886bf83884f6c725
   NLCoreData: bde75667607f7b66a08ef1d78d39b8bc5eed433f
+  QBFlatButton: 244e80923e8077a87c1e5acc5b9d0d1cd87539d3
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   RNFrostedSidebar: 36339438a07088fd3ee3926db03af499477ee048
   SAMBadgeView: 7eba9d24f817ed27c0a22ae0ae71e9e4577a7522

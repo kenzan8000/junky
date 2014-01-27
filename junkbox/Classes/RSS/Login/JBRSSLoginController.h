@@ -3,6 +3,7 @@
 
 #pragma mark - class
 @class JBRSSLoginOperations;
+@class QBFlatButton;
 
 
 #pragma mark - JBRSSLoginController
@@ -22,6 +23,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *IDPlaceholderLabel;
 /// ログインパスワード入力欄 placeholder
 @property (nonatomic, weak) IBOutlet UILabel *passwordPlaceholderLabel;
+/// ログインボタン
+@property (nonatomic, weak) IBOutlet QBFlatButton *loginButton;
 /// ログイン処理
 @property (nonatomic, strong) JBRSSLoginOperations *loginOperation;
 
