@@ -125,6 +125,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         JBWebViewController *vc = [[JBWebViewController alloc] initWithNibName:NSStringFromClass([JBWebViewController class])
                                                                         bundle:nil];
         [vc setInitialURL:[NSURL URLWithString:pin.link]];
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc
                                              animated:YES];
     }

@@ -59,6 +59,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                        <state key="normal" title="▽"/>
                                         <connections>
                                             <action selector="touchedUpInsideWithNextFeedButton:" destination="nGA-IY-Ie1" eventType="touchUpInside" id="186-ow-Omq"/>
                                         </connections>
@@ -67,7 +68,7 @@
                                         <rect key="frame" x="160" y="0.0" width="80" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal">
+                                        <state key="normal" title="＜">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -78,6 +79,7 @@
                                         <rect key="frame" x="240" y="0.0" width="80" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="＞"/>
                                         <connections>
                                             <action selector="touchedUpInsideWithNextButton:" destination="nGA-IY-Ie1" eventType="touchUpInside" id="XRm-a9-7Cj"/>
                                         </connections>

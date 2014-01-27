@@ -79,7 +79,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="5TC-4F-1xh">
             <objects>
-                <tabBarController storyboardIdentifier="UITabBarController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rEd-A1-vCA" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="UITabBarController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rEd-A1-vCA" customClass="JBTabBarController" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="lBZ-x5-gLe">
@@ -88,6 +88,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="delegate" destination="lBZ-x5-gLe" id="hIn-x4-68b"/>
                         <segue destination="fCC-bM-0oL" kind="relationship" relationship="viewControllers" id="sZP-DL-H8X"/>
                         <segue destination="8iQ-wp-W6e" kind="relationship" relationship="viewControllers" id="GN8-PB-iFB"/>
                         <segue destination="iba-jl-RLC" kind="relationship" relationship="viewControllers" id="uJJ-mX-Auv"/>

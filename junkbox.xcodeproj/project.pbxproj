@@ -35,6 +35,7 @@
 		E68EB9E717B01624006711A6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E68EB9DF17B01624006711A6 /* Default.png */; };
 		E68EB9E817B01624006711A6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E68EB9E017B01624006711A6 /* Default@2x.png */; };
 		E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E68EB9F617B01AE7006711A6 /* Localizable.strings */; };
+		E6A8DC6718962ED200AE5C51 /* JBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A8DC6618962ED200AE5C51 /* JBTabBarController.m */; };
 		E6B03C82888442169AA87976 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C4A9E1051943D9BBC35D4B /* libPods.a */; };
 		E6BAB8C617B0131300C1FEC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C517B0131300C1FEC1 /* UIKit.framework */; };
 		E6BAB8C817B0131300C1FEC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C717B0131300C1FEC1 /* Foundation.framework */; };
@@ -131,6 +132,8 @@
 		E68EB9E017B01624006711A6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E68EB9F717B01AE7006711A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E68EB9F917B01AF8006711A6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E6A8DC6518962ED200AE5C51 /* JBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBTabBarController.h; sourceTree = "<group>"; };
+		E6A8DC6618962ED200AE5C51 /* JBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBTabBarController.m; sourceTree = "<group>"; };
 		E6BAB8C217B0131300C1FEC1 /* debug.junkbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debug.junkbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6BAB8C517B0131300C1FEC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E6BAB8C717B0131300C1FEC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -587,6 +590,8 @@
 		E6FC100417B16FA800A12BED /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E6A8DC6518962ED200AE5C51 /* JBTabBarController.h */,
+				E6A8DC6618962ED200AE5C51 /* JBTabBarController.m */,
 				E6FC100517B16FA800A12BED /* TableViewController.h */,
 				E6FC100617B16FA800A12BED /* TableViewController.m */,
 				E6FC100717B16FA800A12BED /* WebViewController.h */,
@@ -756,6 +761,7 @@
 				E681E76318251954001323DB /* JBRSSLoginOperations.m in Sources */,
 				E6F0835D186CF15F007FEDD4 /* JBLoginOperation.m in Sources */,
 				E6C90074186400840007449D /* JBRSSFeedSubsUnreadOperation.m in Sources */,
+				E6A8DC6718962ED200AE5C51 /* JBTabBarController.m in Sources */,
 				E6E4FEE0188C58E10068D929 /* JBSidebarMenu.m in Sources */,
 				E6C90073186400840007449D /* JBRSSFeedSubsUnreadList.m in Sources */,
 			);
