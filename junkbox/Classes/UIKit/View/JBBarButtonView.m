@@ -4,6 +4,7 @@
 #import "UIColor+Hexadecimal.h"
 // Pods
 #import "IonIcons.h"
+#import "SAMBadgeView.h"
 
 
 #pragma mark - JBBarButtonView
@@ -14,6 +15,7 @@
 @synthesize labelButton;
 @synthesize imageButton;
 @synthesize labelAndImageButton;
+@synthesize badgeView;
 @synthesize delegate;
 
 
@@ -51,12 +53,23 @@
                                             title:(NSString *)title
                                              icon:(NSString *)icon
 {
+    return [JBBarButtonView defaultBarButtonWithDelegate:del
+                                                   title:title
+                                                    icon:icon
+                                                   color:[UIColor colorWithHexadecimal:0x0080ffff]];
+}
+
++ (JBBarButtonView *)defaultBarButtonWithDelegate:(id<JBBarButtonViewDelegate>)del
+                                            title:(NSString *)title
+                                             icon:(NSString *)icon
+                                            color:(UIColor *)color
+{
     JBBarButtonView *barButtonView = [UINib UIKitFromClassName:NSStringFromClass([JBBarButtonView class])];
     [barButtonView setDelegate:del];
     [barButtonView setTitle:title
                       image:[IonIcons imageWithIcon:icon
                                                size:20
-                                              color:[UIColor colorWithHexadecimal:0x0080ffff]]
+                                              color:color]
                    forState:UIControlStateNormal];
     return barButtonView;
 }
@@ -98,6 +111,19 @@
     [self.labelAndImageButton.titleLabel setFont:font];
     [self.labelAndImageButton setImage:image forState:state];
     [self showLabelAndImageButton];
+}
+
+- (void)setBadgeText:(NSString *)text
+               color:(UIColor *)color
+{
+    if (text && color && [text isKindOfClass:[NSString class]] && [color isKindOfClass:[UIColor class]]) {
+        self.badgeView.textLabel.text = text;
+        self.badgeView.badgeColor = color;
+        [self.badgeView setHidden:NO];
+    }
+    else {
+        [self.badgeView setHidden:YES];
+    }
 }
 
 

@@ -1,5 +1,6 @@
 #pragma mark - class
 @class JBBarButtonView;
+@class SAMBadgeView;
 
 
 #pragma mark - JBBarButtonViewDelegate
@@ -31,6 +32,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *imageButton;
 /// ラベル&画像ボタン
 @property (nonatomic, weak) IBOutlet UIButton *labelAndImageButton;
+/// バッジ
+@property (nonatomic, weak) IBOutlet SAMBadgeView *badgeView;
 
 /// Delegate ボタン押下
 @property (nonatomic, weak) id<JBBarButtonViewDelegate> delegate;
@@ -47,6 +50,19 @@
 + (JBBarButtonView *)defaultBarButtonWithDelegate:(id<JBBarButtonViewDelegate>)del
                                             title:(NSString *)title
                                              icon:(NSString *)icon;
+
+/**
+ * デフォルトのバーボタンを生成
+ * @param del delegate
+ * @param title ボタンのtitle
+ * @param icon ioiconsの名前
+ * @param color color
+ * @return barButtonView
+ */
++ (JBBarButtonView *)defaultBarButtonWithDelegate:(id<JBBarButtonViewDelegate>)del
+                                            title:(NSString *)title
+                                             icon:(NSString *)icon
+                                            color:(UIColor *)color;
 
 /**
  * ボタン押下
@@ -97,6 +113,14 @@
  */
 - (void)setImage:(UIImage *)image
         forState:(UIControlState)state;
+
+/**
+ * バッジにテキストと色をセット
+ * @param text string
+ * @param color color
+ */
+- (void)setBadgeText:(NSString *)text
+               color:(UIColor *)color;
 
 
 @end

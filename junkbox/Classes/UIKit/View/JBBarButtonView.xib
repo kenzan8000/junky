@@ -58,9 +58,19 @@
                         <action selector="touchedUpInsideWithButton:" destination="zFL-PI-8V5" eventType="touchUpInside" id="T2L-kH-siN"/>
                     </connections>
                 </button>
+                <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" id="aPF-Rz-GZB" customClass="SAMBadgeView">
+                    <rect key="frame" x="40" y="12" width="24" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                    </accessibility>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="badgeView" destination="aPF-Rz-GZB" id="RTu-8V-cPI"/>
                 <outlet property="imageButton" destination="Dbk-pR-0oT" id="kyd-Ss-ff8"/>
                 <outlet property="labelAndImageButton" destination="Q0Q-BT-PR1" id="V5H-wF-biQ"/>
                 <outlet property="labelButton" destination="oey-bv-UjV" id="OR8-lR-lYz"/>

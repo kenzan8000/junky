@@ -71,10 +71,22 @@
                                       animated:NO];
         // PINボタン
     self.pinButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
-                                                                 title:NSLocalizedString(@"Read Later", @"あとで読む")
-                                                                  icon:icon_pin];
+                                                                 title:@""//NSLocalizedString(@"Read Later", @"あとで読む")
+                                                                  icon:icon_pin
+                                                                 color:[UIColor colorWithHexadecimal:0xff0000ff]];
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.pinButtonView]]
                                        animated:NO];
+    [self.pinButtonView setBadgeText:[@([[JBRSSPinList sharedInstance] count]) stringValue]
+                               color:[UIColor colorWithHexadecimal:0xaaaaaaff]];
+
+    // ツールバー
+    NSArray *buttons = @[self.nextFeedButton, self.previousButton, self.nextButton];
+    NSArray *buttonTitles = @[icon_chevron_down, icon_chevron_left, icon_chevron_right];
+    for (NSInteger i = 0; i < buttons.count; i++) {
+        [buttons[i] setFont:[IonIcons fontWithSize:20]];
+        [buttons[i] setTitle:buttonTitles[i]
+                    forState:UIControlStateNormal];
+    }
 
     // WebView読み込み
     [self loadWebView];
@@ -186,12 +198,14 @@ didFailLoadWithError:error];
     if (barButtonView == self.backButtonView) {
         [self.navigationController popViewControllerAnimated:YES];
     }
-    // メニュー
+    // PIN
     else if (barButtonView == self.pinButtonView) {
         JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
         if (unread == nil) { return; }
         [[JBRSSPinList sharedInstance] addPinWithTitle:unread.title
                                                   link:[unread.link absoluteString]];
+        [self.pinButtonView setBadgeText:[@([[JBRSSPinList sharedInstance] count]) stringValue]
+                                   color:[UIColor colorWithHexadecimal:0xaaaaaaff]];
     }
 }
 
@@ -240,7 +254,7 @@ didFailLoadWithError:error];
     UIColor *cornerColor = [UIColor colorWithHexadecimal:0xaaaaaaff];
     if (self.indexOfUnreadList <= 0) {
         [self.previousButton setTitleColor:cornerColor forState:UIControlStateNormal];
-        [self.nextButton setTitleColor:defaultColor forState:UIControlStateNormal];
+        [self.nextButton setTitleColor:(([self.unreadList count] <= 1) ? cornerColor : defaultColor) forState:UIControlStateNormal];
     }
     else if (self.indexOfUnreadList >= [self.unreadList count]-1) {
         [self.previousButton setTitleColor:defaultColor forState:UIControlStateNormal];
