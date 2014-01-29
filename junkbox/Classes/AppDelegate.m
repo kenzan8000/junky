@@ -1,6 +1,5 @@
 #import "AppDelegate.h"
 #import "JBRSSConstant.h"
-#import "JBBookmarkConstant-Private.h"
 #import "JBRSSOperationQueue.h"
 #import "JBRSSPinList.h"
 /// UIkit-Extension

@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>445E0D5A-5247-4322-8653-01493E3C04A4</string>
+	<string>91FC8ECE-D588-4FA3-B22E-3EE95FCED72A</string>
 	<key>IDESourceControlProjectName</key>
 	<string>junkbox</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>1124FF57-701F-40EA-8E94-19A09746A2CD</key>
-		<string>https://github.com/kenzan8000/junkly.git</string>
+		<key>B20BC7EE-C0C8-48EE-A57C-8EB4154A14A4</key>
+		<string>https://github.com/kenzan8000/junky.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>junkbox.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>1124FF57-701F-40EA-8E94-19A09746A2CD</key>
+		<key>B20BC7EE-C0C8-48EE-A57C-8EB4154A14A4</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/kenzan8000/junkly.git</string>
+	<string>https://github.com/kenzan8000/junky.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>1124FF57-701F-40EA-8E94-19A09746A2CD</string>
+	<string>B20BC7EE-C0C8-48EE-A57C-8EB4154A14A4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>1124FF57-701F-40EA-8E94-19A09746A2CD</string>
+			<string>B20BC7EE-C0C8-48EE-A57C-8EB4154A14A4</string>
 			<key>IDESourceControlWCCName</key>
-			<string>junkly</string>
+			<string>junky</string>
 		</dict>
 	</array>
 </dict>

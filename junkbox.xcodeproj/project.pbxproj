@@ -83,7 +83,6 @@
 /* Begin PBXFileReference section */
 		53D3013BD4F540AEB55F7CE7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		63C4A9E1051943D9BBC35D4B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E60A4B7C18928BAD007AA0A7 /* JBBookmarkConstant-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JBBookmarkConstant-Private.h"; sourceTree = "<group>"; };
 		E60A4B7D189592A5007AA0A7 /* JBRSSPin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBRSSPin.storyboard; sourceTree = "<group>"; };
 		E60A4B7E189592A5007AA0A7 /* JBRSSPinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinController.h; sourceTree = "<group>"; };
 		E60A4B7F189592A5007AA0A7 /* JBRSSPinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinController.m; sourceTree = "<group>"; };
@@ -381,7 +380,6 @@
 			isa = PBXGroup;
 			children = (
 				E6F08351186AE5D2007FEDD4 /* JBBookmark.storyboard */,
-				E60A4B7C18928BAD007AA0A7 /* JBBookmarkConstant-Private.h */,
 				E6FC101417B174A200A12BED /* JBBookmarkController.h */,
 				E6FC101517B174A200A12BED /* JBBookmarkController.m */,
 				E6F08353186AE734007FEDD4 /* Catalog */,
