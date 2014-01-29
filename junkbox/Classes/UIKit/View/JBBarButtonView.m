@@ -68,7 +68,7 @@
     [barButtonView setDelegate:del];
     [barButtonView setTitle:title
                       image:[IonIcons imageWithIcon:icon
-                                               size:20
+                                               size:18
                                               color:color]
                    forState:UIControlStateNormal];
     return barButtonView;

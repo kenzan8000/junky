@@ -40,6 +40,10 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.webView setDelegate:nil];
+    [self.webViewProgress setWebViewProxyDelegate:nil];
+    [self.webViewProgress setProgressDelegate:nil];
+
     self.initialURL = nil;
     self.sidebarMenu = nil;
     self.titleView = nil;
@@ -61,9 +65,9 @@
 
     // プログレス
     self.webViewProgress = [NJKWebViewProgress new];
-    [self.webView setDelegate:self.webViewProgress];
-    [self.webViewProgress setWebViewProxyDelegate:self];
-    [self.webViewProgress setProgressDelegate:self];
+//    [self.webView setDelegate:self.webViewProgress];
+//    [self.webViewProgress setWebViewProxyDelegate:self];
+//    [self.webViewProgress setProgressDelegate:self];
     CGFloat paddingY = [[UIApplication sharedApplication] statusBarFrame].size.height + self.navigationController.navigationBar.frame.size.height;
     [self.webViewProgressView setFrame:
         CGRectMake(

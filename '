@@ -351,24 +351,38 @@
     }
     NSInteger index = [self indexWithLink:link];
     __weak __typeof(self) weakSelf = self;
-    dispatch_async(weakSelf.updateQueue, ^ () {
+    dispatch_async(dispatch_get_main_queue(), ^ () {
+        JBRSSPin *pin = [weakSelf removePinWithIndex:index];
+        // delegate
+        if (pin &&
+            weakSelf.delegate &&
+            [weakSelf.delegate respondsToSelector:@selector(pinDidDeleteWithList:link:index:)]) {
+            [weakSelf.delegate pinDidDeleteWithList:weakSelf
+                                               link:link
+                                              index:index];
+        }
+        dispatch_async(weakSelf.updateQueue, ^ () {
+            NSManagedObjectContext *context = [JBRSSPinList managedObjectContext];
+            [JBRSSPin deleteInContext:context
+                            predicate:nil];
+
+            JBRSSPin *pin = [JBRSSPin insertInContext:context];
+            pin.title = [NSString stringWithFormat:@"%@", dict[@"title"]];
+            pin.link = [NSString stringWithFormat:@"%@", dict[@"link"]];
+            pin.createdOn = [NSString stringWithFormat:@"%@", dict[@"created_on"]];
+
 /*
-        NSManagedObjectContext *context = [JBRSSPinList managedObjectContext];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"link = %@", link];
-        [JBRSSPin deleteInContext:context
-                        predicate:predicate];
-        [context save];
+            NSManagedObjectContext *context = [JBRSSPinList managedObjectContext];
+            [context deleteObject:pin];
+            [context save];
 */
-        dispatch_async(dispatch_get_main_queue(), ^ () {
-            JBRSSPin *pin = [weakSelf removePinWithIndex:index];
-            // delegate
-            if (pin &&
-                weakSelf.delegate &&
-                [weakSelf.delegate respondsToSelector:@selector(pinDidDeleteWithList:link:index:)]) {
-                [weakSelf.delegate pinDidDeleteWithList:weakSelf
-                                                   link:link
-                                                  index:index];
-            }
+/*
+            NSManagedObjectContext *context = [JBRSSPinList managedObjectContext];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"link = %@", link];
+            [JBRSSPin deleteInContext:context
+                            predicate:predicate];
+            [context save];
+*/
         });
     });
 }

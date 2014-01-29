@@ -59,12 +59,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -121,14 +121,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     JBRSSPin *pin = [self.pinList pinWithIndex:indexPath.row];
     if (pin) {
         [self.pinList removePinWithLink:pin.link];
-
-        // 遷移
-        JBWebViewController *vc = [[JBWebViewController alloc] initWithNibName:NSStringFromClass([JBWebViewController class])
-                                                                        bundle:nil];
-        [vc setInitialURL:[NSURL URLWithString:pin.link]];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc
-                                             animated:YES];
     }
 }
 
@@ -140,6 +132,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)pinDidFinishLoadWithList:(JBRSSPinList *)list
 {
+    [self.tableView reloadData];
 }
 
 /**
@@ -148,6 +141,33 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)pinDidFailLoadWithError:(NSError *)error
 {
+}
+
+/**
+ * あとで読む(Livedoor Reader PIN)を削除した
+ * @param list 一覧
+ * @param link 削除したリンク
+ * @param index 削除した行
+ */
+- (void)pinDidDeleteWithList:(JBRSSPinList *)list
+                        link:(NSString *)link
+                       index:(NSInteger)index
+{
+    if (index < 0) { return; }
+
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index
+                                                inSection:0];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                          withRowAnimation:UITableViewRowAnimationNone];
+
+    // 遷移
+    JBWebViewController *vc = [[JBWebViewController alloc] initWithNibName:NSStringFromClass([JBWebViewController class])
+                                                                    bundle:nil];
+    [vc setInitialURL:[NSURL URLWithString:link]];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc
+                                         animated:YES];
+
 }
 
 

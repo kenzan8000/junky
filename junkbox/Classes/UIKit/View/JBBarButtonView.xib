@@ -47,7 +47,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
-                    <state key="normal" title="back" image="addbookmark-evernote-icon-off.png">
+                    <state key="normal" title="back">
                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
@@ -77,7 +77,4 @@
             </connections>
         </view>
     </objects>
-    <resources>
-        <image name="addbookmark-evernote-icon-off.png" width="30" height="30"/>
-    </resources>
 </document>

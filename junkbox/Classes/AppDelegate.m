@@ -9,6 +9,13 @@
 #import "NLCoreData.h"
 
 
+void uncaughtExceptionHandler(NSException *exception)
+{
+    JBLog(@"Exception: %@", exception);
+    JBLog(@"Stack Trace: %@", [exception callStackSymbols]);
+}
+
+
 #pragma mark - AppDelegate
 @implementation AppDelegate
 
@@ -17,6 +24,8 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+
     // CoreData
     if ([[NLCoreData shared] storeExists] == NO) {
         NSURL *URL = [[NSBundle mainBundle] URLForResource:kXCDataModelName

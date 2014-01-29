@@ -20,6 +20,16 @@
  */
 - (void)pinDidFailLoadWithError:(NSError *)error;
 
+/**
+ * あとで読む(Livedoor Reader PIN)を削除した
+ * @param list 一覧
+ * @param link 削除したリンク
+ * @param index 削除した行
+ */
+- (void)pinDidDeleteWithList:(JBRSSPinList *)list
+                        link:(NSString *)link
+                       index:(NSInteger)index;
+
 
 @end
 
