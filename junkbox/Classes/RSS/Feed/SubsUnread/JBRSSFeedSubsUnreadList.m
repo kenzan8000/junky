@@ -45,7 +45,7 @@
 
     dispatch_once(&onceToken, ^ () {
         _JBRSSFeedSubsUnreadListManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-		[_JBRSSFeedSubsUnreadListManagedObjectContext setPersistentStoreCoordinator:[[NLCoreData shared] storeCoordinator]];
+        [_JBRSSFeedSubsUnreadListManagedObjectContext setPersistentStoreCoordinator:[[NLCoreData shared] storeCoordinator]];
     });
 
     return _JBRSSFeedSubsUnreadListManagedObjectContext;

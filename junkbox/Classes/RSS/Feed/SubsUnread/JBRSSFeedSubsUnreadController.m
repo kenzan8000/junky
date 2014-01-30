@@ -196,9 +196,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)feedDidFinishLoadWithList:(JBRSSFeedSubsUnreadList *)list
 {
+    [self.refreshControl endRefreshing];
+
     // ステータスバー
     [[MTStatusBarOverlay sharedInstance] hide];
-
     [self.tableView reloadData];
 
     // 詳細フィード一覧
@@ -215,10 +216,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)feedDidFailLoadWithError:(NSError *)error
 {
+    [self.refreshControl endRefreshing];
+
     // エラー処理
     NSString *message = nil;
     switch (error.code) {
         case http::statusCode::UNAUTHORIZED: // 401
+            // 再認証
             break;
         case http::NOT_REACHABLE:
             message = NSLocalizedString(@"Cannot access the Network.", @"通信できない");
@@ -249,8 +253,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - JBRSSFeedUnreadListsDelegate
 - (void)unreadListsDidFinishLoadWithList:(JBRSSFeedUnreadList *)list
 {
-    [self.refreshControl endRefreshing];
-
     NSInteger index = [self.unreadLists indexWithList:list];
     if (index < 0) { return; }
 
@@ -265,8 +267,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)unreadListsDidFailLoadWithError:(NSError *)error
                                    list:(JBRSSFeedUnreadList *)list
 {
-    [self.refreshControl endRefreshing];
-
     // エラー処理
     switch (error.code) {
         case http::statusCode::UNAUTHORIZED: // 401
