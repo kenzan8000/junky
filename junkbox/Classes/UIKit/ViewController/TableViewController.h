@@ -7,6 +7,8 @@
 #pragma mark - property
 /// tableview
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+/// pull to refresh
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
 @end

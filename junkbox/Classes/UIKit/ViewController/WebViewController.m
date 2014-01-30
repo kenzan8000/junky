@@ -7,6 +7,15 @@
 
 #pragma mark - synthesize
 @synthesize webView;
+@synthesize refreshControl;
+
+
+#pragma mark - release
+- (void)dealloc
+{
+    [self.refreshControl removeFromSuperview];
+    self.refreshControl = nil;
+}
 
 
 #pragma mark - lifecycle
@@ -16,6 +25,13 @@
 
     // スクロール速度
     self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+
+    // Pull to Refresh
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self
+                            action:@selector(srcollViewDidPulled)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.webView.scrollView addSubview:self.refreshControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -60,13 +76,21 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.webView.scrollView setContentSize:CGSizeMake(self.webView.frame.size.width, self.webView.scrollView.contentSize.height)];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)webView:(UIWebView *)webView
 didFailLoadWithError:(NSError *)error
 {
     [self.webView.scrollView setContentSize:CGSizeMake(self.webView.frame.size.width, self.webView.scrollView.contentSize.height)];
+    [self.refreshControl endRefreshing];
+}
+
+
+#pragma mark - event listener
+- (void)srcollViewDidPulled
+{
+    [self.webView reload];
 }
 
 

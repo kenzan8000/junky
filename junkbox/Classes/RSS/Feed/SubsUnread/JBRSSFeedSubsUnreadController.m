@@ -249,6 +249,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - JBRSSFeedUnreadListsDelegate
 - (void)unreadListsDidFinishLoadWithList:(JBRSSFeedUnreadList *)list
 {
+    [self.refreshControl endRefreshing];
+
     NSInteger index = [self.unreadLists indexWithList:list];
     if (index < 0) { return; }
 
@@ -263,6 +265,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)unreadListsDidFailLoadWithError:(NSError *)error
                                    list:(JBRSSFeedUnreadList *)list
 {
+    [self.refreshControl endRefreshing];
+
     // エラー処理
     switch (error.code) {
         case http::statusCode::UNAUTHORIZED: // 401
@@ -288,6 +292,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [self presentModalViewController:vc
                                 animated:YES];
     }
+}
+
+
+#pragma mark - event listener
+- (void)srcollViewDidPulled
+{
+    [self loadFeedFromWebAPI];
 }
 
 

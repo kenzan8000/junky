@@ -234,6 +234,11 @@ didFailLoadWithError:error];
     [self designPreviousAndNextButton];
 }
 
+- (void)srcollViewDidPulled
+{
+    [self loadWebView];
+}
+
 
 #pragma mark - api
 - (void)loadWebView

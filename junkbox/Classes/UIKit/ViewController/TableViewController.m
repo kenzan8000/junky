@@ -9,6 +9,7 @@
 
 #pragma mark - synthesize
 @synthesize tableView;
+@synthesize refreshControl;
 
 
 #pragma mark - initializer
@@ -23,10 +24,25 @@
 }
 
 
+#pragma mark - release
+- (void)dealloc
+{
+    [self.refreshControl removeFromSuperview];
+    self.refreshControl = nil;
+}
+
+
 #pragma mark - lifecycle
 - (void)loadView
 {
     [super loadView];
+
+    // Pull to Refresh
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self
+                            action:@selector(srcollViewDidPulled)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
 }
 
 - (void)viewDidLoad
@@ -82,6 +98,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //        cell = [UINib UIKitFromClassName:className];
     }
     return cell;
+}
+
+
+#pragma mark - event listener
+- (void)srcollViewDidPulled
+{
 }
 
 

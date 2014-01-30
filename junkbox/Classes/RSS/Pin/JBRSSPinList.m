@@ -352,13 +352,12 @@
     NSInteger index = [self indexWithLink:link];
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
-/*
         NSManagedObjectContext *context = [JBRSSPinList managedObjectContext];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"link = %@", link];
         [JBRSSPin deleteInContext:context
                         predicate:predicate];
         [context save];
-*/
+
         dispatch_async(dispatch_get_main_queue(), ^ () {
             JBRSSPin *pin = [weakSelf removePinWithIndex:index];
             // delegate

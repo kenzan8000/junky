@@ -32,6 +32,8 @@
 #pragma mark - release
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     self.pinList = nil;
 }
 
@@ -132,6 +134,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)pinDidFinishLoadWithList:(JBRSSPinList *)list
 {
+    [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }
 
@@ -141,6 +144,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)pinDidFailLoadWithError:(NSError *)error
 {
+    [self.refreshControl endRefreshing];
 }
 
 /**
@@ -168,6 +172,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     [self.navigationController pushViewController:vc
                                          animated:YES];
 
+}
+
+
+#pragma mark - event listener
+- (void)srcollViewDidPulled
+{
+    [self.pinList loadAllPinFromWebAPI];
 }
 
 
