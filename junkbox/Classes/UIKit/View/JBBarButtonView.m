@@ -5,7 +5,6 @@
 // Pods
 #import "IonIcons.h"
 #import "SAMBadgeView.h"
-#import "JBQBFlatButton.h"
 
 
 #pragma mark - JBBarButtonView
@@ -57,7 +56,7 @@
     return [JBBarButtonView defaultBarButtonWithDelegate:del
                                                    title:title
                                                     icon:icon
-                                                   color:[UIColor colorWithHexadecimal:0x0080ffff]];
+                                                   color:[UIColor colorWithHexadecimal:0xecf0f1ff]];
 }
 
 + (JBBarButtonView *)defaultBarButtonWithDelegate:(id<JBBarButtonViewDelegate>)del
@@ -89,6 +88,10 @@
 - (void)setTitle:(NSString *)title
 {
     [self.labelButton setTitle:title forState:UIControlStateNormal];
+    [self.labelButton setTitleColor:[UIColor whiteColor]
+                           forState:UIControlStateNormal];
+    [self.labelButton setTitleColor:[UIColor colorWithHexadecimal:0xbdc3c7ff]
+                           forState:UIControlStateHighlighted];
     [self showLabelButton];
 }
 
@@ -148,7 +151,6 @@
     [self.labelButton setHidden:NO];
     [self.imageButton setHidden:YES];
     [self.labelAndImageButton setHidden:YES];
-    [self designButtons];
 }
 
 /**
@@ -159,7 +161,6 @@
     [self.labelButton setHidden:YES];
     [self.imageButton setHidden:NO];
     [self.labelAndImageButton setHidden:YES];
-    [self designButtons];
 }
 
 /**
@@ -170,24 +171,6 @@
     [self.labelButton setHidden:YES];
     [self.imageButton setHidden:YES];
     [self.labelAndImageButton setHidden:NO];
-    [self designButtons];
-}
-
-/**
- * ボタンのデザイン
- */
-- (void)designButtons
-{
-    NSArray *buttons = @[self.labelButton, self.imageButton, self.labelAndImageButton];
-    for (JBQBFlatButton *button in buttons) {
-        [button setFaceColor:[UIColor colorWithHexadecimal:0xecf0f1ff] forState:UIControlStateNormal];
-        [button setSideColor:[UIColor colorWithHexadecimal:0xbdc3c7ff] forState:UIControlStateNormal];
-        [button setFaceColor:[UIColor colorWithHexadecimal:0x95a5a6ff] forState:UIControlStateHighlighted];
-        [button setSideColor:[UIColor colorWithHexadecimal:0x7f8c8dff] forState:UIControlStateHighlighted];
-        button.depth = 0;
-        button.margin = 0;
-        button.radius = 2;
-    }
 }
 
 

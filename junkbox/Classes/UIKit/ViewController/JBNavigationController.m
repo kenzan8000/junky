@@ -15,6 +15,7 @@
 {
     [super loadView];
     self.delegate = self;
+
     self.view.backgroundColor = [UIColor lightGrayColor];
 }
 

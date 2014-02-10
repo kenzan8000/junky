@@ -87,10 +87,10 @@
     self.passwordTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderPassword];
 
     // ログインボタン
-    [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0x2ecc71ff] forState:UIControlStateNormal];
-    [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0x27ae60ff] forState:UIControlStateHighlighted];
-    [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0x27ae60ff] forState:UIControlStateNormal];
-    [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0x209050ff] forState:UIControlStateHighlighted];
+    [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0x3498dbff] forState:UIControlStateNormal];
+    [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0x2980b9ff] forState:UIControlStateHighlighted];
+    [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0x2980b9ff] forState:UIControlStateNormal];
+    [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0x1f7797ff] forState:UIControlStateHighlighted];
     self.loginButton.depth = 0;
     self.loginButton.margin = 0;
     self.loginButton.radius = 2;
