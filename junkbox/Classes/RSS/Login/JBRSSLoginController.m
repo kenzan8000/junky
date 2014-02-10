@@ -2,6 +2,7 @@
 #import "JBRSSLoginController.h"
 #import "JBRSSLoginOperations.h"
 #import "JBRSSOperationQueue.h"
+#import "UIViewController+ModalAnimatedTransition.h"
 /// Connection
 #import "StatusCode.h"
 /// Pods
@@ -179,7 +180,8 @@ clickedButtonAtIndex:(NSInteger)index
  */
 - (void)touchedUpInsideButtonWithBarButtonView:(JBBarButtonView *)barButtonView
 {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerJBAnimated:YES
+                                                    completion:^ () {}];
 }
 
 

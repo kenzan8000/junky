@@ -44,6 +44,7 @@
 		E6C7BE5818A87F62007A80E4 /* JBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE5718A87F62007A80E4 /* JBNavigationController.m */; };
 		E6C7BE6118A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE5E18A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m */; };
 		E6C7BE6418A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE6318A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m */; };
+		E6C7BE6718A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE6618A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.m */; };
 		E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78217B15520007B6C16 /* NSData+JSON.m */; };
 		E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78417B15520007B6C16 /* NSNull+IgnoreMessages.m */; };
 		E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78817B15521007B6C16 /* NSString+PercentEncoding.m */; };
@@ -149,6 +150,8 @@
 		E6C7BE5E18A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBPushViewControllerAnimatedTransitioning.m; sourceTree = "<group>"; };
 		E6C7BE6218A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBPopViewControllerAnimatedTransitioning.h; sourceTree = "<group>"; };
 		E6C7BE6318A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBPopViewControllerAnimatedTransitioning.m; sourceTree = "<group>"; };
+		E6C7BE6518A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalAnimatedTransition.h"; sourceTree = "<group>"; };
+		E6C7BE6618A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalAnimatedTransition.m"; sourceTree = "<group>"; };
 		E6C8D77F17B15520007B6C16 /* StatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCode.h; sourceTree = "<group>"; };
 		E6C8D78117B15520007B6C16 /* NSData+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JSON.h"; sourceTree = "<group>"; };
 		E6C8D78217B15520007B6C16 /* NSData+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JSON.m"; sourceTree = "<group>"; };
@@ -475,6 +478,8 @@
 				E6FC100C17B1729B00A12BED /* UINib+UIKit.m */,
 				E6FC101C17B1781700A12BED /* UIStoryboard+UIKit.h */,
 				E6FC101D17B1781700A12BED /* UIStoryboard+UIKit.m */,
+				E6C7BE6518A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.h */,
+				E6C7BE6618A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.m */,
 			);
 			path = "UIKit-Extension";
 			sourceTree = "<group>";
@@ -751,6 +756,7 @@
 				E67E6E971889DFF200D36A47 /* JBBarButtonView.m in Sources */,
 				E6C90072186400840007449D /* JBRSSFeedSubsUnreadController.m in Sources */,
 				E6C8D79C17B15521007B6C16 /* NSURL+Query.m in Sources */,
+				E6C7BE6718A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.m in Sources */,
 				E6F0835A186AE734007FEDD4 /* JBBookmarkCatalogController.m in Sources */,
 				E6C8D79D17B15521007B6C16 /* NSURLRequest+Junkbox.m in Sources */,
 				E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */,

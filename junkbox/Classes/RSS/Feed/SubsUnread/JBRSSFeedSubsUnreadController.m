@@ -6,6 +6,7 @@
 #import "JBRSSOperationQueue.h"
 #import "JBRSSFeedUnreadLists.h"
 #import "JBNavigationBarTitleView.h"
+#import "UIViewController+ModalAnimatedTransition.h"
 /// Connection
 #import "StatusCode.h"
 /// Pods
@@ -289,8 +290,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     if (barButtonView == self.loginButtonView) {
         UINavigationController *vc = [UINavigationController new];
         [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
-        [self presentModalViewController:vc
-                                animated:YES];
+        [self presentViewController:vc
+                         JBAnimated:YES
+                         completion:^ () {}];
     }
 }
 
