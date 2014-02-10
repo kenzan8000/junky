@@ -9,7 +9,7 @@
 #import "Reachability.h"
 #import "MTStatusBarOverlay.h"
 #import "IonIcons.h"
-#import "QBFlatButton.h"
+#import "JBQBFlatButton.h"
 /// Pods-Extension
 #import "SSGentleAlertView+Junkbox.h"
 /// UIKit-Extension
@@ -60,7 +60,7 @@
     // ナビゲーションバー
         // 閉じるボタン
     JBBarButtonView *closeButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
-                                                                               title:NSLocalizedString(@"Close", @"モーダルを閉じる")
+                                                                               title:nil/*NSLocalizedString(@"Close", @"モーダルを閉じる")*/
                                                                                 icon:icon_close_round];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:closeButtonView]]
                                       animated:NO];
@@ -253,7 +253,8 @@ clickedButtonAtIndex:(NSInteger)index
 
     // ネットワークに接続できる場合
     if ([[Reachability reachabilityForInternetConnection] isReachable]) {
-        [self.navigationController dismissModalViewControllerAnimated:YES];
+        [self.navigationController dismissViewControllerJBAnimated:YES
+                                                        completion:^ () {}];
         // ステータスバーにログイン中の表示
         dispatch_async(dispatch_get_main_queue(), ^ () {
             [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Authorizing...", @"ログイン中")

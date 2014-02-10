@@ -16,7 +16,7 @@
 
 
 /// 一覧の更新処理のためのQueue
-@property (nonatomic, assign) dispatch_queue_t updateQueue;
+@property (nonatomic, strong) dispatch_queue_t updateQueue;
 
 
 @end
@@ -75,7 +75,7 @@
 #pragma mark - release
 - (void)dealloc
 {
-    dispatch_release(self.updateQueue);
+    self.updateQueue = nil;
     self.list = nil;
     self.feedCountOfEachRate = nil;
 }

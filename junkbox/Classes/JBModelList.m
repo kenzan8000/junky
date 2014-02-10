@@ -34,7 +34,7 @@
 - (void)dealloc
 {
     [self removeManagedContextObserver];
-    dispatch_release(self.updateQueue);
+    self.updateQueue = nil;
     self.list = nil;
 }
 

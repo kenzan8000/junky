@@ -79,15 +79,18 @@
     ];
     for (NSInteger i = 0; i < self.tabBar.items.count; i++) {
         UITabBarItem *item = self.tabBar.items[i];
-        [item setFinishedSelectedImage:images[i]
-           withFinishedUnselectedImage:selectedImages[i]];
+        [item setSelectedImage:images[i]];
+        [item setImage:selectedImages[i]];
         [item setTitle:titles[i]];
     }
     // テキスト色
-    [[UITabBarItem appearance] setTitleTextAttributes:@{UITextAttributeTextColor:selectedColor}
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:selectedColor}
                                              forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{UITextAttributeTextColor:color}
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:color}
                                              forState:UIControlStateSelected];
+
+    // 背景色
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithHexadecimal:0xecf0f1ff]];
 }
 
 

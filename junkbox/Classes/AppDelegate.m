@@ -4,6 +4,7 @@
 #import "JBRSSPinList.h"
 /// UIkit-Extension
 #import "UIStoryboard+UIKit.h"
+#import "UIColor+Hexadecimal.h"
 /// Pods
 #import "NLCoreData.h"
 
@@ -37,10 +38,17 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     // Connection
     [[JBRSSOperationQueue defaultQueue] setMaxConcurrentOperationCount:kMaxOperationCountOfRSSConnection];
 
-    //
+    // Window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setBackgroundColor:[UIColor lightGrayColor]];
     [self.window setRootViewController:[UIStoryboard UIKitFromName:kStoryboardMainStoryboard]];
     [self.window makeKeyAndVisible];
+
+    // NavigationBar
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexadecimal:0x34495eff]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexadecimal:0xffffffff]}];
+    // StatusBar
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     return YES;
 }

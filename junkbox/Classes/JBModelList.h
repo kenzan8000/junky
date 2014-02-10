@@ -8,7 +8,7 @@
 /// 一覧
 @property (nonatomic, strong) NSMutableArray *list;
 /// 一覧の更新処理のためのQueue
-@property (nonatomic, assign) dispatch_queue_t updateQueue;
+@property (nonatomic, strong) dispatch_queue_t updateQueue;
 
 
 #pragma mark - api

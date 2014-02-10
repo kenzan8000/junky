@@ -83,13 +83,13 @@
     self.navigationItem.titleView = self.titleView;
         // 戻るボタン
     self.backButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
-                                                                  title:NSLocalizedString(@"Back", @"戻る")
+                                                                  title:nil/*NSLocalizedString(@"Back", @"戻る")*/
                                                                    icon:icon_chevron_left];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
                                       animated:NO];
         // メニューボタン
     self.menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
-                                                                  title:NSLocalizedString(@"Menu", @"メニューボタン")
+                                                                  title:nil/*NSLocalizedString(@"Menu", @"メニューボタン")*/
                                                                    icon:icon_navicon_round];
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.menuButtonView]]
                                        animated:NO];
@@ -184,12 +184,9 @@ didFailLoadWithError:error];
     // 読み込み完了
     NSInteger percent = 100 * (NSInteger)floor(progress);
     if (percent == 100) {
-        __weak __typeof(self) weakSelf = self;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*2), dispatch_get_current_queue(), ^ () {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWebViewProgressDidFinished
-                                                                object:nil
-                                                              userInfo:@{@"initialURL":weakSelf.initialURL}];
-        });
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWebViewProgressDidFinished
+                                                            object:nil
+                                                          userInfo:@{@"initialURL":self.initialURL}];
     }
 }
 

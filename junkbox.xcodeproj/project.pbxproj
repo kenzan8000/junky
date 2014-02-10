@@ -45,6 +45,7 @@
 		E6C7BE6118A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE5E18A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m */; };
 		E6C7BE6418A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE6318A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m */; };
 		E6C7BE6718A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE6618A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.m */; };
+		E6C7BE6D18A90433007A80E4 /* JBQBFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE6B18A90433007A80E4 /* JBQBFlatButton.m */; };
 		E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78217B15520007B6C16 /* NSData+JSON.m */; };
 		E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78417B15520007B6C16 /* NSNull+IgnoreMessages.m */; };
 		E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78817B15521007B6C16 /* NSString+PercentEncoding.m */; };
@@ -152,6 +153,8 @@
 		E6C7BE6318A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBPopViewControllerAnimatedTransitioning.m; sourceTree = "<group>"; };
 		E6C7BE6518A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalAnimatedTransition.h"; sourceTree = "<group>"; };
 		E6C7BE6618A8BA29007A80E4 /* UIViewController+ModalAnimatedTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalAnimatedTransition.m"; sourceTree = "<group>"; };
+		E6C7BE6A18A90433007A80E4 /* JBQBFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBQBFlatButton.h; sourceTree = "<group>"; };
+		E6C7BE6B18A90433007A80E4 /* JBQBFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBQBFlatButton.m; sourceTree = "<group>"; };
 		E6C8D77F17B15520007B6C16 /* StatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCode.h; sourceTree = "<group>"; };
 		E6C8D78117B15520007B6C16 /* NSData+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JSON.h"; sourceTree = "<group>"; };
 		E6C8D78217B15520007B6C16 /* NSData+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JSON.m"; sourceTree = "<group>"; };
@@ -397,6 +400,15 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		E6C7BE6818A90433007A80E4 /* QBFlatButton */ = {
+			isa = PBXGroup;
+			children = (
+				E6C7BE6A18A90433007A80E4 /* JBQBFlatButton.h */,
+				E6C7BE6B18A90433007A80E4 /* JBQBFlatButton.m */,
+			);
+			path = QBFlatButton;
+			sourceTree = "<group>";
+		};
 		E6C8D77C17B14EF8007B6C16 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,6 +518,7 @@
 		E6E271B11834A8F400F0E6A4 /* Pods-Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E6C7BE6818A90433007A80E4 /* QBFlatButton */,
 				E6E271B21834A8F400F0E6A4 /* SSGentleAlertView */,
 			);
 			path = "Pods-Extension";
@@ -766,6 +779,7 @@
 				E6FC100917B16FA800A12BED /* TableViewController.m in Sources */,
 				E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */,
 				E60A4B88189592A5007AA0A7 /* JBRSSPinTableViewCell.m in Sources */,
+				E6C7BE6D18A90433007A80E4 /* JBQBFlatButton.m in Sources */,
 				E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */,
 				E6FC101017B1748900A12BED /* JBRSSController.m in Sources */,
 				E6E4FEEB188D29D70068D929 /* JBRSSFeedDiscoverOperation.m in Sources */,
@@ -856,7 +870,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
 				INFOPLIST_FILE = junkbox/Resources/Plists/info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "debug.$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -894,7 +908,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
 				INFOPLIST_FILE = junkbox/Resources/Plists/release.info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

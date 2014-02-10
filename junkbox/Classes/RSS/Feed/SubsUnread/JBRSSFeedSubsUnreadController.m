@@ -73,7 +73,7 @@
         // ログインボタン
     self.loginButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                    title:NSLocalizedString(@"Login", @"ログインボタン")
-                                                                    icon:icon_log_in];
+                                                                    icon:nil/*icon_log_in*/];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
                                       animated:NO];
         //

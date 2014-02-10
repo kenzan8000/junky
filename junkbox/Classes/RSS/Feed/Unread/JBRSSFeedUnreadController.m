@@ -65,7 +65,7 @@
     self.navigationItem.titleView = self.titleView;
         // 戻る
     self.backButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
-                                                                  title:NSLocalizedString(@"Back", @"戻る")
+                                                                  title:nil/*NSLocalizedString(@"Back", @"戻る")*/
                                                                    icon:icon_chevron_left];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
                                       animated:NO];

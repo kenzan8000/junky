@@ -1,6 +1,7 @@
 #pragma mark - class
 @class JBBarButtonView;
 @class SAMBadgeView;
+@class JBQBFlatButton;
 
 
 #pragma mark - JBBarButtonViewDelegate
@@ -27,11 +28,11 @@
 
 #pragma mark - property
 /// ラベルボタン
-@property (nonatomic, weak) IBOutlet UIButton *labelButton;
+@property (nonatomic, weak) IBOutlet JBQBFlatButton *labelButton;
 /// 画像ボタン
-@property (nonatomic, weak) IBOutlet UIButton *imageButton;
+@property (nonatomic, weak) IBOutlet JBQBFlatButton *imageButton;
 /// ラベル&画像ボタン
-@property (nonatomic, weak) IBOutlet UIButton *labelAndImageButton;
+@property (nonatomic, weak) IBOutlet JBQBFlatButton *labelAndImageButton;
 /// バッジ
 @property (nonatomic, weak) IBOutlet SAMBadgeView *badgeView;
 
