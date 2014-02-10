@@ -1,3 +1,6 @@
+#import "JBModelList.h"
+
+
 #pragma mark - class
 @class JBRSSPin;
 @class JBRSSPinList;
@@ -36,15 +39,13 @@
 
 #pragma mark - JBRSSPinList
 /// 未読フィード一覧
-@interface JBRSSPinList : NSObject {
+@interface JBRSSPinList : JBModelList {
 }
 
 
 #pragma mark - property
 /// Delegate
 @property (nonatomic, weak) id<JBRSSPinListDelegate> delegate;
-/// 一覧
-@property (nonatomic, strong) NSMutableArray *list;
 
 
 #pragma mark - class method
@@ -55,22 +56,7 @@
 + (JBRSSPinList *)sharedInstance;
 
 
-#pragma mark - initializer
-/**
- * construct
- * @param delegate delegate
- * @return id
- */
-- (id)initWithDelegate:(id<JBRSSPinListDelegate>)del;
-
-
 #pragma mark - api
-/**
- * List数
- * @return count
- */
-- (NSInteger)count;
-
 /**
  * PINを取得
  * @param index index

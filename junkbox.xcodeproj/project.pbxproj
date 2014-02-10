@@ -35,11 +35,15 @@
 		E68EB9E717B01624006711A6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E68EB9DF17B01624006711A6 /* Default.png */; };
 		E68EB9E817B01624006711A6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E68EB9E017B01624006711A6 /* Default@2x.png */; };
 		E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E68EB9F617B01AE7006711A6 /* Localizable.strings */; };
+		E692F89418A7ED6D00A13D2A /* JBModelList.m in Sources */ = {isa = PBXBuildFile; fileRef = E692F89318A7ED6D00A13D2A /* JBModelList.m */; };
 		E6A8DC6718962ED200AE5C51 /* JBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A8DC6618962ED200AE5C51 /* JBTabBarController.m */; };
 		E6B03C82888442169AA87976 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C4A9E1051943D9BBC35D4B /* libPods.a */; };
 		E6BAB8C617B0131300C1FEC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C517B0131300C1FEC1 /* UIKit.framework */; };
 		E6BAB8C817B0131300C1FEC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C717B0131300C1FEC1 /* Foundation.framework */; };
 		E6BAB8CA17B0131300C1FEC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C917B0131300C1FEC1 /* CoreGraphics.framework */; };
+		E6C7BE5818A87F62007A80E4 /* JBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE5718A87F62007A80E4 /* JBNavigationController.m */; };
+		E6C7BE6118A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE5E18A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m */; };
+		E6C7BE6418A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE6318A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m */; };
 		E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78217B15520007B6C16 /* NSData+JSON.m */; };
 		E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78417B15520007B6C16 /* NSNull+IgnoreMessages.m */; };
 		E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C8D78817B15521007B6C16 /* NSString+PercentEncoding.m */; };
@@ -131,12 +135,20 @@
 		E68EB9E017B01624006711A6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E68EB9F717B01AE7006711A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E68EB9F917B01AF8006711A6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E692F89218A7ED6D00A13D2A /* JBModelList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBModelList.h; sourceTree = "<group>"; };
+		E692F89318A7ED6D00A13D2A /* JBModelList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBModelList.m; sourceTree = "<group>"; };
 		E6A8DC6518962ED200AE5C51 /* JBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBTabBarController.h; sourceTree = "<group>"; };
 		E6A8DC6618962ED200AE5C51 /* JBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBTabBarController.m; sourceTree = "<group>"; };
 		E6BAB8C217B0131300C1FEC1 /* debug.junkbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debug.junkbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6BAB8C517B0131300C1FEC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E6BAB8C717B0131300C1FEC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E6BAB8C917B0131300C1FEC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E6C7BE5618A87F62007A80E4 /* JBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBNavigationController.h; sourceTree = "<group>"; };
+		E6C7BE5718A87F62007A80E4 /* JBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBNavigationController.m; sourceTree = "<group>"; };
+		E6C7BE5D18A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBPushViewControllerAnimatedTransitioning.h; sourceTree = "<group>"; };
+		E6C7BE5E18A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBPushViewControllerAnimatedTransitioning.m; sourceTree = "<group>"; };
+		E6C7BE6218A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBPopViewControllerAnimatedTransitioning.h; sourceTree = "<group>"; };
+		E6C7BE6318A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBPopViewControllerAnimatedTransitioning.m; sourceTree = "<group>"; };
 		E6C8D77F17B15520007B6C16 /* StatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCode.h; sourceTree = "<group>"; };
 		E6C8D78117B15520007B6C16 /* NSData+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JSON.h"; sourceTree = "<group>"; };
 		E6C8D78217B15520007B6C16 /* NSData+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JSON.m"; sourceTree = "<group>"; };
@@ -266,6 +278,8 @@
 				E62747E317B5CEBF007B41B2 /* JBConstant.h */,
 				E6F0835B186CF15F007FEDD4 /* JBLoginOperation.h */,
 				E6F0835C186CF15F007FEDD4 /* JBLoginOperation.m */,
+				E692F89218A7ED6D00A13D2A /* JBModelList.h */,
+				E692F89318A7ED6D00A13D2A /* JBModelList.m */,
 				E6E4FEDE188C58E10068D929 /* JBSidebarMenu.h */,
 				E6E4FEDF188C58E10068D929 /* JBSidebarMenu.m */,
 				E68EB9D617B01624006711A6 /* AppDelegate.h */,
@@ -367,6 +381,17 @@
 				E68EB9DA17B01624006711A6 /* Resources */,
 			);
 			path = junkbox;
+			sourceTree = "<group>";
+		};
+		E6C7BE5918A8980B007A80E4 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				E6C7BE5D18A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.h */,
+				E6C7BE5E18A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m */,
+				E6C7BE6218A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.h */,
+				E6C7BE6318A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		E6C8D77C17B14EF8007B6C16 /* Sounds */ = {
@@ -581,6 +606,7 @@
 			children = (
 				E67E6E901889DFF200D36A47 /* View */,
 				E6FC100417B16FA800A12BED /* ViewController */,
+				E6C7BE5918A8980B007A80E4 /* Animation */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -588,6 +614,8 @@
 		E6FC100417B16FA800A12BED /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E6C7BE5618A87F62007A80E4 /* JBNavigationController.h */,
+				E6C7BE5718A87F62007A80E4 /* JBNavigationController.m */,
 				E6A8DC6518962ED200AE5C51 /* JBTabBarController.h */,
 				E6A8DC6618962ED200AE5C51 /* JBTabBarController.m */,
 				E6FC100517B16FA800A12BED /* TableViewController.h */,
@@ -710,6 +738,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68EB9E417B01624006711A6 /* AppDelegate.m in Sources */,
+				E6C7BE6418A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m in Sources */,
 				E68EB9E517B01624006711A6 /* main.m in Sources */,
 				E6E4FEE8188C64730068D929 /* JBRSSPinAddOperation.m in Sources */,
 				E60A4B87189592A5007AA0A7 /* JBRSSPinNavigationController.m in Sources */,
@@ -718,6 +747,7 @@
 				E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */,
 				E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */,
 				E6C8D79B17B15521007B6C16 /* NSString+UUID.m in Sources */,
+				E6C7BE5818A87F62007A80E4 /* JBNavigationController.m in Sources */,
 				E67E6E971889DFF200D36A47 /* JBBarButtonView.m in Sources */,
 				E6C90072186400840007449D /* JBRSSFeedSubsUnreadController.m in Sources */,
 				E6C8D79C17B15521007B6C16 /* NSURL+Query.m in Sources */,
@@ -734,6 +764,7 @@
 				E6FC101017B1748900A12BED /* JBRSSController.m in Sources */,
 				E6E4FEEB188D29D70068D929 /* JBRSSFeedDiscoverOperation.m in Sources */,
 				E60A4B86189592A5007AA0A7 /* JBRSSPinController.m in Sources */,
+				E692F89418A7ED6D00A13D2A /* JBModelList.m in Sources */,
 				E6C90075186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */,
 				E6C90071186400840007449D /* JBRSSFeedSubsUnread.m in Sources */,
 				E6F08363186E3041007FEDD4 /* JBRSSFeedUnreadController.m in Sources */,
@@ -760,6 +791,7 @@
 				E6F0835D186CF15F007FEDD4 /* JBLoginOperation.m in Sources */,
 				E6C90074186400840007449D /* JBRSSFeedSubsUnreadOperation.m in Sources */,
 				E6A8DC6718962ED200AE5C51 /* JBTabBarController.m in Sources */,
+				E6C7BE6118A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m in Sources */,
 				E6E4FEE0188C58E10068D929 /* JBSidebarMenu.m in Sources */,
 				E6C90073186400840007449D /* JBRSSFeedSubsUnreadList.m in Sources */,
 			);
