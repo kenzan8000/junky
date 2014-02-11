@@ -20,6 +20,11 @@
 		E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */ = {isa = PBXBuildFile; fileRef = E62C107117B9314A0081007A /* NSHTTPCookieStorage+Cookie.m */; };
 		E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7BE17B6237000B0407A /* NSDictionary+HTTPBody.m */; };
 		E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */; };
+		E648C97118A9EC7800737CA4 /* JBBookmarkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C96E18A9EC7800737CA4 /* JBBookmarkOperation.m */; };
+		E648C97218A9EC7800737CA4 /* JBBookmarkOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C97018A9EC7800737CA4 /* JBBookmarkOperationQueue.m */; };
+		E648C97518A9EE6600737CA4 /* NSURLRequest+JBBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C97418A9EE6600737CA4 /* NSURLRequest+JBBookmark.m */; };
+		E648C97818A9EF7000737CA4 /* JBBookmarkCatalogOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C97718A9EF7000737CA4 /* JBBookmarkCatalogOperation.m */; };
+		E648C97B18A9F34B00737CA4 /* JBBookmarkList.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C97A18A9F34B00737CA4 /* JBBookmarkList.m */; };
 		E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E871889D0A800D36A47 /* JBWebViewController.m */; };
 		E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E881889D0A800D36A47 /* JBWebViewController.xib */; };
 		E67E6E971889DFF200D36A47 /* JBBarButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E921889DFF200D36A47 /* JBBarButtonView.m */; };
@@ -114,6 +119,17 @@
 		E630B7BE17B6237000B0407A /* NSDictionary+HTTPBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HTTPBody.m"; sourceTree = "<group>"; };
 		E630B7C017B62E7800B0407A /* NSURLRequest+JBRSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+JBRSS.h"; sourceTree = "<group>"; };
 		E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+JBRSS.m"; sourceTree = "<group>"; };
+		E648C96C18A9E90C00737CA4 /* JBBookmarkConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkConstant.h; sourceTree = "<group>"; };
+		E648C96D18A9EC7800737CA4 /* JBBookmarkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkOperation.h; sourceTree = "<group>"; };
+		E648C96E18A9EC7800737CA4 /* JBBookmarkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkOperation.m; sourceTree = "<group>"; };
+		E648C96F18A9EC7800737CA4 /* JBBookmarkOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkOperationQueue.h; sourceTree = "<group>"; };
+		E648C97018A9EC7800737CA4 /* JBBookmarkOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkOperationQueue.m; sourceTree = "<group>"; };
+		E648C97318A9EE6600737CA4 /* NSURLRequest+JBBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+JBBookmark.h"; sourceTree = "<group>"; };
+		E648C97418A9EE6600737CA4 /* NSURLRequest+JBBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+JBBookmark.m"; sourceTree = "<group>"; };
+		E648C97618A9EF7000737CA4 /* JBBookmarkCatalogOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkCatalogOperation.h; sourceTree = "<group>"; };
+		E648C97718A9EF7000737CA4 /* JBBookmarkCatalogOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkCatalogOperation.m; sourceTree = "<group>"; };
+		E648C97918A9F34B00737CA4 /* JBBookmarkList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkList.h; sourceTree = "<group>"; };
+		E648C97A18A9F34B00737CA4 /* JBBookmarkList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkList.m; sourceTree = "<group>"; };
 		E67E6E861889D0A800D36A47 /* JBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBWebViewController.h; sourceTree = "<group>"; };
 		E67E6E871889D0A800D36A47 /* JBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBWebViewController.m; sourceTree = "<group>"; };
 		E67E6E881889D0A800D36A47 /* JBWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBWebViewController.xib; sourceTree = "<group>"; };
@@ -420,8 +436,15 @@
 			isa = PBXGroup;
 			children = (
 				E6F08351186AE5D2007FEDD4 /* JBBookmark.storyboard */,
+				E648C96C18A9E90C00737CA4 /* JBBookmarkConstant.h */,
+				E648C96D18A9EC7800737CA4 /* JBBookmarkOperation.h */,
+				E648C96E18A9EC7800737CA4 /* JBBookmarkOperation.m */,
+				E648C96F18A9EC7800737CA4 /* JBBookmarkOperationQueue.h */,
+				E648C97018A9EC7800737CA4 /* JBBookmarkOperationQueue.m */,
 				E6FC101417B174A200A12BED /* JBBookmarkController.h */,
 				E6FC101517B174A200A12BED /* JBBookmarkController.m */,
+				E648C97318A9EE6600737CA4 /* NSURLRequest+JBBookmark.h */,
+				E648C97418A9EE6600737CA4 /* NSURLRequest+JBBookmark.m */,
 				E6F08353186AE734007FEDD4 /* Catalog */,
 			);
 			path = Bookmark;
@@ -586,6 +609,10 @@
 		E6F08353186AE734007FEDD4 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				E648C97918A9F34B00737CA4 /* JBBookmarkList.h */,
+				E648C97A18A9F34B00737CA4 /* JBBookmarkList.m */,
+				E648C97618A9EF7000737CA4 /* JBBookmarkCatalogOperation.h */,
+				E648C97718A9EF7000737CA4 /* JBBookmarkCatalogOperation.m */,
 				E6F08356186AE734007FEDD4 /* JBBookmarkCatalogController.h */,
 				E6F08357186AE734007FEDD4 /* JBBookmarkCatalogController.m */,
 			);
@@ -760,12 +787,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E648C97518A9EE6600737CA4 /* NSURLRequest+JBBookmark.m in Sources */,
+				E648C97818A9EF7000737CA4 /* JBBookmarkCatalogOperation.m in Sources */,
 				E68EB9E417B01624006711A6 /* AppDelegate.m in Sources */,
 				E6C7BE6418A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m in Sources */,
 				E68EB9E517B01624006711A6 /* main.m in Sources */,
+				E648C97118A9EC7800737CA4 /* JBBookmarkOperation.m in Sources */,
 				E6E4FEE8188C64730068D929 /* JBRSSPinAddOperation.m in Sources */,
 				E60A4B87189592A5007AA0A7 /* JBRSSPinNavigationController.m in Sources */,
 				E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */,
+				E648C97B18A9F34B00737CA4 /* JBBookmarkList.m in Sources */,
 				E6E4FF0718901EB20068D929 /* JBRSSPin.m in Sources */,
 				E6C8D79817B15521007B6C16 /* NSNull+IgnoreMessages.m in Sources */,
 				E6C8D79A17B15521007B6C16 /* NSString+PercentEncoding.m in Sources */,
@@ -806,6 +837,7 @@
 				E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */,
 				E62747E217B5BFEC007B41B2 /* JBRSSLoginController.m in Sources */,
 				E6E4FF0818901EB20068D929 /* JBRSSPinList.m in Sources */,
+				E648C97218A9EC7800737CA4 /* JBBookmarkOperationQueue.m in Sources */,
 				E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */,
 				E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */,
 				E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */,

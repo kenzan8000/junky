@@ -2,6 +2,7 @@
 #import "JBRSSConstant.h"
 #import "JBRSSOperationQueue.h"
 #import "JBRSSPinList.h"
+#import "JBBookmarkConstant.h"
 /// UIkit-Extension
 #import "UIStoryboard+UIKit.h"
 #import "UIColor+Hexadecimal.h"
@@ -38,10 +39,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
     // Connection
     [[JBRSSOperationQueue defaultQueue] setMaxConcurrentOperationCount:kMaxOperationCountOfRSSConnection];
-
     // Hatebu
-    [[HTBHatenaBookmarkManager sharedManager] setConsumerKey:@"bU7T0oA8pRditQ=="
-                                              consumerSecret:@"1CHZOAmigaY9gvc7FNPgWnZtEbg="];
+    [[HTBHatenaBookmarkManager sharedManager] setConsumerKey:kConsumerKeyHatenaBookmark
+                                              consumerSecret:kConsumerSecretHatenaBookmark];
     // Window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setBackgroundColor:[UIColor lightGrayColor]];

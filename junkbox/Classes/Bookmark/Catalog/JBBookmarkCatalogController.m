@@ -3,6 +3,7 @@
 #import "UINib+UIKit.h"
 #import "UIViewController+ModalAnimatedTransition.h"
 /// Pods
+#import "MTStatusBarOverlay.h"
 #import "HatenaBookmarkSDK.h"
 #import "IonIcons.h"
 
@@ -15,6 +16,7 @@
 @synthesize loginButtonView;
 @synthesize loginModalViewController;
 @synthesize modalCloseButtonView;
+@synthesize bookmarkList;
 
 
 #pragma mark - initializer
@@ -44,6 +46,9 @@
     [super loadView];
 
     // Hatebu
+    self.bookmarkList = [JBBookmarkList sharedInstance];
+    [self.bookmarkList setDelegate:self];
+    [self.bookmarkList loadFromLocal];
     if ([HTBHatenaBookmarkManager sharedManager].authorized) {
     }
 
@@ -126,10 +131,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                                                  selector:@selector(showOAuthLoginViewWithNotification:)
                                                      name:kHTBLoginStartNotification
                                                    object:nil];
+        // Login
         [[HTBHatenaBookmarkManager sharedManager] logout];
         __weak __typeof(self) weakSelf = self;
         [[HTBHatenaBookmarkManager sharedManager] authorizeWithSuccess:^ () {
             [weakSelf touchedUpInsideButtonWithBarButtonView:weakSelf.modalCloseButtonView];
+            // Statusbar
+            [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the bookmark list...", @"ブックマーク一覧取得")
+                                                    animated:YES];
+
+            // Bookmark一覧インポート
+            [weakSelf.bookmarkList loadFromWebAPI];
         }
                                                                failure:^ (NSError *error) {
 
@@ -149,7 +161,31 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 
+#pragma mark - JBBookmarkListDelegate
+/**
+ * Bookmark一覧取得成功
+ * @param list 一覧
+ */
+- (void)bookmarkListDidFinishLoadWithList:(JBBookmarkList *)list
+{
+    [[MTStatusBarOverlay sharedInstance] hide];
+}
+
+/**
+ * Bookmark一覧取得失敗
+ * @param error error
+ */
+- (void)bookmarkListDidFailLoadWithError:(NSError *)error
+{
+    [[MTStatusBarOverlay sharedInstance] hide];
+}
+
+
 #pragma mark - notification
+/**
+ * HatenaBookmarkのログインModal表示用通知
+ * @param notification Notification
+ */
 - (void)showOAuthLoginViewWithNotification:(NSNotification *)notification
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self
@@ -171,6 +207,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 #pragma mark - event listener
+
+
+#pragma mark - private api
 
 
 @end
