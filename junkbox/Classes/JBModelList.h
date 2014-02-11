@@ -13,17 +13,17 @@
 
 #pragma mark - api
 /**
- * 一覧更新処理用のstoreContext
+ * 一覧更新処理用のmainContext
  * @return NSManagedObjectContext
  */
-- (NSManagedObjectContext *)storeContext;
++ (NSManagedObjectContext *)mainContext;
 
 /**
  * threadごとの更新処理用のcontext
  * @param thread currentThread
  * @return NSManagedObjectContext
  */
-- (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread;
++ (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread;
 
 - (void)addManagedContextObserver;
 - (void)removeManagedContextObserver;

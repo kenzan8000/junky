@@ -26,13 +26,13 @@
  * 一覧更新処理用のmanagedObjectContext
  * @return NSManagedObjectContext
  */
-+ (NSManagedObjectContext *)storeContext
++ (NSManagedObjectContext *)mainContext
 {
     static dispatch_once_t onceToken = NULL;
     static NSManagedObjectContext *_JBRSSFeedSubsUnreadListManagedObjectContext = nil;
 
     dispatch_once(&onceToken, ^ () {
-        _JBRSSFeedSubsUnreadListManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        _JBRSSFeedSubsUnreadListManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_JBRSSFeedSubsUnreadListManagedObjectContext setPersistentStoreCoordinator:[[NLCoreData shared] storeCoordinator]];
     });
 
@@ -94,7 +94,7 @@
 {
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
-        NSManagedObjectContext *context = [self managedObjectContextForThread:[NSThread currentThread]];
+        NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContextForThread:[NSThread currentThread]];
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:
             [JBRSSFeedSubsUnread fetchWithRequest:^ (NSFetchRequest *request) {
                 [request setPredicate:nil];
@@ -179,7 +179,7 @@
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
         // create list and save
-        NSManagedObjectContext *context = [self managedObjectContextForThread:[NSThread currentThread]];
+        NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContextForThread:[NSThread currentThread]];
         [JBRSSFeedSubsUnread deleteInContext:context
                                    predicate:nil];
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:@[]];

@@ -1,6 +1,6 @@
 #pragma mark - JBNavigationController
 /// JBNavigationController
-@interface JBNavigationController : UINavigationController <UINavigationControllerDelegate> {
+@interface JBNavigationController : UINavigationController <UINavigationControllerDelegate, UIGestureRecognizerDelegate> {
 }
 
 

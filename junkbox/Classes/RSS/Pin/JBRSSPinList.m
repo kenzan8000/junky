@@ -52,13 +52,12 @@
 
 
 #pragma mark - api
-- (NSManagedObjectContext *)storeContext
++ (NSManagedObjectContext *)mainContext
 {
     static dispatch_once_t onceToken = NULL;
     static NSManagedObjectContext *_JBRSSPinListManagedObjectContext = nil;
 
     dispatch_once(&onceToken, ^ () {
-        //_JBRSSPinListManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         _JBRSSPinListManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_JBRSSPinListManagedObjectContext setPersistentStoreCoordinator:[[NLCoreData shared] storeCoordinator]];
     });
@@ -95,7 +94,7 @@
 {
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
-        NSManagedObjectContext *context = [weakSelf managedObjectContextForThread:[NSThread currentThread]];
+        NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread currentThread]];
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:
             [JBRSSPin fetchWithRequest:^ (NSFetchRequest *request) {
                 [request setPredicate:nil];
@@ -183,7 +182,7 @@
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
         // create list and save
-        NSManagedObjectContext *context = [weakSelf managedObjectContextForThread:[NSThread currentThread]];
+        NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread currentThread]];
         [JBRSSPin deleteWithRequest:^ (NSFetchRequest *request) {
             [request setPredicate:nil];
             [request setReturnsObjectsAsFaults:NO];
@@ -266,7 +265,7 @@
 
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
-        NSManagedObjectContext *context = [weakSelf managedObjectContextForThread:[NSThread currentThread]];
+        NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread currentThread]];
         JBRSSPin *pin = [JBRSSPin insertInContext:context];
         pin.title = title;
         pin.link = link;
@@ -333,7 +332,7 @@
 
         // delete
         dispatch_async(weakSelf.updateQueue, ^ () {
-            NSManagedObjectContext *context = [weakSelf managedObjectContextForThread:[NSThread currentThread]];
+            NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread currentThread]];
             [JBRSSPin deleteWithRequest:^ (NSFetchRequest *request) {
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"link = %@", link];
                 [request setPredicate:predicate];

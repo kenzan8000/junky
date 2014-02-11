@@ -42,12 +42,12 @@
 #pragma mark - notification
 - (void)updateMainContextWithNotification:(NSNotification *)notification
 {
-    [[self storeContext] mergeChangesFromContextDidSaveNotification:notification];
+    [[[self class] mainContext] mergeChangesFromContextDidSaveNotification:notification];
 }
 
 - (void)mergeChangesWithNotification:(NSNotification *)notification
 {
-    if (notification.object != [self storeContext]) {
+    if (notification.object != [[self class] mainContext]) {
         [self removeManagedContextObserver];
         [self performSelectorOnMainThread:@selector(updateMainContextWithNotification:)
                                withObject:notification
@@ -57,12 +57,12 @@
 
 
 #pragma mark - api
-- (NSManagedObjectContext *)storeContext
++ (NSManagedObjectContext *)mainContext
 {
-    return [NSManagedObjectContext storeContext];
+    return [NSManagedObjectContext mainContext];
 }
 
-- (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread
++ (NSManagedObjectContext *)managedObjectContextForThread:(NSThread *)thread
 {
     NSMutableDictionary *threadDictionary = [thread threadDictionary];
     NSString *threadKey = [NSString stringWithFormat:@"%@.%@",
@@ -73,7 +73,7 @@
 
     if (!context) {
         if ([[NSThread currentThread] isMainThread]) {
-            context = [self storeContext];
+            context = [[self class] mainContext];
         }
         else {
             context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
