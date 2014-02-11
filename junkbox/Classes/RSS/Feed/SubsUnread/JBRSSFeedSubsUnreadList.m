@@ -48,12 +48,6 @@
         self.delegate = del;
         self.list = [NSMutableArray arrayWithArray:@[]];
         self.feedCountOfEachRate = @[@(0), @(0), @(0), @(0), @(0), @(0)];
-
-        NSString *queueName = [NSString stringWithFormat:@"%@.%@",
-            [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
-            NSStringFromClass([JBRSSFeedSubsUnreadList class])
-        ];
-        self.updateQueue = dispatch_queue_create([queueName cStringUsingEncoding:[NSString defaultCStringEncoding]], NULL);
         [[NLCoreData shared] setModelName:kXCDataModelName];
     }
     return self;
@@ -63,7 +57,6 @@
 #pragma mark - release
 - (void)dealloc
 {
-    self.updateQueue = nil;
     self.list = nil;
     self.feedCountOfEachRate = nil;
 }
@@ -93,8 +86,8 @@
 - (void)loadFeedFromLocal
 {
     __weak __typeof(self) weakSelf = self;
-    dispatch_async(weakSelf.updateQueue, ^ () {
-        NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContextForThread:[NSThread currentThread]];
+    NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContextForThread:[NSThread new]];
+    [context performBlock: ^ () {
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:
             [JBRSSFeedSubsUnread fetchWithRequest:^ (NSFetchRequest *request) {
                 [request setPredicate:nil];
@@ -113,7 +106,7 @@
                 [weakSelf.delegate feedDidFinishLoadWithList:weakSelf];
             }
         });
-    });
+    }];
 }
 
 - (NSInteger)count
@@ -177,9 +170,9 @@
     if (JSON == nil) { return; }
 
     __weak __typeof(self) weakSelf = self;
-    dispatch_async(weakSelf.updateQueue, ^ () {
-        // create list and save
-        NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContextForThread:[NSThread currentThread]];
+    // create list and save
+    NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContextForThread:[NSThread new]];
+    [context performBlock: ^ () {
         [JBRSSFeedSubsUnread deleteInContext:context
                                    predicate:nil];
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:@[]];
@@ -208,7 +201,7 @@
             }
         });
         [context save];
-    });
+    }];
 }
 
 /**

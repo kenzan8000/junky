@@ -39,12 +39,6 @@
     self = [super init];
     if (self) {
         self.list = [NSMutableArray arrayWithArray:@[]];
-
-        NSString *queueName = [NSString stringWithFormat:@"%@.%@",
-            [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
-            NSStringFromClass([self class])
-        ];
-        self.updateQueue = dispatch_queue_create([queueName cStringUsingEncoding:[NSString defaultCStringEncoding]], NULL);
         [[NLCoreData shared] setModelName:kXCDataModelName];
     }
     return self;
@@ -93,8 +87,8 @@
 - (void)loadAllPinFromLocal
 {
     __weak __typeof(self) weakSelf = self;
-    dispatch_async(weakSelf.updateQueue, ^ () {
-        NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread currentThread]];
+    NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread new]];
+    [context performBlock: ^ () {
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:
             [JBRSSPin fetchWithRequest:^ (NSFetchRequest *request) {
                 [request setPredicate:nil];
@@ -109,7 +103,7 @@
                 [weakSelf.delegate pinDidFinishLoadWithList:weakSelf];
             }
         });
-    });
+    }];
 }
 
 - (void)addPinWithTitle:(NSString *)title
@@ -180,9 +174,9 @@
     if (JSON == nil) { return; }
 
     __weak __typeof(self) weakSelf = self;
-    dispatch_async(weakSelf.updateQueue, ^ () {
-        // create list and save
-        NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread currentThread]];
+    // create list and save
+    NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread new]];
+    [context performBlock: ^ () {
         [JBRSSPin deleteWithRequest:^ (NSFetchRequest *request) {
             [request setPredicate:nil];
             [request setReturnsObjectsAsFaults:NO];
@@ -207,7 +201,7 @@
                 [weakSelf.delegate pinDidFinishLoadWithList:weakSelf];
             }
         });
-    });
+    }];
 }
 
 /**
@@ -264,26 +258,26 @@
     }
 
     __weak __typeof(self) weakSelf = self;
-    dispatch_async(weakSelf.updateQueue, ^ () {
-        NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread currentThread]];
-        JBRSSPin *pin = [JBRSSPin insertInContext:context];
-        pin.title = title;
-        pin.link = link;
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyyMMddHHmmssSSS"];
-        pin.createdOn = [dateFormatter stringFromDate:[NSDate date]];
-        [weakSelf addManagedContextObserver];
-        [context save];
+    NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread new]];
+    [context performBlock: ^ () {
+    JBRSSPin *pin = [JBRSSPin insertInContext:context];
+    pin.title = title;
+    pin.link = link;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyyMMddHHmmssSSS"];
+    pin.createdOn = [dateFormatter stringFromDate:[NSDate date]];
+    [weakSelf addManagedContextObserver];
+    [context save];
 
-        // delegate
-        dispatch_async(dispatch_get_main_queue(), ^ () {
-            [weakSelf.list insertObject:pin
-                                atIndex:0];
-            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(pinDidFinishLoadWithList:)]) {
-                [weakSelf.delegate pinDidFinishLoadWithList:weakSelf];
-            }
-        });
+    // delegate
+    dispatch_async(dispatch_get_main_queue(), ^ () {
+        [weakSelf.list insertObject:pin
+                            atIndex:0];
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(pinDidFinishLoadWithList:)]) {
+            [weakSelf.delegate pinDidFinishLoadWithList:weakSelf];
+        }
     });
+    }];
 }
 
 /**
@@ -331,8 +325,8 @@
         }
 
         // delete
-        dispatch_async(weakSelf.updateQueue, ^ () {
-            NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread currentThread]];
+        NSManagedObjectContext *context = [JBRSSPinList managedObjectContextForThread:[NSThread new]];
+        [context performBlock: ^ () {
             [JBRSSPin deleteWithRequest:^ (NSFetchRequest *request) {
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"link = %@", link];
                 [request setPredicate:predicate];
@@ -341,7 +335,7 @@
                             context:context];
             [weakSelf addManagedContextObserver];
             [context save];
-        });
+        }];
     });
 }
 

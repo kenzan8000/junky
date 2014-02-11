@@ -55,7 +55,6 @@
 - (void)dealloc
 {
     self.delegate = nil;
-    self.updateQueue = nil;
     self.list = nil;
 }
 
@@ -99,13 +98,11 @@
     if (JSON == nil) { return; }
 
     __weak __typeof(self) weakSelf = self;
-    dispatch_async(weakSelf.updateQueue, ^ () {
-        // delegate
-        dispatch_async(dispatch_get_main_queue(), ^ () {
-            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(bookmarkListDidFinishLoadWithList:)]) {
-                [weakSelf.delegate bookmarkListDidFinishLoadWithList:weakSelf];
-            }
-        });
+    // delegate
+    dispatch_async(dispatch_get_main_queue(), ^ () {
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(bookmarkListDidFinishLoadWithList:)]) {
+            [weakSelf.delegate bookmarkListDidFinishLoadWithList:weakSelf];
+        }
     });
 }
 

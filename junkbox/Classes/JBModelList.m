@@ -9,7 +9,6 @@
 
 #pragma mark - property
 @synthesize list;
-@synthesize updateQueue;
 
 
 #pragma mark - initializer
@@ -18,12 +17,6 @@
     self = [super init];
     if (self) {
         self.list = [NSMutableArray arrayWithArray:@[]];
-
-        NSString *queueName = [NSString stringWithFormat:@"%@.%@",
-            [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
-            NSStringFromClass([self class])
-        ];
-        self.updateQueue = dispatch_queue_create([queueName cStringUsingEncoding:[NSString defaultCStringEncoding]], NULL);
         [[NLCoreData shared] setModelName:kXCDataModelName];
     }
     return self;
@@ -34,7 +27,6 @@
 - (void)dealloc
 {
     [self removeManagedContextObserver];
-    self.updateQueue = nil;
     self.list = nil;
 }
 
@@ -72,7 +64,7 @@
     NSManagedObjectContext *context = [threadDictionary objectForKey:threadKey];
 
     if (!context) {
-        if ([[NSThread currentThread] isMainThread]) {
+        if ([thread isMainThread]) {
             context = [[self class] mainContext];
         }
         else {
