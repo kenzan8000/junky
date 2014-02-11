@@ -11,16 +11,6 @@
 #import "NLCoreData.h"
 
 
-#pragma mark - JBRSSFeedSubsUnreadList
-@interface JBRSSFeedSubsUnreadList ()
-
-
-/// 一覧の更新処理のためのQueue
-@property (nonatomic, strong) dispatch_queue_t updateQueue;
-
-
-@end
-
 
 #pragma mark - JBRSSFeedSubsUnreadList
 @implementation JBRSSFeedSubsUnreadList
@@ -28,9 +18,7 @@
 
 #pragma mark - property
 @synthesize delegate;
-@synthesize list;
 @synthesize feedCountOfEachRate;
-@synthesize updateQueue;
 
 
 #pragma mark - class meethod
@@ -38,7 +26,7 @@
  * 一覧更新処理用のmanagedObjectContext
  * @return NSManagedObjectContext
  */
-+ (NSManagedObjectContext *)managedObjectContext
++ (NSManagedObjectContext *)storeContext
 {
     static dispatch_once_t onceToken = NULL;
     static NSManagedObjectContext *_JBRSSFeedSubsUnreadListManagedObjectContext = nil;
@@ -106,12 +94,13 @@
 {
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
+        NSManagedObjectContext *context = [self managedObjectContextForThread:[NSThread currentThread]];
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:
             [JBRSSFeedSubsUnread fetchWithRequest:^ (NSFetchRequest *request) {
                 [request setPredicate:nil];
                 [request setReturnsObjectsAsFaults:NO];
             }
-                                          context:[JBRSSFeedSubsUnreadList managedObjectContext]]
+                                           context:context]
         ];
         // sort by rate
         temporaryArray = [weakSelf rateSortedListWithSubsUnreadList:temporaryArray];
@@ -190,7 +179,7 @@
     __weak __typeof(self) weakSelf = self;
     dispatch_async(weakSelf.updateQueue, ^ () {
         // create list and save
-        NSManagedObjectContext *context = [JBRSSFeedSubsUnreadList managedObjectContext];
+        NSManagedObjectContext *context = [self managedObjectContextForThread:[NSThread currentThread]];
         [JBRSSFeedSubsUnread deleteInContext:context
                                    predicate:nil];
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:@[]];

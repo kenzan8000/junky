@@ -1,3 +1,6 @@
+#import "JBModelList.h"
+
+
 #pragma mark - class
 @class JBRSSFeedSubsUnreadList;
 @class JBRSSFeedSubsUnread;
@@ -26,15 +29,13 @@
 
 #pragma mark - JBRSSFeedSubsUnreadList
 /// 未読フィード一覧
-@interface JBRSSFeedSubsUnreadList : NSObject {
+@interface JBRSSFeedSubsUnreadList : JBModelList {
 }
 
 
 #pragma mark - property
 /// Delegate
 @property (nonatomic, weak) id<JBRSSFeedSubsUnreadListDelegate> delegate;
-/// 一覧
-@property (nonatomic, strong) NSMutableArray *list;
 /// レイティングとそのレイティングに該当したフィード数(配列の添字が0のときmax, 配列.lengthのとき0)
 @property (nonatomic, strong) NSArray *feedCountOfEachRate;
 
@@ -58,12 +59,6 @@
  * ローカルに保存されていたフィードをロード
  */
 - (void)loadFeedFromLocal;
-
-/**
- * 未読フィード数
- * @return count
- */
-- (NSInteger)count;
 
 /**
  * フィード数を取得
