@@ -16,3 +16,5 @@ pod 'SAMBadgeView', :git => 'https://github.com/soffes/SAMBadgeView.git'
 pod 'QBFlatButton'
 # Font
 pod 'ionicons'
+# XML Parser
+pod 'XMLDictionary'

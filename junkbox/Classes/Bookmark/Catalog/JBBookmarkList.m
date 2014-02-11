@@ -7,6 +7,7 @@
 #import "NSData+JSON.h"
 /// Pods
 #import "NLCoreData.h"
+#import "XMLDictionary.h"
 #import "HTBHatenaBookmarkManager.h"
 
 
@@ -72,11 +73,8 @@
     JBBookmarkCatalogOperation *operation = [[JBBookmarkCatalogOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
         // 成功
         if (error == nil) {
-/*
-            NSArray *JSON = [object JSON];
+            NSDictionary *JSON = [[XMLDictionaryParser sharedInstance] dictionaryWithData:object];
             JBLog(@"%@", JSON);
-            [weakSelf finishLoadListWithJSON:JSON];
-*/
             return;
         }
         // 失敗
