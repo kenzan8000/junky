@@ -17,10 +17,9 @@
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
     CGRect endFrame = [transitionContext initialFrameForViewController:fromVC];
-    [transitionContext.containerView addSubview:toVC.view];
     [transitionContext.containerView addSubview:fromVC.view];
+    [transitionContext.containerView addSubview:toVC.view];
 
-    fromVC.view.alpha = 1.0f;
     fromVC.view.transform = CGAffineTransformIdentity;
     toVC.view.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(endFrame), 0);
 
@@ -29,7 +28,6 @@
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^ () {
         fromVC.view.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
-        fromVC.view.alpha = 0.5f;
         toVC.view.transform = CGAffineTransformMakeTranslation(endFrame.origin.x, 0);
     }
                      completion:^ (BOOL finished) {

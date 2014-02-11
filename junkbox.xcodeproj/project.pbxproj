@@ -674,6 +674,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Kenzan Hase";
+				TargetAttributes = {
+					E6BAB8C117B0131300C1FEC1 = {
+						DevelopmentTeam = 6RYZ4RB738;
+					};
+				};
 			};
 			buildConfigurationList = E6BAB8BD17B0131300C1FEC1 /* Build configuration list for PBXProject "junkbox" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -844,6 +849,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kenzan Hase (L9L46P5DF2)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -867,11 +873,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53D3013BD4F540AEB55F7CE7 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
 				INFOPLIST_FILE = junkbox/Resources/Plists/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "debug.$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = debug;
@@ -888,6 +897,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kenzan Hase (L9L46P5DF2)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
@@ -905,11 +915,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53D3013BD4F540AEB55F7CE7 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
 				INFOPLIST_FILE = junkbox/Resources/Plists/release.info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = release;

@@ -59,7 +59,6 @@
 
     // 初期
     vc.view.transform = CGAffineTransformIdentity;
-    vc.view.alpha = 1.0f;
 
     // アニメーション後
     [UIView animateWithDuration:0.3f
@@ -67,7 +66,6 @@
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^ () {
         vc.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.95f, 0.95f), CGAffineTransformMakeTranslation(0.0f, 16.0f));
-        vc.view.alpha = 0.5f;
     }
                      completion:^ (BOOL finished) {
     }];
@@ -82,7 +80,6 @@
 
     // 初期
     vc.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.95f, 0.95f), CGAffineTransformMakeTranslation(0.0f, 16.0f));
-    vc.view.alpha = 0.5f;
 
     // アニメーション後
     [UIView animateWithDuration:0.3f
@@ -90,7 +87,6 @@
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^ () {
         vc.view.transform = CGAffineTransformIdentity;
-        vc.view.alpha = 1.0f;
     }
                      completion:^ (BOOL finished) {
     }];

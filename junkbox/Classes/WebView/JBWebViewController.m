@@ -39,7 +39,10 @@
 #pragma mark - release
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                             selector:@selector(webViewProgressDidFinished)
+                                               object:nil];
+
     [self.webView setDelegate:nil];
     [self.webViewProgress setWebViewProxyDelegate:nil];
     [self.webViewProgress setProgressDelegate:nil];
@@ -57,17 +60,14 @@
 {
     [super loadView];
 
-    // Notification
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(webViewProgressDidFinishedWithNotification:)
-                                                 name:kNotificationWebViewProgressDidFinished
-                                               object:nil];
+    // WebView
+    [self.webView setScalesPageToFit:YES];
 
     // プログレス
     self.webViewProgress = [NJKWebViewProgress new];
-//    [self.webView setDelegate:self.webViewProgress];
-//    [self.webViewProgress setWebViewProxyDelegate:self];
-//    [self.webViewProgress setProgressDelegate:self];
+    [self.webView setDelegate:self.webViewProgress];
+    [self.webViewProgress setWebViewProxyDelegate:self];
+    [self.webViewProgress setProgressDelegate:self];
     CGFloat paddingY = [[UIApplication sharedApplication] statusBarFrame].size.height + self.navigationController.navigationBar.frame.size.height;
     [self.webViewProgressView setFrame:
         CGRectMake(
@@ -184,9 +184,9 @@ didFailLoadWithError:error];
     // 読み込み完了
     NSInteger percent = 100 * (NSInteger)floor(progress);
     if (percent == 100) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWebViewProgressDidFinished
-                                                            object:nil
-                                                          userInfo:@{@"initialURL":self.initialURL}];
+        [self performSelector:@selector(webViewProgressDidFinished)
+                   withObject:nil
+                   afterDelay:1.0f];
     }
 }
 
@@ -208,23 +208,6 @@ didFailLoadWithError:error];
 }
 
 
-#pragma mark - notification
-/**
- * WebView読み込みプログレス完了
- * @param notification notification
- */
-- (void)webViewProgressDidFinishedWithNotification:(NSNotification *)notification
-{
-    __weak __typeof(self) weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^ () {
-        if (weakSelf.initialURL == [[notification userInfo] objectForKey:@"initialURL"]) {
-            [weakSelf.webViewProgressView setProgress:0
-                                             animated:NO];
-        }
-    });
-}
-
-
 #pragma mark - event listener
 
 
@@ -232,6 +215,21 @@ didFailLoadWithError:error];
 
 
 #pragma mark - private api
+/**
+ * WebView読み込み完了
+ */
+- (void)webViewProgressDidFinished
+{
+    [self performSelectorOnMainThread:@selector(progressDidFinished)
+                           withObject:nil
+                        waitUntilDone:NO];
+}
+
+- (void)progressDidFinished
+{
+    [self.webViewProgressView setProgress:0
+                                 animated:NO];
+}
 
 
 @end

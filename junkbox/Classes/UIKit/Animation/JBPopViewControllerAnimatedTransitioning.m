@@ -33,12 +33,10 @@
     toView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
     toView.frame = toFrame;
     toView.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
-    toView.alpha = 0.5f;
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0.0f
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^ () {
-        toView.alpha = 1.0f;
         toView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
         fromVC.view.frame = endFrame;
     }
