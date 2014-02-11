@@ -23,12 +23,15 @@
     fromVC.view.transform = CGAffineTransformIdentity;
     toVC.view.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(endFrame), 0);
 
+    fromVC.view.alpha = 1.0f;
+
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0.0f
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^ () {
         fromVC.view.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
         toVC.view.transform = CGAffineTransformMakeTranslation(endFrame.origin.x, 0);
+        fromVC.view.alpha = 0.5f;
     }
                      completion:^ (BOOL finished) {
         [transitionContext completeTransition:YES];

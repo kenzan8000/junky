@@ -71,13 +71,11 @@
                                       animated:NO];
         // PINボタン
     self.pinButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
-                                                                 title:@""//NSLocalizedString(@"Read Later", @"あとで読む")
+                                                                 title:nil//NSLocalizedString(@"Read Later", @"あとで読む")
                                                                   icon:icon_pin
                                                                  color:[UIColor colorWithHexadecimal:0xe04080ff]];
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.pinButtonView]]
                                        animated:NO];
-    [self.pinButtonView setBadgeText:[@([[JBRSSPinList sharedInstance] count]) stringValue]
-                               color:[UIColor colorWithHexadecimal:0xaaaaaaff]];
 
     // ツールバー
     NSArray *buttons = @[self.nextFeedButton, self.previousButton, self.nextButton];
@@ -103,6 +101,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.pinButtonView setBadgeText:[@([[JBRSSPinList sharedInstance] count]) stringValue]
+                               color:[UIColor colorWithHexadecimal:0xaaaaaaff]];
 }
 
 - (void)viewDidAppear:(BOOL)animated
