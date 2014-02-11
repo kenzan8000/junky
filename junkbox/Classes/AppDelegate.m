@@ -7,6 +7,7 @@
 #import "UIColor+Hexadecimal.h"
 /// Pods
 #import "NLCoreData.h"
+#import "HTBHatenaBookmarkManager.h"
 
 
 void uncaughtExceptionHandler(NSException *exception)
@@ -38,6 +39,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     // Connection
     [[JBRSSOperationQueue defaultQueue] setMaxConcurrentOperationCount:kMaxOperationCountOfRSSConnection];
 
+    // Hatebu
+    [[HTBHatenaBookmarkManager sharedManager] setConsumerKey:@"bU7T0oA8pRditQ=="
+                                              consumerSecret:@"1CHZOAmigaY9gvc7FNPgWnZtEbg="];
     // Window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setBackgroundColor:[UIColor lightGrayColor]];

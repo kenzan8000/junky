@@ -13,8 +13,6 @@
 
 #pragma mark - synthesize
 @synthesize loginButtonView;
-@synthesize loginModalViewController;
-@synthesize modalCloseButtonView;
 
 
 #pragma mark - initializer
@@ -33,8 +31,6 @@
 - (void)dealloc
 {
     self.loginButtonView = nil;
-    self.loginModalViewController = nil;
-    self.modalCloseButtonView = nil;
 }
 
 
@@ -43,9 +39,14 @@
 {
     [super loadView];
 
-    // Hatebu
-    if ([HTBHatenaBookmarkManager sharedManager].authorized) {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showWebView:)
+                                                 name:kHTBLoginStartNotification object:nil];
+
+    [[HTBHatenaBookmarkManager sharedManager] authorizeWithSuccess:^ () {
     }
+                                                           failure:^ (NSError *error) {
+    }];
 
     // ナビゲーションバー
         // ログインボタン
@@ -126,25 +127,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                                                  selector:@selector(showOAuthLoginViewWithNotification:)
                                                      name:kHTBLoginStartNotification
                                                    object:nil];
-        [[HTBHatenaBookmarkManager sharedManager] logout];
-        __weak __typeof(self) weakSelf = self;
-        [[HTBHatenaBookmarkManager sharedManager] authorizeWithSuccess:^ () {
-            [weakSelf touchedUpInsideButtonWithBarButtonView:weakSelf.modalCloseButtonView];
-        }
-                                                               failure:^ (NSError *error) {
-
-        }];
-    }
-    // ログインModal閉じる
-    else if (barButtonView == self.modalCloseButtonView) {
-        if (self.loginModalViewController == nil) { return; }
-
-        __weak __typeof(self) weakSelf = self;
-        [self.loginModalViewController dismissViewControllerJBAnimated:YES
-                                                            completion:^ () {
-            weakSelf.loginModalViewController = nil;
-            weakSelf.modalCloseButtonView = nil;
-        }];
     }
 }
 
@@ -155,16 +137,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:kHTBLoginStartNotification
                                                   object:nil];
-
-    self.loginModalViewController = [UINavigationController new];
-    HTBLoginWebViewController *vc = [[HTBLoginWebViewController alloc] initWithAuthorizationRequest:(NSURLRequest *)notification.object];
-    self.modalCloseButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
-                                                                        title:nil
-                                                                         icon:icon_close_round];
-    [vc.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.modalCloseButtonView]]
-                                    animated:NO];
-    self.loginModalViewController.viewControllers = @[vc];
-    [self presentViewController:self.loginModalViewController
+    NSURLRequest *req = (NSURLRequest *)notification.object;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[HTBNavigationBar class] toolbarClass:nil];
+    HTBLoginWebViewController *viewController = [[HTBLoginWebViewController alloc] initWithAuthorizationRequest:req];
+    navigationController.viewControllers = @[viewController];
+    [self presentViewController:navigationController
                      JBAnimated:YES
                      completion:nil];
 }

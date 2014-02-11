@@ -9,7 +9,13 @@
 
 
 #pragma mark - property
+/// ログインボタン
 @property (nonatomic, strong) JBBarButtonView *loginButtonView;
+
+/// ログインModal
+@property (nonatomic, strong) UINavigationController *loginModalViewController;
+/// ログインModalCloseButton
+@property (nonatomic, strong) JBBarButtonView *modalCloseButtonView;
 
 
 #pragma mark - event listener
