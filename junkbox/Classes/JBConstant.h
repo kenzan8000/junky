@@ -31,3 +31,8 @@
 
 #pragma mark - Model
 #define kXCDataModelName                            @"JBModel"
+
+
+#pragma mark - Image
+/// 透明画像
+#define kImageCommonClear                            @"common_clear.png"

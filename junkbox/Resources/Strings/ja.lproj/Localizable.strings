@@ -10,6 +10,7 @@
 "Retry" = "リトライ";
 "Edit" = "編集";
 "Menu" = "メニュー";
+"Decide" = "決定";
 "users" = "users";
 
 
@@ -53,6 +54,7 @@
 "Added Read Later" = "あとで読むページを追加しました";
 "Discovering RSS Feed..." = "URLからRSSフィードを探しています...";
 "Discovering RSS Feed Failed" = "RSSフィードの探索に失敗しました";
+"RSS Feed could not found" = "RSSフィードが見つかりませんでした";
 "Please select a feed to be registered" = "登録するフィードを選択してください";
 "Subscribe" = "購読する";
 "Unsubscribe" = "購読をやめる";

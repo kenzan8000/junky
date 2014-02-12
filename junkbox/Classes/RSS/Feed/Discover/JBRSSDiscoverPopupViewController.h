@@ -2,6 +2,10 @@
 #import "JBPopupViewControllerManager.h"
 
 
+#pragma mark - class
+@class JBQBFlatButton;
+
+
 #pragma mark - JBRSSDiscoverPopupViewController
 /// URLからRSSフィードを見つけた後、そのフィードを購読するか、購読をやめるか選ぶPopupUI
 @interface JBRSSDiscoverPopupViewController : JBPopupViewController {
@@ -13,10 +17,10 @@
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 /// タイトル
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-/// 閉じるボタン
-@property (nonatomic, weak) IBOutlet UIButton *closeButton;
 /// tableView
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+/// 決定ボタン
+@property (nonatomic, weak) IBOutlet JBQBFlatButton *decideButton;
 
 /// フィード一覧
 @property (nonatomic, strong) NSMutableArray *feedList;

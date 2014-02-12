@@ -174,6 +174,17 @@ didTapItemAtIndex:(NSUInteger)index
             NSArray *JSON = [object JSON];
             JBLog(@"%@", JSON);
 
+            // フィードが0件の場合
+            if (JSON == nil || [JSON isKindOfClass:[NSArray class]] == NO || [JSON count] == 0) {
+                dispatch_async(dispatch_get_main_queue(), ^ () {
+                    // ステータスバー
+                    [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"RSS Feed could not found", @"フィードが0件の場合")
+                                                                          duration:2.0f
+                                                                          animated:YES];
+                });
+                return;
+            }
+
             // 成功
                 // ステータスバー
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {

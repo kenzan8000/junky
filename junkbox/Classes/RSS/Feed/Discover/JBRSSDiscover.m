@@ -24,14 +24,15 @@
         NSArray *allKeys = [discoverJSON allKeys];
         if ([allKeys containsObject:@"feedlink"] == NO ||
             [allKeys containsObject:@"link"] == NO ||
-            [allKeys containsObject:@"subscribe_id"] == NO ||
             [allKeys containsObject:@"subscribers_count"] == NO ||
             [allKeys containsObject:@"title"] == NO) { continue; }
 
         JBRSSDiscover *discover = [JBRSSDiscover new];
         discover.feedlink = [NSURL URLWithString:discoverJSON[@"feedlink"]];
         discover.link = [NSURL URLWithString:discoverJSON[@"link"]];
-        discover.subscribeId = [NSString stringWithFormat:@"%@", discoverJSON[@"subscribe_id"]];
+        if ([allKeys containsObject:@"subscribe_id"]) {
+            discover.subscribeId = [NSString stringWithFormat:@"%@", discoverJSON[@"subscribe_id"]];
+        }
         discover.subscribersCount = [discoverJSON[@"subscribers_count"] integerValue];
         discover.title = [NSString stringWithFormat:@"%@", discoverJSON[@"title"]];
         [list addObject:discover];
@@ -45,6 +46,7 @@
 {
     self = [super init];
     if (self) {
+        self.subscribeId = @"";
     }
     return self;
 }

@@ -14,6 +14,7 @@ pod 'RNFrostedSidebar', '~> 0.2.0'
 pod 'SSGentleAlertView'
 pod 'SAMBadgeView', :git => 'https://github.com/soffes/SAMBadgeView.git'
 pod 'QBFlatButton'
+pod 'NKToggleOverlayButton', '~> 1.0.0'
 # Font
 pod 'ionicons'
 # XML Parser

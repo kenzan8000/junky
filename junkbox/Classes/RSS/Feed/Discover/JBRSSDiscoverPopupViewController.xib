@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JBRSSDiscoverPopupViewController">
             <connections>
-                <outlet property="closeButton" destination="P8m-GP-0zX" id="9lG-oa-70E"/>
                 <outlet property="contentView" destination="bBV-2G-EFd" id="XJh-zH-N0W"/>
+                <outlet property="decideButton" destination="sGS-zL-LYr" id="Iqz-fq-To8"/>
                 <outlet property="tableView" destination="ULl-lc-pB9" id="CTR-Tp-nQH"/>
                 <outlet property="titleLabel" destination="nL9-RY-SFc" id="4Pz-R6-d7i"/>
                 <outlet property="view" destination="ayv-HH-Max" id="jXm-gW-iHZ"/>
@@ -19,11 +19,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="bBV-2G-EFd">
-                    <rect key="frame" x="40" y="80" width="240" height="320"/>
+                    <rect key="frame" x="40" y="40" width="240" height="400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ULl-lc-pB9">
-                            <rect key="frame" x="0.0" y="44" width="240" height="276"/>
+                            <rect key="frame" x="0.0" y="44" width="240" height="300"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -46,25 +46,30 @@
                             <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                         </view>
+                        <view contentMode="scaleToFill" id="vGL-wt-nVC">
+                            <rect key="frame" x="0.0" y="344" width="240" height="56"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sGS-zL-LYr" customClass="JBQBFlatButton">
+                                    <rect key="frame" x="40" y="0.0" width="160" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                    <state key="normal" title="Decide">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchedUpInsideWithButton:" destination="-1" eventType="touchUpInside" id="UfU-Dr-Oh2"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.74117647060000003" green="0.76470588240000004" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="P8m-GP-0zX">
-                    <rect key="frame" x="0.0" y="40" width="80" height="80"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                    <state key="normal">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="touchedUpInsideWithButton:" destination="-1" eventType="touchUpInside" id="3rh-g2-nAR"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

@@ -2,10 +2,11 @@
 #import "JBRSSDiscover.h"
 #import "JBRSSDiscoverPopupViewController.h"
 #import "JBRSSDiscoverTableViewCell.h"
+// Pods-Extension
+#import "JBQBFlatButton.h"
 // UIKit-Extension
+#import "UIColor+Hexadecimal.h"
 #import "UINib+UIKit.h"
-// Pods
-#import "IonIcons.h"
 
 
 #pragma mark - JBRSSDiscoverPopupViewController
@@ -15,8 +16,8 @@
 #pragma mark - synthesize
 @synthesize contentView;
 @synthesize titleLabel;
-@synthesize closeButton;
 @synthesize tableView;
+@synthesize decideButton;
 @synthesize feedList;
 
 
@@ -52,10 +53,12 @@
     self.contentView.layer.shadowColor = [[UIColor blackColor] CGColor];
 
     [self.titleLabel setText:NSLocalizedString(@"Please select a feed to be registered", @"登録するフィードを選択してください")];
-    [self.closeButton setImage:[IonIcons imageWithIcon:icon_close_round
-                                                  size:22
-                                                 color:[UIColor whiteColor]]
-                      forState:UIControlStateNormal];
+
+    [self.decideButton setFaceColor:[UIColor colorWithHexadecimal:0xff7058ff] forState:UIControlStateNormal];
+    [self.decideButton setFaceColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateHighlighted];
+    [self.decideButton setSideColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateNormal];
+    [self.decideButton setSideColor:[UIColor colorWithHexadecimal:0xc0392bff] forState:UIControlStateHighlighted];
+    [self.decideButton setTitle:NSLocalizedString(@"Decide", @"決定") forState:UIControlStateNormal];
 }
 
 - (void)viewDidLoad

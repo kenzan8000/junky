@@ -95,6 +95,7 @@
 		E6FED29F18ABB21B0099ED79 /* JBRSSDiscoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FED29D18ABB21B0099ED79 /* JBRSSDiscoverTableViewCell.m */; };
 		E6FED2A018ABB21B0099ED79 /* JBRSSDiscoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FED29E18ABB21B0099ED79 /* JBRSSDiscoverTableViewCell.xib */; };
 		E6FED2A318ABBB1F0099ED79 /* JBRSSDiscover.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FED2A218ABBB1F0099ED79 /* JBRSSDiscover.m */; };
+		E6FED2A618ABE6E00099ED79 /* common_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = E6FED2A518ABE6E00099ED79 /* common_clear.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -261,6 +262,7 @@
 		E6FED29E18ABB21B0099ED79 /* JBRSSDiscoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBRSSDiscoverTableViewCell.xib; sourceTree = "<group>"; };
 		E6FED2A118ABBB1F0099ED79 /* JBRSSDiscover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSDiscover.h; sourceTree = "<group>"; };
 		E6FED2A218ABBB1F0099ED79 /* JBRSSDiscover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSDiscover.m; sourceTree = "<group>"; };
+		E6FED2A518ABE6E00099ED79 /* common_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_clear.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +373,7 @@
 		E68EB9DB17B01624006711A6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E6FED2A418ABE6E00099ED79 /* Common */,
 				E68EB9DC17B01624006711A6 /* Icons */,
 				E68EB9DD17B01624006711A6 /* Splashes */,
 			);
@@ -714,6 +717,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		E6FED2A418ABE6E00099ED79 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E6FED2A518ABE6E00099ED79 /* common_clear.png */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -789,6 +800,7 @@
 				E6FC983E17BBD53D0082047A /* JBRSSFeed.storyboard in Resources */,
 				E60A4B89189592A5007AA0A7 /* JBRSSPinTableViewCell.xib in Resources */,
 				E67E6E9A1889DFF200D36A47 /* JBNavigationBarTitleView.xib in Resources */,
+				E6FED2A618ABE6E00099ED79 /* common_clear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

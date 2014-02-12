@@ -11,6 +11,7 @@ PODS:
     - NJKWebViewProgress/ProgressView
   - NJKWebViewProgress/Core (0.2)
   - NJKWebViewProgress/ProgressView (0.2)
+  - NKToggleOverlayButton (1.0.0)
   - NLCoreData (0.5.3)
   - QBFlatButton (1.0)
   - Reachability (3.1.1)
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - ISHTTPOperation (~> 1.1.0)
   - MTStatusBarOverlay
   - NJKWebViewProgress
+  - NKToggleOverlayButton (~> 1.0.0)
   - NLCoreData
   - QBFlatButton
   - Reachability
@@ -47,6 +49,7 @@ SPEC CHECKSUMS:
   ISHTTPOperation: 6268956d564f3cab0584838e996f2f4520d903b2
   MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
   NJKWebViewProgress: fd46c9489d799d97f3b09210886bf83884f6c725
+  NKToggleOverlayButton: bcc4cc273d3e41ae99a87f9a187591d4cee351b5
   NLCoreData: bde75667607f7b66a08ef1d78d39b8bc5eed433f
   QBFlatButton: 244e80923e8077a87c1e5acc5b9d0d1cd87539d3
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735

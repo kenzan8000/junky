@@ -2,8 +2,9 @@
 #import "JBRSSDiscover.h"
 // UIKit-Extension
 #import "UIColor+Hexadecimal.h"
-// Pods-Extension
-#import "JBQBFlatButton.h"
+// Pods
+#import "IonIcons.h"
+#import "NKToggleOverlayButton.h"
 
 
 #pragma mark - JBRSSDiscoverTableViewCell
@@ -14,8 +15,8 @@
 @synthesize titleLabel;
 @synthesize subscribersCountLabel;
 @synthesize linkLabel;
+@synthesize subscribeButtonView;
 @synthesize subscribeButton;
-@synthesize unsubscribeButton;
 
 
 #pragma mark - initializer
@@ -31,36 +32,46 @@
 #pragma mark - release
 - (void)dealloc
 {
+    [self.subscribeButton removeFromSuperview];
+    self.subscribeButtonView = nil;
 }
 
 
 #pragma mark - event listner
-- (IBAction)touchedUpInsideWithButton:(UIButton *)button
-{
-    if (button == self.subscribeButton) {
-    }
-    else if (button == self.unsubscribeButton) {
-    }
-}
 
 
 #pragma mark - api
 - (void)setDiscover:(JBRSSDiscover *)discover
 {
     // ボタン
-    [self.subscribeButton setTitle:NSLocalizedString(@"Subscribe", @"購読する")
-                          forState:UIControlStateNormal];
-    [self.subscribeButton setFaceColor:[UIColor colorWithHexadecimal:0xff7058ff] forState:UIControlStateNormal];
-    [self.subscribeButton setFaceColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateHighlighted];
-    [self.subscribeButton setSideColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateNormal];
-    [self.subscribeButton setSideColor:[UIColor colorWithHexadecimal:0xc0392bff] forState:UIControlStateHighlighted];
-
-    [self.unsubscribeButton setTitle:NSLocalizedString(@"Unsubscribe", @"購読をやめる")
+    self.subscribeButton = [NKToggleOverlayButton new];
+    self.subscribeButton.frame = CGRectMake(
+        0, 0,
+        self.subscribeButtonView.frame.size.width, self.subscribeButtonView.frame.size.height
+    );
+    [self.subscribeButton setOnImage:[IonIcons imageWithIcon:icon_ios7_checkmark_empty
+                                                        size:24
+                                                       color:[UIColor colorWithHexadecimal:0x34495eff]]
                             forState:UIControlStateNormal];
-    [self.unsubscribeButton setFaceColor:[UIColor colorWithHexadecimal:0x95a5a6ff] forState:UIControlStateNormal];
-    [self.unsubscribeButton setFaceColor:[UIColor colorWithHexadecimal:0x7f8c8dff] forState:UIControlStateHighlighted];
-    [self.unsubscribeButton setSideColor:[UIColor colorWithHexadecimal:0x7f8c8dff] forState:UIControlStateNormal];
-    [self.unsubscribeButton setSideColor:[UIColor colorWithHexadecimal:0x5f6c6dff] forState:UIControlStateHighlighted];
+    [self.subscribeButton setOnImage:[IonIcons imageWithIcon:icon_ios7_checkmark_empty
+                                                        size:24
+                                                       color:[UIColor colorWithHexadecimal:0x2c3e50ff]]
+                            forState:UIControlStateHighlighted];
+    [self.subscribeButton setOffImage:[UIImage imageNamed:kImageCommonClear]
+                             forState:UIControlStateNormal];
+    [self.subscribeButton setOffImage:[UIImage imageNamed:kImageCommonClear]
+                             forState:UIControlStateHighlighted];
+    self.subscribeButton.toggleOnBlock = ^(NKToggleOverlayButton *button) {
+    };
+    self.subscribeButton.toggleOffBlock = ^(NKToggleOverlayButton *button) {
+    };
+    [self.subscribeButton setShowOverlay:NO];
+    [self.subscribeButton setIsOn:YES];
+    [self.subscribeButtonView addSubview:self.subscribeButton];
+    [self.subscribeButtonView.layer setBorderColor:[[UIColor colorWithHexadecimal:0x7f8c8dff] CGColor]];
+    [self.subscribeButtonView.layer setBorderWidth:1.0f];
+//NSLocalizedString(@"Subscribe", @"購読する")
+//NSLocalizedString(@"Unsubscribe", @"購読をやめる")
 
     // ラベル
     [self.titleLabel setText:discover.title];
