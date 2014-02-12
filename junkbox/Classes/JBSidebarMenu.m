@@ -126,6 +126,9 @@ didTapItemAtIndex:(NSUInteger)index
         case 0:// LivedoorReader Adding PIN
             [[JBRSSPinList sharedInstance] addPinWithTitle:self.webTitle
                                                       link:[self.webURL absoluteString]];
+            // ステータスバー
+            [[MTStatusBarOverlay sharedInstance] postFinishMessage:NSLocalizedString(@"Added Read Later", @"あとで読むページを追加しました")
+                                                          duration:1.5f];
             break;
         case 1:// SOCIAL BOOKMARK
             break;

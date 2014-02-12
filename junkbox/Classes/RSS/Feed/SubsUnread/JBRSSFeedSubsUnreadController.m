@@ -200,7 +200,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     [self.refreshControl endRefreshing];
 
     // ステータスバー
-    [[MTStatusBarOverlay sharedInstance] hide];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {
+        [[MTStatusBarOverlay sharedInstance] hide];
+    });
     [self.tableView reloadData];
 
     // 詳細フィード一覧

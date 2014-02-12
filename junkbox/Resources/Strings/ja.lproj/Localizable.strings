@@ -50,6 +50,7 @@
 "Getting the unread feed list..." = "未読フィード一覧を読み込んでいます...";
 "Adding Read Later..." = "あとで読むページを追加しています...";
 "Adding Read Later Failed" = "あとで読むページの追加に失敗しました";
+"Added Read Later" = "あとで読むページを追加しました";
 "Discovering RSS Feed..." = "URLからRSSフィードを探しています...";
 "Discovering RSS Feed Failed" = "RSSフィードの探索に失敗しました";
 "Please select a feed to be registered" = "登録するフィードを選択してください";

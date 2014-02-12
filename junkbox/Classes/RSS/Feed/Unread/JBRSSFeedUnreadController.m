@@ -204,11 +204,15 @@ didFailLoadWithError:error];
         if (unread == nil) { return; }
         [[JBRSSPinList sharedInstance] addPinWithTitle:unread.title
                                                   link:[unread.link absoluteString]];
+        // 数字が変わったのを体感しやすくするため、遅延させている
         __weak __typeof(self) weakSelf = self;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*0.2), dispatch_get_main_queue(), ^ () {
             [weakSelf.pinButtonView setBadgeText:[@([[JBRSSPinList sharedInstance] count]) stringValue]
                                            color:[UIColor colorWithHexadecimal:0xaaaaaaff]];
         });
+        // ステータスバー
+        [[MTStatusBarOverlay sharedInstance] postFinishMessage:NSLocalizedString(@"Added Read Later", @"あとで読むページを追加しました")
+                                                      duration:1.5f];
     }
 }
 
