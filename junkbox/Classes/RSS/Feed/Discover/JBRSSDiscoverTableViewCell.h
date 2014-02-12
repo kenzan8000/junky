@@ -20,7 +20,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *subscribersCountLabel;
 /// フィードlink
 @property (nonatomic, weak) IBOutlet UILabel *linkLabel;
-/// 購読ボタン背景UIView
+/// 購読ボタン位置の参考のためのUIView
 @property (nonatomic, weak) IBOutlet UIView *subscribeButtonView;
 /// 購読ボタン
 @property (nonatomic, strong) NKToggleOverlayButton *subscribeButton;

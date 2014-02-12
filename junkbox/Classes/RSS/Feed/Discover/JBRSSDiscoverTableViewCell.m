@@ -45,33 +45,36 @@
 {
     // ボタン
     self.subscribeButton = [NKToggleOverlayButton new];
-    self.subscribeButton.frame = CGRectMake(
-        0, 0,
-        self.subscribeButtonView.frame.size.width, self.subscribeButtonView.frame.size.height
-    );
+        // 画像
     [self.subscribeButton setOnImage:[IonIcons imageWithIcon:icon_ios7_checkmark_empty
-                                                        size:24
+                                                        size:44
                                                        color:[UIColor colorWithHexadecimal:0x34495eff]]
                             forState:UIControlStateNormal];
     [self.subscribeButton setOnImage:[IonIcons imageWithIcon:icon_ios7_checkmark_empty
-                                                        size:24
+                                                        size:44
                                                        color:[UIColor colorWithHexadecimal:0x2c3e50ff]]
                             forState:UIControlStateHighlighted];
     [self.subscribeButton setOffImage:[UIImage imageNamed:kImageCommonClear]
                              forState:UIControlStateNormal];
     [self.subscribeButton setOffImage:[UIImage imageNamed:kImageCommonClear]
                              forState:UIControlStateHighlighted];
+        // イベント
     self.subscribeButton.toggleOnBlock = ^(NKToggleOverlayButton *button) {
     };
     self.subscribeButton.toggleOffBlock = ^(NKToggleOverlayButton *button) {
     };
+        // 設定
     [self.subscribeButton setShowOverlay:NO];
     [self.subscribeButton setIsOn:YES];
-    [self.subscribeButtonView addSubview:self.subscribeButton];
+        // チェックボックス
     [self.subscribeButtonView.layer setBorderColor:[[UIColor colorWithHexadecimal:0x7f8c8dff] CGColor]];
     [self.subscribeButtonView.layer setBorderWidth:1.0f];
-//NSLocalizedString(@"Subscribe", @"購読する")
-//NSLocalizedString(@"Unsubscribe", @"購読をやめる")
+        // 配置
+    [self addSubview:self.subscribeButton];
+    self.subscribeButton.frame = CGRectMake(
+        self.subscribeButtonView.frame.origin.x-10, self.subscribeButtonView.frame.origin.y-10,
+        self.subscribeButtonView.frame.size.width+20, self.subscribeButtonView.frame.size.height+20
+    );
 
     // ラベル
     [self.titleLabel setText:discover.title];

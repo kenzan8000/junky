@@ -149,7 +149,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
            withEvent:(UIEvent*)event
 {
     CGPoint touchPos = [[touches anyObject] locationInView:self.view];
-    if (CGRectContainsPoint(self.contentView.frame, touchPos) == NO) {
+    CGRect rect = CGRectMake(
+            0, self.contentView.frame.origin.y,
+            self.view.frame.size.width, self.contentView.frame.size.height
+    );
+    if (CGRectContainsPoint(rect, touchPos) == NO) {
         [self dismissPopup];
     }
 }
