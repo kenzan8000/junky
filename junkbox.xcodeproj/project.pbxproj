@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6006D4018AB815100A7EF11 /* JBDiscoverPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6006D3F18AB815100A7EF11 /* JBDiscoverPopupViewController.m */; };
+		E6006D4218AB818C00A7EF11 /* JBDiscoverPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6006D4118AB818C00A7EF11 /* JBDiscoverPopupViewController.xib */; };
+		E6006D4A18AB98A100A7EF11 /* JBPopupViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6006D4718AB98A100A7EF11 /* JBPopupViewControllerManager.m */; };
 		E60A4B85189592A5007AA0A7 /* JBRSSPin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E60A4B7D189592A5007AA0A7 /* JBRSSPin.storyboard */; };
 		E60A4B86189592A5007AA0A7 /* JBRSSPinController.m in Sources */ = {isa = PBXBuildFile; fileRef = E60A4B7F189592A5007AA0A7 /* JBRSSPinController.m */; };
 		E60A4B87189592A5007AA0A7 /* JBRSSPinNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E60A4B81189592A5007AA0A7 /* JBRSSPinNavigationController.m */; };
@@ -94,6 +97,11 @@
 /* Begin PBXFileReference section */
 		53D3013BD4F540AEB55F7CE7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		63C4A9E1051943D9BBC35D4B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6006D3E18AB815100A7EF11 /* JBDiscoverPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBDiscoverPopupViewController.h; sourceTree = "<group>"; };
+		E6006D3F18AB815100A7EF11 /* JBDiscoverPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBDiscoverPopupViewController.m; sourceTree = "<group>"; };
+		E6006D4118AB818C00A7EF11 /* JBDiscoverPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBDiscoverPopupViewController.xib; sourceTree = "<group>"; };
+		E6006D4618AB98A100A7EF11 /* JBPopupViewControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBPopupViewControllerManager.h; sourceTree = "<group>"; };
+		E6006D4718AB98A100A7EF11 /* JBPopupViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBPopupViewControllerManager.m; sourceTree = "<group>"; };
 		E60A4B7D189592A5007AA0A7 /* JBRSSPin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBRSSPin.storyboard; sourceTree = "<group>"; };
 		E60A4B7E189592A5007AA0A7 /* JBRSSPinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinController.h; sourceTree = "<group>"; };
 		E60A4B7F189592A5007AA0A7 /* JBRSSPinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinController.m; sourceTree = "<group>"; };
@@ -262,6 +270,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E6006D3D18AB7DCF00A7EF11 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				E6006D4118AB818C00A7EF11 /* JBDiscoverPopupViewController.xib */,
+				E6006D3E18AB815100A7EF11 /* JBDiscoverPopupViewController.h */,
+				E6006D3F18AB815100A7EF11 /* JBDiscoverPopupViewController.m */,
+			);
+			name = Discover;
+			path = junkbox/Classes/RSS/Feed/Discover;
+			sourceTree = SOURCE_ROOT;
+		};
+		E6006D4318AB98A100A7EF11 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				E6006D4618AB98A100A7EF11 /* JBPopupViewControllerManager.h */,
+				E6006D4718AB98A100A7EF11 /* JBPopupViewControllerManager.m */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
 		E67E6E851889D0A800D36A47 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +615,7 @@
 				E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */,
 				E6E4FEE9188D29D70068D929 /* JBRSSFeedDiscoverOperation.h */,
 				E6E4FEEA188D29D70068D929 /* JBRSSFeedDiscoverOperation.m */,
+				E6006D3D18AB7DCF00A7EF11 /* Discover */,
 				E6C90065186400840007449D /* SubsUnread */,
 				E6F0835E186E3041007FEDD4 /* Unread */,
 			);
@@ -649,6 +678,7 @@
 		E6FC100317B16FA800A12BED /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				E6006D4318AB98A100A7EF11 /* Popup */,
 				E67E6E901889DFF200D36A47 /* View */,
 				E6FC100417B16FA800A12BED /* ViewController */,
 				E6C7BE5918A8980B007A80E4 /* Animation */,
@@ -730,6 +760,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6006D4218AB818C00A7EF11 /* JBDiscoverPopupViewController.xib in Resources */,
 				E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */,
 				E6855E5B1882009B0045A6ED /* JBRSSLogin.storyboard in Resources */,
 				E68EB9E617B01624006711A6 /* Default-568h@2x.png in Resources */,
@@ -818,6 +849,7 @@
 				E6C7BE6D18A90433007A80E4 /* JBQBFlatButton.m in Sources */,
 				E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */,
 				E6FC101017B1748900A12BED /* JBRSSController.m in Sources */,
+				E6006D4018AB815100A7EF11 /* JBDiscoverPopupViewController.m in Sources */,
 				E6E4FEEB188D29D70068D929 /* JBRSSFeedDiscoverOperation.m in Sources */,
 				E60A4B86189592A5007AA0A7 /* JBRSSPinController.m in Sources */,
 				E692F89418A7ED6D00A13D2A /* JBModelList.m in Sources */,
@@ -843,6 +875,7 @@
 				E62C107217B9314A0081007A /* NSHTTPCookieStorage+Cookie.m in Sources */,
 				E6272FC6186F6C0000FC9C2D /* JBRSSFeedUnreadOperation.m in Sources */,
 				E6272FC3186F659600FC9C2D /* JBRSSFeedUnread.m in Sources */,
+				E6006D4A18AB98A100A7EF11 /* JBPopupViewControllerManager.m in Sources */,
 				E6272FC0186F635B00FC9C2D /* JBRSSFeedUnreadList.m in Sources */,
 				E681E76318251954001323DB /* JBRSSLoginOperations.m in Sources */,
 				E6F0835D186CF15F007FEDD4 /* JBLoginOperation.m in Sources */,

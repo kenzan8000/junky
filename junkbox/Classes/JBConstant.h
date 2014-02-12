@@ -29,6 +29,5 @@
 /// ModalViewControllerをdismissする
 #define kNotificationModalViewControllerWillDismiss @"JBNotificationModalViewControllerWillDismiss"
 
-
 #pragma mark - Model
 #define kXCDataModelName                            @"JBModel"
