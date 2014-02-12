@@ -11,7 +11,6 @@
 + (NSMutableURLRequest *)JBRequestWithURL:(NSURL *)url
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setCookies];
     return request;
 }
 

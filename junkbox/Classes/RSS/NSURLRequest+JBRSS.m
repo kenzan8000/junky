@@ -130,12 +130,7 @@
  */
 - (void)setSessions
 {
-    NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSMutableString *cookieString = [NSMutableString stringWithCapacity:0];
-    for (NSHTTPCookie* cookie in [storage cookies]) {
-        [cookieString appendFormat:@"%@=%@;", [cookie name], [cookie value]];
-    }
-
     NSString *sessions = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderSession];
     if (sessions) {
         [cookieString appendString:sessions];

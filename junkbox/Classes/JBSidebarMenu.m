@@ -2,7 +2,7 @@
 #import "JBSidebarMenu.h"
 #import "JBRSSOperationQueue.h"
 #import "JBRSSFeedDiscoverOperation.h"
-#import "JBDiscoverPopupViewController.h"
+#import "JBRSSDiscoverPopupViewController.h"
 #import "JBRSSPinList.h"
 /// NSFoundation-Extension
 #import "NSData+JSON.h"
@@ -157,10 +157,8 @@ didTapItemAtIndex:(NSUInteger)index
 
     JBRSSFeedDiscoverOperation *operation = [[JBRSSFeedDiscoverOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error)
         {
-            NSDictionary *JSON = [object JSON];
-            JBLog(@"%@", JSON);
             // 失敗
-            if (error == nil) {
+            if (error) {
                 // ステータスバー
                 dispatch_async(dispatch_get_main_queue(), ^ () {
                     [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Discovering RSS Feed Failed", @"RSS Feedの探索に失敗しました")
@@ -169,15 +167,20 @@ didTapItemAtIndex:(NSUInteger)index
                 });
                 return;
             }
+
+            NSArray *JSON = [object JSON];
+            JBLog(@"%@", JSON);
+
             // 成功
                 // ステータスバー
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {
                 [[MTStatusBarOverlay sharedInstance] hide];
             });
                 // ポップアップ
             dispatch_async(dispatch_get_main_queue(), ^ () {
-                JBDiscoverPopupViewController *vc = [[JBDiscoverPopupViewController alloc] initWithNibName:NSStringFromClass([JBDiscoverPopupViewController class])
+                JBRSSDiscoverPopupViewController *vc = [[JBRSSDiscoverPopupViewController alloc] initWithNibName:NSStringFromClass([JBRSSDiscoverPopupViewController class])
                                                                                                     bundle:nil];
+                [vc setJSON:JSON];
                 [vc presentPopup];
             });
         }

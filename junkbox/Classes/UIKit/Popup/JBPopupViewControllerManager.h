@@ -2,7 +2,7 @@
 /// presentアニメーション時間
 #define kJBPopupViewCotrollerPresentTime 0.25f
 /// dimissアニメーション時間
-#define kJBPopupViewCotrollerDismissTime 0.15f
+#define kJBPopupViewCotrollerDismissTime 0.20f
 
 
 #pragma mark - JBPopupViewControllerManager

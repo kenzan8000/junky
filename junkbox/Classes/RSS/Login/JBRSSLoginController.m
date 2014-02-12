@@ -91,9 +91,9 @@
     [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateHighlighted];
     [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateNormal];
     [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0xc0392bff] forState:UIControlStateHighlighted];
-    self.loginButton.depth = 0;
-    self.loginButton.margin = 0;
-    self.loginButton.radius = 2;
+//    self.loginButton.depth = 0;
+//    self.loginButton.margin = 0;
+//    self.loginButton.radius = 2;
 }
 
 - (void)viewDidLoad

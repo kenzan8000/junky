@@ -2,13 +2,15 @@
 #import "JBPopupViewControllerManager.h"
 
 
-#pragma mark - JBDiscoverPopupViewController
+#pragma mark - JBRSSDiscoverPopupViewController
 /// URLからRSSフィードを見つけた後、そのフィードを購読するか、購読をやめるか選ぶPopupUI
-@interface JBDiscoverPopupViewController : JBPopupViewController {
+@interface JBRSSDiscoverPopupViewController : JBPopupViewController {
 }
 
 
 #pragma mark - property
+/// popupのメインview
+@property (nonatomic, weak) IBOutlet UIView *contentView;
 /// タイトル
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 /// 閉じるボタン
@@ -25,7 +27,11 @@
 
 
 #pragma mark - api
-
+/**
+ * JSONのデータ購読リストをセット
+ * @param JSON JSON
+ */
+- (void)setJSON:(NSArray *)JSON;
 
 
 @end
