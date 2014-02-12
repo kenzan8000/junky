@@ -34,7 +34,7 @@
     toView.frame = toFrame;
     toView.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
 
-    toView.alpha = 0.5f;
+    toView.alpha = 0.2f;
 
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0.0f

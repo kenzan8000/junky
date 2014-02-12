@@ -31,7 +31,7 @@
                      animations:^ () {
         fromVC.view.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
         toVC.view.transform = CGAffineTransformMakeTranslation(endFrame.origin.x, 0);
-        fromVC.view.alpha = 0.5f;
+        fromVC.view.alpha = 0.2f;
     }
                      completion:^ (BOOL finished) {
         [transitionContext completeTransition:YES];

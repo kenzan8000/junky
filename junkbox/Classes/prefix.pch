@@ -16,8 +16,9 @@
 
 /// ログ
 #ifdef DEBUG
-    #define JBLog(fmt, ...) NSLog((@"\nfunction:%s\nline:%d\nlog:" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    //#define JBLog(fmt, ...) NSLog((@"\nfunction:%s\nline:%d\nlog:" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define JBLog(...)
 #else
-    #define JBLog()
+    #define JBLog(...)
 #endif
 

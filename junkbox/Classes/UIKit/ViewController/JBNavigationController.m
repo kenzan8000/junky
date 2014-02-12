@@ -18,7 +18,6 @@
 
     self.view.backgroundColor = [UIColor lightGrayColor];
 
-    self.interactivePopGestureRecognizer.enabled = YES;
     self.interactivePopGestureRecognizer.delegate = self;
 }
 
@@ -65,6 +64,23 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
+    // UIScreenEdgePanGestureRecognizer
+    UIScreenEdgePanGestureRecognizer *edgePanGestureRecognizer = nil;
+    UIGestureRecognizer *canceledGestureRecognizer = nil;
+    if ([gestureRecognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]]) {
+        edgePanGestureRecognizer = (UIScreenEdgePanGestureRecognizer *)gestureRecognizer;
+        canceledGestureRecognizer = otherGestureRecognizer;
+    }
+    else if ([otherGestureRecognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]]) {
+        edgePanGestureRecognizer = (UIScreenEdgePanGestureRecognizer *)otherGestureRecognizer;
+        canceledGestureRecognizer = gestureRecognizer;
+    }
+
+    // edgePanGestureRecognizerが失敗したら、canceledGestureRecognizerの処理をする
+    if (edgePanGestureRecognizer && canceledGestureRecognizer) {
+        [canceledGestureRecognizer requireGestureRecognizerToFail:edgePanGestureRecognizer];
+    }
+
     return YES;
 }
 
