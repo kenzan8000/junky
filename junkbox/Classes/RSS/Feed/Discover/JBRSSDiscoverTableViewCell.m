@@ -7,6 +7,14 @@
 #import "NKToggleOverlayButton.h"
 
 
+#pragma mark - NKToggleOverlayButton
+@interface NKToggleOverlayButton()
+
+- (void)toggle:(UITapGestureRecognizer *)recognizer;
+
+@end
+
+
 #pragma mark - JBRSSDiscoverTableViewCell
 @implementation JBRSSDiscoverTableViewCell
 
@@ -41,6 +49,11 @@
 
 
 #pragma mark - api
+- (void)toggleIsOn
+{
+    [self.subscribeButton toggle:nil];
+}
+
 - (void)setDiscover:(JBRSSDiscover *)discover
 {
     // ボタン
@@ -66,6 +79,7 @@
         // 設定
     [self.subscribeButton setShowOverlay:NO];
     [self.subscribeButton setIsOn:YES];
+    [self.subscribeButton setUserInteractionEnabled:NO];
         // チェックボックス
     [self.subscribeButtonView.layer setBorderColor:[[UIColor colorWithHexadecimal:0x7f8c8dff] CGColor]];
     [self.subscribeButtonView.layer setBorderWidth:1.0f];
@@ -86,3 +100,4 @@
 
 
 @end
+

@@ -31,6 +31,11 @@
 
 #pragma mark - api
 /**
+ * 購読ボタンをトグルさせる
+ */
+- (void)toggleIsOn;
+
+/**
  * フィード情報をセット
  * @param discover フィード情報
  */

@@ -124,6 +124,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    JBRSSDiscoverTableViewCell *cell = (JBRSSDiscoverTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    [cell toggleIsOn];
     [self.tableView deselectRowAtIndexPath:indexPath
                                   animated:YES];
 }
