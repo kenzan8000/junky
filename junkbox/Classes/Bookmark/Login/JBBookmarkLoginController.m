@@ -98,9 +98,9 @@
 shouldStartLoadWithRequest:(NSURLRequest *)request
  navigationType:(UIWebViewNavigationType)navigationType
 {
-    if ([super respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
+    if ([HTBLoginWebViewController instancesRespondToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
         return [super webView:webView
-    shouldStartLoadWithRequest:request
+   shouldStartLoadWithRequest:request
                navigationType:navigationType];
     }
     return YES;
@@ -108,14 +108,14 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    if ([super respondsToSelector:@selector(webViewDidStartLoad:)]) {
+    if ([HTBLoginWebViewController instancesRespondToSelector:@selector(webViewDidStartLoad:)]) {
         [super webViewDidStartLoad:webView];
     }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    if ([super respondsToSelector:@selector(webViewDidFinishLoad:)]) {
+    if ([HTBLoginWebViewController instancesRespondToSelector:@selector(webViewDidFinishLoad:)]) {
         [super webViewDidFinishLoad:webView];
     }
 }
@@ -123,7 +123,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 - (void)webView:(UIWebView *)webView
 didFailLoadWithError:(NSError *)error
 {
-    if ([super respondsToSelector:@selector(webView:didFailLoadWithError:)]) {
+    if ([HTBLoginWebViewController instancesRespondToSelector:@selector(webView:didFailLoadWithError:)]) {
         [super webView:webView
   didFailLoadWithError:error];
     }
