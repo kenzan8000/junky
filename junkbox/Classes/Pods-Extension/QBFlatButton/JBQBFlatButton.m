@@ -64,7 +64,12 @@
 /*
     // QBFlatButton#drawRect
     SEL selector = @selector(drawRect:radius:context:);
-    if ([super respondsToSelector:selector]) {
+    if ([QBFlatButton instancesRespondToSelector:selector]) {
+        rect.origin.x += 8.0;
+        rect.origin.y += 8.0;
+        rect.size.width -= 16.0;
+        rect.size.height -= 16.0;
+
         void(*QBFlatButtonFunction)(id, SEL, ...) = (void(*)(id, SEL, ...))[QBFlatButton instanceMethodForSelector:selector];
         QBFlatButtonFunction(self, selector, rect, radius, context);
     }

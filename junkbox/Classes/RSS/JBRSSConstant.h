@@ -37,6 +37,8 @@
 #define kApiKeyLivedoorReader                    @"reader_sid"
 /// Cookie3のドメイン
 #define kApiKeyDomainLivedoorReader              @".reader.livedoor.com"
+/// Host
+#define kHostLivedoorReader                      @"livedoor.com"
 
 
 /// Livedoor Reader API

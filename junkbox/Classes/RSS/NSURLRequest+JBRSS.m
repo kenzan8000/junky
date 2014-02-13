@@ -101,7 +101,7 @@
 + (NSMutableURLRequest *)JBRSSPostRequestWithURL:(NSURL *)URL
 {
     NSMutableURLRequest *request = [NSMutableURLRequest JBPostRequestWithURL:URL];
-    [request setSessions];
+    [request setRSSSessions];
     return request;
 }
 
@@ -130,13 +130,13 @@
  * LivedoorReaderのセッションをセット
  * session format:cookie名=value;
  */
-- (void)setSessions
+- (void)setRSSSessions
 {
     NSMutableString *cookieString = [NSMutableString stringWithCapacity:0];
 
     NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie* cookie in [storage cookies]) {
-        if ([cookie.domain hasSuffix:@"livedoor.com"] == NO) {
+        if ([cookie.domain hasSuffix:kHostLivedoorReader] == NO) {
             continue;
         }
         [cookieString appendFormat:@"%@=%@;", [cookie name], [cookie value]];

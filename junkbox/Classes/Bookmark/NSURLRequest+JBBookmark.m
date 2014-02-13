@@ -25,19 +25,22 @@
 + (NSMutableURLRequest *)JBBookmarkPostRequestWithURL:(NSURL *)URL
 {
     NSMutableURLRequest *request = [NSMutableURLRequest JBPostRequestWithURL:URL];
-    [request setSessions];
+    [request setBookmarkSessions];
     return request;
 }
 
 /**
- * LivedoorReaderのセッションをセット
+ * Hatebuのセッションをセット
  * session format:cookie名=value;
  */
-- (void)setSessions
+- (void)setBookmarkSessions
 {
     NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSMutableString *cookieString = [NSMutableString stringWithCapacity:0];
     for (NSHTTPCookie* cookie in [storage cookies]) {
+        if ([cookie.domain hasSuffix:kHostHatenaBookmark] == NO) {
+            continue;
+        }
         [cookieString appendFormat:@"%@=%@;", [cookie name], [cookie value]];
     }
 

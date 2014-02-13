@@ -1,3 +1,6 @@
+#import "JBBookmarkConstant-Private.h"
+
+
 #pragma mark - constant
 
 
@@ -6,10 +9,12 @@
 ************************************************** */
 
 /// Consumer Key
-#define kConsumerKeyHatenaBookmark              @"bU7T0oA8pRditQ=="
+#define kConsumerKeyHatenaBookmark              kConsumerKeyHatenaBookmarkPrivate
 /// Consumer Secret
-#define kConsumerSecretHatenaBookmark           @"1CHZOAmigaY9gvc7FNPgWnZtEbg="
+#define kConsumerSecretHatenaBookmark           kConsumerSecretHatenaBookmarkPrivate
 
+/// Host
+#define kHostHatenaBookmark                     @"hatena.ne.jp"
 
 /// HatenaBookmark
 #define kURLHatenaBookmark                      @"http://b.hatena.ne.jp/"

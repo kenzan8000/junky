@@ -266,6 +266,7 @@
 		E6FED2A518ABE6E00099ED79 /* common_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_clear.png; sourceTree = "<group>"; };
 		E6FED2AF18AC9D5A0099ED79 /* JBBookmarkLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkLoginController.h; sourceTree = "<group>"; };
 		E6FED2B018AC9D5A0099ED79 /* JBBookmarkLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkLoginController.m; sourceTree = "<group>"; };
+		E6FED2B518ACB1D20099ED79 /* JBBookmarkConstant-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JBBookmarkConstant-Private.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -485,6 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				E6F08351186AE5D2007FEDD4 /* JBBookmark.storyboard */,
+				E6FED2B518ACB1D20099ED79 /* JBBookmarkConstant-Private.h */,
 				E648C96C18A9E90C00737CA4 /* JBBookmarkConstant.h */,
 				E648C96D18A9EC7800737CA4 /* JBBookmarkOperation.h */,
 				E648C96E18A9EC7800737CA4 /* JBBookmarkOperation.m */,
