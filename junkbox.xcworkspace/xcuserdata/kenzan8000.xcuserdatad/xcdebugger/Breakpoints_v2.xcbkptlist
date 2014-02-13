@@ -2,4 +2,52 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "junkbox/Classes/RSS/NSURLRequest+JBRSS.m"
+            timestampString = "413962329.491294"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "-setPinSessionsWithPinURL:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[NSMutableURLRequest(JBRSS) setPinSessionsWithPinURL:]"
+                  moduleName = "debug.junkbox"
+                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/RSS/NSURLRequest+JBRSS.m"
+                  timestampString = "413962498.154511"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "663">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[NSMutableURLRequest(JBRSS) setPinSessionsWithPinURL:]"
+                  moduleName = "debug.junkbox"
+                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/RSS/NSURLRequest+JBRSS.m"
+                  timestampString = "413962498.155887"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "1276">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
