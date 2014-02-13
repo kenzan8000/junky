@@ -126,6 +126,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     JBBookmark *bookmark = (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
     return ([bookmark.summary isEqualToString:@""]) ?
         kJBBookmarkCatalogTableViewCellHeight - kJBBookmarkCatalogTableViewCellLabelHeight : kJBBookmarkCatalogTableViewCellHeight;
+/*
+    JBBookmark *bookmark = (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
+    return [JBBookmarkCatalogTableViewCell cellHeightWithBookmarkComment:bookmark.summary];
+*/
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

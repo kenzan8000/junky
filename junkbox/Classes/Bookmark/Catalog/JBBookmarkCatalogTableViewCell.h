@@ -4,7 +4,7 @@
 
 #pragma mark - constant
 /// Defaultの高さ
-#define kJBBookmarkCatalogTableViewCellHeight 68
+#define kJBBookmarkCatalogTableViewCellHeight 82
 /// Label1行の高さ
 #define kJBBookmarkCatalogTableViewCellLabelHeight 17
 /// タグラベルのx座標位置リミット
@@ -30,6 +30,14 @@
 /// cellの高さ
 @property (nonatomic, assign) CGFloat height;
 
+
+#pragma mark - class method
+/**
+ * コメントから高さを算出
+ * @param bookmarkComment bookmarkComment
+ * @return height
+ */
++ (CGFloat)cellHeightWithBookmarkComment:(NSString *)bookmarkComment;
 
 #pragma mark - api
 /**

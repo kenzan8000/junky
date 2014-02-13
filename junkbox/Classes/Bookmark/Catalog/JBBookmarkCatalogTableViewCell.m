@@ -11,7 +11,35 @@
 @synthesize bookmarkTagsLabel;
 @synthesize bookmarkDateLabel;
 @synthesize bookmarkCommentLabel;
-@synthesize height;
+
+
+#pragma mark - class method
++ (CGFloat)cellHeightWithBookmarkComment:(NSString *)bookmarkComment
+{
+    if ([bookmarkComment isEqualToString:@""]) {
+        return kJBBookmarkCatalogTableViewCellLabelHeight - kJBBookmarkCatalogTableViewCellHeight;
+    }
+    return kJBBookmarkCatalogTableViewCellLabelHeight;
+/*
+    if (bookmarkComment == nil || [bookmarkComment isEqualToString:@""]) {
+        return kJBBookmarkCatalogTableViewCellLabelHeight - kJBBookmarkCatalogTableViewCellHeight;
+    }
+
+    NSDictionary *attributes = @{
+        NSForegroundColorAttributeName : [UIColor whiteColor],
+        NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:12.0f],
+    };
+    NSAttributedString *bookmarkText = [[NSAttributedString alloc] initWithString:bookmarkComment
+                                                                       attributes:attributes];
+    CGRect rect = [bookmarkText boundingRectWithSize:CGSizeMake(276, 100)
+                                             options:NSStringDrawingUsesLineFragmentOrigin
+                                             context:nil];
+
+    return (rect.size.height > kJBBookmarkCatalogTableViewCellLabelHeight) ?
+        kJBBookmarkCatalogTableViewCellHeight + kJBBookmarkCatalogTableViewCellLabelHeight :
+        kJBBookmarkCatalogTableViewCellHeight;
+*/
+}
 
 
 #pragma mark - initializer
@@ -19,7 +47,6 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.height = kJBBookmarkCatalogTableViewCellHeight;
     }
     return self;
 }
@@ -62,13 +89,27 @@
     [self.bookmarkCommentLabel setText:bookmark.summary];
 
     // 高さを調整
-    if ([bookmark.summary isEqualToString:@""]) {
-        self.height = kJBBookmarkCatalogTableViewCellLabelHeight - kJBBookmarkCatalogTableViewCellHeight;
+    CGFloat height = [JBBookmarkCatalogTableViewCell cellHeightWithBookmarkComment:bookmark.summary];
+    if (height < kJBBookmarkCatalogTableViewCellHeight) {
         [self setFrame:CGRectMake(
             self.frame.origin.x, self.frame.origin.y,
-            self.frame.size.width, self.height
+            self.frame.size.width, height
         )];
     }
+/*
+    CGFloat height = [JBBookmarkCatalogTableViewCell cellHeightWithBookmarkComment:bookmark.summary];
+    [self setFrame:CGRectMake(
+        self.frame.origin.x, self.frame.origin.y,
+        self.frame.size.width, height
+    )];
+    if (height > kJBBookmarkCatalogTableViewCellHeight) {
+        [self.bookmarkCommentLabel setNumberOfLines:2];
+        [self.bookmarkCommentLabel setFrame:CGRectMake(
+            self.bookmarkCommentLabel.frame.origin.x, self.bookmarkCommentLabel.frame.origin.y,
+            self.bookmarkCommentLabel.frame.size.width, self.bookmarkCommentLabel.frame.size.height + kJBBookmarkCatalogTableViewCellLabelHeight
+        )];
+    }
+*/
 }
 
 
@@ -98,9 +139,10 @@
         )];
     }
     else {
+        CGFloat offset = 4.0f;
         [self.bookmarkTagsLabel setFrame:CGRectMake(
             self.bookmarkTagsLabel.frame.origin.x, self.bookmarkTagsLabel.frame.origin.y,
-            rect.size.width, self.bookmarkTagsLabel.frame.size.height
+            rect.size.width + offset, self.bookmarkTagsLabel.frame.size.height
         )];
     }
 }
