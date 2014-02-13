@@ -3,10 +3,15 @@
 #import "JBRSSPinList.h"
 #import "JBRSSPin.h"
 #import "JBWebViewController.h"
+#import "JBNavigationBarTitleView.h"
 // NSFoundation-Extension
 #import "NSData+JSON.h"
-/// UIKit-Extension
+// UIKit-Extension
 #import "UINib+UIKit.h"
+#import "UIStoryboard+UIKit.h"
+#import "UIViewController+ModalAnimatedTransition.h"
+// Pods
+#import "IonIcons.h"
 
 
 #pragma mark - JBRSSPinController
@@ -51,6 +56,26 @@
                                              selector:@selector(loginDidSuccess:)
                                                  name:kNotificationRSSLoginSuccess
                                                object:nil];
+
+    // ナビゲーションバー
+        // タイトル
+    JBNavigationBarTitleView *titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
+    [titleView setTitle:NSLocalizedString(@"Read Later", @"あとで読む")];
+    self.navigationItem.titleView = titleView;
+        // ログインボタン
+    self.loginButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                   title:NSLocalizedString(@"Login", @"ログインボタン")
+                                                                    icon:nil/*icon_log_in*/];
+    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
+                                      animated:NO];
+        //
+    JBBarButtonView *emptyButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                               title:nil
+                                                                                icon:icon_ios7_search_strong];
+    [emptyButtonView setHidden:YES];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:emptyButtonView]]
+                                       animated:NO];
+
 }
 
 - (void)viewDidLoad
@@ -172,6 +197,24 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     [self.navigationController pushViewController:vc
                                          animated:YES];
 
+}
+
+
+#pragma mark - JBBarButtonViewDelegate
+/**
+ * ボタン押下
+ * @param barButtonView barButtonView
+ */
+- (void)touchedUpInsideButtonWithBarButtonView:(JBBarButtonView *)barButtonView
+{
+    // ログイン
+    if (barButtonView == self.loginButtonView) {
+        UINavigationController *vc = [UINavigationController new];
+        [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
+        [self presentViewController:vc
+                         JBAnimated:YES
+                         completion:^ () {}];
+    }
 }
 
 

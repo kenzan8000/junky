@@ -1,5 +1,6 @@
 #import "JBRSSConstant.h"
 #import "JBRSSLoginController.h"
+#import "JBNavigationBarTitleView.h"
 #import "JBRSSLoginOperations.h"
 #import "JBRSSOperationQueue.h"
 #import "UIViewController+ModalAnimatedTransition.h"
@@ -58,12 +59,24 @@
     [super loadView];
 
     // ナビゲーションバー
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexadecimal:0x4682b4ff];
+        // タイトル
+    JBNavigationBarTitleView *titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
+    [titleView setTitle:NSLocalizedString(@"Livedoor Reader", @"Livedoor Reader")];
+    self.navigationItem.titleView = titleView;
         // 閉じるボタン
     JBBarButtonView *closeButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                                title:nil/*NSLocalizedString(@"Close", @"モーダルを閉じる")*/
                                                                                 icon:icon_close_round];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:closeButtonView]]
                                       animated:NO];
+        //
+    JBBarButtonView *menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                              title:NSLocalizedString(@"Menu", @"メニューボタン")
+                                                                               icon:icon_navicon_round];
+    [menuButtonView setHidden:YES];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
+                                       animated:NO];
 
     // パスワード
     self.passwordTextField.secureTextEntry = YES;

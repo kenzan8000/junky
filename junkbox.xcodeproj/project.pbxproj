@@ -96,6 +96,7 @@
 		E6FED2A018ABB21B0099ED79 /* JBRSSDiscoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FED29E18ABB21B0099ED79 /* JBRSSDiscoverTableViewCell.xib */; };
 		E6FED2A318ABBB1F0099ED79 /* JBRSSDiscover.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FED2A218ABBB1F0099ED79 /* JBRSSDiscover.m */; };
 		E6FED2A618ABE6E00099ED79 /* common_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = E6FED2A518ABE6E00099ED79 /* common_clear.png */; };
+		E6FED2B318AC9D5A0099ED79 /* JBBookmarkLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FED2B018AC9D5A0099ED79 /* JBBookmarkLoginController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -263,6 +264,8 @@
 		E6FED2A118ABBB1F0099ED79 /* JBRSSDiscover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSDiscover.h; sourceTree = "<group>"; };
 		E6FED2A218ABBB1F0099ED79 /* JBRSSDiscover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSDiscover.m; sourceTree = "<group>"; };
 		E6FED2A518ABE6E00099ED79 /* common_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_clear.png; sourceTree = "<group>"; };
+		E6FED2AF18AC9D5A0099ED79 /* JBBookmarkLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkLoginController.h; sourceTree = "<group>"; };
+		E6FED2B018AC9D5A0099ED79 /* JBBookmarkLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkLoginController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +495,7 @@
 				E648C97318A9EE6600737CA4 /* NSURLRequest+JBBookmark.h */,
 				E648C97418A9EE6600737CA4 /* NSURLRequest+JBBookmark.m */,
 				E6F08353186AE734007FEDD4 /* Catalog */,
+				E6FED2A718AC96510099ED79 /* Login */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -725,6 +729,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		E6FED2A718AC96510099ED79 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E6FED2AF18AC9D5A0099ED79 /* JBBookmarkLoginController.h */,
+				E6FED2B018AC9D5A0099ED79 /* JBBookmarkLoginController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -879,6 +892,7 @@
 				E6FED29B18ABA8780099ED79 /* JBRSSFeedDiscoverOperation.m in Sources */,
 				E6006D4018AB815100A7EF11 /* JBRSSDiscoverPopupViewController.m in Sources */,
 				E60A4B86189592A5007AA0A7 /* JBRSSPinController.m in Sources */,
+				E6FED2B318AC9D5A0099ED79 /* JBBookmarkLoginController.m in Sources */,
 				E692F89418A7ED6D00A13D2A /* JBModelList.m in Sources */,
 				E6C90075186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */,
 				E6C90071186400840007449D /* JBRSSFeedSubsUnread.m in Sources */,

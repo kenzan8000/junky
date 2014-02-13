@@ -19,15 +19,17 @@
 
 #pragma mark - Notification
 /// RSS Reader ログイン開始
-#define kNotificationRSSLoginStart                  @"JBNotificationRSSLoginStart"
+#define kNotificationRSSLoginStart                              @"JBNotificationRSSLoginStart"
 /// RSS Reader ログイン成功
-#define kNotificationRSSLoginSuccess                @"JBNotificationRSSLoginSuccess"
+#define kNotificationRSSLoginSuccess                            @"JBNotificationRSSLoginSuccess"
 /// RSS Reader ログイン失敗
-#define kNotificationRSSLoginFailure                @"JBNotificationRSSLoginFailure"
+#define kNotificationRSSLoginFailure                            @"JBNotificationRSSLoginFailure"
 /// RSS Reader セッション無効
-#define kNotificationRSSLoginInvalid                @"JBNotificationRSSLoginInvalid"
+#define kNotificationRSSLoginInvalid                            @"JBNotificationRSSLoginInvalid"
+/// Bookmark ログイン処理終了
+#define kNotificationModalBookmarkLoginControllerWillDismiss    @"JBNotificationBookmarkLoginControllerDismiss"
 /// ModalViewControllerをdismissする
-#define kNotificationModalViewControllerWillDismiss @"JBNotificationModalViewControllerWillDismiss"
+#define kNotificationModalViewControllerWillDismiss             @"JBNotificationModalViewControllerWillDismiss"
 
 #pragma mark - Model
 #define kXCDataModelName                            @"JBModel"

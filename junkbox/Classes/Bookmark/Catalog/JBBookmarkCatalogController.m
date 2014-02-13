@@ -1,4 +1,6 @@
 #import "JBBookmarkCatalogController.h"
+#import "JBNavigationBarTitleView.h"
+#import "JBBookmarkLoginController.h"
 /// UIKit-Extension
 #import "UINib+UIKit.h"
 #import "UIViewController+ModalAnimatedTransition.h"
@@ -14,8 +16,8 @@
 
 #pragma mark - synthesize
 @synthesize loginButtonView;
+@synthesize searchButtonView;
 @synthesize loginModalViewController;
-@synthesize modalCloseButtonView;
 @synthesize bookmarkList;
 
 
@@ -34,9 +36,12 @@
 #pragma mark - release
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kNotificationModalBookmarkLoginControllerWillDismiss
+                                                  object:nil];
     self.loginButtonView = nil;
+    self.searchButtonView = nil;
     self.loginModalViewController = nil;
-    self.modalCloseButtonView = nil;
 }
 
 
@@ -45,6 +50,10 @@
 {
     [super loadView];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(dismissLoginModalViewCntrollerWithNotification:)
+                                                 name:kNotificationModalBookmarkLoginControllerWillDismiss
+                                               object:nil];
     // Hatebu
     self.bookmarkList = [JBBookmarkList sharedInstance];
     [self.bookmarkList setDelegate:self];
@@ -53,12 +62,22 @@
     }
 
     // ナビゲーションバー
+        // タイトル
+    JBNavigationBarTitleView *titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
+    [titleView setTitle:NSLocalizedString(@"Bookmark", @"はてブ一覧")];
+    self.navigationItem.titleView = titleView;
         // ログインボタン
     self.loginButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                    title:NSLocalizedString(@"Login", @"ログインボタン")
                                                                     icon:nil/*icon_log_in*/];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
                                       animated:NO];
+        // 検索ボタン
+    self.searchButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                    title:nil
+                                                                     icon:icon_ios7_search_strong];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.searchButtonView]]
+                                       animated:NO];
 }
 
 - (void)viewDidLoad
@@ -135,27 +154,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         [[HTBHatenaBookmarkManager sharedManager] logout];
         __weak __typeof(self) weakSelf = self;
         [[HTBHatenaBookmarkManager sharedManager] authorizeWithSuccess:^ () {
-            [weakSelf touchedUpInsideButtonWithBarButtonView:weakSelf.modalCloseButtonView];
             // Statusbar
             [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the bookmark list...", @"ブックマーク一覧取得")
                                                     animated:YES];
-
             // Bookmark一覧インポート
             [weakSelf.bookmarkList loadFromWebAPI];
+            // dismiss
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationModalBookmarkLoginControllerWillDismiss
+                                                                object:nil
+                                                              userInfo:@{}];
         }
                                                                failure:^ (NSError *error) {
-
-        }];
-    }
-    // ログインModal閉じる
-    else if (barButtonView == self.modalCloseButtonView) {
-        if (self.loginModalViewController == nil) { return; }
-
-        __weak __typeof(self) weakSelf = self;
-        [self.loginModalViewController dismissViewControllerJBAnimated:YES
-                                                            completion:^ () {
-            weakSelf.loginModalViewController = nil;
-            weakSelf.modalCloseButtonView = nil;
         }];
     }
 }
@@ -193,16 +202,28 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                                                   object:nil];
 
     self.loginModalViewController = [UINavigationController new];
-    HTBLoginWebViewController *vc = [[HTBLoginWebViewController alloc] initWithAuthorizationRequest:(NSURLRequest *)notification.object];
-    self.modalCloseButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
-                                                                        title:nil
-                                                                         icon:icon_close_round];
-    [vc.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.modalCloseButtonView]]
-                                    animated:NO];
+    JBBookmarkLoginController *vc = [[JBBookmarkLoginController alloc] initWithAuthorizationRequest:(NSURLRequest *)notification.object];
     self.loginModalViewController.viewControllers = @[vc];
     [self presentViewController:self.loginModalViewController
                      JBAnimated:YES
                      completion:nil];
+}
+
+/**
+ * HatenaBookmarkのログインModal Dismiss通知
+ * @param notification Notification
+ */
+- (void)dismissLoginModalViewCntrollerWithNotification:(NSNotification *)notification
+{
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^ () {
+        [weakSelf.loginModalViewController dismissViewControllerJBAnimated:YES
+                                                                completion:^ () {
+            if (weakSelf.loginModalViewController) {
+                weakSelf.loginModalViewController = nil;
+            }
+        }];
+    });
 }
 
 
