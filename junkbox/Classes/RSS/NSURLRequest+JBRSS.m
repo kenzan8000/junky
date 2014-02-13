@@ -70,7 +70,6 @@
         [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
     ];
     NSMutableURLRequest *request = [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
-    [request setPinSessionsWithPinURL:[NSURL URLWithString:link]];
     return request;
 }
 
@@ -81,7 +80,6 @@
              [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
     ];
     NSMutableURLRequest *request = [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
-    [request setPinSessionsWithPinURL:[NSURL URLWithString:link]];
     return request;
 }
 
@@ -136,27 +134,9 @@
 {
     NSMutableString *cookieString = [NSMutableString stringWithCapacity:0];
 
-    NSString *sessions = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderSession];
-    if (sessions) {
-        [cookieString appendString:sessions];
-    }
-
-    [self setValue:cookieString
-forHTTPHeaderField:@"Cookie"];
-}
-
-/**
- * Pin追加時のセッションをセット
- * @param pinURL pinのURL
- */
-- (void)setPinSessionsWithPinURL:(NSURL *)pinURL
-{
-    NSMutableString *cookieString = [NSMutableString stringWithCapacity:0];
-
     NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie* cookie in [storage cookies]) {
-        if ([cookie.domain rangeOfString:@"livedoor.com"].location == NSNotFound &&
-            [cookie.domain rangeOfString:pinURL.host].location == NSNotFound) {
+        if ([cookie.domain hasSuffix:@"livedoor.com"] == NO) {
             continue;
         }
         [cookieString appendFormat:@"%@=%@;", [cookie name], [cookie value]];
@@ -169,6 +149,7 @@ forHTTPHeaderField:@"Cookie"];
 
     [self setValue:cookieString
 forHTTPHeaderField:@"Cookie"];
+
 }
 
 

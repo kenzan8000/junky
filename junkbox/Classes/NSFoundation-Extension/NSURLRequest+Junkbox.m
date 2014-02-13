@@ -49,19 +49,10 @@
 #pragma mark - private api
 - (void)setCookies
 {
-/*
     NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSMutableString *cookieString = [NSMutableString stringWithCapacity:0];
     for (NSHTTPCookie* cookie in [storage cookies]) {
-        [cookieString appendFormat:@"%@=%@;", [cookie name], [cookie value]];
-    }
-    [self setValue:cookieString
-forHTTPHeaderField:@"Cookie"];
-*/
-    NSHTTPCookieStorage* storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSMutableString *cookieString = [NSMutableString stringWithCapacity:0];
-    for (NSHTTPCookie* cookie in [storage cookies]) {
-        if ([cookie.domain rangeOfString:self.URL.host].location == NSNotFound) {
+        if ([cookie.domain hasSuffix:self.URL.host] == NO) {
             continue;
         }
         [cookieString appendFormat:@"%@=%@;", [cookie name], [cookie value]];
