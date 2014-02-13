@@ -4,9 +4,9 @@
 
 #pragma mark - constant
 /// Defaultの高さ
-#define kJBBookmarkCatalogTableViewCellHeight 82
+#define kJBBookmarkCatalogTableViewCellHeight 84
 /// Label1行の高さ
-#define kJBBookmarkCatalogTableViewCellLabelHeight 17
+#define kJBBookmarkCatalogTableViewCellLabelHeight 15
 /// タグラベルのx座標位置リミット
 #define kJBBookmarkCatalogTableViewCellDateLabelPositionXOfRightEdge 226
 
