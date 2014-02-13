@@ -94,13 +94,13 @@
             if ([l isKindOfClass:[NSDictionary class]] == NO) {
                 continue;
             }
-            if ([[l allKeys] containsObject:@"_title"] == NO    ||
-                [[l allKeys] containsObject:@"_href"] == NO     ||
-                [[l allKeys] containsObject:@"_rel"] == NO      ||
-                [[l allKeys] containsObject:@"_type"] == NO) {
+            if ([[l allKeys] containsObject:@"_href"] == NO     ||
+                [[l allKeys] containsObject:@"_rel"] == NO) {
                 continue;
             }
-            self.link = [NSString stringWithFormat:@"%@", l[@"_href"]];
+            if ([l[@"_rel"] isEqualToString:@"related"]) {
+                self.link = [NSString stringWithFormat:@"%@", l[@"_href"]];
+            }
             break;
         }
     }
@@ -132,7 +132,7 @@
 
 - (NSURL *)URL
 {
-    return [NSURL URLWithString:self.title];
+    return [NSURL URLWithString:self.link];
 }
 
 

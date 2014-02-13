@@ -3,6 +3,7 @@
 #import "JBBookmarkCatalogTableViewCell.h"
 #import "JBBookmarkLoginController.h"
 #import "JBBookmark.h"
+#import "JBWebViewController.h"
 /// UIKit-Extension
 #import "UINib+UIKit.h"
 #import "UIViewController+ModalAnimatedTransition.h"
@@ -153,6 +154,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath
                                   animated:YES];
+
+    JBBookmark *bookmark = (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
+    if (bookmark) {
+        // 遷移
+        JBWebViewController *vc = [[JBWebViewController alloc] initWithNibName:NSStringFromClass([JBWebViewController class])
+                                                                        bundle:nil];
+        [vc setInitialURL:[bookmark URL]];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+    }
 }
 
 
