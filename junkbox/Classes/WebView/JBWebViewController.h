@@ -2,16 +2,16 @@
 #import "JBBarButtonView.h"
 /// Pods
 #import "NJKWebViewProgress.h"
+#import "JBSidebarMenu.h"
 
 
 #pragma mark - class
 @class JBNavigationBarTitleView;
-@class JBSidebarMenu;
 
 
 #pragma mark - JBWebViewController
 /// 共通のWebView
-@interface JBWebViewController : WebViewController <NJKWebViewProgressDelegate, JBBarButtonViewDelegate> {
+@interface JBWebViewController : WebViewController <NJKWebViewProgressDelegate, JBBarButtonViewDelegate, JBSidebarMenuDelegate> {
 }
 
 

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="JBBookmark" representedClassName="JBBookmark" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dcSubject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="entryId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="issued" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="JBRSSFeedSubsUnread" representedClassName="JBRSSFeedSubsUnread" syncable="YES">
         <attribute name="feedlink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="folder" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,5 +27,6 @@
     <elements>
         <element name="JBRSSFeedSubsUnread" positionX="0" positionY="0" width="0" height="0"/>
         <element name="JBRSSPin" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="JBBookmark" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -1,6 +1,8 @@
 #import "JBBookmarkCatalogController.h"
 #import "JBNavigationBarTitleView.h"
+#import "JBBookmarkCatalogTableViewCell.h"
 #import "JBBookmarkLoginController.h"
+#import "JBBookmark.h"
 /// UIKit-Extension
 #import "UINib+UIKit.h"
 #import "UIViewController+ModalAnimatedTransition.h"
@@ -115,24 +117,38 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.bookmarkList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    JBBookmark *bookmark = (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
+    return ([bookmark.summary isEqualToString:@""]) ?
+        kJBBookmarkCatalogTableViewCellHeight - kJBBookmarkCatalogTableViewCellLabelHeight : kJBBookmarkCatalogTableViewCellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *className = NSStringFromClass([UITableViewCell class]);
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
+    NSString *className = NSStringFromClass([JBBookmarkCatalogTableViewCell class]);
+    JBBookmarkCatalogTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
     if (!cell) {
-//        cell = [UINib UIKitFromClassName:className];
+        cell = [UINib UIKitFromClassName:className];
+
+        JBBookmark *bookmark = (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
+        if (bookmark) {
+            [cell designWithBookmark:bookmark];
+        }
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath
+                                  animated:YES];
 }
 
 
@@ -177,7 +193,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)bookmarkListDidFinishLoadWithList:(JBBookmarkList *)list
 {
-    [[MTStatusBarOverlay sharedInstance] hide];
+    [self.refreshControl endRefreshing];
+    // ステータスバー
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {
+        [[MTStatusBarOverlay sharedInstance] hide];
+    });
+    [self.tableView reloadData];
 }
 
 /**

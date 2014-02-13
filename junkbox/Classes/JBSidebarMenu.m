@@ -22,6 +22,7 @@
 @synthesize type;
 @synthesize webURL;
 @synthesize webTitle;
+@synthesize delegate;
 
 
 #pragma mark - initializer
@@ -39,6 +40,7 @@
 #pragma mark - release
 - (void)dealloc
 {
+    self.delegate = nil;
     self.webURL = nil;
     self.webTitle = nil;
     self.sidebar = nil;
@@ -124,13 +126,10 @@ didTapItemAtIndex:(NSUInteger)index
 
     switch (index) {
         case 0:// LivedoorReader Adding PIN
-            [[JBRSSPinList sharedInstance] addPinWithTitle:self.webTitle
-                                                      link:[self.webURL absoluteString]];
-            // ステータスバー
-            [[MTStatusBarOverlay sharedInstance] postFinishMessage:NSLocalizedString(@"Added Read Later", @"あとで読むページを追加しました")
-                                                          duration:1.5f];
+            [self addPin];
             break;
         case 1:// SOCIAL BOOKMARK
+            [self addBookmark];
             break;
         case 2:// ADD RSS FEED
             [self discoverFeed];
@@ -145,8 +144,35 @@ didTapItemAtIndex:(NSUInteger)index
     }
 }
 
+#pragma mark - RSS Reader Add Pin
+/**
+ * ページをPINに追加する
+ */
+- (void)addPin
+{
+    [[JBRSSPinList sharedInstance] addPinWithTitle:self.webTitle
+                                              link:[self.webURL absoluteString]];
+    // ステータスバー
+    [[MTStatusBarOverlay sharedInstance] postFinishMessage:NSLocalizedString(@"Added Read Later", @"あとで読むページを追加しました")
+                                                  duration:1.5f];
+}
 
-#pragma mark - LivedoorReader Feed Discover and Add
+
+#pragma mark - Bookmark
+/**
+ * ページをBookmarkに追加する
+ */
+- (void)addBookmark
+{
+    if (self.delegate &&
+        [self.delegate respondsToSelector:@selector(bookmarkWillStartWithSidebarMenu:URL:)]) {
+        [self.delegate bookmarkWillStartWithSidebarMenu:self
+                                                    URL:self.webURL];
+    }
+}
+
+
+#pragma mark - RSS Reader Feed Discover and Add
 /**
  * URLからRSS Feedを探す
  */

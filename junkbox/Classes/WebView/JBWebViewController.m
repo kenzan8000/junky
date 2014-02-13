@@ -1,6 +1,5 @@
 #import "JBWebViewController.h"
 #import "JBNavigationBarTitleView.h"
-#import "JBSidebarMenu.h"
 // UIKit-Extension
 #import "UINib+UIKit.h"
 #import "UIColor+Hexadecimal.h"
@@ -8,6 +7,7 @@
 #import "NSURLRequest+Junkbox.h"
 // Pods
 #import "IonIcons.h"
+#import "JBHTBBookmarkViewController.h"
 
 
 #pragma mark - JBWebViewController
@@ -95,6 +95,8 @@
                                        animated:NO];
         // メニュー
     self.sidebarMenu = [[JBSidebarMenu alloc] initWithSidebarType:JBSidebarMenuTypeDefault];
+    [self.sidebarMenu setDelegate:self];
+
     [self.sidebarMenu setWebURL:self.initialURL];
     [self.sidebarMenu setWebTitle:[self.initialURL absoluteString]];
 
@@ -205,6 +207,23 @@ didFailLoadWithError:error];
         [self.sidebarMenu setWebTitle:[self.webView stringByEvaluatingJavaScriptFromString:@"document.title"]];
         [self.sidebarMenu show];
     }
+}
+
+
+#pragma mark - JBSidebarMenuDelegate
+/**
+ * Bookmarkの編集画面へ遷移
+ * @param sidebarMenu JBSidebarMenu
+ * @param URL BookmarkするページのURL
+ */
+- (void)bookmarkWillStartWithSidebarMenu:(JBSidebarMenu *)sidebarMenu
+                                     URL:(NSURL *)URL
+{
+    JBHTBBookmarkViewController *vc = [JBHTBBookmarkViewController new];
+    [vc setURL:URL];
+    [self presentViewController:vc
+                       animated:YES
+                     completion:^ () {}];
 }
 
 
