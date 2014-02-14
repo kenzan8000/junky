@@ -36,7 +36,14 @@
 
 - (void)setUnreadCount:(NSNumber *)unreadCount
 {
-    self.unreadCountLabel.text = [NSString stringWithFormat:@"%@", unreadCount];
+    if (unreadCount &&
+        ([unreadCount isKindOfClass:[NSNumber class]] || [unreadCount isKindOfClass:[NSString class]]))
+    {
+        self.unreadCountLabel.text = [NSString stringWithFormat:@"%@", unreadCount];
+    }
+    else {
+        self.unreadCountLabel.text = @"";
+    }
 }
 
 - (void)designWithIsFinishedLoading:(BOOL)isFinishedLoading
