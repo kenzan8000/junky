@@ -6,6 +6,7 @@
 #import "JBRSSOperationQueue.h"
 #import "JBRSSFeedUnreadLists.h"
 #import "JBNavigationBarTitleView.h"
+#import "JBOutlineLabel.h"
 #import "UIViewController+ModalAnimatedTransition.h"
 /// Connection
 #import "StatusCode.h"
@@ -129,17 +130,35 @@
 {
     return kLivedoorReaderMaxRate+1;
 }
-
+/*
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section
 {
     return kLivedoorReaderRateLabels[section];
 }
-
+*/
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
     return [self.subsUnreadList feedCountWithRate:section];
+}
+
+- (UIView *)tableView:(UITableView *)tableView
+viewForHeaderInSection:(NSInteger)section
+{
+    JBOutlineLabel *label = [JBOutlineLabel new];
+    [label setFont:[UIFont fontWithName:@"HelveticaNeue" size:18.0f]];
+    [label setTextColor:[UIColor colorWithHexadecimal:0xf1c40fff]];
+    [label setText:kLivedoorReaderRateLabels[section]];
+    [label setOutlineColor:[UIColor colorWithHexadecimal:0x7f8c8dff]];
+    [label setOutlineWidth:0.7f];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setFrame:CGRectMake(16, 0, self.view.frame.size.width-16*2, 20)];
+    UIView *headerView = [UIView new];
+    [headerView setFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    [headerView setBackgroundColor:[UIColor colorWithHexadecimal:0xecf0f1ff]];
+    [headerView addSubview:label];
+    return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView

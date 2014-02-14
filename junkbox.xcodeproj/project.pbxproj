@@ -46,6 +46,7 @@
 		E68EB9E717B01624006711A6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E68EB9DF17B01624006711A6 /* Default.png */; };
 		E68EB9E817B01624006711A6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E68EB9E017B01624006711A6 /* Default@2x.png */; };
 		E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E68EB9F617B01AE7006711A6 /* Localizable.strings */; };
+		E691073118ADE1AE00D67A61 /* JBOutlineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E691072F18ADE1AE00D67A61 /* JBOutlineLabel.m */; };
 		E692F89418A7ED6D00A13D2A /* JBModelList.m in Sources */ = {isa = PBXBuildFile; fileRef = E692F89318A7ED6D00A13D2A /* JBModelList.m */; };
 		E6A8DC6718962ED200AE5C51 /* JBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A8DC6618962ED200AE5C51 /* JBTabBarController.m */; };
 		E6B03C82888442169AA87976 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C4A9E1051943D9BBC35D4B /* libPods.a */; };
@@ -175,6 +176,8 @@
 		E68EB9E017B01624006711A6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E68EB9F717B01AE7006711A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E68EB9F917B01AF8006711A6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E691072E18ADE1AE00D67A61 /* JBOutlineLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBOutlineLabel.h; sourceTree = "<group>"; };
+		E691072F18ADE1AE00D67A61 /* JBOutlineLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBOutlineLabel.m; sourceTree = "<group>"; };
 		E692F89218A7ED6D00A13D2A /* JBModelList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBModelList.h; sourceTree = "<group>"; };
 		E692F89318A7ED6D00A13D2A /* JBModelList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBModelList.m; sourceTree = "<group>"; };
 		E6A8DC6518962ED200AE5C51 /* JBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBTabBarController.h; sourceTree = "<group>"; };
@@ -426,6 +429,15 @@
 				E68EB9F617B01AE7006711A6 /* Localizable.strings */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		E691072C18ADE1AE00D67A61 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				E691072E18ADE1AE00D67A61 /* JBOutlineLabel.h */,
+				E691072F18ADE1AE00D67A61 /* JBOutlineLabel.m */,
+			);
+			path = Label;
 			sourceTree = "<group>";
 		};
 		E6BAB8B917B0131300C1FEC1 = {
@@ -713,6 +725,7 @@
 		E6FC100317B16FA800A12BED /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				E691072C18ADE1AE00D67A61 /* Label */,
 				E6006D4318AB98A100A7EF11 /* Popup */,
 				E67E6E901889DFF200D36A47 /* View */,
 				E6FC100417B16FA800A12BED /* ViewController */,
@@ -893,6 +906,7 @@
 				E68EB9E517B01624006711A6 /* main.m in Sources */,
 				E648C97118A9EC7800737CA4 /* JBBookmarkOperation.m in Sources */,
 				E6E4FEE8188C64730068D929 /* JBRSSPinAddOperation.m in Sources */,
+				E691073118ADE1AE00D67A61 /* JBOutlineLabel.m in Sources */,
 				E60A4B87189592A5007AA0A7 /* JBRSSPinNavigationController.m in Sources */,
 				E6C8D79717B15521007B6C16 /* NSData+JSON.m in Sources */,
 				E6E4FF0718901EB20068D929 /* JBRSSPin.m in Sources */,
