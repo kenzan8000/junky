@@ -4,11 +4,13 @@
 #import "JBRSSFeedDiscoverOperation.h"
 #import "JBRSSDiscoverPopupViewController.h"
 #import "JBRSSPinList.h"
+#import "JBRSSConstant.h"
 /// NSFoundation-Extension
 #import "NSData+JSON.h"
 /// UIKit-Extension
 #import "UIColor+Hexadecimal.h"
 /// Pods
+#import "HTBHatenaBookmarkManager.h"
 #import "MTStatusBarOverlay.h"
 #import "IonIcons.h"
 
@@ -31,6 +33,19 @@
     self = [super init];
     if (self) {
         self.type = t;
+        BOOL hatebuIsAuthorized = [HTBHatenaBookmarkManager sharedManager].authorized;
+        NSString *ldrApiKey = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderApiKey];
+        BOOL ldrIsAuthorized = !(ldrApiKey == nil || [ldrApiKey isKindOfClass:[NSNull class]] || [ldrApiKey isEqualToString:@""]);
+        if (hatebuIsAuthorized == NO && ldrIsAuthorized == NO) {
+            self.type = JBSidebarMenuTypeNone;
+        }
+        else if (hatebuIsAuthorized == NO) {
+            self.type = JBSidebarMenuTypeRSS;
+        }
+        else if (ldrIsAuthorized == NO) {
+            self.type = JBSidebarMenuTypeBookmark;
+        }
+
         [self initializeSidebar];
     }
     return self;
@@ -71,9 +86,7 @@ didDismissFromScreenAnimated:(BOOL)animatedYesOrNo
 - (void)sidebar:(RNFrostedSidebar *)sidebar
 didTapItemAtIndex:(NSUInteger)index
 {
-    if (self.type == JBSidebarMenuTypeDefault) {
-        [self touchedUpInsideTypeDefaultAtIndex:index];
-    }
+    [self touchedUpInsideWithIndex:index];
 }
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar
@@ -104,14 +117,46 @@ didTapItemAtIndex:(NSUInteger)index
          * OPEN BROWSER
          ***************************** */
         images = @[
-            [IonIcons imageWithIcon:icon_pin size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
-            [IonIcons imageWithIcon:icon_ios7_bookmarks size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
-            [IonIcons imageWithIcon:icon_social_rss size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
-            [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_pin size:75 color:[UIColor colorWithHexadecimal:0xff6c5cff]],
+            [IonIcons imageWithIcon:icon_ios7_bookmarks size:75 color:[UIColor colorWithHexadecimal:0x54b8fbff]],
+            [IonIcons imageWithIcon:icon_social_rss size:75 color:[UIColor colorWithHexadecimal:0xff9e42ff]],
+            [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0x7f8c8dff]],
+        ];
+    }
+    else if (self.type == JBSidebarMenuTypeRSS) {
+        /* ******************************
+         * RSS PIN
+         * ADD RSS FEED
+         * OPEN BROWSER
+         ***************************** */
+        images = @[
+            [IonIcons imageWithIcon:icon_pin size:75 color:[UIColor colorWithHexadecimal:0xff6c5cff]],
+            [IonIcons imageWithIcon:icon_social_rss size:75 color:[UIColor colorWithHexadecimal:0xff9e42ff]],
+            [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0x7f8c8dff]],
+        ];
+    }
+    else if (self.type == JBSidebarMenuTypeBookmark) {
+        /* ******************************
+         * SOCIAL BOOKMARK
+         * OPEN BROWSER
+         ***************************** */
+        images = @[
+            [IonIcons imageWithIcon:icon_ios7_bookmarks size:75 color:[UIColor colorWithHexadecimal:0x54b8fbff]],
+            [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0x7f8c8dff]],
+        ];
+    }
+    else {
+        /* ******************************
+         * OPEN BROWSER
+         ***************************** */
+        images = @[
+            [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0x7f8c8dff]],
         ];
     }
 
     self.sidebar = [[RNFrostedSidebar alloc] initWithImages:images];
+    [self.sidebar setTintColor:[UIColor colorWithHexadecimal:0x95a5a6a0]];
+    [self.sidebar setItemBackgroundColor:[UIColor colorWithHexadecimal:0xecf0f1ff]];
     [self.sidebar setShowFromRight:YES];
     [self.sidebar setDelegate:self];
 }
@@ -120,27 +165,71 @@ didTapItemAtIndex:(NSUInteger)index
  * JBSidebarMenuTypeDefaultの時、タップイベントハンドリング
  * @param index index
  */
-- (void)touchedUpInsideTypeDefaultAtIndex:(NSInteger)index
+- (void)touchedUpInsideWithIndex:(NSInteger)index
 {
     [self.sidebar dismiss];
 
-    switch (index) {
-        case 0:// LivedoorReader Adding PIN
-            [self addPin];
-            break;
-        case 1:// SOCIAL BOOKMARK
-            [self addBookmark];
-            break;
-        case 2:// ADD RSS FEED
-            [self discoverFeed];
-            break;
-        case 3:// OPEN BROWSER
-            if ([[UIApplication sharedApplication] canOpenURL:self.webURL]) {
-                [[UIApplication sharedApplication] openURL:self.webURL];
-            }
-            break;
-       default:
-            break;
+    if (self.type == JBSidebarMenuTypeDefault) {
+        switch (index) {
+            case 0:
+                [self addPin];
+                break;
+            case 1:
+                [self addBookmark];
+                break;
+            case 2:
+                [self discoverFeed];
+                break;
+            case 3:
+                if ([[UIApplication sharedApplication] canOpenURL:self.webURL]) {
+                    [[UIApplication sharedApplication] openURL:self.webURL];
+                }
+                break;
+           default:
+                break;
+        }
+    }
+    else if (self.type == JBSidebarMenuTypeRSS) {
+        switch (index) {
+            case 0:
+                [self addPin];
+                break;
+            case 1:
+                [self discoverFeed];
+                break;
+            case 2:
+                if ([[UIApplication sharedApplication] canOpenURL:self.webURL]) {
+                    [[UIApplication sharedApplication] openURL:self.webURL];
+                }
+                break;
+           default:
+                break;
+        }
+    }
+    else if (self.type == JBSidebarMenuTypeBookmark) {
+        switch (index) {
+            case 0:
+                [self addBookmark];
+                break;
+            case 1:
+                if ([[UIApplication sharedApplication] canOpenURL:self.webURL]) {
+                    [[UIApplication sharedApplication] openURL:self.webURL];
+                }
+                break;
+           default:
+                break;
+        }
+    }
+    else {
+        switch (index) {
+            case 0:
+                if ([[UIApplication sharedApplication] canOpenURL:self.webURL]) {
+                    [[UIApplication sharedApplication] openURL:self.webURL];
+                }
+                break;
+           default:
+                break;
+        }
     }
 }
 

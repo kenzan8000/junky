@@ -54,21 +54,20 @@
  */
 - (void)designTabBar
 {
-    UIColor *selectedColor = [UIColor colorWithHexadecimal:0xaaaaaaff];
-    UIColor *color = [UIColor colorWithHexadecimal:0x0080ffff];
+    UIColor *unselectedColor = [UIColor colorWithHexadecimal:0xaaaaaaff];
     // 選択
     NSArray *selectedImages = @[
-        [IonIcons imageWithIcon:icon_social_rss size:30 color:selectedColor],
-        [IonIcons imageWithIcon:icon_pin size:30 color:selectedColor],
-        [IonIcons imageWithIcon:icon_ios7_bookmarks size:30 color:selectedColor],
-        [IonIcons imageWithIcon:icon_gear_b size:30 color:selectedColor],
+        [IonIcons imageWithIcon:icon_social_rss size:30 color:[UIColor colorWithHexadecimal:0xff9e42ff]],
+        [IonIcons imageWithIcon:icon_pin size:30 color:[UIColor colorWithHexadecimal:0xff6c5cff]],
+        [IonIcons imageWithIcon:icon_ios7_bookmarks size:30 color:[UIColor colorWithHexadecimal:0x54b8fbff]],
+        [IonIcons imageWithIcon:icon_gear_b size:30 color:[UIColor colorWithHexadecimal:0x5f6c6dff]],
     ];
     // 未選択
     NSArray *images = @[
-        [IonIcons imageWithIcon:icon_social_rss size:30 color:color],
-        [IonIcons imageWithIcon:icon_pin size:30 color:color],
-        [IonIcons imageWithIcon:icon_ios7_bookmarks size:30 color:color],
-        [IonIcons imageWithIcon:icon_gear_b size:30 color:color],
+        [IonIcons imageWithIcon:icon_social_rss size:30 color:unselectedColor],
+        [IonIcons imageWithIcon:icon_pin size:30 color:unselectedColor],
+        [IonIcons imageWithIcon:icon_ios7_bookmarks size:30 color:unselectedColor],
+        [IonIcons imageWithIcon:icon_gear_b size:30 color:unselectedColor],
     ];
     // ラベル
     NSArray *titles = @[
@@ -79,18 +78,25 @@
     ];
     for (NSInteger i = 0; i < self.tabBar.items.count; i++) {
         UITabBarItem *item = self.tabBar.items[i];
-        [item setSelectedImage:images[i]];
-        [item setImage:selectedImages[i]];
+        [item setSelectedImage:selectedImages[i]];
+        [item setImage:images[i]];
         [item setTitle:titles[i]];
     }
     // テキスト色
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:selectedColor}
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:unselectedColor}
                                              forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:color}
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexadecimal:0x2c3e50ff]}
                                              forState:UIControlStateSelected];
 
     // 背景色
     [[UITabBar appearance] setBarTintColor:[UIColor colorWithHexadecimal:0xecf0f1ff]];
+}
+
+/**
+ * タブタイトルの選択時の色
+ */
+- (void)designTabBarWithIndex:(NSInteger)index
+{
 }
 
 

@@ -27,7 +27,14 @@
 #pragma mark - constant
 /// Sidebarの種類
 typedef NS_ENUM(NSInteger, JBSidebarMenuType) {
+    /// RSS Pin, Bookmark, RSS Feed, Safari
     JBSidebarMenuTypeDefault,
+    /// RSS Pin, RSS Feed, Safari
+    JBSidebarMenuTypeRSS,
+    /// Bookmark, Safari
+    JBSidebarMenuTypeBookmark,
+    /// Safari
+    JBSidebarMenuTypeNone,
 };
 
 
