@@ -22,11 +22,14 @@
 @synthesize unreadList;
 @synthesize indexOfUnreadList;
 @synthesize titleView;
-@synthesize nextFeedButton;
 @synthesize previousButton;
 @synthesize nextButton;
 @synthesize backButtonView;
 @synthesize pinButtonView;
+@synthesize indexOfUnreadListBackgroundView;
+@synthesize numeratorOfUnreadListLabel;
+@synthesize denominatorOfUnreadListLabel;
+@synthesize separatorOfUnreadListLabel;
 
 
 #pragma mark - initializer
@@ -78,8 +81,8 @@
                                        animated:NO];
 
     // ツールバー
-    NSArray *buttons = @[self.nextFeedButton, self.previousButton, self.nextButton];
-    NSArray *buttonTitles = @[icon_chevron_down, icon_chevron_left, icon_chevron_right];
+    NSArray *buttons = @[self.previousButton, self.nextButton];
+    NSArray *buttonTitles = @[icon_chevron_left, icon_chevron_right];
     for (NSInteger i = 0; i < buttons.count; i++) {
         [buttons[i] setFont:[IonIcons fontWithSize:20]];
         [buttons[i] setTitle:buttonTitles[i]
@@ -91,6 +94,22 @@
 
     // 画面下のバーのレイアウト
     [self designPreviousAndNextButton];
+
+    // 何件中何件
+    CGFloat paddingY = [[UIApplication sharedApplication] statusBarFrame].size.height + self.navigationController.navigationBar.frame.size.height;
+    [self.indexOfUnreadListBackgroundView setFrame:CGRectMake(
+        self.indexOfUnreadListBackgroundView.frame.origin.x, paddingY,
+        self.indexOfUnreadListBackgroundView.frame.size.width, self.indexOfUnreadListBackgroundView.frame.size.height
+    )];
+    [self setIndexOfUnreadListWithIndex:self.indexOfUnreadList];
+
+    // WebView位置調整
+    CGFloat webViewOriginY = self.indexOfUnreadListBackgroundView.frame.size.height;
+    CGFloat webViewBottomY = self.webView.frame.origin.y + self.webView.frame.size.height;
+    [self.webView setFrame:CGRectMake(
+        self.webView.frame.origin.x, webViewOriginY,
+        self.webView.frame.size.width, webViewBottomY - webViewOriginY
+    )];
 }
 
 - (void)viewDidLoad
@@ -218,23 +237,19 @@ didFailLoadWithError:error];
 
 
 #pragma mark - event listener
-- (IBAction)touchedUpInsideWithNextFeedButton:(UIButton *)button
-{
-}
-
 - (IBAction)touchedUpInsideWithPreviousButton:(UIButton *)button
 {
-    self.indexOfUnreadList--;
-    if (self.indexOfUnreadList < 0) { self.indexOfUnreadList = 0; }
-    else { [self loadWebView]; }
+    NSInteger previousIndex = self.indexOfUnreadList;
+    [self setIndexOfUnreadListWithIndex:self.indexOfUnreadList-1];
+    if (previousIndex != self.indexOfUnreadList) { [self loadWebView]; }
     [self designPreviousAndNextButton];
 }
 
 - (IBAction)touchedUpInsideWithNextButton:(UIButton *)button
 {
-    self.indexOfUnreadList++;
-    if (self.indexOfUnreadList >= [self.unreadList count]) { self.indexOfUnreadList = [self.unreadList count]-1; }
-    else { [self loadWebView]; }
+    NSInteger previousIndex = self.indexOfUnreadList;
+    [self setIndexOfUnreadListWithIndex:self.indexOfUnreadList+1];
+    if (previousIndex != self.indexOfUnreadList) { [self loadWebView]; }
     [self designPreviousAndNextButton];
 }
 
@@ -264,7 +279,11 @@ didFailLoadWithError:error];
 {
     UIColor *defaultColor = [UIColor colorWithHexadecimal:0x4b96ffff];
     UIColor *cornerColor = [UIColor colorWithHexadecimal:0xaaaaaaff];
-    if (self.indexOfUnreadList <= 0) {
+    if (self.unreadList == nil || [self.unreadList count] == 0) {
+        [self.previousButton setTitleColor:cornerColor forState:UIControlStateNormal];
+        [self.nextButton setTitleColor:cornerColor forState:UIControlStateNormal];
+    }
+    else if (self.indexOfUnreadList <= 0) {
         [self.previousButton setTitleColor:cornerColor forState:UIControlStateNormal];
         [self.nextButton setTitleColor:(([self.unreadList count] <= 1) ? cornerColor : defaultColor) forState:UIControlStateNormal];
     }
@@ -290,6 +309,27 @@ didFailLoadWithError:error];
     [vc setInitialURL:URL];
     [self.navigationController pushViewController:vc
                                          animated:YES];
+}
+
+/**
+ * リストの何件中何件の記事を表示しているかセット
+ */
+- (void)setIndexOfUnreadListWithIndex:(NSInteger)index
+{
+    self.indexOfUnreadList = index;
+    if (self.indexOfUnreadList < 0) { self.indexOfUnreadList = 0; }
+    else if (self.indexOfUnreadList >= [self.unreadList count]) { self.indexOfUnreadList = [self.unreadList count]-1; }
+
+    if (self.unreadList) {
+        [self.numeratorOfUnreadListLabel setText:[NSString stringWithFormat:@"%d", self.indexOfUnreadList+1]];
+        [self.denominatorOfUnreadListLabel setText:[NSString stringWithFormat:@"%d", self.unreadList.count]];
+        [self.separatorOfUnreadListLabel setHidden:NO];
+    }
+    else {
+        [self.numeratorOfUnreadListLabel setText:@""];
+        [self.denominatorOfUnreadListLabel setText:@""];
+        [self.separatorOfUnreadListLabel setHidden:YES];
+    }
 }
 
 
