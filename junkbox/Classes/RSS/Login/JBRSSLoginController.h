@@ -29,6 +29,10 @@
 @property (nonatomic, weak) IBOutlet UIButton *forgotPasswordButton;
 /// ログイン処理
 @property (nonatomic, strong) JBRSSLoginOperations *loginOperation;
+/// 現在フォーカスされているtextfield
+@property (nonatomic, weak) UITextField *focusedTextField;
+/// フォーカスされているtextFieldが切り替わった
+@property (nonatomic, assign) BOOL focusedTextFieldIsChanged;
 
 
 #pragma mark - event listener

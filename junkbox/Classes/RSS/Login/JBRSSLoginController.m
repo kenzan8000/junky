@@ -31,6 +31,8 @@
 @synthesize loginButton;
 @synthesize forgotPasswordButton;
 @synthesize loginOperation;
+@synthesize focusedTextField;
+@synthesize focusedTextFieldIsChanged;
 
 
 #pragma mark - initializer
@@ -81,6 +83,10 @@
 
     // パスワード
     self.passwordTextField.secureTextEntry = YES;
+
+    self.focusedTextField = self.IDTextField;
+    self.focusedTextFieldIsChanged = NO;
+
     // keyboard
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -161,6 +167,8 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    self.focusedTextFieldIsChanged = (self.focusedTextField != textField);
+    self.focusedTextField = textField;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -171,11 +179,26 @@
 shouldChangeCharactersInRange:(NSRange)range
             replacementString:(NSString *)string
 {
+    // バックスペースで文字が全消しされる場合
+    BOOL isClearAll = NO;
+    // テキストフィールドがpassword欄で
+    // フォーカスするtextFieldが切り替わったばかりで
+    // バックススペースが押された
+    if (textField == self.passwordTextField &&
+        self.focusedTextFieldIsChanged &&
+        (string == nil || [string isKindOfClass:[NSString class]] == NO || [string isEqualToString:@""])) {
+        isClearAll = YES;
+    }
+    self.focusedTextFieldIsChanged = NO;
+
+    // 入力後の文字
     NSMutableString *afterString = (self.IDTextField == textField) ?
         self.IDTextField.text.mutableCopy : self.passwordTextField.text.mutableCopy;
     [afterString replaceCharactersInRange:range
                                withString:string];
+    if (isClearAll) { afterString = [NSMutableString stringWithCapacity:0]; }
 
+    // ユーザー名とパスワードの入力の状態からログインボタンのデザイン決定
     NSString *username = (self.IDTextField == textField) ? afterString : self.IDTextField.text;
     NSString *password = (self.passwordTextField == textField) ? afterString : self.passwordTextField.text;
     BOOL isTextfieldEnough = [self isTextfieldEnoughWithUsername:username
@@ -194,6 +217,7 @@ shouldChangeCharactersInRange:(NSRange)range
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField == self.IDTextField) {
+        self.focusedTextFieldIsChanged = YES;
         [self.passwordTextField becomeFirstResponder];
     }
     else if (textField == self.passwordTextField) {
