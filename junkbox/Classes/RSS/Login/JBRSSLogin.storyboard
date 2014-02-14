@@ -93,6 +93,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" red="0.0" green="0.18823529411764706" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="touchedUpInsideWithForgotPasswordButton:" destination="HbG-S7-NGw" eventType="touchUpInside" id="gLA-Jg-go5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -106,6 +109,7 @@
                     <connections>
                         <outlet property="IDPlaceholderLabel" destination="Kxv-Ma-01d" id="3Xi-Jl-qjX"/>
                         <outlet property="IDTextField" destination="fvf-RG-qqM" id="mAH-nf-ddR"/>
+                        <outlet property="forgotPasswordButton" destination="3ms-uL-Zao" id="uXf-TC-CtZ"/>
                         <outlet property="loginButton" destination="xFx-9Q-rwt" id="13d-Tv-ths"/>
                         <outlet property="loginFormView" destination="iit-NA-gO4" id="qmV-mX-yXf"/>
                         <outlet property="passwordPlaceholderLabel" destination="f1b-Vr-VRs" id="roB-Zo-FnR"/>

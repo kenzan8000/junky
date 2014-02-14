@@ -25,6 +25,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *passwordPlaceholderLabel;
 /// ログインボタン
 @property (nonatomic, weak) IBOutlet JBQBFlatButton *loginButton;
+/// Forgot password?ボタン
+@property (nonatomic, weak) IBOutlet UIButton *forgotPasswordButton;
 /// ログイン処理
 @property (nonatomic, strong) JBRSSLoginOperations *loginOperation;
 
@@ -35,6 +37,12 @@
  * @param button button
  */
 - (IBAction)touchedUpInsideWithLoginButton:(UIButton *)button;
+
+/**
+ * forgotPasswordButton押下
+ * @param button button
+ */
+- (IBAction)touchedUpInsideWithForgotPasswordButton:(UIButton *)button;
 
 
 @end

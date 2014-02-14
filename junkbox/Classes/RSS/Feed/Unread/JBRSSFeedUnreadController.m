@@ -248,7 +248,7 @@ didFailLoadWithError:error];
     if (self.unreadList && self.indexOfUnreadList - 1 < 0) {
         [JBBlinkView showBlinkWithColor:[UIColor colorWithHexadecimal:0xffffff40]
                                   count:1
-                               interval:0.1f];
+                               interval:0.08f];
     }
 
     // 見た目調整

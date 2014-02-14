@@ -29,7 +29,6 @@
 @synthesize IDPlaceholderLabel;
 @synthesize passwordPlaceholderLabel;
 @synthesize loginButton;
-@synthesize forgotPasswordButton;
 @synthesize loginOperation;
 
 
@@ -101,25 +100,10 @@
     self.passwordTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderPassword];
 
     // ログインボタン
-    self.loginButton.titleLabel.text = NSLocalizedString(@"Login", @"ログイン");
     [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0xff7058ff] forState:UIControlStateNormal];
     [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateHighlighted];
     [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateNormal];
     [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0xc0392bff] forState:UIControlStateHighlighted];
-    BOOL isTextfieldEnough = [self isTextfieldEnoughWithUsername:self.IDTextField.text
-                                                        password:self.passwordTextField.text];
-    [self designLoginButtonWithIsTextfieldEnough:isTextfieldEnough];
-
-    // forgotPasswordButton
-    self.forgotPasswordButton.titleLabel.text = NSLocalizedString(@"Forgot password?", @"パスワード忘れた場合のボタンラベル");
-        // 下線
-    NSDictionary *attributes = @{
-        NSUnderlineStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle],
-                  NSFontAttributeName:self.forgotPasswordButton.titleLabel.font,
-    };
-    NSAttributedString *attributeString = [[NSAttributedString alloc] initWithString:self.forgotPasswordButton.titleLabel.text
-                                                                          attributes:attributes];
-    [self.forgotPasswordButton.titleLabel setAttributedText:attributeString];
 }
 
 - (void)viewDidLoad
@@ -171,23 +155,16 @@
 shouldChangeCharactersInRange:(NSRange)range
             replacementString:(NSString *)string
 {
-    NSMutableString *afterString = (self.IDTextField == textField) ?
-        self.IDTextField.text.mutableCopy : self.passwordTextField.text.mutableCopy;
-    [afterString replaceCharactersInRange:range
-                               withString:string];
-
-    NSString *username = (self.IDTextField == textField) ? afterString : self.IDTextField.text;
-    NSString *password = (self.passwordTextField == textField) ? afterString : self.passwordTextField.text;
-    BOOL isTextfieldEnough = [self isTextfieldEnoughWithUsername:username
-                                                        password:password];
-    [self designLoginButtonWithIsTextfieldEnough:isTextfieldEnough];
+    string
+//    self.loginButton.depth = 0;
+//    self.loginButton.margin = 0;
+//    self.loginButton.radius = 2;
 
     return YES;
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
 {
-    [self designLoginButtonWithIsTextfieldEnough:NO];
     return YES;
 }
 
@@ -278,10 +255,6 @@ clickedButtonAtIndex:(NSInteger)index
     }
 }
 
-- (IBAction)touchedUpInsideWithForgotPasswordButton:(UIButton *)button
-{
-}
-
 
 #pragma mark - private api
 /**
@@ -369,42 +342,22 @@ clickedButtonAtIndex:(NSInteger)index
 
 /**
  * ログインに必要な入力情報が足りているかかどうか
- * @param username username
- * @param password password
  * return BOOL
  */
-- (BOOL)isTextfieldEnoughWithUsername:(NSString *)username
-                             password:(NSString *)password
+- (BOOL)isTextfieldEnough
 {
     BOOL isEnough = YES;
+
     // ユーザー名未入力
-    isEnough = isEnough && ([username isEqualToString:@""] == NO);
+    isEnough = isEnough && ([self.IDTextField.text isEqualToString:@""] == NO);
     // パスワード未入力
-    isEnough = isEnough && ([password isEqualToString:@""] == NO);
-    return isEnough;
-}
-
-/**
- * ログインに必要な入力情報が足りている時といない時のloginButtonの見た目調整
- * @param isTextfieldEnough 足りてるかどうか
- */
-- (void)designLoginButtonWithIsTextfieldEnough:(BOOL)isTextfieldEnough
-{
-    if (isTextfieldEnough) {
-        self.loginButton.radius = 6.0f;
-        self.loginButton.margin = 4.0f;
-        self.loginButton.depth = 3.0f;
-
-        self.loginButton.alpha = 1.0f;
+    isEnough = isEnough && ([self.passwordTextField.text isEqualToString:@""] == NO);
+    if (canStartLogin == NO) {
+        [SSGentleAlertView showWithMessage:NSLocalizedString(@"Input password", @"パスワードが未入力の場合")
+                              buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]
+                                  delegate:nil];
+        return;
     }
-    else {
-        self.loginButton.depth = 0.0f;
-        self.loginButton.margin = 0.0f;
-        self.loginButton.radius = 2.0f;
-
-        self.loginButton.alpha = 0.5f;
-    }
-    [self.loginButton setNeedsDisplay];
 }
 
 

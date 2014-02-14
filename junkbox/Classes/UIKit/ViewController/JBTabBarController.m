@@ -57,17 +57,17 @@
     UIColor *unselectedColor = [UIColor colorWithHexadecimal:0xaaaaaaff];
     // 選択
     NSArray *selectedImages = @[
-        [IonIcons imageWithIcon:icon_social_rss size:30 color:[UIColor colorWithHexadecimal:0xff9e42ff]],
-        [IonIcons imageWithIcon:icon_pin size:30 color:[UIColor colorWithHexadecimal:0xff6c5cff]],
-        [IonIcons imageWithIcon:icon_ios7_bookmarks size:30 color:[UIColor colorWithHexadecimal:0x54b8fbff]],
-        [IonIcons imageWithIcon:icon_gear_b size:30 color:[UIColor colorWithHexadecimal:0x5f6c6dff]],
+        [IonIcons imageWithIcon:icon_social_rss size:32 color:[UIColor colorWithHexadecimal:0xff9e42ff]],
+        [IonIcons imageWithIcon:icon_pin size:32 color:[UIColor colorWithHexadecimal:0xff6c5cff]],
+        [IonIcons imageWithIcon:icon_ios7_bookmarks size:32 color:[UIColor colorWithHexadecimal:0x54b8fbff]],
+        [IonIcons imageWithIcon:icon_gear_b size:32 color:[UIColor colorWithHexadecimal:0x5f6c6dff]],
     ];
     // 未選択
     NSArray *images = @[
-        [IonIcons imageWithIcon:icon_social_rss size:30 color:unselectedColor],
-        [IonIcons imageWithIcon:icon_pin size:30 color:unselectedColor],
-        [IonIcons imageWithIcon:icon_ios7_bookmarks size:30 color:unselectedColor],
-        [IonIcons imageWithIcon:icon_gear_b size:30 color:unselectedColor],
+        [IonIcons imageWithIcon:icon_social_rss size:32 color:unselectedColor],
+        [IonIcons imageWithIcon:icon_pin size:32 color:unselectedColor],
+        [IonIcons imageWithIcon:icon_ios7_bookmarks size:32 color:unselectedColor],
+        [IonIcons imageWithIcon:icon_gear_b size:32 color:unselectedColor],
     ];
     // ラベル
     NSArray *titles = @[
