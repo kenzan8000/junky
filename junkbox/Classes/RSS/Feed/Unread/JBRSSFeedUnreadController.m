@@ -27,9 +27,8 @@
 @synthesize backButtonView;
 @synthesize pinButtonView;
 @synthesize indexOfUnreadListBackgroundView;
-@synthesize numeratorOfUnreadListLabel;
-@synthesize denominatorOfUnreadListLabel;
-@synthesize separatorOfUnreadListLabel;
+@synthesize indexOfUnreadListLabel;
+@synthesize URLLabel;
 
 
 #pragma mark - initializer
@@ -321,14 +320,17 @@ didFailLoadWithError:error];
     else if (self.indexOfUnreadList >= [self.unreadList count]) { self.indexOfUnreadList = [self.unreadList count]-1; }
 
     if (self.unreadList) {
-        [self.numeratorOfUnreadListLabel setText:[NSString stringWithFormat:@"%d", self.indexOfUnreadList+1]];
-        [self.denominatorOfUnreadListLabel setText:[NSString stringWithFormat:@"%d", self.unreadList.count]];
-        [self.separatorOfUnreadListLabel setHidden:NO];
+        [self.indexOfUnreadListLabel setText:[NSString stringWithFormat:@"%d / %d", self.indexOfUnreadList+1, self.unreadList.count]];
     }
     else {
-        [self.numeratorOfUnreadListLabel setText:@""];
-        [self.denominatorOfUnreadListLabel setText:@""];
-        [self.separatorOfUnreadListLabel setHidden:YES];
+        [self.indexOfUnreadListLabel setText:@""];
+    }
+    if (self.unreadList) {
+        JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
+        [self.URLLabel setText:(unread) ? [unread.link absoluteString] : @""];
+    }
+    else {
+        [self.URLLabel setText:@""];
     }
 }
 

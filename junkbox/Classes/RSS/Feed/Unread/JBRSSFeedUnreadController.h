@@ -28,12 +28,10 @@
 @property (nonatomic, strong) JBBarButtonView *pinButtonView;
 /// 今見ているリストindex背景View
 @property (nonatomic, weak) IBOutlet UIView *indexOfUnreadListBackgroundView;
-/// 今見ているリストindex分子
-@property (nonatomic, weak) IBOutlet UILabel *numeratorOfUnreadListLabel;
-/// 今見ているリストindex分母
-@property (nonatomic, weak) IBOutlet UILabel *denominatorOfUnreadListLabel;
-/// 今見ているリストindexセパレータ
-@property (nonatomic, weak) IBOutlet UILabel *separatorOfUnreadListLabel;
+/// 今見ているリストindex
+@property (nonatomic, weak) IBOutlet UILabel *indexOfUnreadListLabel;
+/// 今見ているページURL
+@property (nonatomic, weak) IBOutlet UILabel *URLLabel;
 /// 前の記事へ
 @property (nonatomic, weak) IBOutlet UIButton *previousButton;
 /// 次の記事へ

@@ -55,25 +55,18 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="24"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="128" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fl5-ic-pId">
-                                        <rect key="frame" x="0.0" y="0.0" width="154" height="24"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="128 / 200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fl5-ic-pId">
+                                        <rect key="frame" x="8" y="0.0" width="64" height="24"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" red="0.37647058820000001" green="0.37647058820000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KZT-Bh-6hL">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://cpplover.blogspot.jp/2014/02/blog-post_13.html" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KZT-Bh-6hL">
+                                        <rect key="frame" x="80" y="0.0" width="232" height="24"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                        <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TMS-53-WuI">
-                                        <rect key="frame" x="165" y="0.0" width="155" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                        <color key="textColor" red="0.37647058823529411" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.62745098039215685" green="0.62745098039215685" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="NIc-NH-eJB">
@@ -123,12 +116,11 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="denominatorOfUnreadListLabel" destination="TMS-53-WuI" id="Zam-uM-Zne"/>
+                        <outlet property="URLLabel" destination="KZT-Bh-6hL" id="qvp-Xi-3j8"/>
                         <outlet property="indexOfUnreadListBackgroundView" destination="SS8-Vc-TiZ" id="s2I-2o-liY"/>
+                        <outlet property="indexOfUnreadListLabel" destination="Fl5-ic-pId" id="8w1-P4-LBW"/>
                         <outlet property="nextButton" destination="4Pv-qM-GFS" id="dvT-h0-gQt"/>
-                        <outlet property="numeratorOfUnreadListLabel" destination="Fl5-ic-pId" id="FM3-vl-BPt"/>
                         <outlet property="previousButton" destination="nyL-Rh-vC3" id="fEu-lT-8un"/>
-                        <outlet property="separatorOfUnreadListLabel" destination="KZT-Bh-6hL" id="6YI-LH-HAn"/>
                         <outlet property="webView" destination="Pam-7s-c1a" id="NNj-fw-kYw"/>
                     </connections>
                 </viewController>
