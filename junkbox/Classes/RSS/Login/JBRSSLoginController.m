@@ -415,16 +415,14 @@ clickedButtonAtIndex:(NSInteger)index
 - (void)designLoginButtonWithIsTextfieldEnough:(BOOL)isTextfieldEnough
 {
     if (isTextfieldEnough) {
-        self.loginButton.radius = 6.0f;
         self.loginButton.margin = 4.0f;
         self.loginButton.depth = 3.0f;
 
         self.loginButton.alpha = 1.0f;
     }
     else {
-        self.loginButton.depth = 0.0f;
         self.loginButton.margin = 0.0f;
-        self.loginButton.radius = 2.0f;
+        self.loginButton.depth = 0.0f;
 
         self.loginButton.alpha = 0.5f;
     }
@@ -433,4 +431,3 @@ clickedButtonAtIndex:(NSInteger)index
 
 
 @end
-

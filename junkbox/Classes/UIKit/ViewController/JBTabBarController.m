@@ -76,27 +76,25 @@
         NSLocalizedString(@"Bookmark", nil),
         NSLocalizedString(@"Setting", nil),
     ];
+    NSArray *selectedColors = @[
+        [UIColor colorWithHexadecimal:0xcf6e12ff],
+        [UIColor colorWithHexadecimal:0xcf3c2cff],
+        [UIColor colorWithHexadecimal:0x2488cbff],
+        [UIColor colorWithHexadecimal:0x2f3c3dff],
+    ];
     for (NSInteger i = 0; i < self.tabBar.items.count; i++) {
         UITabBarItem *item = self.tabBar.items[i];
         [item setSelectedImage:selectedImages[i]];
         [item setImage:images[i]];
         [item setTitle:titles[i]];
+        [item setTitleTextAttributes:@{NSForegroundColorAttributeName:selectedColors[i]}
+                            forState:UIControlStateSelected];
     }
-    // テキスト色
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:unselectedColor}
                                              forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexadecimal:0x2c3e50ff]}
-                                             forState:UIControlStateSelected];
 
     // 背景色
     [[UITabBar appearance] setBarTintColor:[UIColor colorWithHexadecimal:0xecf0f1ff]];
-}
-
-/**
- * タブタイトルの選択時の色
- */
-- (void)designTabBarWithIndex:(NSInteger)index
-{
 }
 
 
