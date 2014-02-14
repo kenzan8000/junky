@@ -2,6 +2,7 @@
 #import "JBRSSFeedUnread.h"
 #import "JBRSSPinList.h"
 #import "JBWebViewController.h"
+#import "JBBlinkView.h"
 /// Connection
 #import "StatusCode.h"
 /// NSFoundation-Extension
@@ -59,6 +60,8 @@
 {
     [super loadView];
 
+    self.webView.scrollView.delegate = self;
+
     // ナビゲーションバー
         // タイトル
     self.titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
@@ -95,11 +98,7 @@
     [self designPreviousAndNextButton];
 
     // 何件中何件
-    CGFloat paddingY = [[UIApplication sharedApplication] statusBarFrame].size.height + self.navigationController.navigationBar.frame.size.height;
-    [self.indexOfUnreadListBackgroundView setFrame:CGRectMake(
-        self.indexOfUnreadListBackgroundView.frame.origin.x, paddingY,
-        self.indexOfUnreadListBackgroundView.frame.size.width, self.indexOfUnreadListBackgroundView.frame.size.height
-    )];
+    [self setIndexOfUnreadListBackgroundViewPositionByScrollViewY];
     [self setIndexOfUnreadListWithIndex:self.indexOfUnreadList];
 
     // WebView位置調整
@@ -174,6 +173,13 @@ didFailLoadWithError:error];
 }
 
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self setIndexOfUnreadListBackgroundViewPositionByScrollViewY];
+}
+
+
 #pragma mark - JBRSSFeedUnreadListDelegate
 - (void)unreadListDidFinishLoadWithList:(JBRSSFeedUnreadList *)list
 {
@@ -238,18 +244,36 @@ didFailLoadWithError:error];
 #pragma mark - event listener
 - (IBAction)touchedUpInsideWithPreviousButton:(UIButton *)button
 {
+    // 点滅
+    if (self.unreadList && self.indexOfUnreadList - 1 < 0) {
+        [JBBlinkView showBlinkWithColor:[UIColor colorWithHexadecimal:0xffffff40]
+                                  count:1
+                               interval:0.1f];
+    }
+
+    // 見た目調整
     NSInteger previousIndex = self.indexOfUnreadList;
     [self setIndexOfUnreadListWithIndex:self.indexOfUnreadList-1];
     if (previousIndex != self.indexOfUnreadList) { [self loadWebView]; }
     [self designPreviousAndNextButton];
+    [self setIndexOfUnreadListBackgroundViewPositionByScrollViewY];
 }
 
 - (IBAction)touchedUpInsideWithNextButton:(UIButton *)button
 {
+    // 点滅
+    if (self.unreadList && self.indexOfUnreadList + 1 >= self.unreadList.count) {
+        [JBBlinkView showBlinkWithColor:[UIColor colorWithHexadecimal:0xffffff40]
+                                  count:1
+                               interval:0.1f];
+    }
+
+    // 見た目調整
     NSInteger previousIndex = self.indexOfUnreadList;
     [self setIndexOfUnreadListWithIndex:self.indexOfUnreadList+1];
     if (previousIndex != self.indexOfUnreadList) { [self loadWebView]; }
     [self designPreviousAndNextButton];
+    [self setIndexOfUnreadListBackgroundViewPositionByScrollViewY];
 }
 
 - (void)srcollViewDidPulled
@@ -332,6 +356,22 @@ didFailLoadWithError:error];
     else {
         [self.URLLabel setText:@""];
     }
+}
+
+/**
+ * scrollViewの位置によってindexOfUnreadListBackgroundViewの位置を変える
+ */
+- (void)setIndexOfUnreadListBackgroundViewPositionByScrollViewY
+{
+    CGFloat paddingY = [[UIApplication sharedApplication] statusBarFrame].size.height + self.navigationController.navigationBar.frame.size.height;
+    CGFloat scrollOffset = paddingY + self.webView.scrollView.contentOffset.y;
+    if (scrollOffset > 0) {
+        paddingY -= scrollOffset;
+    }
+    [self.indexOfUnreadListBackgroundView setFrame:CGRectMake(
+        self.indexOfUnreadListBackgroundView.frame.origin.x, paddingY,
+        self.indexOfUnreadListBackgroundView.frame.size.width, self.indexOfUnreadListBackgroundView.frame.size.height
+    )];
 }
 
 

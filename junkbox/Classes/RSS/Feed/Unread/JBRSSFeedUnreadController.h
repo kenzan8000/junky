@@ -10,7 +10,7 @@
 
 #pragma mark - JBRSSFeedUnreadController
 /// RSSフィード詳細
-@interface JBRSSFeedUnreadController : WebViewController <JBRSSFeedUnreadListDelegate, JBNavigationBarTitleViewDelegate, JBBarButtonViewDelegate> {
+@interface JBRSSFeedUnreadController : WebViewController <UIScrollViewDelegate, JBRSSFeedUnreadListDelegate, JBNavigationBarTitleViewDelegate, JBBarButtonViewDelegate> {
 }
 
 
