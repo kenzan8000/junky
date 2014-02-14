@@ -1,5 +1,5 @@
 #pragma mark - constant
-#define kJBRSSPinTableViewCellHeight 44
+#define kJBRSSPinTableViewCellHeight 54
 
 
 #pragma mark - JBRSSPinTableViewCell

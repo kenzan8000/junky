@@ -1,6 +1,9 @@
+#import "JBNavigationController.h"
+
+
 #pragma mark - JBBookmarkController
 /// ブックマーク
-@interface JBBookmarkController : UINavigationController {
+@interface JBBookmarkController : JBNavigationController {
 }
 
 

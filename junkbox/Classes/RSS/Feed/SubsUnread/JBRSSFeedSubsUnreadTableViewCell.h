@@ -1,5 +1,5 @@
 #pragma mark - constant
-#define kJBRSSFeedSubsUnreadTableViewCellHeight 44
+#define kJBRSSFeedSubsUnreadTableViewCellHeight 54
 
 
 #pragma mark - JBRSSFeedSubsUnreadTableViewCell

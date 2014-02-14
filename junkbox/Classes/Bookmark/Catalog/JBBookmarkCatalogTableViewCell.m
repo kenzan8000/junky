@@ -131,7 +131,7 @@
     )
                                         options:NSStringDrawingUsesLineFragmentOrigin
                                         context:nil];
-    CGFloat rightEdgePointXOfBookmarkTagsLabel = self.bookmarkTagsLabel.frame.origin.x + self.bookmarkTagsLabel.frame.size.width;
+    CGFloat rightEdgePointXOfBookmarkTagsLabel = self.bookmarkTagsLabel.frame.origin.x + rect.size.width;
     if (rightEdgePointXOfBookmarkTagsLabel > kJBBookmarkCatalogTableViewCellDateLabelPositionXOfRightEdge) {
         [self.bookmarkTagsLabel setFrame:CGRectMake(
             self.bookmarkTagsLabel.frame.origin.x, self.bookmarkTagsLabel.frame.origin.y,
