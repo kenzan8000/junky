@@ -6,6 +6,7 @@
 #import "JBWebViewController.h"
 /// UIKit-Extension
 #import "UINib+UIKit.h"
+#import "UIBarButtonItem+Space.h"
 #import "UIViewController+ModalAnimatedTransition.h"
 /// Pods
 #import "MTStatusBarOverlay.h"
@@ -73,13 +74,13 @@
     self.loginButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                    title:NSLocalizedString(@"Login", @"ログインボタン")
                                                                     icon:nil/*icon_log_in*/];
-    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
+    [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
                                       animated:NO];
         // 検索ボタン
     self.searchButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                     title:nil
                                                                      icon:icon_ios7_search_strong];
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.searchButtonView]]
+    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.searchButtonView]]
                                        animated:NO];
 }
 

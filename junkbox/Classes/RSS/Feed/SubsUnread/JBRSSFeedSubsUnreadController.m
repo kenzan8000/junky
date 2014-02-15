@@ -14,6 +14,7 @@
 #import "MTStatusBarOverlay.h"
 #import "IonIcons.h"
 /// UIKit-Extension
+#import "UIBarButtonItem+Space.h"
 #import "UIColor+Hexadecimal.h"
 #import "UIStoryboard+UIKit.h"
 #import "UINib+UIKit.h"
@@ -75,14 +76,14 @@
     self.loginButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                    title:NSLocalizedString(@"Login", @"ログインボタン")
                                                                     icon:nil/*icon_log_in*/];
-    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
+    [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
                                       animated:NO];
         //
     JBBarButtonView *menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                               title:NSLocalizedString(@"Menu", @"メニューボタン")
                                                                                icon:icon_navicon_round];
     [menuButtonView setHidden:YES];
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
+    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
                                        animated:NO];
 
     // 前回の起動で読み込み完了していたデータを読み込み

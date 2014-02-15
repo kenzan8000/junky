@@ -10,6 +10,7 @@
 		E6006D4018AB815100A7EF11 /* JBRSSDiscoverPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6006D3F18AB815100A7EF11 /* JBRSSDiscoverPopupViewController.m */; };
 		E6006D4218AB818C00A7EF11 /* JBRSSDiscoverPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6006D4118AB818C00A7EF11 /* JBRSSDiscoverPopupViewController.xib */; };
 		E6006D4A18AB98A100A7EF11 /* JBPopupViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6006D4718AB98A100A7EF11 /* JBPopupViewControllerManager.m */; };
+		E604CD1518AF98210024BABD /* UIBarButtonItem+Space.m in Sources */ = {isa = PBXBuildFile; fileRef = E604CD1418AF98210024BABD /* UIBarButtonItem+Space.m */; };
 		E60A4B85189592A5007AA0A7 /* JBRSSPin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E60A4B7D189592A5007AA0A7 /* JBRSSPin.storyboard */; };
 		E60A4B86189592A5007AA0A7 /* JBRSSPinController.m in Sources */ = {isa = PBXBuildFile; fileRef = E60A4B7F189592A5007AA0A7 /* JBRSSPinController.m */; };
 		E60A4B87189592A5007AA0A7 /* JBRSSPinNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E60A4B81189592A5007AA0A7 /* JBRSSPinNavigationController.m */; };
@@ -115,6 +116,8 @@
 		E6006D4118AB818C00A7EF11 /* JBRSSDiscoverPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBRSSDiscoverPopupViewController.xib; sourceTree = "<group>"; };
 		E6006D4618AB98A100A7EF11 /* JBPopupViewControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBPopupViewControllerManager.h; sourceTree = "<group>"; };
 		E6006D4718AB98A100A7EF11 /* JBPopupViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBPopupViewControllerManager.m; sourceTree = "<group>"; };
+		E604CD1318AF98210024BABD /* UIBarButtonItem+Space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Space.h"; sourceTree = "<group>"; };
+		E604CD1418AF98210024BABD /* UIBarButtonItem+Space.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Space.m"; sourceTree = "<group>"; };
 		E60A4B7D189592A5007AA0A7 /* JBRSSPin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBRSSPin.storyboard; sourceTree = "<group>"; };
 		E60A4B7E189592A5007AA0A7 /* JBRSSPinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSPinController.h; sourceTree = "<group>"; };
 		E60A4B7F189592A5007AA0A7 /* JBRSSPinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSPinController.m; sourceTree = "<group>"; };
@@ -592,6 +595,8 @@
 		E6C8D79017B15521007B6C16 /* UIKit-Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E604CD1318AF98210024BABD /* UIBarButtonItem+Space.h */,
+				E604CD1418AF98210024BABD /* UIBarButtonItem+Space.m */,
 				E6C8D79117B15521007B6C16 /* UIColor+Hexadecimal.h */,
 				E6C8D79217B15521007B6C16 /* UIColor+Hexadecimal.m */,
 				E6EA936A17B54E6D00697604 /* UIKit+Localize.h */,
@@ -940,6 +945,7 @@
 				E6E4FEF9188FDEF10068D929 /* JBRSSOperation.m in Sources */,
 				E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */,
 				E6C8D79F17B15521007B6C16 /* UINavigationBar+Custom.m in Sources */,
+				E604CD1518AF98210024BABD /* UIBarButtonItem+Space.m in Sources */,
 				E6FC100917B16FA800A12BED /* TableViewController.m in Sources */,
 				E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */,
 				E60A4B88189592A5007AA0A7 /* JBRSSPinTableViewCell.m in Sources */,

@@ -1,6 +1,7 @@
 #import "JBBookmarkLoginController.h"
 #import "JBNavigationBarTitleView.h"
 // UIKit-Extension
+#import "UIBarButtonItem+Space.h"
 #import "UIColor+Hexadecimal.h"
 #import "UINib+UIKit.h"
 // Pods
@@ -45,14 +46,14 @@
     self.closeButton = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                title:nil
                                                                 icon:icon_close_round];
-    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.closeButton]]
+    [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.closeButton]]
                                       animated:NO];
         //
     JBBarButtonView *menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                               title:NSLocalizedString(@"Menu", @"メニューボタン")
                                                                                icon:icon_navicon_round];
     [menuButtonView setHidden:YES];
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
+    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
                                        animated:NO];
 }
 

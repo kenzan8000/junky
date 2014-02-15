@@ -1,6 +1,7 @@
 #import "JBWebViewController.h"
 #import "JBNavigationBarTitleView.h"
 // UIKit-Extension
+#import "UIBarButtonItem+Space.h"
 #import "UINib+UIKit.h"
 #import "UIColor+Hexadecimal.h"
 // NSFoundation-Extension
@@ -84,14 +85,14 @@
         // 戻るボタン
     self.backButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                   title:nil/*NSLocalizedString(@"Back", @"戻る")*/
-                                                                   icon:icon_chevron_left];
-    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
+                                                                   icon:icon_arrow_left_a];
+    [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
                                       animated:NO];
         // メニューボタン
     self.menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                   title:nil/*NSLocalizedString(@"Menu", @"メニューボタン")*/
                                                                    icon:icon_navicon_round];
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.menuButtonView]]
+    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.menuButtonView]]
                                        animated:NO];
         // メニュー
     self.sidebarMenu = [[JBSidebarMenu alloc] initWithSidebarType:JBSidebarMenuTypeDefault];

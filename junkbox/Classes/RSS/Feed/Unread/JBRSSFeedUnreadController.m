@@ -8,6 +8,7 @@
 /// NSFoundation-Extension
 #import "NSData+JSON.h"
 /// UIKit-Extension
+#import "UIBarButtonItem+Space.h"
 #import "UIColor+Hexadecimal.h"
 #import "UINib+UIKit.h"
 /// Pods
@@ -71,15 +72,15 @@
         // 戻る
     self.backButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                   title:nil/*NSLocalizedString(@"Back", @"戻る")*/
-                                                                   icon:icon_chevron_left];
-    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
+                                                                   icon:icon_arrow_left_a];
+    [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
                                       animated:NO];
         // PINボタン
     self.pinButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                  title:nil//NSLocalizedString(@"Read Later", @"あとで読む")
                                                                   icon:icon_pin
                                                                  color:[UIColor colorWithHexadecimal:0xe04080ff]];
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.pinButtonView]]
+    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.pinButtonView]]
                                        animated:NO];
 
     // ツールバー

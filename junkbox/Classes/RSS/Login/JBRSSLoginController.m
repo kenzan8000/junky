@@ -14,6 +14,7 @@
 /// Pods-Extension
 #import "SSGentleAlertView+Junkbox.h"
 /// UIKit-Extension
+#import "UIBarButtonItem+Space.h"
 #import "UINib+UIKit.h"
 #import "UIColor+Hexadecimal.h"
 
@@ -71,14 +72,14 @@
     JBBarButtonView *closeButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                                title:nil/*NSLocalizedString(@"Close", @"モーダルを閉じる")*/
                                                                                 icon:icon_close_round];
-    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:closeButtonView]]
+    [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:closeButtonView]]
                                       animated:NO];
         //
     JBBarButtonView *menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                               title:NSLocalizedString(@"Menu", @"メニューボタン")
                                                                                icon:icon_navicon_round];
     [menuButtonView setHidden:YES];
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
+    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
                                        animated:NO];
 
     self.IDPlaceholderLabel.text = NSLocalizedString(@"Username", @"ユーザー名");

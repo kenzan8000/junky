@@ -7,6 +7,7 @@
 // NSFoundation-Extension
 #import "NSData+JSON.h"
 // UIKit-Extension
+#import "UIBarButtonItem+Space.h"
 #import "UINib+UIKit.h"
 #import "UIStoryboard+UIKit.h"
 #import "UIViewController+ModalAnimatedTransition.h"
@@ -66,14 +67,14 @@
     self.loginButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                    title:NSLocalizedString(@"Login", @"ログインボタン")
                                                                     icon:nil/*icon_log_in*/];
-    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
+    [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.loginButtonView]]
                                       animated:NO];
         //
     JBBarButtonView *emptyButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                                title:nil
                                                                                 icon:icon_ios7_search_strong];
     [emptyButtonView setHidden:YES];
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:emptyButtonView]]
+    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:emptyButtonView]]
                                        animated:NO];
 
 }

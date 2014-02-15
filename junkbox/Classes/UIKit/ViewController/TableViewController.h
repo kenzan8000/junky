@@ -1,6 +1,9 @@
 //#import "JBPullToRefreshHeaderView.h"
 
 
+#pragma mark - class
+@class JBRefreshControl;
+
 #pragma mark - TableViewController
 /// TableViewController
 @interface TableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
