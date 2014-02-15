@@ -263,7 +263,7 @@ didFailLoadWithError:error];
 {
     // 点滅
     if (self.unreadList && self.indexOfUnreadList + 1 >= self.unreadList.count) {
-        [JBBlinkView showBlinkWithColor:[UIColor colorWithHexadecimal:0xffffff40]
+        [JBBlinkView showBlinkWithColor:[UIColor colorWithHexadecimal:0xffffff60]
                                   count:1
                                interval:0.1f];
     }
@@ -276,7 +276,7 @@ didFailLoadWithError:error];
     [self setIndexOfUnreadListBackgroundViewPositionByScrollViewY];
 }
 
-- (void)srcollViewDidPulled
+- (void)scrollViewDidPulled
 {
     [self loadWebView];
 }

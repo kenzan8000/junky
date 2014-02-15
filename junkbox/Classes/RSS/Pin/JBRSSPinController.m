@@ -159,6 +159,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)pinDidFinishLoadWithList:(JBRSSPinList *)list
 {
+    //[self.pullToRefreshHeaderView finishRefreshing];
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }
@@ -169,6 +170,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)pinDidFailLoadWithError:(NSError *)error
 {
+    //[self.pullToRefreshHeaderView finishRefreshing];
     [self.refreshControl endRefreshing];
 }
 
@@ -219,7 +221,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 #pragma mark - event listener
-- (void)srcollViewDidPulled
+- (void)scrollViewDidPulled
 {
     [self.pinList loadAllPinFromWebAPI];
 }

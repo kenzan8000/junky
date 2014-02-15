@@ -1,5 +1,5 @@
 #import "TableViewController.h"
-/// UIKit-Extension
+// UIKit-Extension
 #import "UINib+UIKit.h"
 
 
@@ -10,6 +10,7 @@
 #pragma mark - synthesize
 @synthesize tableView;
 @synthesize refreshControl;
+//@synthesize pullToRefreshHeaderView;
 
 
 #pragma mark - initializer
@@ -29,6 +30,7 @@
 {
     [self.refreshControl removeFromSuperview];
     self.refreshControl = nil;
+//    self.pullToRefreshHeaderView = nil;
 }
 
 
@@ -40,9 +42,17 @@
     // Pull to Refresh
     self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self
-                            action:@selector(srcollViewDidPulled)
+                            action:@selector(scrollViewDidPulled)
                   forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+/*
+    self.tableView.delegate = self;
+
+    // Pull to Refresh
+    self.pullToRefreshHeaderView = [UINib UIKitFromClassName:NSStringFromClass([JBPullToRefreshHeaderView class])];
+    [self.pullToRefreshHeaderView setDelegate:self];
+    [self.pullToRefreshHeaderView setScrollView:self.tableView];
+*/
 }
 
 - (void)viewDidLoad
@@ -53,11 +63,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    //[self.pullToRefreshHeaderView finishRefreshingWithAnimated:NO];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    //[self.pullToRefreshHeaderView finishRefreshingWithAnimated:NO];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -100,9 +114,28 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     return cell;
 }
 
+/*
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.pullToRefreshHeaderView scrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    [self.pullToRefreshHeaderView scrollViewDidEndDragging:scrollView
+                                            willDecelerate:decelerate];
+}
+
+#pragma mark - JBPullToRefreshHeaderViewDelegate
+- (void)scrollViewDidPulled
+{
+}
+*/
 
 #pragma mark - event listener
-- (void)srcollViewDidPulled
+- (void)scrollViewDidPulled
 {
 }
 

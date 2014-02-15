@@ -2,4 +2,98 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "junkbox/Classes/UIKit/View/JBPullToRefreshHeaderView.m"
+            timestampString = "414154585.957283"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "-scrollViewDidScroll:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JBPullToRefreshHeaderView scrollViewDidEndDragging:willDecelerate:]"
+                  moduleName = "debug.junkbox"
+                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/UIKit/View/JBPullToRefreshHeaderView.m"
+                  timestampString = "414154659.509955"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "66">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JBPullToRefreshHeaderView scrollViewDidEndDragging:willDecelerate:]"
+                  moduleName = "debug.junkbox"
+                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/UIKit/View/JBPullToRefreshHeaderView.m"
+                  timestampString = "414154659.510317"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "junkbox/Classes/UIKit/ViewController/TableViewController.m"
+            timestampString = "414154609.998115"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "@implementation TableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TableViewController scrollViewDidEndDragging:willDecelerate:]"
+                  moduleName = "debug.junkbox"
+                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/UIKit/ViewController/TableViewController.m"
+                  timestampString = "414154659.510625"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "67">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TableViewController scrollViewDidEndDragging:willDecelerate:]"
+                  moduleName = "debug.junkbox"
+                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/UIKit/ViewController/TableViewController.m"
+                  timestampString = "414154659.510903"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "201">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

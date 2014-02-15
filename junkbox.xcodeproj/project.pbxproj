@@ -49,6 +49,8 @@
 		E691073118ADE1AE00D67A61 /* JBOutlineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E691072F18ADE1AE00D67A61 /* JBOutlineLabel.m */; };
 		E692F89418A7ED6D00A13D2A /* JBModelList.m in Sources */ = {isa = PBXBuildFile; fileRef = E692F89318A7ED6D00A13D2A /* JBModelList.m */; };
 		E6A8DC6718962ED200AE5C51 /* JBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A8DC6618962ED200AE5C51 /* JBTabBarController.m */; };
+		E6AD1C8818AF720000F1EE6E /* JBPullToRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AD1C8718AF720000F1EE6E /* JBPullToRefreshHeaderView.m */; };
+		E6AD1C8C18AF747B00F1EE6E /* JBPullToRefreshHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6AD1C8B18AF747B00F1EE6E /* JBPullToRefreshHeaderView.xib */; };
 		E6B03C82888442169AA87976 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C4A9E1051943D9BBC35D4B /* libPods.a */; };
 		E6BAB8C617B0131300C1FEC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C517B0131300C1FEC1 /* UIKit.framework */; };
 		E6BAB8C817B0131300C1FEC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C717B0131300C1FEC1 /* Foundation.framework */; };
@@ -183,6 +185,9 @@
 		E692F89318A7ED6D00A13D2A /* JBModelList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBModelList.m; sourceTree = "<group>"; };
 		E6A8DC6518962ED200AE5C51 /* JBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBTabBarController.h; sourceTree = "<group>"; };
 		E6A8DC6618962ED200AE5C51 /* JBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBTabBarController.m; sourceTree = "<group>"; };
+		E6AD1C8618AF720000F1EE6E /* JBPullToRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBPullToRefreshHeaderView.h; sourceTree = "<group>"; };
+		E6AD1C8718AF720000F1EE6E /* JBPullToRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBPullToRefreshHeaderView.m; sourceTree = "<group>"; };
+		E6AD1C8B18AF747B00F1EE6E /* JBPullToRefreshHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBPullToRefreshHeaderView.xib; sourceTree = "<group>"; };
 		E6BAB8C217B0131300C1FEC1 /* debug.junkbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debug.junkbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6BAB8C517B0131300C1FEC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E6BAB8C717B0131300C1FEC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -341,6 +346,9 @@
 		E67E6E901889DFF200D36A47 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E6AD1C8618AF720000F1EE6E /* JBPullToRefreshHeaderView.h */,
+				E6AD1C8718AF720000F1EE6E /* JBPullToRefreshHeaderView.m */,
+				E6AD1C8B18AF747B00F1EE6E /* JBPullToRefreshHeaderView.xib */,
 				E6EC3ABE18AE04A3000E9791 /* JBBlinkView.h */,
 				E6EC3ABF18AE04A3000E9791 /* JBBlinkView.m */,
 				E67E6E911889DFF200D36A47 /* JBBarButtonView.h */,
@@ -843,6 +851,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6AD1C8C18AF747B00F1EE6E /* JBPullToRefreshHeaderView.xib in Resources */,
 				E6006D4218AB818C00A7EF11 /* JBRSSDiscoverPopupViewController.xib in Resources */,
 				E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */,
 				E6855E5B1882009B0045A6ED /* JBRSSLogin.storyboard in Resources */,
@@ -976,6 +985,7 @@
 				E6C90074186400840007449D /* JBRSSFeedSubsUnreadOperation.m in Sources */,
 				E6A8DC6718962ED200AE5C51 /* JBTabBarController.m in Sources */,
 				E6C7BE6118A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m in Sources */,
+				E6AD1C8818AF720000F1EE6E /* JBPullToRefreshHeaderView.m in Sources */,
 				E6E4FEE0188C58E10068D929 /* JBSidebarMenu.m in Sources */,
 				E6C90073186400840007449D /* JBRSSFeedSubsUnreadList.m in Sources */,
 			);

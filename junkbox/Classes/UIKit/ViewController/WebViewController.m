@@ -29,7 +29,7 @@
     // Pull to Refresh
     self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self
-                            action:@selector(srcollViewDidPulled)
+                            action:@selector(scrollViewDidPulled)
                   forControlEvents:UIControlEventValueChanged];
     [self.webView.scrollView addSubview:self.refreshControl];
 }
@@ -88,7 +88,7 @@ didFailLoadWithError:(NSError *)error
 
 
 #pragma mark - event listener
-- (void)srcollViewDidPulled
+- (void)scrollViewDidPulled
 {
     [self.webView reload];
 }

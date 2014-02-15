@@ -209,6 +209,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)bookmarkListDidFinishLoadWithList:(JBBookmarkList *)list
 {
+    //[self.pullToRefreshHeaderView finishRefreshing];
     [self.refreshControl endRefreshing];
     // ステータスバー
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {
@@ -223,6 +224,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)bookmarkListDidFailLoadWithError:(NSError *)error
 {
+    //[self.pullToRefreshHeaderView finishRefreshing];
+    [self.refreshControl endRefreshing];
     [[MTStatusBarOverlay sharedInstance] hide];
 }
 

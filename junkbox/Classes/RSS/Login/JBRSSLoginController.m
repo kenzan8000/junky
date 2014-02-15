@@ -81,6 +81,9 @@
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
                                        animated:NO];
 
+    self.IDPlaceholderLabel.text = NSLocalizedString(@"Username", @"ユーザー名");
+    self.passwordPlaceholderLabel.text = NSLocalizedString(@"Password", @"パスワード");
+
     // パスワード
     self.passwordTextField.secureTextEntry = YES;
 
@@ -107,7 +110,7 @@
     self.passwordTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderPassword];
 
     // ログインボタン
-    self.loginButton.titleLabel.text = NSLocalizedString(@"Login", @"ログイン");
+    [self.loginButton setTitle:NSLocalizedString(@"Login", @"ログイン") forState:UIControlStateNormal];
     [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0xff7058ff] forState:UIControlStateNormal];
     [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateHighlighted];
     [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateNormal];
@@ -117,7 +120,7 @@
     [self designLoginButtonWithIsTextfieldEnough:isTextfieldEnough];
 
     // forgotPasswordButton
-    self.forgotPasswordButton.titleLabel.text = NSLocalizedString(@"Forgot password?", @"パスワード忘れた場合のボタンラベル");
+    [self.forgotPasswordButton setTitle:NSLocalizedString(@"Forgot password?", @"パスワード忘れた場合のボタンラベル") forState:UIControlStateNormal];
         // 下線
     NSDictionary *attributes = @{
         NSUnderlineStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle],
@@ -282,7 +285,7 @@ clickedButtonAtIndex:(NSInteger)index
     // ユーザー名未入力
     canStartLogin = canStartLogin && ([self.IDTextField.text isEqualToString:@""] == NO);
     if (canStartLogin == NO) {
-        [SSGentleAlertView showWithMessage:NSLocalizedString(@"Input ID", @"IDが未入力の場合")
+        [SSGentleAlertView showWithMessage:NSLocalizedString(@"Input username", @"ユーザー名が未入力の場合")
                               buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]
                                   delegate:nil];
         return;

@@ -216,6 +216,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)feedDidFinishLoadWithList:(JBRSSFeedSubsUnreadList *)list
 {
+    //[self.pullToRefreshHeaderView finishRefreshing];
     [self.refreshControl endRefreshing];
 
     // ステータスバー
@@ -238,6 +239,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)feedDidFailLoadWithError:(NSError *)error
 {
+    //[self.pullToRefreshHeaderView finishRefreshing];
     [self.refreshControl endRefreshing];
 
     // エラー処理
@@ -319,7 +321,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 #pragma mark - event listener
-- (void)srcollViewDidPulled
+- (void)scrollViewDidPulled
 {
     [self loadFeedFromWebAPI];
 }
