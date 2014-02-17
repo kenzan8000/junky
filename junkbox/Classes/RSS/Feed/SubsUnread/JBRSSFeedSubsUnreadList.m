@@ -92,11 +92,12 @@
             [JBRSSFeedSubsUnread fetchWithRequest:^ (NSFetchRequest *request) {
                 [request setPredicate:nil];
                 [request setReturnsObjectsAsFaults:NO];
+                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"rate"
+                                                                             ascending:NO];
+                [request setSortDescriptors:@[descriptor]];
             }
                                            context:context]
         ];
-        // sort by rate
-        temporaryArray = [weakSelf rateSortedListWithSubsUnreadList:temporaryArray];
         // count fo each rate
         [weakSelf setFeedCountOfEachRateWithSubsUnreadList:temporaryArray];
         // delegate

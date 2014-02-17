@@ -1,4 +1,5 @@
 #import "JBBookmark.h"
+#import <xlocale.h>
 
 
 #pragma mark - JBBookmark
@@ -69,11 +70,18 @@
 
     // issued
     if ([allKeys containsObject:@"issued"]) {
+/*
         NSDateFormatter *dateFormatter = [NSDateFormatter new];
         dateFormatter.dateFormat = @"yyyy-MM-ddTHH:mm:ss+09:00";
 
         NSString *dateString = [NSString stringWithFormat:@"%@", JSON[@"issued"]];
         self.issued = [dateFormatter dateFromString:dateString];
+*/
+        NSString *dateString = [NSString stringWithFormat:@"%@", JSON[@"issued"]];
+        struct tm  sometime;
+        const char *formatString = "%Y-%m-%dT%H:%M:%SZ";
+        strptime_l(dateString.UTF8String, formatString, &sometime, NULL);
+        self.issued = [NSDate dateWithTimeIntervalSince1970:timegm(&sometime)];
     }
     if (self.issued == nil) {
         self.issued = [NSDate date];

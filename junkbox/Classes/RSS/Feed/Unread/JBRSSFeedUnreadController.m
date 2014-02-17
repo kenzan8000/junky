@@ -80,7 +80,7 @@
                                                                  title:nil//NSLocalizedString(@"Read Later", @"あとで読む")
                                                                   icon:icon_pin
                                                                  color:[UIColor colorWithHexadecimal:0xe04080ff]];
-    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.pinButtonView]]
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:self.pinButtonView]]
                                        animated:NO];
 
     // ツールバー

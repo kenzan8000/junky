@@ -1,21 +1,21 @@
 #Junky
 ===============
 
-## What's Junky?
+## What is Junky?
 Junky is iOS application which is Livedoor Reader and Hatena Bookmark client.
 You can read internet news like a junky by iPhone.
 
 ## How to install
-1. Input terminal. (pod is CocoaPods. http://cocoapods.org/)
+1. Input terminal. (You have to install CocoaPods. http://cocoapods.org/)
 ```terminal
 git clone https://github.com/kenzan8000/junky.git
-cd juky
+cd junky
 pod install
 ```
 2. Register your account on Hatena Developer Center.
 http://developer.hatena.ne.jp/
 3. Make your Hatena application and get your application consumer key and consumer secret.
-4. Add /junkbox/Classes/Bookmark/JBBookmarkConstant-Private.h
+4. Add /junkbox/Classes/Bookmark/JBBookmarkConstant-Private.h.
 ```objective-c
 /// JBBookmarkConstant-Private.h
 

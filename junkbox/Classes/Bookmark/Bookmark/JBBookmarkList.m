@@ -92,8 +92,12 @@
     [context performBlock: ^ () {
         NSMutableArray *temporaryArray = [NSMutableArray arrayWithArray:
             [JBBookmark fetchWithRequest:^ (NSFetchRequest *request) {
+
                 [request setPredicate:nil];
                 [request setReturnsObjectsAsFaults:NO];
+                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"issued"
+                                                                             ascending:NO];
+                [request setSortDescriptors:@[descriptor]];
             }
                                            context:context]
         ];
