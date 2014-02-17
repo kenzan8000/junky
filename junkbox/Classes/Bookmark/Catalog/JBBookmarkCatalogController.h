@@ -14,11 +14,15 @@
 @property (nonatomic, strong) JBBarButtonView *loginButtonView;
 /// 検索ボタン
 @property (nonatomic, strong) JBBarButtonView *searchButtonView;
+/// 検索バー
+@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 /// ログインModal
 @property (nonatomic, strong) UINavigationController *loginModalViewController;
 
 /// Bookmark一覧
 @property (nonatomic, strong) JBBookmarkList *bookmarkList;
+/// Bookmark検索結果
+@property (nonatomic, strong) NSMutableArray *searchedBookmarkList;
 
 
 #pragma mark - event listener

@@ -21,8 +21,10 @@
 #pragma mark - synthesize
 @synthesize loginButtonView;
 @synthesize searchButtonView;
+@synthesize searchBar;
 @synthesize loginModalViewController;
 @synthesize bookmarkList;
+@synthesize searchedBookmarkList;
 
 
 #pragma mark - initializer
@@ -46,6 +48,8 @@
     self.loginButtonView = nil;
     self.searchButtonView = nil;
     self.loginModalViewController = nil;
+    self.bookmarkList = nil;
+    self.searchedBookmarkList = nil;
 }
 
 
@@ -58,6 +62,8 @@
                                              selector:@selector(dismissLoginModalViewCntrollerWithNotification:)
                                                  name:kNotificationModalBookmarkLoginControllerWillDismiss
                                                object:nil];
+    self.searchedBookmarkList = [NSMutableArray arrayWithArray:@[]];
+
     // Hatebu
     self.bookmarkList = [JBBookmarkList sharedInstance];
     [self.bookmarkList setDelegate:self];
@@ -82,6 +88,11 @@
                                                                      icon:icon_ios7_search_strong];
     [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.searchButtonView]]
                                        animated:NO];
+        // 検索バー
+    CGRect searchBarRect = self.searchBar.frame;
+    searchBarRect.origin.y = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    self.searchBar.frame = searchBarRect;
+    self.searchBar.placeholder = NSLocalizedString(@"Search", @"検索バーPlaceHolder");
 }
 
 - (void)viewDidLoad
@@ -119,13 +130,18 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return self.searchedBookmarkList.count;
+    }
+
     return self.bookmarkList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    JBBookmark *bookmark = (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
+    JBBookmark *bookmark = (tableView == self.searchDisplayController.searchResultsTableView) ?
+        (JBBookmark *)self.searchedBookmarkList[indexPath.row] : (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
     return ([bookmark.summary isEqualToString:@""]) ?
         kJBBookmarkCatalogTableViewCellHeight - kJBBookmarkCatalogTableViewCellLabelHeight : kJBBookmarkCatalogTableViewCellHeight;
 /*
@@ -142,7 +158,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     if (!cell) {
         cell = [UINib UIKitFromClassName:className];
 
-        JBBookmark *bookmark = (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
+        JBBookmark *bookmark = (tableView == self.searchDisplayController.searchResultsTableView) ?
+            (JBBookmark *)self.searchedBookmarkList[indexPath.row] : (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
         if (bookmark) {
             [cell designWithBookmark:bookmark];
         }
@@ -156,7 +173,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     [self.tableView deselectRowAtIndexPath:indexPath
                                   animated:YES];
 
-    JBBookmark *bookmark = (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
+    JBBookmark *bookmark = (tableView == self.searchDisplayController.searchResultsTableView) ?
+        (JBBookmark *)self.searchedBookmarkList[indexPath.row] : (JBBookmark *)[self.bookmarkList modelWithIndex:indexPath.row];
     if (bookmark) {
         // 遷移
         JBWebViewController *vc = [[JBWebViewController alloc] initWithNibName:NSStringFromClass([JBWebViewController class])
@@ -166,6 +184,31 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [self.navigationController pushViewController:vc
                                              animated:YES];
     }
+}
+
+
+#pragma mark - UISearchDisplayDelegate
+- (void)filterContentForSearchText:(NSString *)searchText
+                             scope:(NSString *)scope
+{
+    [self.searchedBookmarkList removeAllObjects];
+
+    NSArray *predicates = @[
+        [NSPredicate predicateWithFormat:@"SELF.summary contains[c] %@", searchText],
+        [NSPredicate predicateWithFormat:@"SELF.dcSubject contains[c] %@", searchText],
+        [NSPredicate predicateWithFormat:@"SELF.title contains[c] %@", searchText],
+    ];
+    NSArray *temporaryArray = [self.bookmarkList.list filteredArrayUsingPredicate:[NSCompoundPredicate orPredicateWithSubpredicates:predicates]];
+    self.searchedBookmarkList = [NSMutableArray arrayWithArray:temporaryArray];
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController*)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                       objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    return YES;
 }
 
 
@@ -199,6 +242,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         }
                                                                failure:^ (NSError *error) {
         }];
+    }
+    else if (barButtonView == self.searchButtonView) {
+        [self.searchBar becomeFirstResponder];
     }
 }
 
