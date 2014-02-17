@@ -34,6 +34,8 @@
 		E648C97818A9EF7000737CA4 /* JBBookmarkCatalogOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C97718A9EF7000737CA4 /* JBBookmarkCatalogOperation.m */; };
 		E64BB47818B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB47618B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.m */; };
 		E64BB47918B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB47718B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib */; };
+		E64BB48118B234FE008A0B5F /* JBRSSFeedSetRateOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB47E18B234FE008A0B5F /* JBRSSFeedSetRateOperation.m */; };
+		E64BB48218B234FE008A0B5F /* JBRSSFeedSubscribeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB48018B234FE008A0B5F /* JBRSSFeedSubscribeOperation.m */; };
 		E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E871889D0A800D36A47 /* JBWebViewController.m */; };
 		E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E881889D0A800D36A47 /* JBWebViewController.xib */; };
 		E67E6E971889DFF200D36A47 /* JBBarButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E921889DFF200D36A47 /* JBBarButtonView.m */; };
@@ -164,6 +166,10 @@
 		E64BB47518B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedRatingPopupViewController.h; sourceTree = "<group>"; };
 		E64BB47618B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedRatingPopupViewController.m; sourceTree = "<group>"; };
 		E64BB47718B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBRSSFeedRatingPopupViewController.xib; sourceTree = "<group>"; };
+		E64BB47D18B234FE008A0B5F /* JBRSSFeedSetRateOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedSetRateOperation.h; sourceTree = "<group>"; };
+		E64BB47E18B234FE008A0B5F /* JBRSSFeedSetRateOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedSetRateOperation.m; sourceTree = "<group>"; };
+		E64BB47F18B234FE008A0B5F /* JBRSSFeedSubscribeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedSubscribeOperation.h; sourceTree = "<group>"; };
+		E64BB48018B234FE008A0B5F /* JBRSSFeedSubscribeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedSubscribeOperation.m; sourceTree = "<group>"; };
 		E67E6E861889D0A800D36A47 /* JBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBWebViewController.h; sourceTree = "<group>"; };
 		E67E6E871889D0A800D36A47 /* JBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBWebViewController.m; sourceTree = "<group>"; };
 		E67E6E881889D0A800D36A47 /* JBWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBWebViewController.xib; sourceTree = "<group>"; };
@@ -330,6 +336,10 @@
 				E6FED2A218ABBB1F0099ED79 /* JBRSSDiscover.m */,
 				E6FED29918ABA8780099ED79 /* JBRSSFeedDiscoverOperation.h */,
 				E6FED29A18ABA8780099ED79 /* JBRSSFeedDiscoverOperation.m */,
+				E64BB47D18B234FE008A0B5F /* JBRSSFeedSetRateOperation.h */,
+				E64BB47E18B234FE008A0B5F /* JBRSSFeedSetRateOperation.m */,
+				E64BB47F18B234FE008A0B5F /* JBRSSFeedSubscribeOperation.h */,
+				E64BB48018B234FE008A0B5F /* JBRSSFeedSubscribeOperation.m */,
 			);
 			name = Discover;
 			path = junkbox/Classes/RSS/Feed/Discover;
@@ -960,6 +970,7 @@
 				E60A4B88189592A5007AA0A7 /* JBRSSPinTableViewCell.m in Sources */,
 				E6C7BE6D18A90433007A80E4 /* JBQBFlatButton.m in Sources */,
 				E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */,
+				E64BB48118B234FE008A0B5F /* JBRSSFeedSetRateOperation.m in Sources */,
 				E62D4A9418ACE28500BD37A1 /* JBBookmarkList.m in Sources */,
 				E6FC101017B1748900A12BED /* JBRSSController.m in Sources */,
 				E62D4A9118ACE10100BD37A1 /* JBBookmark.m in Sources */,
@@ -983,6 +994,7 @@
 				E6893814185C1090004B0050 /* JBRSSOperationQueue.m in Sources */,
 				E6E4FEF5188FDB910068D929 /* JBRSSPinAllOperation.m in Sources */,
 				E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */,
+				E64BB48218B234FE008A0B5F /* JBRSSFeedSubscribeOperation.m in Sources */,
 				E62747E217B5BFEC007B41B2 /* JBRSSLoginController.m in Sources */,
 				E62D4A9718ACE76A00BD37A1 /* JBBookmarkCatalogTableViewCell.m in Sources */,
 				E6E4FF0818901EB20068D929 /* JBRSSPinList.m in Sources */,

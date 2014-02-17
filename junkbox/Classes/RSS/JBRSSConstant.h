@@ -54,7 +54,7 @@
 /// POST feedlinkのフィードを追加 %@=feedlink
 #define kAPILivedoorReaderFeedSubscribe          [NSString stringWithFormat:@"%@feed/subscribe?feedlink=%@",  kAPILivedoorReader, @"%@"]
 /// POST subscribe_idのフィードのレートを変更 %@=subscribe_id
-#define kAPILivedoorReaderFeedSetRate            [NSString stringWithFormat:@"%@feed/set_rate?subscribe_id=%@",  kAPILivedoorReader, @"%@"]
+#define kAPILivedoorReaderFeedSetRate            [NSString stringWithFormat:@"%@feed/set_rate?subscribe_id=%@&rate=%@",  kAPILivedoorReader, @"%@", @"%@"]
 
 /// POST 未読フィード一覧を取得
 #define kAPILivedoorReaderSubsUnread             [NSString stringWithFormat:@"%@subs?unread=1",  kAPILivedoorReader]

@@ -39,6 +39,22 @@
  */
 + (NSMutableURLRequest *)JBRSSFeedDiscoverRequestWithURL:(NSURL *)URL;
 
+/**
+ * フィードを登録する
+ * @param URL feedlink
+ * @return request
+ */
++ (NSMutableURLRequest *)JBRSSFeedSubscribeRequestWithURL:(NSURL *)URL;
+
+/**
+ * フィードのレイティングを変更する
+ * @param subscribeId subscribeId
+ * @param rate rate
+ * @return request
+ */
++ (NSMutableURLRequest *)JBRSSFeedSetRateRequestWithSubscribeId:(NSString *)subscribeId
+                                                           rate:(NSNumber *)rate;
+
 /*
  * Livedoor ReaderのPinにリンクを追加
  * @param pinTitle pinTitleの名前でpinに追加される

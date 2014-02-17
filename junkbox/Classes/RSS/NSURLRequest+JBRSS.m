@@ -62,6 +62,25 @@
     return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
 }
 
++ (NSMutableURLRequest *)JBRSSFeedSubscribeRequestWithURL:(NSURL *)URL
+{
+    NSString *URLString = [NSString stringWithFormat:@"%@%@",
+        [NSString stringWithFormat:kAPILivedoorReaderFeedSubscribe, [[URL absoluteString] encodeURIComponentString]],
+        [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
+    ];
+    return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
+}
+
++ (NSMutableURLRequest *)JBRSSFeedSetRateRequestWithSubscribeId:(NSString *)subscribeId
+                                                           rate:(NSNumber *)rate
+{
+    NSString *URLString = [NSString stringWithFormat:@"%@%@",
+        [NSString stringWithFormat:kAPILivedoorReaderFeedSetRate, subscribeId, rate],
+        [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
+    ];
+    return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
+}
+
 + (NSMutableURLRequest *)JBRSSAddPinRequestWithTitle:(NSString *)title
                                                 link:(NSString *)link
 {

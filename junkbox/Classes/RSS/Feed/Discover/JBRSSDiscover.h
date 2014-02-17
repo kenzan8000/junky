@@ -16,7 +16,7 @@
 /// Feed title
 @property (nonatomic, strong) NSString *title;
 /// Feedのレイティング
-@property (nonatomic, assign) NSInteger rating;
+@property (nonatomic, assign) NSInteger rate;
 /// 購読するかどうか
 @property (nonatomic, assign) BOOL isSubscribing;
 

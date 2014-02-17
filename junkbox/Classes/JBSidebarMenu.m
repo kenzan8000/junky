@@ -243,7 +243,7 @@ didTapItemAtIndex:(NSUInteger)index
                                               link:[self.webURL absoluteString]];
     // ステータスバー
     [[MTStatusBarOverlay sharedInstance] postFinishMessage:NSLocalizedString(@"Added Read Later", @"あとで読むページを追加しました")
-                                                  duration:1.5f];
+                                                  duration:2.5f];
 }
 
 
@@ -280,7 +280,7 @@ didTapItemAtIndex:(NSUInteger)index
                 // ステータスバー
                 dispatch_async(dispatch_get_main_queue(), ^ () {
                     [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Discovering RSS Feed Failed", @"RSS Feedの探索に失敗しました")
-                                                                           duration:1.5f
+                                                                           duration:2.5f
                                                                            animated:YES];
                 });
                 return;

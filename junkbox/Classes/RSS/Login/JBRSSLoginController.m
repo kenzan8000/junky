@@ -343,7 +343,7 @@ clickedButtonAtIndex:(NSInteger)index
             // ステータスバーに表示
             dispatch_async(dispatch_get_main_queue(), ^ () {
                 [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Authentication succeeded", @"成功")
-                                                                       duration:1.5f
+                                                                       duration:2.5f
                                                                        animated:YES];
             });
             // イベント

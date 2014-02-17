@@ -11,7 +11,7 @@
 @synthesize subscribeId;
 @synthesize subscribersCount;
 @synthesize title;
-@synthesize rating;
+@synthesize rate;
 @synthesize isSubscribing;
 
 
@@ -37,7 +37,7 @@
         }
         discover.subscribersCount = [discoverJSON[@"subscribers_count"] integerValue];
         discover.title = [NSString stringWithFormat:@"%@", discoverJSON[@"title"]];
-        discover.rating = 0;
+        discover.rate = 0;
         discover.isSubscribing = NO;
         [list addObject:discover];
     }

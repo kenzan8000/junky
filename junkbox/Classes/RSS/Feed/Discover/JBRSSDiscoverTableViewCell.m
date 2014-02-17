@@ -115,7 +115,7 @@
     NSMutableString *ratingString = [NSMutableString stringWithCapacity:0];
     const NSInteger max = 5;
     for (NSInteger i = 0; i < max; i++) {
-        [ratingString appendString:(i < discover.rating) ? @"★" : @"☆"];
+        [ratingString appendString:(i < discover.rate) ? @"★" : @"☆"];
     }
     [self.ratingLabel setText:ratingString];
     [self.ratingLabel setTextColor:[UIColor colorWithHexadecimal:0xf1c40fff]];

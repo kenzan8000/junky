@@ -237,7 +237,7 @@ didFailLoadWithError:error];
         });
         // ステータスバー
         [[MTStatusBarOverlay sharedInstance] postFinishMessage:NSLocalizedString(@"Added Read Later", @"あとで読むページを追加しました")
-                                                      duration:1.5f];
+                                                      duration:2.5f];
     }
 }
 
