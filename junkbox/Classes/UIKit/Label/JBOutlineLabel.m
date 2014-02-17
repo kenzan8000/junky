@@ -18,6 +18,28 @@
 
 
 #pragma mark - api
+- (UIImage *)image
+{
+    UIImage *iconImage = nil;
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.font.pointSize, self.font.pointSize), NO, 1.0);
+    {
+        CGContextRef imageContext = UIGraphicsGetCurrentContext();
+        if (imageContext != NULL) {
+            UIGraphicsPushContext(imageContext);
+            {
+                CGContextTranslateCTM(imageContext,
+                                      (self.font.pointSize/2.0f) - self.frame.size.width/2.0f,
+                                      (self.font.pointSize/2.0f) - self.frame.size.height/2.0f);
+                [[self layer] renderInContext:imageContext];
+            }
+            UIGraphicsPopContext();
+        }
+        iconImage = UIGraphicsGetImageFromCurrentImageContext();
+    }
+    UIGraphicsEndImageContext();
+    return iconImage;
+}
+
 - (void)drawTextInRect:(CGRect)rect
 {
     if (self.outlineColor == nil) {

@@ -32,6 +32,8 @@
 		E648C97218A9EC7800737CA4 /* JBBookmarkOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C97018A9EC7800737CA4 /* JBBookmarkOperationQueue.m */; };
 		E648C97518A9EE6600737CA4 /* NSURLRequest+JBBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C97418A9EE6600737CA4 /* NSURLRequest+JBBookmark.m */; };
 		E648C97818A9EF7000737CA4 /* JBBookmarkCatalogOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C97718A9EF7000737CA4 /* JBBookmarkCatalogOperation.m */; };
+		E64BB47818B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB47618B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.m */; };
+		E64BB47918B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB47718B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib */; };
 		E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E871889D0A800D36A47 /* JBWebViewController.m */; };
 		E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E881889D0A800D36A47 /* JBWebViewController.xib */; };
 		E67E6E971889DFF200D36A47 /* JBBarButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E921889DFF200D36A47 /* JBBarButtonView.m */; };
@@ -159,6 +161,9 @@
 		E648C97418A9EE6600737CA4 /* NSURLRequest+JBBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+JBBookmark.m"; sourceTree = "<group>"; };
 		E648C97618A9EF7000737CA4 /* JBBookmarkCatalogOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkCatalogOperation.h; sourceTree = "<group>"; };
 		E648C97718A9EF7000737CA4 /* JBBookmarkCatalogOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkCatalogOperation.m; sourceTree = "<group>"; };
+		E64BB47518B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedRatingPopupViewController.h; sourceTree = "<group>"; };
+		E64BB47618B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedRatingPopupViewController.m; sourceTree = "<group>"; };
+		E64BB47718B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBRSSFeedRatingPopupViewController.xib; sourceTree = "<group>"; };
 		E67E6E861889D0A800D36A47 /* JBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBWebViewController.h; sourceTree = "<group>"; };
 		E67E6E871889D0A800D36A47 /* JBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBWebViewController.m; sourceTree = "<group>"; };
 		E67E6E881889D0A800D36A47 /* JBWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBWebViewController.xib; sourceTree = "<group>"; };
@@ -312,6 +317,9 @@
 		E6006D3D18AB7DCF00A7EF11 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				E64BB47718B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib */,
+				E64BB47518B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.h */,
+				E64BB47618B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.m */,
 				E6006D4118AB818C00A7EF11 /* JBRSSDiscoverPopupViewController.xib */,
 				E6006D3E18AB815100A7EF11 /* JBRSSDiscoverPopupViewController.h */,
 				E6006D3F18AB815100A7EF11 /* JBRSSDiscoverPopupViewController.m */,
@@ -867,6 +875,7 @@
 				E62D4A9918ACE7C600BD37A1 /* JBBookmarkCatalogTableViewCell.xib in Resources */,
 				E60A4B85189592A5007AA0A7 /* JBRSSPin.storyboard in Resources */,
 				E68EB9E817B01624006711A6 /* Default@2x.png in Resources */,
+				E64BB47918B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib in Resources */,
 				E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */,
 				E67E6E981889DFF200D36A47 /* JBBarButtonView.xib in Resources */,
 				E6C90076186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */,
@@ -985,6 +994,7 @@
 				E6272FC3186F659600FC9C2D /* JBRSSFeedUnread.m in Sources */,
 				E6006D4A18AB98A100A7EF11 /* JBPopupViewControllerManager.m in Sources */,
 				E6272FC0186F635B00FC9C2D /* JBRSSFeedUnreadList.m in Sources */,
+				E64BB47818B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.m in Sources */,
 				E681E76318251954001323DB /* JBRSSLoginOperations.m in Sources */,
 				E6FED2A318ABBB1F0099ED79 /* JBRSSDiscover.m in Sources */,
 				E6F0835D186CF15F007FEDD4 /* JBLoginOperation.m in Sources */,

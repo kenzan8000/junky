@@ -315,6 +315,14 @@ shouldReloadTableForSearchString:(NSString *)searchString
 
 
 #pragma mark - event listener
+- (void)scrollViewDidPulled
+{
+    // Statusbar
+    [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the bookmark list...", @"ブックマーク一覧取得")
+                                            animated:YES];
+    // Bookmark一覧インポート
+    [self.bookmarkList loadFromWebAPI];
+}
 
 
 #pragma mark - private api

@@ -95,5 +95,51 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "junkbox/Classes/RSS/Feed/Discover/JBRSSDiscoverTableViewCell.m"
+            timestampString = "414314001.835572"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-setDiscover:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JBRSSDiscoverTableViewCell touchedUpInsideWithButton:]"
+                  moduleName = "debug.junkbox"
+                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/RSS/Feed/Discover/JBRSSDiscoverTableViewCell.m"
+                  timestampString = "414314419.155752"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "303">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JBRSSDiscoverTableViewCell touchedUpInsideWithButton:]"
+                  moduleName = "debug.junkbox"
+                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/RSS/Feed/Discover/JBRSSDiscoverTableViewCell.m"
+                  timestampString = "414314419.156054"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "412">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

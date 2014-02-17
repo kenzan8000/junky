@@ -1,7 +1,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "JBRSSDiscover.h"
 #import "JBRSSDiscoverPopupViewController.h"
-#import "JBRSSDiscoverTableViewCell.h"
 // Pods-Extension
 #import "JBQBFlatButton.h"
 // UIKit-Extension
@@ -117,6 +116,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         if (discover) {
             [cell setDiscover:discover];
         }
+        [cell setDelegate:self];
     }
     return cell;
 }
@@ -125,9 +125,50 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     JBRSSDiscoverTableViewCell *cell = (JBRSSDiscoverTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    [cell toggleIsOn];
+    if (cell == nil) { return; }
+    JBRSSDiscover *discover = (JBRSSDiscover *)[self.feedList objectAtIndex:indexPath.row];
+    if (discover == nil) { return; }
+    discover.isSubscribing = !discover.isSubscribing;
+    [cell setDiscover:discover];
     [self.tableView deselectRowAtIndexPath:indexPath
                                   animated:YES];
+}
+
+
+#pragma mark - JBRSSDiscoverTableViewCell
+- (void)ratingButtonDidTouchedUpInsideWithCell:(JBRSSDiscoverTableViewCell *)cell
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    if (indexPath == nil) { return; }
+    JBRSSDiscover *discover = (JBRSSDiscover *)[self.feedList objectAtIndex:indexPath.row];
+    if (discover == nil) { return; }
+
+    JBRSSFeedRatingPopupViewController *vc = [[JBRSSFeedRatingPopupViewController alloc] initWithNibName:NSStringFromClass([JBRSSFeedRatingPopupViewController class])
+                                                                                                  bundle:nil];
+    [vc presentPopupAnimated:NO];
+    [vc setFrameFromCell:cell
+               tableView:self.tableView];
+    [vc setDelegate:self];
+    [vc setRow:indexPath.row];
+    [vc setRating:discover.rating];
+}
+
+
+#pragma mark - JBRSSFeedRatingPopupViewControllerDelegate
+- (void)feedRatingDidFinishedWithRating:(NSInteger)rating
+                                    row:(NSInteger)row
+          feedRatingPopupViewController:(JBRSSFeedRatingPopupViewController *)RSSFeedRatingPopupViewController
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row
+                                                inSection:0];
+    JBRSSDiscoverTableViewCell *cell = (JBRSSDiscoverTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    JBRSSDiscover *discover = (JBRSSDiscover *)[self.feedList objectAtIndex:indexPath.row];
+    if (discover) {
+        [discover setRating:rating];
+        if (cell) {
+            [cell setDiscover:discover];
+        }
+    }
 }
 
 
@@ -162,3 +203,4 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 @end
+

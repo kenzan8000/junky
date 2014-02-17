@@ -54,8 +54,7 @@
         [viewController.view setFrame:CGRectMake(
             0, 0, window.frame.size.width, window.frame.size.height
         )];
-
-        [(JBPopupViewController *)viewController presentPopup];
+        [(JBPopupViewController *)viewController animatePresent];
     });
 }
 
@@ -95,45 +94,69 @@
 @implementation JBPopupViewController
 
 
+#pragma mark - synthesize
+@synthesize animated;
+
+
 #pragma mark - api
 - (void)presentPopup
 {
+    [self presentPopupAnimated:YES];
+}
+
+- (void)presentPopupAnimated:(BOOL)a
+{
+    self.animated = a;
     [[JBPopupViewControllerManager sharedInstance] presentViewController:self];
-
-    self.view.transform = CGAffineTransformMakeScale(1.5f, 1.5f);
-    self.view.alpha = 0.0f;
-
-    // アニメーション
-    __weak __typeof(self) weakSelf = self;
-    [UIView animateWithDuration:kJBPopupViewCotrollerPresentTime
-                          delay:0.0f
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^ () {
-        weakSelf.view.transform = CGAffineTransformIdentity;
-        weakSelf.view.alpha = 1.0f;
-    }
-                     completion:^ (BOOL finished) {
-    }];
-
 }
 
 - (void)dismissPopup
 {
-    self.view.transform = CGAffineTransformIdentity;
-    self.view.alpha = 1.0f;
+    [self animateDismiss];
+}
 
-    // アニメーション
-    __weak __typeof(self) weakSelf = self;
-    [UIView animateWithDuration:kJBPopupViewCotrollerDismissTime
-                          delay:0.0f
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^ () {
-        weakSelf.view.transform = CGAffineTransformMakeScale(1.5f, 1.5f);
-        weakSelf.view.alpha = 0.0f;
+- (void)animatePresent
+{
+    if (self.animated) {
+        self.view.transform = CGAffineTransformMakeScale(1.5f, 1.5f);
+        self.view.alpha = 0.0f;
+
+        // アニメーション
+        __weak __typeof(self) weakSelf = self;
+        [UIView animateWithDuration:kJBPopupViewCotrollerPresentTime
+                              delay:0.0f
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^ () {
+            weakSelf.view.transform = CGAffineTransformIdentity;
+            weakSelf.view.alpha = 1.0f;
+        }
+                         completion:^ (BOOL finished) {
+        }];
     }
-                     completion:^ (BOOL finished) {
-        [[JBPopupViewControllerManager sharedInstance] removeViewController:weakSelf];
-    }];
+}
+
+- (void)animateDismiss
+{
+    if (self.animated) {
+        self.view.transform = CGAffineTransformIdentity;
+        self.view.alpha = 1.0f;
+
+        // アニメーション
+        __weak __typeof(self) weakSelf = self;
+        [UIView animateWithDuration:kJBPopupViewCotrollerDismissTime
+                              delay:0.0f
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^ () {
+            weakSelf.view.transform = CGAffineTransformMakeScale(1.5f, 1.5f);
+            weakSelf.view.alpha = 0.0f;
+        }
+                         completion:^ (BOOL finished) {
+            [[JBPopupViewControllerManager sharedInstance] removeViewController:weakSelf];
+        }];
+    }
+    else {
+        [[JBPopupViewControllerManager sharedInstance] removeViewController:self];
+    }
 }
 
 

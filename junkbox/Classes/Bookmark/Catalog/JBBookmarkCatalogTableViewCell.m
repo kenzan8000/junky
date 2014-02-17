@@ -27,7 +27,7 @@
 
     NSDictionary *attributes = @{
         NSForegroundColorAttributeName : [UIColor whiteColor],
-        NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:12.0f],
+        NSFontAttributeName : b
     };
     NSAttributedString *bookmarkText = [[NSAttributedString alloc] initWithString:bookmarkComment
                                                                        attributes:attributes];

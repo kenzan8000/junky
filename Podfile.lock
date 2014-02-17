@@ -1,5 +1,6 @@
 PODS:
   - AFNetworking (1.3.3)
+  - EDStarRating (1.1)
   - HatenaBookmarkSDK (1.1.1):
     - AFNetworking (~> 1.0)
     - SFHFKeychainUtils
@@ -22,6 +23,7 @@ PODS:
   - XMLDictionary (1.3)
 
 DEPENDENCIES:
+  - EDStarRating
   - HatenaBookmarkSDK (from `https://github.com/hatena/Hatena-Bookmark-iOS-SDK.git`)
   - ionicons
   - ISHTTPOperation (~> 1.1.0)
@@ -44,6 +46,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
+  EDStarRating: 6761f41fd040f1cde155e2885dddc96461620f67
   HatenaBookmarkSDK: 2447855afdf5e36131ca7a4f1c57a5e52983664c
   ionicons: 50c5368bc6e4dbd1a26559aff0b67f2ed8640c48
   ISHTTPOperation: 6268956d564f3cab0584838e996f2f4520d903b2

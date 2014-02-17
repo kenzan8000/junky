@@ -44,6 +44,11 @@
 }
 
 
+#pragma mark - property
+/// 表示・非表示アニメするかどうか
+@property (nonatomic, assign) BOOL animated;
+
+
 #pragma mark - api
 /**
  * 表示
@@ -51,9 +56,25 @@
 - (void)presentPopup;
 
 /**
+ * 表示
+ * @param animated animated
+ */
+- (void)presentPopupAnimated:(BOOL)animated;
+
+/**
  * 非表示
  */
 - (void)dismissPopup;
+
+/**
+ * 消すアニメーション
+ */
+- (void)animateDismiss;
+
+/**
+ * 表示アニメーション
+ */
+- (void)animatePresent;
 
 
 @end

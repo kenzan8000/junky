@@ -15,6 +15,7 @@ pod 'QBFlatButton'
 pod 'RNFrostedSidebar', '~> 0.2.0'
 pod 'SSGentleAlertView'
 pod 'SAMBadgeView', :git => 'https://github.com/soffes/SAMBadgeView.git'
+pod 'EDStarRating'
 # Font
 pod 'ionicons'
 # XML Parser

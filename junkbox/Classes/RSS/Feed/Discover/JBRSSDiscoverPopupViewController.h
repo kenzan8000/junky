@@ -1,5 +1,6 @@
-#import "TableViewController.h"
 #import "JBPopupViewControllerManager.h"
+#import "JBRSSDiscoverTableViewCell.h"
+#import "JBRSSFeedRatingPopupViewController.h"
 
 
 #pragma mark - class
@@ -8,7 +9,7 @@
 
 #pragma mark - JBRSSDiscoverPopupViewController
 /// URLからRSSフィードを見つけた後、そのフィードを購読するか、購読をやめるか選ぶPopupUI
-@interface JBRSSDiscoverPopupViewController : JBPopupViewController {
+@interface JBRSSDiscoverPopupViewController : JBPopupViewController <JBRSSDiscoverTableViewCellDelegate, JBRSSFeedRatingPopupViewControllerDelegate> {
 }
 
 
@@ -27,6 +28,10 @@
 
 
 #pragma mark - event listner
+/**
+ * ボタン押下
+ * @param button button
+ */
 - (IBAction)touchedUpInsideWithButton:(UIButton *)button;
 
 

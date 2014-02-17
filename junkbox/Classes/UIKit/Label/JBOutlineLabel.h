@@ -11,4 +11,12 @@
 @property (nonatomic, assign) CGFloat outlineWidth;
 
 
+#pragma mark - api
+/**
+ * 画像を生成
+ * @retun image
+ */
+- (UIImage *)image;
+
+
 @end
