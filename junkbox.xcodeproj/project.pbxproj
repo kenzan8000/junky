@@ -36,6 +36,16 @@
 		E64BB47918B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB47718B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib */; };
 		E64BB48118B234FE008A0B5F /* JBRSSFeedSetRateOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB47E18B234FE008A0B5F /* JBRSSFeedSetRateOperation.m */; };
 		E64BB48218B234FE008A0B5F /* JBRSSFeedSubscribeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB48018B234FE008A0B5F /* JBRSSFeedSubscribeOperation.m */; };
+		E64BB48618B60EA1008A0B5F /* acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E64BB48518B60EA1008A0B5F /* acknowledgements.plist */; };
+		E64BB48918B612EC008A0B5F /* JBSettingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB48818B612EC008A0B5F /* JBSettingNavigationController.m */; };
+		E64BB48B18B61354008A0B5F /* JBSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E64BB48A18B61354008A0B5F /* JBSetting.storyboard */; };
+		E64BB48F18B61816008A0B5F /* JBSettingHintTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB48D18B61816008A0B5F /* JBSettingHintTableViewCell.m */; };
+		E64BB49018B61816008A0B5F /* JBSettingHintTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB48E18B61816008A0B5F /* JBSettingHintTableViewCell.xib */; };
+		E64BB49418B637B3008A0B5F /* JBSettingReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB49218B637B3008A0B5F /* JBSettingReviewTableViewCell.m */; };
+		E64BB49518B637B3008A0B5F /* JBSettingReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB49318B637B3008A0B5F /* JBSettingReviewTableViewCell.xib */; };
+		E64BB49918B63DC4008A0B5F /* JBSettingHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB49718B63DC4008A0B5F /* JBSettingHeaderTableViewCell.m */; };
+		E64BB49A18B63DC4008A0B5F /* JBSettingHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB49818B63DC4008A0B5F /* JBSettingHeaderTableViewCell.xib */; };
+		E64BB49D18B6440F008A0B5F /* JBSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB49C18B6440F008A0B5F /* JBSettingTableViewCell.m */; };
 		E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E871889D0A800D36A47 /* JBWebViewController.m */; };
 		E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E881889D0A800D36A47 /* JBWebViewController.xib */; };
 		E67E6E971889DFF200D36A47 /* JBBarButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E921889DFF200D36A47 /* JBBarButtonView.m */; };
@@ -170,6 +180,21 @@
 		E64BB47E18B234FE008A0B5F /* JBRSSFeedSetRateOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedSetRateOperation.m; sourceTree = "<group>"; };
 		E64BB47F18B234FE008A0B5F /* JBRSSFeedSubscribeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedSubscribeOperation.h; sourceTree = "<group>"; };
 		E64BB48018B234FE008A0B5F /* JBRSSFeedSubscribeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedSubscribeOperation.m; sourceTree = "<group>"; };
+		E64BB48518B60EA1008A0B5F /* acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = acknowledgements.plist; sourceTree = "<group>"; };
+		E64BB48718B612EC008A0B5F /* JBSettingNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingNavigationController.h; sourceTree = "<group>"; };
+		E64BB48818B612EC008A0B5F /* JBSettingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingNavigationController.m; sourceTree = "<group>"; };
+		E64BB48A18B61354008A0B5F /* JBSetting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBSetting.storyboard; sourceTree = "<group>"; };
+		E64BB48C18B61816008A0B5F /* JBSettingHintTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingHintTableViewCell.h; sourceTree = "<group>"; };
+		E64BB48D18B61816008A0B5F /* JBSettingHintTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingHintTableViewCell.m; sourceTree = "<group>"; };
+		E64BB48E18B61816008A0B5F /* JBSettingHintTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingHintTableViewCell.xib; sourceTree = "<group>"; };
+		E64BB49118B637B3008A0B5F /* JBSettingReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingReviewTableViewCell.h; sourceTree = "<group>"; };
+		E64BB49218B637B3008A0B5F /* JBSettingReviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingReviewTableViewCell.m; sourceTree = "<group>"; };
+		E64BB49318B637B3008A0B5F /* JBSettingReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingReviewTableViewCell.xib; sourceTree = "<group>"; };
+		E64BB49618B63DC4008A0B5F /* JBSettingHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingHeaderTableViewCell.h; sourceTree = "<group>"; };
+		E64BB49718B63DC4008A0B5F /* JBSettingHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingHeaderTableViewCell.m; sourceTree = "<group>"; };
+		E64BB49818B63DC4008A0B5F /* JBSettingHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		E64BB49B18B6440F008A0B5F /* JBSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingTableViewCell.h; sourceTree = "<group>"; };
+		E64BB49C18B6440F008A0B5F /* JBSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingTableViewCell.m; sourceTree = "<group>"; };
 		E67E6E861889D0A800D36A47 /* JBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBWebViewController.h; sourceTree = "<group>"; };
 		E67E6E871889D0A800D36A47 /* JBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBWebViewController.m; sourceTree = "<group>"; };
 		E67E6E881889D0A800D36A47 /* JBWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBWebViewController.xib; sourceTree = "<group>"; };
@@ -452,6 +477,7 @@
 		E68EB9E117B01624006711A6 /* Plists */ = {
 			isa = PBXGroup;
 			children = (
+				E64BB48518B60EA1008A0B5F /* acknowledgements.plist */,
 				E6FC101F17B179C700A12BED /* info.plist */,
 			);
 			path = Plists;
@@ -752,8 +778,22 @@
 		E6FC100217B16FA800A12BED /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				E64BB48A18B61354008A0B5F /* JBSetting.storyboard */,
+				E64BB48718B612EC008A0B5F /* JBSettingNavigationController.h */,
+				E64BB48818B612EC008A0B5F /* JBSettingNavigationController.m */,
 				E6FC101717B174AC00A12BED /* JBSettingController.h */,
 				E6FC101817B174AC00A12BED /* JBSettingController.m */,
+				E64BB49B18B6440F008A0B5F /* JBSettingTableViewCell.h */,
+				E64BB49C18B6440F008A0B5F /* JBSettingTableViewCell.m */,
+				E64BB49618B63DC4008A0B5F /* JBSettingHeaderTableViewCell.h */,
+				E64BB49718B63DC4008A0B5F /* JBSettingHeaderTableViewCell.m */,
+				E64BB49818B63DC4008A0B5F /* JBSettingHeaderTableViewCell.xib */,
+				E64BB48C18B61816008A0B5F /* JBSettingHintTableViewCell.h */,
+				E64BB48D18B61816008A0B5F /* JBSettingHintTableViewCell.m */,
+				E64BB48E18B61816008A0B5F /* JBSettingHintTableViewCell.xib */,
+				E64BB49118B637B3008A0B5F /* JBSettingReviewTableViewCell.h */,
+				E64BB49218B637B3008A0B5F /* JBSettingReviewTableViewCell.m */,
+				E64BB49318B637B3008A0B5F /* JBSettingReviewTableViewCell.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -874,6 +914,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E64BB49518B637B3008A0B5F /* JBSettingReviewTableViewCell.xib in Resources */,
 				E6AD1C8C18AF747B00F1EE6E /* JBPullToRefreshHeaderView.xib in Resources */,
 				E6006D4218AB818C00A7EF11 /* JBRSSDiscoverPopupViewController.xib in Resources */,
 				E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */,
@@ -887,13 +928,17 @@
 				E68EB9E817B01624006711A6 /* Default@2x.png in Resources */,
 				E64BB47918B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib in Resources */,
 				E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */,
+				E64BB48B18B61354008A0B5F /* JBSetting.storyboard in Resources */,
+				E64BB48618B60EA1008A0B5F /* acknowledgements.plist in Resources */,
 				E67E6E981889DFF200D36A47 /* JBBarButtonView.xib in Resources */,
 				E6C90076186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */,
 				E6FC101B17B176B000A12BED /* MainStoryboard.storyboard in Resources */,
 				E6FC983E17BBD53D0082047A /* JBRSSFeed.storyboard in Resources */,
 				E60A4B89189592A5007AA0A7 /* JBRSSPinTableViewCell.xib in Resources */,
+				E64BB49018B61816008A0B5F /* JBSettingHintTableViewCell.xib in Resources */,
 				E67E6E9A1889DFF200D36A47 /* JBNavigationBarTitleView.xib in Resources */,
 				E6FED2A618ABE6E00099ED79 /* common_clear.png in Resources */,
+				E64BB49A18B63DC4008A0B5F /* JBSettingHeaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,8 +1022,11 @@
 				E6EC3AC118AE04A3000E9791 /* JBBlinkView.m in Sources */,
 				E6FED29B18ABA8780099ED79 /* JBRSSFeedDiscoverOperation.m in Sources */,
 				E6006D4018AB815100A7EF11 /* JBRSSDiscoverPopupViewController.m in Sources */,
+				E64BB48918B612EC008A0B5F /* JBSettingNavigationController.m in Sources */,
 				E60A4B86189592A5007AA0A7 /* JBRSSPinController.m in Sources */,
+				E64BB49918B63DC4008A0B5F /* JBSettingHeaderTableViewCell.m in Sources */,
 				E6FED2B318AC9D5A0099ED79 /* JBBookmarkLoginController.m in Sources */,
+				E64BB49D18B6440F008A0B5F /* JBSettingTableViewCell.m in Sources */,
 				E692F89418A7ED6D00A13D2A /* JBModelList.m in Sources */,
 				E6C90075186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */,
 				E6C90071186400840007449D /* JBRSSFeedSubsUnread.m in Sources */,
@@ -998,6 +1046,8 @@
 				E62747E217B5BFEC007B41B2 /* JBRSSLoginController.m in Sources */,
 				E62D4A9718ACE76A00BD37A1 /* JBBookmarkCatalogTableViewCell.m in Sources */,
 				E6E4FF0818901EB20068D929 /* JBRSSPinList.m in Sources */,
+				E64BB49418B637B3008A0B5F /* JBSettingReviewTableViewCell.m in Sources */,
+				E64BB48F18B61816008A0B5F /* JBSettingHintTableViewCell.m in Sources */,
 				E648C97218A9EC7800737CA4 /* JBBookmarkOperationQueue.m in Sources */,
 				E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */,
 				E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */,

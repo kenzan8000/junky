@@ -1,4 +1,4 @@
-#import <QuartzCore/QuartzCore.h>
+ #import <QuartzCore/QuartzCore.h>
 #import "JBRSSDiscover.h"
 #import "JBRSSDiscoverPopupViewController.h"
 #import "JBRSSFeedSubscribeOperation.h"
@@ -263,7 +263,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (index >= [discovers count]) {
         // ステータスバー
-        dispatch_async(dispatch_get_main_queue(), ^ () {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {
             [[MTStatusBarOverlay sharedInstance] hide];
         });
         return;
@@ -309,7 +309,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         JBLog(@"%@", JSON);
         // 失敗
         if (error || [JSON[@"isSuccess"] boolValue] == NO) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {
+            dispatch_async(dispatch_get_main_queue(), ^ () {
                 [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Failed Adding RSS Feed", @"RSSフィードの登録に失敗しました")
                                                                       duration:2.5f
                                                                       animated:YES];

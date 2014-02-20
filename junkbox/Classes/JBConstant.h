@@ -12,6 +12,8 @@
 #define kStoryboardRSSPin                           @"JBRSSPin"
 /// ブックマーク遷移
 #define kStoryboardBookmark                         @"JBBookmark"
+/// 設定画面遷移
+#define kStoryboardSetting                          @"JBSetting"
 
 /// segue identifier
 #define kStoryboardSeguePushRSSFeedUnreadController @"pushJBRSSFeedUnreadController"

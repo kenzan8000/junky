@@ -7,11 +7,11 @@ PODS:
   - ionicons (1.1)
   - ISHTTPOperation (1.1.1)
   - MTStatusBarOverlay (0.9.1)
-  - NJKWebViewProgress (0.2):
+  - NJKWebViewProgress (0.2.1):
     - NJKWebViewProgress/Core
     - NJKWebViewProgress/ProgressView
-  - NJKWebViewProgress/Core (0.2)
-  - NJKWebViewProgress/ProgressView (0.2)
+  - NJKWebViewProgress/Core (0.2.1)
+  - NJKWebViewProgress/ProgressView (0.2.1)
   - NKToggleOverlayButton (1.0.0)
   - NLCoreData (0.5.3)
   - QBFlatButton (1.0)
@@ -51,7 +51,7 @@ SPEC CHECKSUMS:
   ionicons: 50c5368bc6e4dbd1a26559aff0b67f2ed8640c48
   ISHTTPOperation: 6268956d564f3cab0584838e996f2f4520d903b2
   MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
-  NJKWebViewProgress: fd46c9489d799d97f3b09210886bf83884f6c725
+  NJKWebViewProgress: 6bb154a993f552a133f2e8aaf2fa7620c438a038
   NKToggleOverlayButton: bcc4cc273d3e41ae99a87f9a187591d4cee351b5
   NLCoreData: bde75667607f7b66a08ef1d78d39b8bc5eed433f
   QBFlatButton: 244e80923e8077a87c1e5acc5b9d0d1cd87539d3

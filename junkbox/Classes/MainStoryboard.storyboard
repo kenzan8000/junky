@@ -50,10 +50,10 @@
             </objects>
             <point key="canvasLocation" x="431" y="471"/>
         </scene>
-        <!--Setting Controller - 設定-->
+        <!--Setting Navigation Controller - 設定-->
         <scene sceneID="xIj-ku-YY3">
             <objects>
-                <viewController storyboardIdentifier="JBSettingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lsk-YM-xyA" customClass="JBSettingController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JBSettingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lsk-YM-xyA" customClass="JBSettingNavigationController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cfd-8c-mCJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
