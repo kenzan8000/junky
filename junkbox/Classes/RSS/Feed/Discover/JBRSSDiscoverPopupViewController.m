@@ -60,11 +60,18 @@
 
     [self.titleLabel setText:NSLocalizedString(@"Please select a feed to be registered", @"登録するフィードを選択してください")];
 
-    [self.decideButton setFaceColor:[UIColor colorWithHexadecimal:0xff7058ff] forState:UIControlStateNormal];
-    [self.decideButton setFaceColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateHighlighted];
-    [self.decideButton setSideColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateNormal];
-    [self.decideButton setSideColor:[UIColor colorWithHexadecimal:0xc0392bff] forState:UIControlStateHighlighted];
-    [self.decideButton setTitle:NSLocalizedString(@"Decide", @"決定") forState:UIControlStateNormal];
+    [self.decideButton setFaceColor:[UIColor colorWithHexadecimal:0x7f8c8dff]
+                           forState:UIControlStateNormal];
+    [self.decideButton setFaceColor:[UIColor colorWithHexadecimal:0x687378ff]
+                           forState:UIControlStateHighlighted];
+    [self.decideButton setSideColor:[UIColor colorWithHexadecimal:0x687378ff]
+                           forState:UIControlStateNormal];
+    [self.decideButton setSideColor:[UIColor colorWithHexadecimal:0x505a5fff]
+                           forState:UIControlStateHighlighted];
+    self.decideButton.depth = 2.0f;
+    self.decideButton.margin = 2.0f;
+    [self.decideButton setTitle:NSLocalizedString(@"Decide", @"決定")
+                       forState:UIControlStateNormal];
 }
 
 - (void)viewDidLoad
@@ -209,6 +216,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
+
+#pragma mark - subscribe feed
 /**
  * フィードの登録、レイティングをする
  */
@@ -233,124 +242,89 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                                             animated:YES];
 
     // 登録
+    NSMutableArray *discovers = [NSMutableArray arrayWithArray:@[]];
     for (NSInteger i = 0; i < self.feedList.count; i++) {
         JBRSSDiscover *discover = (JBRSSDiscover *)[self.feedList objectAtIndex:i];
-        BOOL isStart = (i == start);
-        BOOL isEnd = (i == end);
-        [[JBRSSOperationQueue defaultQueue] addOperation:[self subscribeOperationWithFeedlink:discover.feedlink
-                                                                                      isStart:isStart]];
-        [[JBRSSOperationQueue defaultQueue] addOperation:[self setRateOperationWithSubscribeId:discover.subscribeId
-                                                                                          rate:@(discover.rate)
-                                                                                         isEnd:isEnd]];
+        if (discover.isSubscribing) {
+            [discovers addObject:discover];
+        }
     }
+    [JBRSSDiscoverPopupViewController doSubscribeOperationWithDiscovers:discovers
+                                                                  index:0];
 }
 
 /**
  * フィード登録処理
- * @param feedlink feedlink
- * @param isStart 最初のリクエストかどうか
- * @return ISOperation
+ * @param index discoversのindex
+ * @param discovers 登録するフィード
  */
-- (JBRSSFeedSubscribeOperation *)subscribeOperationWithFeedlink:(NSURL *)feedlink
-                                                        isStart:(BOOL)isStart
++ (void)doSubscribeOperationWithDiscovers:(NSArray *)discovers
+                                    index:(NSInteger)index
 {
+    if (index >= [discovers count]) {
+        // ステータスバー
+        dispatch_async(dispatch_get_main_queue(), ^ () {
+            [[MTStatusBarOverlay sharedInstance] hide];
+        });
+        return;
+    }
+    JBRSSDiscover *discover = discovers[index];
     JBRSSFeedSubscribeOperation *operation = nil;
-    if (isStart) {
-        operation = [[JBRSSFeedSubscribeOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-            NSDictionary *JSON = [object JSON];
-            JBLog(@"%@", JSON);
+    operation = [[JBRSSFeedSubscribeOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+        NSDictionary *JSON = [object JSON];
+        JBLog(@"%@", JSON);
+        // ステータスバー
+        dispatch_async(dispatch_get_main_queue(), ^ () {
             // 失敗
             if (error || [JSON[@"isSuccess"] boolValue] == NO) {
-                // ステータスバー
-                dispatch_async(dispatch_get_main_queue(), ^ () {
-                [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Failed Adding RSS Feed", @"RSSフィードの登録に失敗しました")
-                                                                      duration:2.5f
-                                                                      animated:YES];
-                });
+                    [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Failed Adding RSS Feed", @"RSSフィードの登録に失敗しました")
+                                                                          duration:2.5f
+                                                                          animated:YES];
             }
-        }
-                                                                     URL:feedlink
-        ];
-    }
-    else {
-        operation = [[JBRSSFeedSubscribeOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-            NSDictionary *JSON = [object JSON];
-            JBLog(@"%@", JSON);
-            // 失敗
-            if (error || [JSON[@"isSuccess"] boolValue] == NO) {
-                // ステータスバー
-                dispatch_async(dispatch_get_main_queue(), ^ () {
-                [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Failed Adding RSS Feed", @"RSSフィードの登録に失敗しました")
-                                                                      duration:2.5f
-                                                                      animated:YES];
-                });
+            else {
+                [JBRSSDiscoverPopupViewController doSetRateOperationWithDiscovers:discovers
+                                                                            index:index];
             }
-        }
-                                                                     URL:feedlink
-        ];
+        });
     }
+                                                                 URL:discover.feedlink
+    ];
     [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
-    return operation;
+    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
 /**
  * フィードレイティング処理
- * @param subscribeId subscribeId
- * @param rate rate
- * @param isEnd 最後のリクエストかどうか
+ * @param discovers 登録するフィード
+ * @param index discoversのindex
  * @return ISOperation
  */
-- (JBRSSFeedSetRateOperation *)setRateOperationWithSubscribeId:(NSString *)subscribeId
-                                            rate:(NSNumber *)rate
-                                           isEnd:(BOOL)isEnd
++ (void)doSetRateOperationWithDiscovers:(NSArray *)discovers
+                                  index:(NSInteger)index
 {
+    JBRSSDiscover *discover = discovers[index];
     JBRSSFeedSetRateOperation *operation = nil;
-    if (isEnd) {
-        operation = [[JBRSSFeedSetRateOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-            NSDictionary *JSON = [object JSON];
-            JBLog(@"%@", JSON);
-            // 成功
-            if (error == nil &&  [JSON[@"isSuccess"] boolValue]) {
-                // ステータスバー
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {
-                    [[MTStatusBarOverlay sharedInstance] hide];
-                });
-            }
-            // 失敗
-            else {
-                // ステータスバー
-                dispatch_async(dispatch_get_main_queue(), ^ () {
+    operation = [[JBRSSFeedSetRateOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+        NSDictionary *JSON = [object JSON];
+        JBLog(@"%@", JSON);
+        // 失敗
+        if (error || [JSON[@"isSuccess"] boolValue] == NO) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {
                 [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Failed Adding RSS Feed", @"RSSフィードの登録に失敗しました")
                                                                       duration:2.5f
                                                                       animated:YES];
-                });
-            }
-
+            });
         }
-                                                           subscribeId:subscribeId
-                                                                  rate:rate
-        ];
-    }
-    else {
-        operation = [[JBRSSFeedSetRateOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-            NSDictionary *JSON = [object JSON];
-            JBLog(@"%@", JSON);
-            // 失敗
-            if (error || [JSON[@"isSuccess"] boolValue] == NO) {
-                // ステータスバー
-                dispatch_async(dispatch_get_main_queue(), ^ () {
-                [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Failed Adding RSS Feed", @"RSSフィードの登録に失敗しました")
-                                                                      duration:2.5f
-                                                                      animated:YES];
-                });
-            }
+        else {
+            [JBRSSDiscoverPopupViewController doSubscribeOperationWithDiscovers:discovers
+                                                                          index:index+1];
         }
-                                                           subscribeId:subscribeId
-                                                                  rate:rate
-        ];
     }
+                                                       subscribeId:discover.subscribeId
+                                                              rate:@(discover.rate)
+    ];
     [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
-    return operation;
+    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
 

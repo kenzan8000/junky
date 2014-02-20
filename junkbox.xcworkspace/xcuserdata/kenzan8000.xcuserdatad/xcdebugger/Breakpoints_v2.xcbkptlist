@@ -9,52 +9,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "junkbox/Classes/UIKit/View/JBPullToRefreshHeaderView.m"
-            timestampString = "414154585.957283"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "-scrollViewDidScroll:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[JBPullToRefreshHeaderView scrollViewDidEndDragging:willDecelerate:]"
-                  moduleName = "debug.junkbox"
-                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/UIKit/View/JBPullToRefreshHeaderView.m"
-                  timestampString = "414154659.509955"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
-                  offsetFromSymbolStart = "66">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[JBPullToRefreshHeaderView scrollViewDidEndDragging:willDecelerate:]"
-                  moduleName = "debug.junkbox"
-                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/junkly/junkbox/Classes/UIKit/View/JBPullToRefreshHeaderView.m"
-                  timestampString = "414154659.510317"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
-                  offsetFromSymbolStart = "204">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "junkbox/Classes/UIKit/ViewController/TableViewController.m"
             timestampString = "414154609.998115"
             startingColumnNumber = "9223372036854775807"
@@ -139,6 +93,20 @@
                   offsetFromSymbolStart = "412">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "junkbox/Classes/RSS/Feed/Discover/JBRSSDiscoverPopupViewController.m"
+            timestampString = "414571764.120739"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "346"
+            endingLineNumber = "346">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
