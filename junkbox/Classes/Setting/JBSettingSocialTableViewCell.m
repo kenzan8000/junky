@@ -1,4 +1,4 @@
-#import "JBSettingReviewTableViewCell.h"
+#import "JBSettingSocialTableViewCell.h"
 // UIkit-Extension
 #import "UIColor+Hexadecimal.h"
 /// Pods-Extension
@@ -6,8 +6,8 @@
 #import "SSGentleAlertView+Junkbox.h"
 
 
-#pragma mark - JBSettingReviewTableViewCell
-@implementation JBSettingReviewTableViewCell
+#pragma mark - JBSettingSocialTableViewCell
+@implementation JBSettingSocialTableViewCell
 
 
 #pragma mark - synthesize
@@ -17,7 +17,7 @@
 #pragma mark - class method
 + (CGFloat)cellHeight
 {
-    return kJBSettingReviewTableViewCellHeight;
+    return kJBSettingSocialTableViewCellHeight;
 }
 
 

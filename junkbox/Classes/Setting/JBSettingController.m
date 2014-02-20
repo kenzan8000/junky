@@ -3,7 +3,8 @@
 #import "JBSettingTableViewCell.h"
 #import "JBSettingHeaderTableViewCell.h"
 #import "JBSettingHintTableViewCell.h"
-#import "JBSettingReviewTableViewCell.h"
+#import "JBSettingSocialTableViewCell.h"
+#import "JBSettingLicenceTableViewCell.h"
 // UIKit-Extension
 #import "UINib+UIKit.h"
 #import "UIColor+Hexadecimal.h"
@@ -16,10 +17,11 @@
 
 
 #pragma mark - synthesize
-@synthesize cellList;
+@synthesize cellClassList;
 @synthesize cellTitleList;
 @synthesize cellIconList;
-
+@synthesize sectionTitleList;
+@synthesize sectionIconList;
 
 #pragma mark - initializer
 - (id)initWithNibName:(NSString *)nibNameOrNil
@@ -36,9 +38,11 @@
 #pragma mark - release
 - (void)dealloc
 {
-    self.cellList = nil;
+    self.cellClassList = nil;
     self.cellTitleList = nil;
     self.cellIconList = nil;
+    self.sectionTitleList = nil;
+    self.sectionIconList = nil;
 }
 
 
@@ -87,33 +91,49 @@
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.cellClassList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return self.cellList.count;
+    return [(NSArray *)(self.cellClassList[section]) count];
+}
+
+- (UIView *)tableView:(UITableView *)tableView
+viewForHeaderInSection:(NSInteger)section
+{
+    NSString *className = NSStringFromClass([JBSettingHeaderTableViewCell class]);
+    JBSettingHeaderTableViewCell *cell = (JBSettingHeaderTableViewCell *)[UINib UIKitFromClassName:className];
+    [cell setTitleWithTitleString:self.sectionTitleList[section]];
+    [cell setIconWithImage:self.sectionIconList[section]];
+    [cell setFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+    UIView *headerView = [UIView new];
+    [headerView setFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+    [headerView setBackgroundColor:[UIColor clearColor]];
+    [headerView addSubview:cell];
+    return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.cellList[indexPath.row] cellHeight];
+    NSArray *classes = (NSArray *)(self.cellClassList[indexPath.section]);
+    return [classes[indexPath.row] cellHeight];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Class classObject = self.cellList[indexPath.row];
+    Class classObject = (NSArray *)(self.cellClassList)[indexPath.section][indexPath.row];
     NSString *className = NSStringFromClass(classObject);
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:className];
     if (!cell) {
         cell = [UINib UIKitFromClassName:className];
 
         JBSettingTableViewCell *c = (JBSettingTableViewCell *)cell;
-        [c setTitleWithTitleString:self.cellTitleList[indexPath.row]];
-        [c setIconWithImage:self.cellIconList[indexPath.row]];
+        [c setTitleWithTitleString:self.cellTitleList[indexPath.section][indexPath.row]];
+        [c setIconWithImage:self.cellIconList[indexPath.section][indexPath.row]];
     }
     return cell;
 }
@@ -132,38 +152,80 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
  */
 - (void)initializeCellList
 {
-    self.cellList = [NSMutableArray arrayWithArray:@[
-        [JBSettingHeaderTableViewCell class],
-        [JBSettingHintTableViewCell class],
-        [JBSettingHintTableViewCell class],
-        [JBSettingHintTableViewCell class],
-        [JBSettingHeaderTableViewCell class],
-        [JBSettingReviewTableViewCell class],
-        [JBSettingReviewTableViewCell class],
-        [JBSettingReviewTableViewCell class],
-        [JBSettingReviewTableViewCell class],
-    ]];
-    self.cellTitleList = [NSMutableArray arrayWithArray:@[
+    self.sectionTitleList = @[
         NSLocalizedString(@"Hint", @"ヒント"),
-        NSLocalizedString(@"Feed", @"フィード"),
-        NSLocalizedString(@"Read Later", @"あとで読む"),
-        NSLocalizedString(@"Bookmark", @"ブックマーク"),
+        NSLocalizedString(@"RSS Reader", @"RSSリーダー"),
+        NSLocalizedString(@"Social Bookmark", @"ソーシャルブックマーク"),
         NSLocalizedString(@"Social", @"ソーシャル"),
-        NSLocalizedString(@"Review", @"レビュー導線"),
-        NSLocalizedString(@"Tweet", @"ツイートする"),
-        NSLocalizedString(@"Publish", @"共有する"),
-        NSLocalizedString(@"Pull Request", @"プルリクエストする"),
-    ]];
-    self.cellIconList = [NSMutableArray arrayWithArray:@[
+        NSLocalizedString(@"Licence", @"ライセンス情報"),
+    ];
+    self.sectionIconList = @[
         [IonIcons imageWithIcon:icon_help_circled size:64 color:[UIColor darkGrayColor]],
-        [IonIcons imageWithIcon:icon_social_rss size:64 color:[UIColor colorWithHexadecimal:0xff9e42ff]],
-        [IonIcons imageWithIcon:icon_pin size:64 color:[UIColor colorWithHexadecimal:0xff6c5cff]],
-        [IonIcons imageWithIcon:icon_ios7_bookmarks size:64 color:[UIColor colorWithHexadecimal:0x54b8fbff]],
-        [IonIcons imageWithIcon:icon_android_add_contact size:64 color:[UIColor darkGrayColor]],
-        [IonIcons imageWithIcon:icon_social_apple size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
-        [IonIcons imageWithIcon:icon_social_twitter size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
-        [IonIcons imageWithIcon:icon_social_facebook size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
-        [IonIcons imageWithIcon:icon_social_github size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
-    ]];
+        [IonIcons imageWithIcon:icon_social_rss size:64 color:[UIColor darkGrayColor]],
+        [IonIcons imageWithIcon:icon_ios7_bookmarks size:64 color:[UIColor darkGrayColor]],
+        [IonIcons imageWithIcon:icon_android_friends size:64 color:[UIColor darkGrayColor]],
+        [IonIcons imageWithIcon:icon_ios7_copy size:64 color:[UIColor darkGrayColor]],
+    ];
+
+    self.cellClassList = @[
+        @[
+            [JBSettingHintTableViewCell class],
+            [JBSettingHintTableViewCell class],
+            [JBSettingHintTableViewCell class],
+        ],
+        @[
+        ],
+        @[
+        ],
+        @[
+            [JBSettingSocialTableViewCell class],
+            [JBSettingSocialTableViewCell class],
+            [JBSettingSocialTableViewCell class],
+            [JBSettingSocialTableViewCell class],
+        ],
+        @[
+            [JBSettingLicenceTableViewCell class],
+        ],
+    ];
+    self.cellTitleList = @[
+        @[
+            NSLocalizedString(@"Feed", @"フィード"),
+            NSLocalizedString(@"Read Later", @"あとで読む"),
+            NSLocalizedString(@"Bookmark", @"ブックマーク"),
+        ],
+        @[
+        ],
+        @[
+        ],
+        @[
+            NSLocalizedString(@"Review", @"レビュー導線"),
+            NSLocalizedString(@"Tweet", @"ツイートする"),
+            NSLocalizedString(@"Publish", @"共有する"),
+            NSLocalizedString(@"Pull Request", @"プルリクエストする"),
+        ],
+        @[
+            NSLocalizedString(@"Licence", @"ライセンス情報"),
+        ],
+    ];
+    self.cellIconList = @[
+        @[
+            [IonIcons imageWithIcon:icon_social_rss size:64 color:[UIColor colorWithHexadecimal:0xff9e42ff]],
+            [IonIcons imageWithIcon:icon_pin size:64 color:[UIColor colorWithHexadecimal:0xff6c5cff]],
+            [IonIcons imageWithIcon:icon_ios7_bookmarks size:64 color:[UIColor colorWithHexadecimal:0x54b8fbff]],
+        ],
+        @[
+        ],
+        @[
+        ],
+        @[
+            [IonIcons imageWithIcon:icon_social_apple size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_social_twitter size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_social_facebook size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_social_github size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
+        ],
+        @[
+            [IonIcons imageWithIcon:icon_ios7_copy size:64 color:[UIColor colorWithHexadecimal:0x2ecc71ff]],
+        ],
+    ];
 }
 @end

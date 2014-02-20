@@ -7,12 +7,12 @@
 
 
 #pragma mark - constant
-#define kJBSettingReviewTableViewCellHeight 80
+#define kJBSettingSocialTableViewCellHeight 80
 
 
-#pragma mark - JBSettingReviewTableViewCell
+#pragma mark - JBSettingSocialTableViewCell
 /// レビュー
-@interface JBSettingReviewTableViewCell : JBSettingTableViewCell {
+@interface JBSettingSocialTableViewCell : JBSettingTableViewCell {
 }
 
 

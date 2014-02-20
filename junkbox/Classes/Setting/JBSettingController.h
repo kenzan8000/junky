@@ -8,12 +8,17 @@
 
 
 #pragma mark - property
-/// Cellのクラス一覧
-@property (nonatomic, strong) NSArray *cellList;
-/// Cellのタイトルラベル一覧
+/// Cellのクラス
+@property (nonatomic, strong) NSArray *cellClassList;
+/// Cellのタイトル
 @property (nonatomic, strong) NSArray *cellTitleList;
-/// Cellのアイコン一覧
+/// Cellのアイコン
 @property (nonatomic, strong) NSArray *cellIconList;
+
+/// セクションのタイトル
+@property (nonatomic, strong) NSArray *sectionTitleList;
+/// セクションのアイコン
+@property (nonatomic, strong) NSArray *sectionIconList;
 
 
 @end
