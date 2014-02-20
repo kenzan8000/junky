@@ -39,17 +39,17 @@
 		E64BB48618B60EA1008A0B5F /* acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E64BB48518B60EA1008A0B5F /* acknowledgements.plist */; };
 		E64BB48918B612EC008A0B5F /* JBSettingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB48818B612EC008A0B5F /* JBSettingNavigationController.m */; };
 		E64BB48B18B61354008A0B5F /* JBSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E64BB48A18B61354008A0B5F /* JBSetting.storyboard */; };
-		E64BB48F18B61816008A0B5F /* JBSettingHintTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB48D18B61816008A0B5F /* JBSettingHintTableViewCell.m */; };
-		E64BB49018B61816008A0B5F /* JBSettingHintTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB48E18B61816008A0B5F /* JBSettingHintTableViewCell.xib */; };
-		E64BB49418B637B3008A0B5F /* JBSettingSocialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB49218B637B3008A0B5F /* JBSettingSocialTableViewCell.m */; };
-		E64BB49518B637B3008A0B5F /* JBSettingSocialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB49318B637B3008A0B5F /* JBSettingSocialTableViewCell.xib */; };
-		E64BB49918B63DC4008A0B5F /* JBSettingHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB49718B63DC4008A0B5F /* JBSettingHeaderTableViewCell.m */; };
-		E64BB49A18B63DC4008A0B5F /* JBSettingHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB49818B63DC4008A0B5F /* JBSettingHeaderTableViewCell.xib */; };
-		E64BB49D18B6440F008A0B5F /* JBSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB49C18B6440F008A0B5F /* JBSettingTableViewCell.m */; };
-		E64BB4A118B66E26008A0B5F /* JBSettingEmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB49F18B66E26008A0B5F /* JBSettingEmptyTableViewCell.m */; };
-		E64BB4A218B66E26008A0B5F /* JBSettingEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB4A018B66E26008A0B5F /* JBSettingEmptyTableViewCell.xib */; };
-		E64BB4A618B67B47008A0B5F /* JBSettingLicenceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB4A418B67B47008A0B5F /* JBSettingLicenceTableViewCell.m */; };
-		E64BB4A718B67B47008A0B5F /* JBSettingLicenceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB4A518B67B47008A0B5F /* JBSettingLicenceTableViewCell.xib */; };
+		E64BB4D418B6811F008A0B5F /* JBSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB4C518B6811F008A0B5F /* JBSettingController.m */; };
+		E64BB4D518B6811F008A0B5F /* JBSettingHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB4C718B6811F008A0B5F /* JBSettingHeaderTableViewCell.m */; };
+		E64BB4D618B6811F008A0B5F /* JBSettingHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB4C818B6811F008A0B5F /* JBSettingHeaderTableViewCell.xib */; };
+		E64BB4D718B6811F008A0B5F /* JBSettingHintTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB4CA18B6811F008A0B5F /* JBSettingHintTableViewCell.m */; };
+		E64BB4D818B6811F008A0B5F /* JBSettingHintTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB4CB18B6811F008A0B5F /* JBSettingHintTableViewCell.xib */; };
+		E64BB4D918B6811F008A0B5F /* JBSettingLicenceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB4CD18B6811F008A0B5F /* JBSettingLicenceTableViewCell.m */; };
+		E64BB4DA18B6811F008A0B5F /* JBSettingLicenceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB4CE18B6811F008A0B5F /* JBSettingLicenceTableViewCell.xib */; };
+		E64BB4DB18B6811F008A0B5F /* JBSettingSocialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB4D018B6811F008A0B5F /* JBSettingSocialTableViewCell.m */; };
+		E64BB4DC18B6811F008A0B5F /* JBSettingSocialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64BB4D118B6811F008A0B5F /* JBSettingSocialTableViewCell.xib */; };
+		E64BB4DD18B6811F008A0B5F /* JBSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB4D318B6811F008A0B5F /* JBSettingTableViewCell.m */; };
+		E64BB4E118B6828B008A0B5F /* JBLicenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64BB4E018B6828B008A0B5F /* JBLicenceViewController.m */; };
 		E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E871889D0A800D36A47 /* JBWebViewController.m */; };
 		E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67E6E881889D0A800D36A47 /* JBWebViewController.xib */; };
 		E67E6E971889DFF200D36A47 /* JBBarButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E67E6E921889DFF200D36A47 /* JBBarButtonView.m */; };
@@ -113,7 +113,6 @@
 		E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100C17B1729B00A12BED /* UINib+UIKit.m */; };
 		E6FC101017B1748900A12BED /* JBRSSController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC100F17B1748900A12BED /* JBRSSController.m */; };
 		E6FC101617B174A200A12BED /* JBBookmarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC101517B174A200A12BED /* JBBookmarkController.m */; };
-		E6FC101917B174AC00A12BED /* JBSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC101817B174AC00A12BED /* JBSettingController.m */; };
 		E6FC101B17B176B000A12BED /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6FC101A17B176B000A12BED /* MainStoryboard.storyboard */; };
 		E6FC101E17B1781700A12BED /* UIStoryboard+UIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FC101D17B1781700A12BED /* UIStoryboard+UIKit.m */; };
 		E6FC983E17BBD53D0082047A /* JBRSSFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6FC983D17BBD53D0082047A /* JBRSSFeed.storyboard */; };
@@ -188,23 +187,24 @@
 		E64BB48718B612EC008A0B5F /* JBSettingNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingNavigationController.h; sourceTree = "<group>"; };
 		E64BB48818B612EC008A0B5F /* JBSettingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingNavigationController.m; sourceTree = "<group>"; };
 		E64BB48A18B61354008A0B5F /* JBSetting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JBSetting.storyboard; sourceTree = "<group>"; };
-		E64BB48C18B61816008A0B5F /* JBSettingHintTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingHintTableViewCell.h; sourceTree = "<group>"; };
-		E64BB48D18B61816008A0B5F /* JBSettingHintTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingHintTableViewCell.m; sourceTree = "<group>"; };
-		E64BB48E18B61816008A0B5F /* JBSettingHintTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingHintTableViewCell.xib; sourceTree = "<group>"; };
-		E64BB49118B637B3008A0B5F /* JBSettingSocialTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingSocialTableViewCell.h; sourceTree = "<group>"; };
-		E64BB49218B637B3008A0B5F /* JBSettingSocialTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingSocialTableViewCell.m; sourceTree = "<group>"; };
-		E64BB49318B637B3008A0B5F /* JBSettingSocialTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingSocialTableViewCell.xib; sourceTree = "<group>"; };
-		E64BB49618B63DC4008A0B5F /* JBSettingHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingHeaderTableViewCell.h; sourceTree = "<group>"; };
-		E64BB49718B63DC4008A0B5F /* JBSettingHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingHeaderTableViewCell.m; sourceTree = "<group>"; };
-		E64BB49818B63DC4008A0B5F /* JBSettingHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingHeaderTableViewCell.xib; sourceTree = "<group>"; };
-		E64BB49B18B6440F008A0B5F /* JBSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingTableViewCell.h; sourceTree = "<group>"; };
-		E64BB49C18B6440F008A0B5F /* JBSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingTableViewCell.m; sourceTree = "<group>"; };
-		E64BB49E18B66E26008A0B5F /* JBSettingEmptyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingEmptyTableViewCell.h; sourceTree = "<group>"; };
-		E64BB49F18B66E26008A0B5F /* JBSettingEmptyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingEmptyTableViewCell.m; sourceTree = "<group>"; };
-		E64BB4A018B66E26008A0B5F /* JBSettingEmptyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingEmptyTableViewCell.xib; sourceTree = "<group>"; };
-		E64BB4A318B67B47008A0B5F /* JBSettingLicenceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingLicenceTableViewCell.h; sourceTree = "<group>"; };
-		E64BB4A418B67B47008A0B5F /* JBSettingLicenceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingLicenceTableViewCell.m; sourceTree = "<group>"; };
-		E64BB4A518B67B47008A0B5F /* JBSettingLicenceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingLicenceTableViewCell.xib; sourceTree = "<group>"; };
+		E64BB4C418B6811F008A0B5F /* JBSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingController.h; sourceTree = "<group>"; };
+		E64BB4C518B6811F008A0B5F /* JBSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingController.m; sourceTree = "<group>"; };
+		E64BB4C618B6811F008A0B5F /* JBSettingHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingHeaderTableViewCell.h; sourceTree = "<group>"; };
+		E64BB4C718B6811F008A0B5F /* JBSettingHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingHeaderTableViewCell.m; sourceTree = "<group>"; };
+		E64BB4C818B6811F008A0B5F /* JBSettingHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		E64BB4C918B6811F008A0B5F /* JBSettingHintTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingHintTableViewCell.h; sourceTree = "<group>"; };
+		E64BB4CA18B6811F008A0B5F /* JBSettingHintTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingHintTableViewCell.m; sourceTree = "<group>"; };
+		E64BB4CB18B6811F008A0B5F /* JBSettingHintTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingHintTableViewCell.xib; sourceTree = "<group>"; };
+		E64BB4CC18B6811F008A0B5F /* JBSettingLicenceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingLicenceTableViewCell.h; sourceTree = "<group>"; };
+		E64BB4CD18B6811F008A0B5F /* JBSettingLicenceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingLicenceTableViewCell.m; sourceTree = "<group>"; };
+		E64BB4CE18B6811F008A0B5F /* JBSettingLicenceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingLicenceTableViewCell.xib; sourceTree = "<group>"; };
+		E64BB4CF18B6811F008A0B5F /* JBSettingSocialTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingSocialTableViewCell.h; sourceTree = "<group>"; };
+		E64BB4D018B6811F008A0B5F /* JBSettingSocialTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingSocialTableViewCell.m; sourceTree = "<group>"; };
+		E64BB4D118B6811F008A0B5F /* JBSettingSocialTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBSettingSocialTableViewCell.xib; sourceTree = "<group>"; };
+		E64BB4D218B6811F008A0B5F /* JBSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingTableViewCell.h; sourceTree = "<group>"; };
+		E64BB4D318B6811F008A0B5F /* JBSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingTableViewCell.m; sourceTree = "<group>"; };
+		E64BB4DF18B6828B008A0B5F /* JBLicenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLicenceViewController.h; sourceTree = "<group>"; };
+		E64BB4E018B6828B008A0B5F /* JBLicenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLicenceViewController.m; sourceTree = "<group>"; };
 		E67E6E861889D0A800D36A47 /* JBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBWebViewController.h; sourceTree = "<group>"; };
 		E67E6E871889D0A800D36A47 /* JBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBWebViewController.m; sourceTree = "<group>"; };
 		E67E6E881889D0A800D36A47 /* JBWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBWebViewController.xib; sourceTree = "<group>"; };
@@ -318,8 +318,6 @@
 		E6FC100F17B1748900A12BED /* JBRSSController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSController.m; sourceTree = "<group>"; };
 		E6FC101417B174A200A12BED /* JBBookmarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkController.h; sourceTree = "<group>"; };
 		E6FC101517B174A200A12BED /* JBBookmarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkController.m; sourceTree = "<group>"; };
-		E6FC101717B174AC00A12BED /* JBSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSettingController.h; sourceTree = "<group>"; };
-		E6FC101817B174AC00A12BED /* JBSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSettingController.m; sourceTree = "<group>"; };
 		E6FC101A17B176B000A12BED /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		E6FC101C17B1781700A12BED /* UIStoryboard+UIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStoryboard+UIKit.h"; sourceTree = "<group>"; };
 		E6FC101D17B1781700A12BED /* UIStoryboard+UIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboard+UIKit.m"; sourceTree = "<group>"; };
@@ -387,6 +385,38 @@
 				E6006D4718AB98A100A7EF11 /* JBPopupViewControllerManager.m */,
 			);
 			path = Popup;
+			sourceTree = "<group>";
+		};
+		E64BB4C318B6811F008A0B5F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				E64BB4C418B6811F008A0B5F /* JBSettingController.h */,
+				E64BB4C518B6811F008A0B5F /* JBSettingController.m */,
+				E64BB4C618B6811F008A0B5F /* JBSettingHeaderTableViewCell.h */,
+				E64BB4C718B6811F008A0B5F /* JBSettingHeaderTableViewCell.m */,
+				E64BB4C818B6811F008A0B5F /* JBSettingHeaderTableViewCell.xib */,
+				E64BB4C918B6811F008A0B5F /* JBSettingHintTableViewCell.h */,
+				E64BB4CA18B6811F008A0B5F /* JBSettingHintTableViewCell.m */,
+				E64BB4CB18B6811F008A0B5F /* JBSettingHintTableViewCell.xib */,
+				E64BB4CC18B6811F008A0B5F /* JBSettingLicenceTableViewCell.h */,
+				E64BB4CD18B6811F008A0B5F /* JBSettingLicenceTableViewCell.m */,
+				E64BB4CE18B6811F008A0B5F /* JBSettingLicenceTableViewCell.xib */,
+				E64BB4CF18B6811F008A0B5F /* JBSettingSocialTableViewCell.h */,
+				E64BB4D018B6811F008A0B5F /* JBSettingSocialTableViewCell.m */,
+				E64BB4D118B6811F008A0B5F /* JBSettingSocialTableViewCell.xib */,
+				E64BB4D218B6811F008A0B5F /* JBSettingTableViewCell.h */,
+				E64BB4D318B6811F008A0B5F /* JBSettingTableViewCell.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		E64BB4DE18B68150008A0B5F /* Licence */ = {
+			isa = PBXGroup;
+			children = (
+				E64BB4DF18B6828B008A0B5F /* JBLicenceViewController.h */,
+				E64BB4E018B6828B008A0B5F /* JBLicenceViewController.m */,
+			);
+			path = Licence;
 			sourceTree = "<group>";
 		};
 		E67E6E851889D0A800D36A47 /* WebView */ = {
@@ -791,25 +821,8 @@
 				E64BB48A18B61354008A0B5F /* JBSetting.storyboard */,
 				E64BB48718B612EC008A0B5F /* JBSettingNavigationController.h */,
 				E64BB48818B612EC008A0B5F /* JBSettingNavigationController.m */,
-				E6FC101717B174AC00A12BED /* JBSettingController.h */,
-				E6FC101817B174AC00A12BED /* JBSettingController.m */,
-				E64BB49B18B6440F008A0B5F /* JBSettingTableViewCell.h */,
-				E64BB49C18B6440F008A0B5F /* JBSettingTableViewCell.m */,
-				E64BB49E18B66E26008A0B5F /* JBSettingEmptyTableViewCell.h */,
-				E64BB49F18B66E26008A0B5F /* JBSettingEmptyTableViewCell.m */,
-				E64BB4A018B66E26008A0B5F /* JBSettingEmptyTableViewCell.xib */,
-				E64BB49618B63DC4008A0B5F /* JBSettingHeaderTableViewCell.h */,
-				E64BB49718B63DC4008A0B5F /* JBSettingHeaderTableViewCell.m */,
-				E64BB49818B63DC4008A0B5F /* JBSettingHeaderTableViewCell.xib */,
-				E64BB48C18B61816008A0B5F /* JBSettingHintTableViewCell.h */,
-				E64BB48D18B61816008A0B5F /* JBSettingHintTableViewCell.m */,
-				E64BB48E18B61816008A0B5F /* JBSettingHintTableViewCell.xib */,
-				E64BB49118B637B3008A0B5F /* JBSettingSocialTableViewCell.h */,
-				E64BB49218B637B3008A0B5F /* JBSettingSocialTableViewCell.m */,
-				E64BB49318B637B3008A0B5F /* JBSettingSocialTableViewCell.xib */,
-				E64BB4A318B67B47008A0B5F /* JBSettingLicenceTableViewCell.h */,
-				E64BB4A418B67B47008A0B5F /* JBSettingLicenceTableViewCell.m */,
-				E64BB4A518B67B47008A0B5F /* JBSettingLicenceTableViewCell.xib */,
+				E64BB4C318B6811F008A0B5F /* Setting */,
+				E64BB4DE18B68150008A0B5F /* Licence */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -930,8 +943,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E64BB49518B637B3008A0B5F /* JBSettingSocialTableViewCell.xib in Resources */,
 				E6AD1C8C18AF747B00F1EE6E /* JBPullToRefreshHeaderView.xib in Resources */,
+				E64BB4D618B6811F008A0B5F /* JBSettingHeaderTableViewCell.xib in Resources */,
+				E64BB4DA18B6811F008A0B5F /* JBSettingLicenceTableViewCell.xib in Resources */,
 				E6006D4218AB818C00A7EF11 /* JBRSSDiscoverPopupViewController.xib in Resources */,
 				E67E6E8A1889D0A800D36A47 /* JBWebViewController.xib in Resources */,
 				E6855E5B1882009B0045A6ED /* JBRSSLogin.storyboard in Resources */,
@@ -941,22 +955,20 @@
 				E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */,
 				E62D4A9918ACE7C600BD37A1 /* JBBookmarkCatalogTableViewCell.xib in Resources */,
 				E60A4B85189592A5007AA0A7 /* JBRSSPin.storyboard in Resources */,
-				E64BB4A718B67B47008A0B5F /* JBSettingLicenceTableViewCell.xib in Resources */,
 				E68EB9E817B01624006711A6 /* Default@2x.png in Resources */,
 				E64BB47918B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.xib in Resources */,
+				E64BB4D818B6811F008A0B5F /* JBSettingHintTableViewCell.xib in Resources */,
 				E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */,
 				E64BB48B18B61354008A0B5F /* JBSetting.storyboard in Resources */,
 				E64BB48618B60EA1008A0B5F /* acknowledgements.plist in Resources */,
-				E64BB4A218B66E26008A0B5F /* JBSettingEmptyTableViewCell.xib in Resources */,
 				E67E6E981889DFF200D36A47 /* JBBarButtonView.xib in Resources */,
 				E6C90076186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */,
 				E6FC101B17B176B000A12BED /* MainStoryboard.storyboard in Resources */,
 				E6FC983E17BBD53D0082047A /* JBRSSFeed.storyboard in Resources */,
+				E64BB4DC18B6811F008A0B5F /* JBSettingSocialTableViewCell.xib in Resources */,
 				E60A4B89189592A5007AA0A7 /* JBRSSPinTableViewCell.xib in Resources */,
-				E64BB49018B61816008A0B5F /* JBSettingHintTableViewCell.xib in Resources */,
 				E67E6E9A1889DFF200D36A47 /* JBNavigationBarTitleView.xib in Resources */,
 				E6FED2A618ABE6E00099ED79 /* common_clear.png in Resources */,
-				E64BB49A18B63DC4008A0B5F /* JBSettingHeaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1023,6 +1035,7 @@
 				E6FED29F18ABB21B0099ED79 /* JBRSSDiscoverTableViewCell.m in Sources */,
 				E6FED2BD18ACC6F60099ED79 /* JBHTBBookmarkViewController.m in Sources */,
 				E6C8D79D17B15521007B6C16 /* NSURLRequest+Junkbox.m in Sources */,
+				E64BB4D518B6811F008A0B5F /* JBSettingHeaderTableViewCell.m in Sources */,
 				E67E6E891889D0A800D36A47 /* JBWebViewController.m in Sources */,
 				E6E4FEF9188FDEF10068D929 /* JBRSSOperation.m in Sources */,
 				E6C8D79E17B15521007B6C16 /* UIColor+Hexadecimal.m in Sources */,
@@ -1030,8 +1043,8 @@
 				E604CD1518AF98210024BABD /* UIBarButtonItem+Space.m in Sources */,
 				E6FC100917B16FA800A12BED /* TableViewController.m in Sources */,
 				E6FC100A17B16FA800A12BED /* WebViewController.m in Sources */,
-				E64BB4A618B67B47008A0B5F /* JBSettingLicenceTableViewCell.m in Sources */,
 				E60A4B88189592A5007AA0A7 /* JBRSSPinTableViewCell.m in Sources */,
+				E64BB4D418B6811F008A0B5F /* JBSettingController.m in Sources */,
 				E6C7BE6D18A90433007A80E4 /* JBQBFlatButton.m in Sources */,
 				E6FC100D17B1729B00A12BED /* UINib+UIKit.m in Sources */,
 				E64BB48118B234FE008A0B5F /* JBRSSFeedSetRateOperation.m in Sources */,
@@ -1042,10 +1055,10 @@
 				E6FED29B18ABA8780099ED79 /* JBRSSFeedDiscoverOperation.m in Sources */,
 				E6006D4018AB815100A7EF11 /* JBRSSDiscoverPopupViewController.m in Sources */,
 				E64BB48918B612EC008A0B5F /* JBSettingNavigationController.m in Sources */,
+				E64BB4DD18B6811F008A0B5F /* JBSettingTableViewCell.m in Sources */,
 				E60A4B86189592A5007AA0A7 /* JBRSSPinController.m in Sources */,
-				E64BB49918B63DC4008A0B5F /* JBSettingHeaderTableViewCell.m in Sources */,
 				E6FED2B318AC9D5A0099ED79 /* JBBookmarkLoginController.m in Sources */,
-				E64BB49D18B6440F008A0B5F /* JBSettingTableViewCell.m in Sources */,
+				E64BB4D718B6811F008A0B5F /* JBSettingHintTableViewCell.m in Sources */,
 				E692F89418A7ED6D00A13D2A /* JBModelList.m in Sources */,
 				E6C90075186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.m in Sources */,
 				E6C90071186400840007449D /* JBRSSFeedSubsUnread.m in Sources */,
@@ -1053,7 +1066,6 @@
 				E67E6E991889DFF200D36A47 /* JBNavigationBarTitleView.m in Sources */,
 				E6272FC9186F71FC00FC9C2D /* JBRSSFeedUnreadLists.m in Sources */,
 				E6FC101617B174A200A12BED /* JBBookmarkController.m in Sources */,
-				E6FC101917B174AC00A12BED /* JBSettingController.m in Sources */,
 				E6FC101E17B1781700A12BED /* UIStoryboard+UIKit.m in Sources */,
 				E6E4FEFF189012F00068D929 /* JBModel.xcdatamodeld in Sources */,
 				E6E4FEF6188FDB910068D929 /* JBRSSPinRemoveOperation.m in Sources */,
@@ -1062,12 +1074,9 @@
 				E6E4FEF5188FDB910068D929 /* JBRSSPinAllOperation.m in Sources */,
 				E6E271B91834A8F400F0E6A4 /* SSGentleAlertView+Junkbox.m in Sources */,
 				E64BB48218B234FE008A0B5F /* JBRSSFeedSubscribeOperation.m in Sources */,
-				E64BB4A118B66E26008A0B5F /* JBSettingEmptyTableViewCell.m in Sources */,
 				E62747E217B5BFEC007B41B2 /* JBRSSLoginController.m in Sources */,
 				E62D4A9718ACE76A00BD37A1 /* JBBookmarkCatalogTableViewCell.m in Sources */,
 				E6E4FF0818901EB20068D929 /* JBRSSPinList.m in Sources */,
-				E64BB49418B637B3008A0B5F /* JBSettingSocialTableViewCell.m in Sources */,
-				E64BB48F18B61816008A0B5F /* JBSettingHintTableViewCell.m in Sources */,
 				E648C97218A9EC7800737CA4 /* JBBookmarkOperationQueue.m in Sources */,
 				E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */,
 				E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */,
@@ -1075,12 +1084,15 @@
 				E6272FC6186F6C0000FC9C2D /* JBRSSFeedUnreadOperation.m in Sources */,
 				E6272FC3186F659600FC9C2D /* JBRSSFeedUnread.m in Sources */,
 				E6006D4A18AB98A100A7EF11 /* JBPopupViewControllerManager.m in Sources */,
+				E64BB4DB18B6811F008A0B5F /* JBSettingSocialTableViewCell.m in Sources */,
 				E6272FC0186F635B00FC9C2D /* JBRSSFeedUnreadList.m in Sources */,
 				E64BB47818B1E027008A0B5F /* JBRSSFeedRatingPopupViewController.m in Sources */,
 				E681E76318251954001323DB /* JBRSSLoginOperations.m in Sources */,
 				E6FED2A318ABBB1F0099ED79 /* JBRSSDiscover.m in Sources */,
 				E6F0835D186CF15F007FEDD4 /* JBLoginOperation.m in Sources */,
 				E6C90074186400840007449D /* JBRSSFeedSubsUnreadOperation.m in Sources */,
+				E64BB4D918B6811F008A0B5F /* JBSettingLicenceTableViewCell.m in Sources */,
+				E64BB4E118B6828B008A0B5F /* JBLicenceViewController.m in Sources */,
 				E6A8DC6718962ED200AE5C51 /* JBTabBarController.m in Sources */,
 				E6C7BE6118A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m in Sources */,
 				E6AD1C8818AF720000F1EE6E /* JBPullToRefreshHeaderView.m in Sources */,

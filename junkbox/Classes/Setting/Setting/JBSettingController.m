@@ -143,6 +143,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath
                                   animated:YES];
+
+    NSString *title = self.cellTitleList[indexPath.section][indexPath.row];
+    // ライセンス情報
+    if ([title isEqualToString:NSLocalizedString(@"Licence", @"ライセンス情報")]) {
+        // 遷移
+        [self performSegueWithIdentifier:kStoryboardSeguePushLicenceController
+                                  sender:self];
+    }
 }
 
 
@@ -228,4 +236,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         ],
     ];
 }
+
+
 @end

@@ -15,9 +15,10 @@
 /// 設定画面遷移
 #define kStoryboardSetting                          @"JBSetting"
 
-/// segue identifier
+/// フィード詳細画面遷移
 #define kStoryboardSeguePushRSSFeedUnreadController @"pushJBRSSFeedUnreadController"
-
+/// ライセンス情報画面遷移
+#define kStoryboardSeguePushLicenceController       @"pushJBLicenceViewCntroller"
 
 #pragma mark - Notification
 /// RSS Reader ログイン開始
@@ -40,3 +41,8 @@
 #pragma mark - Image
 /// 透明画像
 #define kImageCommonClear                            @"common_clear.png"
+
+
+#pragma mark - Plist
+/// ライセンス情報
+#define kPlistAcknowledgements                      @"acknowledgements"

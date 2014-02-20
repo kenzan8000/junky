@@ -219,7 +219,7 @@ didFailLoadWithError:error];
  */
 - (void)touchedUpInsideButtonWithBarButtonView:(JBBarButtonView *)barButtonView
 {
-    // ログイン
+    // 戻る
     if (barButtonView == self.backButtonView) {
         [self.navigationController popViewControllerAnimated:YES];
     }
