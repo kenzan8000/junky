@@ -25,6 +25,12 @@
 {
     SSGentleAlertView *alertView = [SSGentleAlertView new];
     alertView.message = message;
+    alertView.titleLabel.textAlignment = NSTextAlignmentLeft;
+    alertView.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    alertView.messageLabel.textAlignment = NSTextAlignmentLeft;
+    alertView.messageLabel.lineBreakMode = NSLineBreakByCharWrapping;
+
+
     for (id title in buttonTitles) {
         [alertView addButtonWithTitle:[NSString stringWithFormat:@"%@", title]];
     }
