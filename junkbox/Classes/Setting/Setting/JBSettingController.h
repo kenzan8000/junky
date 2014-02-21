@@ -1,9 +1,10 @@
 #import "TableViewController.h"
+#import "JBSettingSocialTableViewCell.h"
 
 
 #pragma mark - JBSettingController
 /// 設定
-@interface JBSettingController : TableViewController {
+@interface JBSettingController : TableViewController <JBSettingSocialTableViewCellDelegate> {
 }
 
 

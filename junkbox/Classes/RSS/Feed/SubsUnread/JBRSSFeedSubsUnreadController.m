@@ -81,7 +81,7 @@
         //
     JBBarButtonView *menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                               title:NSLocalizedString(@"Menu", @"メニューボタン")
-                                                                               icon:icon_navicon_round];
+                                                                               icon:icon_navicon];
     [menuButtonView setHidden:YES];
     [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
                                        animated:NO];

@@ -1,4 +1,7 @@
 #import "JBSettingSocialTableViewCell.h"
+#import <Social/Social.h>
+// Pods
+#import "MTStatusBarOverlay.h"
 // UIkit-Extension
 #import "UIColor+Hexadecimal.h"
 /// Pods-Extension
@@ -12,6 +15,7 @@
 
 #pragma mark - synthesize
 @synthesize reviewButton;
+@synthesize delegate;
 
 
 #pragma mark - class method
@@ -49,17 +53,16 @@ clickedButtonAtIndex:(NSInteger)index
 {
     NSString *title = [self.reviewButton titleForState:UIControlStateNormal];
     if ([title isEqualToString:NSLocalizedString(@"Review", @"レビュー導線")]) {
+        NSURL *URL = [NSURL URLWithString:kURLAppStore];
         switch (index) {
             // レビューしない
             case 0:
                 break;
             // レビューする
             case 1:
-                /*
-                if ([[UIApplication sharedApplication] canOpenURL:]) {
-                    [[UIApplication sharedApplication] openURL:];
+                if ([[UIApplication sharedApplication] canOpenURL:URL]) {
+                    [[UIApplication sharedApplication] openURL:URL];
                 }
-                */
                 break;
         }
     }
@@ -69,7 +72,6 @@ clickedButtonAtIndex:(NSInteger)index
     }
     else if ([title isEqualToString:NSLocalizedString(@"Pull Request", @"プルリクエストする")]) {
     }
-
 }
 
 
@@ -83,8 +85,10 @@ clickedButtonAtIndex:(NSInteger)index
                                   delegate:self];
     }
     else if ([title isEqualToString:NSLocalizedString(@"Tweet", @"ツイートする")]) {
+        [self tweet];
     }
     else if ([title isEqualToString:NSLocalizedString(@"Publish", @"共有する")]) {
+        [self publishToFacebook];
     }
     else if ([title isEqualToString:NSLocalizedString(@"Pull Request", @"プルリクエストする")]) {
     }
@@ -147,4 +151,88 @@ clickedButtonAtIndex:(NSInteger)index
                        forState:UIControlStateNormal];
 }
 
+
+#pragma mark - private api
+/**
+ * tweet
+ */
+- (void)tweet
+{
+    [self postToSocialWithServiceType:SLServiceTypeTwitter];
+}
+
+/**
+ * publish to facebook
+ */
+- (void)publishToFacebook
+{
+    [self postToSocialWithServiceType:SLServiceTypeFacebook];
+}
+
+/**
+ * Socialへ投稿
+ * @param serviceType Socialの種類
+ */
+- (void)postToSocialWithServiceType:(NSString *)serviceType
+{
+    // 投稿
+     if ([SLComposeViewController isAvailableForServiceType:serviceType]) {
+        SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:serviceType];
+        [vc setInitialText:[NSString stringWithFormat:@"%@ %@",
+            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"],
+            kURLAppStore
+        ]];
+        [vc setCompletionHandler:^ (SLComposeViewControllerResult result) {
+            // 成功
+            if (result == SLComposeViewControllerResultDone) {
+                // ステータスバーに表示
+                dispatch_async(dispatch_get_main_queue(), ^ () {
+                    NSString *message = nil;
+                    if ([serviceType isEqualToString:SLServiceTypeTwitter]) {
+                        message = NSLocalizedString(@"Tweet succeeded", @"Tweet成功");
+                    }
+                    else if ([serviceType isEqualToString:SLServiceTypeFacebook]) {
+                        message = NSLocalizedString(@"Publish on Facebook succeeded", @"Facebook投稿成功");
+                    }
+                    [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:message
+                                                                           duration:2.5f
+                                                                           animated:YES];
+                });
+            }
+            else if (result == SLComposeViewControllerResultCancelled) {
+            }
+        }];
+
+        // Delegate
+        if (self.delegate &&
+            [self.delegate respondsToSelector:@selector(presentViewController:cell:)]) {
+            [self.delegate presentViewController:vc
+                                       cell:self];
+        }
+    }
+    // アカウント未設定
+    else {
+        NSString *message = nil;
+        if ([serviceType isEqualToString:SLServiceTypeTwitter]) {
+            message = NSLocalizedString(@"No Twitter account. You can add or create a Twitter account in Settings.", @"Twitterアカウント未設定");
+        }
+        else if ([serviceType isEqualToString:SLServiceTypeFacebook]) {
+            message = NSLocalizedString(@"No Facebook account. You can add or create a Facebook account in Settings.", @"Facebookアカウント未設定");
+        }
+        [SSGentleAlertView showWithMessage:message
+                              buttonTitles:@[NSLocalizedString(@"Confirm", @"確認"),]
+                                  delegate:nil];
+     }
+}
+
+
 @end
+/*
+                NSString *message = nil;
+                if ([serviceType isEqualToString:SLServiceTypeTwitter]) {
+                    message = NSLocalizedString(@"Tweet failed", @"Tweet失敗");
+                }
+                else if ([serviceType isEqualToString:SLServiceTypeFacebook]) {
+                    message = NSLocalizedString(@"Publish on Facebook failed", @"Facebook投稿失敗");
+                }
+*/

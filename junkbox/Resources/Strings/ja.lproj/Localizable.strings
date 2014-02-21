@@ -59,14 +59,14 @@
 "Livedoor Reader" = "Livedoor Reader";
 "Getting the unread feed list..." = "未読フィード一覧を読み込んでいます...";
 "Adding Read Later..." = "あとで読むページを追加しています...";
-"Adding Read Later Failed" = "あとで読むページの追加に失敗しました";
+"Adding Read Later failed" = "あとで読むページの追加に失敗しました";
 "Added Read Later" = "あとで読むページを追加しました";
 "Discovering RSS Feed..." = "URLからRSSフィードを探しています...";
-"Discovering RSS Feed Failed" = "RSSフィードの探索に失敗しました";
+"Discovering RSS Feed failed" = "RSSフィードの探索に失敗しました";
 "RSS Feed could not found" = "RSSフィードが見つかりませんでした";
 "Please select a feed to be registered" = "登録するフィードを選択してください";
 "Adding RSS Feed..." = "RSSフィードを登録しています...";
-"Failed Adding RSS Feed" = "RSSフィードの登録に失敗しました";
+"Adding RSS Feed failed" = "RSSフィードの登録に失敗しました";
 
 
 /* **************************************************
@@ -80,10 +80,20 @@
  *                    レビュー
  * *************************************************/
 "Review" = "レビュー";
-"Tweet" = "ツイートする";
-"Publish" = "共有する";
-"Pull Request" = "プルリクエスト";
 "If you like 'Junky', please rate it. Thanks!" = "Junkyが気に入ったらぜひレビューして下さい♪" ;
 "Rate Now" = "レビューする";
 "Maybe later" = "後でレビューする";
 "No, Thanks" = "レビューしない";
+
+/* **************************************************
+ *                    ソーシャル
+ * *************************************************/
+"Tweet" = "ツイート";
+"Publish" = "投稿";
+"Pull Request" = "プルリクエスト";
+"No Twitter account. You can add or create a Twitter account in Settings." = "Twitterのアカウントが設定されていないため、ツイートできませんでした。Twitterアカウントは、デフォルトの設定アプリから登録することができます";
+"No Facebook account. You can add or create a Facebook account in Settings." = "Facebookのアカウントが設定されていないため、投稿できませんでした。Facebookアカウントは、デフォルトの設定アプリから登録することができます";
+"Tweet succeeded" = "ツイートしました";
+"Tweet failed" = "ツイートに失敗しました";
+"Publish on Facebook succeeded" = "Facebookに投稿しました";
+"Publish on Facebook failed" = "Facebookへの投稿に失敗しました";

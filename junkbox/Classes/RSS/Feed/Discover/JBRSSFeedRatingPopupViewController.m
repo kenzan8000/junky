@@ -57,7 +57,7 @@
     [self.contentView.layer setBorderWidth:1.0f];
 
     // 閉じるボタン
-    image = [IonIcons imageWithIcon:icon_close_round
+    image = [IonIcons imageWithIcon:icon_android_close
                                size:24
                               color:[UIColor grayColor]];
     [self.closeButton setImage:image

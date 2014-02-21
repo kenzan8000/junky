@@ -279,7 +279,7 @@ didTapItemAtIndex:(NSUInteger)index
             if (error) {
                 // ステータスバー
                 dispatch_async(dispatch_get_main_queue(), ^ () {
-                    [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Discovering RSS Feed Failed", @"RSS Feedの探索に失敗しました")
+                    [[MTStatusBarOverlay sharedInstance] postImmediateFinishMessage:NSLocalizedString(@"Discovering RSS Feed failed", @"RSS Feedの探索に失敗しました")
                                                                            duration:2.5f
                                                                            animated:YES];
                 });

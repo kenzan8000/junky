@@ -4,6 +4,24 @@
 #pragma mark - class
 @class JBQBFlatButton;
 @class SSGentleAlertView;
+@class JBSettingSocialTableViewCell;
+
+
+#pragma mark - JBSettingSocialTableViewCellDelegate
+/// JBSettingSocialTableViewCellDelegate
+@protocol JBSettingSocialTableViewCellDelegate <NSObject>
+
+
+/**
+ * presentViewControllerするためのDelegate
+ * @param vc presentするvc
+ * @param cell JBSettingSocialTableViewCell
+ */
+- (void)presentViewController:(UIViewController *)vc
+                         cell:(JBSettingSocialTableViewCell *)cell;
+
+
+@end
 
 
 #pragma mark - constant
@@ -11,15 +29,17 @@
 
 
 #pragma mark - JBSettingSocialTableViewCell
-/// レビュー
+/// ソーシャル関連のCell
 @interface JBSettingSocialTableViewCell : JBSettingTableViewCell {
 }
 
 
 #pragma mark - property
-/// レビューボタン
+/// ボタン
 @property (nonatomic, weak) IBOutlet JBQBFlatButton *reviewButton;
 
+/// Delegate
+@property (nonatomic, weak) id<JBSettingSocialTableViewCellDelegate> delegate;
 
 #pragma mark - event listener
 /**

@@ -2,6 +2,11 @@
 
 
 #pragma mark - Storyboard
+/// App Store URL
+#define kURLAppStore                                @"http://itunes.apple.com/us/app/junky/id"
+
+
+#pragma mark - Storyboard
 /// ルート
 #define kStoryboardMainStoryboard                   @"MainStoryboard"
 /// RSSログイン遷移

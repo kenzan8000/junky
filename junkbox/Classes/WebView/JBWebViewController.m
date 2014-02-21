@@ -85,13 +85,13 @@
         // 戻るボタン
     self.backButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                   title:nil/*NSLocalizedString(@"Back", @"戻る")*/
-                                                                   icon:icon_arrow_left_a];
+                                                                   icon:icon_arrow_left_c];
     [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
                                       animated:NO];
         // メニューボタン
     self.menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                   title:nil/*NSLocalizedString(@"Menu", @"メニューボタン")*/
-                                                                   icon:icon_navicon_round];
+                                                                   icon:icon_navicon];
     [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.menuButtonView]]
                                        animated:NO];
         // メニュー

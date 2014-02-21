@@ -71,13 +71,13 @@
         // 閉じるボタン
     JBBarButtonView *closeButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                                title:nil/*NSLocalizedString(@"Close", @"モーダルを閉じる")*/
-                                                                                icon:icon_close_round];
+                                                                                icon:icon_android_close];
     [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:closeButtonView]]
                                       animated:NO];
         //
     JBBarButtonView *menuButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                               title:NSLocalizedString(@"Menu", @"メニューボタン")
-                                                                               icon:icon_navicon_round];
+                                                                               icon:icon_navicon];
     [menuButtonView setHidden:YES];
     [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:menuButtonView]]
                                        animated:NO];

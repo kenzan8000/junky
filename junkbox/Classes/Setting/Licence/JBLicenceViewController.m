@@ -48,7 +48,7 @@
         // 戻る
     self.backButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                   title:nil
-                                                                   icon:icon_arrow_left_a];
+                                                                   icon:icon_arrow_left_c];
     [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
                                       animated:NO];
 
@@ -110,21 +110,26 @@
     if ([licences isKindOfClass:[NSArray class]] == NO) { return; }
 
     NSMutableString *text = [NSMutableString stringWithCapacity:0];
-    [text appendString:@"\n"];
-    [text appendString:@"\n"];
+    BOOL isFirstLine = YES;
     for  (NSDictionary *licence in licences) {
         if ([licence isKindOfClass:[NSDictionary class]] == NO) { continue; }
         NSArray *allKeys = [licence allKeys];
         if ([allKeys containsObject:@"Title"] == NO) { continue; }
         if ([allKeys containsObject:@"FooterText"] == NO) { continue; }
+
+        if (isFirstLine == NO) {
+            [text appendString:@"\n"];
+            [text appendString:@"\n"];
+            [text appendString:@"\n"];
+            [text appendString:@"\n"];
+        }
+
         [text appendString:licence[@"Title"]];
         [text appendString:@"\n"];
         [text appendString:@"\n"];
         [text appendString:licence[@"FooterText"]];
-        [text appendString:@"\n"];
-        [text appendString:@"\n"];
-        [text appendString:@"\n"];
-        [text appendString:@"\n"];
+
+        isFirstLine = NO;
     }
     [self.licenceTextView setText:text];
     self.licenceTextView.editable = NO;
