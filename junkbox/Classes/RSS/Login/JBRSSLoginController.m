@@ -419,8 +419,8 @@ clickedButtonAtIndex:(NSInteger)index
 - (void)designLoginButtonWithIsTextfieldEnough:(BOOL)isTextfieldEnough
 {
     if (isTextfieldEnough) {
-        self.loginButton.margin = 4.0f;
-        self.loginButton.depth = 3.0f;
+        self.loginButton.margin = 2.0f;
+        self.loginButton.depth = 2.0f;
 
         self.loginButton.alpha = 1.0f;
     }
