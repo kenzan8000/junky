@@ -91,6 +91,12 @@
 - (void)stopLoadingFeedFromWebAPI;
 
 /**
+ * NSOperationQueueで管理している通信operationの優先順位を変える
+ * @param priority 優先順位
+ */
+- (void)setOperationQueuePriority:(NSOperationQueuePriority)priority;
+
+/**
  * 詳細リストの数
  * @return count
  */

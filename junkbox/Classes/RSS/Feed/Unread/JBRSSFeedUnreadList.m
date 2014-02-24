@@ -97,6 +97,11 @@
     }
 }
 
+- (void)setOperationQueuePriority:(NSOperationQueuePriority)priority
+{
+    [self.operation setQueuePriority:priority];
+}
+
 - (NSInteger)count
 {
     return [self.list count];

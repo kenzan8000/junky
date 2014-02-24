@@ -68,6 +68,7 @@
 "Please select a feed to be registered" = "登録するフィードを選択してください";
 "Adding RSS Feed..." = "RSSフィードを登録しています...";
 "Adding RSS Feed failed" = "RSSフィードの登録に失敗しました";
+"No unread article" = "未読の記事がありません";
 
 
 /* **************************************************

@@ -50,6 +50,7 @@
 #pragma mark - release
 - (void)dealloc
 {
+    [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityNormal];
     self.unreadList = nil;
     self.titleView = nil;
     self.backButtonView = nil;
@@ -111,10 +112,10 @@
         self.webView.frame.size.width, webViewBottomY - webViewOriginY
     )];
 
-    [self.unreadList setListDelegate:self];
-
     // unread listの読み込みがまだの場合
     if (self.unreadList.count == 0) {
+        [self.unreadList setListDelegate:self];
+        [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
         [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
     }
 }
@@ -194,6 +195,13 @@ didFailLoadWithError:error];
 {
     // アニメーション終了
     [DejalActivityView removeView];
+
+    // 既読だった場合
+    if (self.unreadList.count == 0) {
+        [self.titleView setTitle:NSLocalizedString(@"No unread article", @"未読の記事がありません")];
+        return;
+    }
+
     // 記事表示
     [self loadWebView];
 
