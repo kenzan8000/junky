@@ -1202,7 +1202,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
-				INFOPLIST_FILE = junkbox/Resources/Plists/release.info.plist;
+				INFOPLIST_FILE = junkbox/Resources/Plists/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

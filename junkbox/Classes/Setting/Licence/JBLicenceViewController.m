@@ -132,7 +132,6 @@
         isFirstLine = NO;
     }
     [self.licenceTextView setText:text];
-    self.licenceTextView.editable = NO;
 }
 
 

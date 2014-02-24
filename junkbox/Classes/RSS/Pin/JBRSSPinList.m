@@ -109,6 +109,10 @@
 - (void)addPinWithTitle:(NSString *)title
                    link:(NSString *)link
 {
+    NSString *t = title;
+    if (t == nil || [t isEqualToString:@""]) {
+        t = link;
+    }
     [self addPinToLocalWithTitle:title
                             link:link];
     [self addPinToWebAPIWithTitle:title
