@@ -44,6 +44,12 @@
 
 #pragma mark - api
 /**
+ * タイトル
+ * @return title
+ */
+- (NSString *)title;
+
+/**
  * タイトルセット
  * @param title title
  */

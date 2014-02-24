@@ -43,6 +43,18 @@
 
 
 #pragma mark - api
+- (NSString *)title
+{
+    NSString *titleString = nil;
+    if (self.titleLabel.hidden == NO) {
+        titleString = self.titleLabel.text;
+    }
+    else if (self.titleButton.hidden == NO) {
+        titleString = [self.titleButton titleForState:UIControlStateNormal];
+    }
+    return titleString;
+}
+
 - (void)setTitle:(NSString *)title
 {
     [self.titleLabel setText:title];

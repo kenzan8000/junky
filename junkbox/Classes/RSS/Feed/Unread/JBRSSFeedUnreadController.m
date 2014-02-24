@@ -13,6 +13,7 @@
 #import "UINib+UIKit.h"
 /// Pods
 #import "MTStatusBarOverlay.h"
+#import "DejalActivityView.h"
 #import "IonIcons.h"
 
 
@@ -109,6 +110,13 @@
         self.webView.frame.origin.x, webViewOriginY,
         self.webView.frame.size.width, webViewBottomY - webViewOriginY
     )];
+
+    [self.unreadList setListDelegate:self];
+
+    // unread listの読み込みがまだの場合
+    if (self.unreadList.count == 0) {
+        [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
+    }
 }
 
 - (void)viewDidLoad
@@ -184,6 +192,18 @@ didFailLoadWithError:error];
 #pragma mark - JBRSSFeedUnreadListDelegate
 - (void)unreadListDidFinishLoadWithList:(JBRSSFeedUnreadList *)list
 {
+    // アニメーション終了
+    [DejalActivityView removeView];
+    // 記事表示
+    [self loadWebView];
+
+    // 画面下のバーのレイアウト
+    [self designPreviousAndNextButton];
+
+    // 何件中何件
+    [self setIndexOfUnreadListBackgroundViewPositionByScrollViewY];
+    [self setIndexOfUnreadListWithIndex:self.indexOfUnreadList];
+
 }
 
 - (void)unreadListDidFailLoadWithError:(NSError *)error
@@ -341,11 +361,12 @@ didFailLoadWithError:error];
 - (void)setIndexOfUnreadListWithIndex:(NSInteger)index
 {
     self.indexOfUnreadList = index;
+    if (self.indexOfUnreadList >= [self.unreadList count]) {self.indexOfUnreadList = [self.unreadList count]-1; }
     if (self.indexOfUnreadList < 0) { self.indexOfUnreadList = 0; }
-    else if (self.indexOfUnreadList >= [self.unreadList count]) { self.indexOfUnreadList = [self.unreadList count]-1; }
 
     if (self.unreadList) {
-        [self.indexOfUnreadListLabel setText:[NSString stringWithFormat:@"%d / %d", self.indexOfUnreadList+1, self.unreadList.count]];
+        NSInteger i = (self.unreadList.count > 0) ? self.indexOfUnreadList+1 : 0;
+        [self.indexOfUnreadListLabel setText:[NSString stringWithFormat:@"%d / %d", i, self.unreadList.count]];
     }
     else {
         [self.indexOfUnreadListLabel setText:@""];
