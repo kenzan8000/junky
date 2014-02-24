@@ -183,7 +183,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         {// デザイン
         JBRSSFeedUnreadList *unread = [self.unreadLists listWithIndex:[self.subsUnreadList indexWithIndexPath:indexPath]];
-        [cell designWithIsFinishedLoading:[unread isFinishedLoading]
+        [cell designWithIsFinishedLoading:[unread count] > 0
                                  isUnread:[unread isUnread]];
         }
     }
@@ -200,9 +200,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     // 既読化
     JBRSSFeedSubsUnreadTableViewCell *cell = (JBRSSFeedSubsUnreadTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     JBRSSFeedUnreadList *unread = [self.unreadLists listWithIndex:[self.subsUnreadList indexWithIndexPath:indexPath]];
-    if ([unread isFinishedLoading]) {
+    if ([unread count] > 0) {
         [unread setIsUnread:NO];
-        [cell designWithIsFinishedLoading:[unread isFinishedLoading]
+        [cell designWithIsFinishedLoading:[unread count] > 0
                                  isUnread:[unread isUnread]];
 
         // 既読API実行
