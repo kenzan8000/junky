@@ -3,6 +3,8 @@
 #import "JBRSSPinList.h"
 #import "JBWebViewController.h"
 #import "JBBlinkView.h"
+#import "JBRSSOperationQueue.h"
+#import "JBRSSFeedTouchAllOperation.h"
 /// Connection
 #import "StatusCode.h"
 /// NSFoundation-Extension
@@ -15,6 +17,8 @@
 #import "MTStatusBarOverlay.h"
 #import "DejalActivityView.h"
 #import "IonIcons.h"
+/// Pods-Extension
+#import "JBQBFlatButton.h"
 
 
 #pragma mark - JBRSSFeedUnreadController
@@ -32,6 +36,7 @@
 @synthesize indexOfUnreadListBackgroundView;
 @synthesize indexOfUnreadListLabel;
 @synthesize URLLabel;
+@synthesize reloadButton;
 
 
 #pragma mark - initializer
@@ -112,11 +117,40 @@
         self.webView.frame.size.width, webViewBottomY - webViewOriginY
     )];
 
+    // 記事一覧読み込み失敗時のリロードボタン
+    [self.reloadButton setImage:[IonIcons imageWithIcon:icon_refresh
+                                                   size:28
+                                                  color:[UIColor whiteColor]]
+                       forState:UIControlStateNormal];
+    self.reloadButton.margin = 2.0f;
+    self.reloadButton.depth = 2.0f;
+    [self.reloadButton setFaceColor:[UIColor colorWithHexadecimal:0xf1c40fff]
+                           forState:UIControlStateNormal];
+    [self.reloadButton setFaceColor:[UIColor colorWithHexadecimal:0xf39c12ff]
+                           forState:UIControlStateHighlighted];
+    [self.reloadButton setSideColor:[UIColor colorWithHexadecimal:0xf39c12ff]
+                           forState:UIControlStateNormal];
+    [self.reloadButton setSideColor:[UIColor colorWithHexadecimal:0xf57415ff]
+                           forState:UIControlStateHighlighted];
+    [self.reloadButton setHidden:YES];
+
+    // unread listの読み込みが失敗していた場合
+    if (self.unreadList.isFailedLoad) {
+        [self.titleView setTitle:NSLocalizedString(@"Getting Unread Article Failed", @"未読の記事取得に失敗しました")];
+        [self.reloadButton setHidden:NO];
+    }
     // unread listの読み込みがまだの場合
-    if (self.unreadList.count == 0) {
-        [self.unreadList setListDelegate:self];
-        [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
-        [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
+    else if (self.unreadList.count == 0) {
+        // 未読0件
+        if ([self.unreadList isFinishedLoading]) {
+            [self.titleView setTitle:NSLocalizedString(@"No Unread Article", @"未読の記事がありません")];
+        }
+        // 読み込み中
+        else {
+            [self.unreadList setListDelegate:self];
+            [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
+            [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
+        }
     }
 }
 
@@ -198,7 +232,7 @@ didFailLoadWithError:error];
 
     // 既読だった場合
     if (self.unreadList.count == 0) {
-        [self.titleView setTitle:NSLocalizedString(@"No unread article", @"未読の記事がありません")];
+        [self.titleView setTitle:NSLocalizedString(@"No Unread Article", @"未読の記事がありません")];
         return;
     }
 
@@ -212,16 +246,28 @@ didFailLoadWithError:error];
     [self setIndexOfUnreadListBackgroundViewPositionByScrollViewY];
     [self setIndexOfUnreadListWithIndex:self.indexOfUnreadList];
 
+    // 既読API実行
+    JBRSSFeedTouchAllOperation *operation = [[JBRSSFeedTouchAllOperation alloc] initWithHandler:
+        ^ (NSHTTPURLResponse *response, id object, NSError *error) {
+            if (error) {
+                NSLog(@"%@", error);
+            }
+        }
+                                                                                    subscribeId:list.subscribeId
+    ];
+    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
 - (void)unreadListDidFailLoadWithError:(NSError *)error
 {
+    [self.reloadButton setHidden:NO];
     // エラー処理
-    switch (error.code) {
-        case http::statusCode::UNAUTHORIZED: // 401
-            break;
-        default:
-            break;
+         // 401
+    if (error.code == http::statusCode::UNAUTHORIZED) {
+    }
+    else {
+        [self.titleView setTitle:NSLocalizedString(@"Getting Unread Article Failed", @"未読の記事取得に失敗しました")];
     }
 }
 
@@ -303,6 +349,12 @@ didFailLoadWithError:error];
     if (previousIndex != self.indexOfUnreadList) { [self loadWebView]; }
     [self designPreviousAndNextButton];
     [self setIndexOfUnreadListBackgroundViewPositionByScrollViewY];
+}
+
+- (IBAction)touchedUpInsideWithReloadButton:(UIButton *)button
+{
+    [self.reloadButton setHidden:YES];
+    [self.unreadList loadFeedFromWebAPI];
 }
 
 - (void)scrollViewDidPulled

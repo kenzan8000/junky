@@ -53,6 +53,15 @@
     return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
 }
 
++ (NSMutableURLRequest *)JBRSSTouchAllRequestWithSubscribeId:(NSString *)subscribeId
+{
+    NSString *URLString = [NSString stringWithFormat:@"%@%@",
+        [NSString stringWithFormat:kAPILivedoorReaderTouchAll, subscribeId],
+        [NSMutableURLRequest queryStringLivedoorReaderAPIKey]
+    ];
+    return [NSMutableURLRequest JBRSSPostRequestWithURL:[NSURL URLWithString:URLString]];
+}
+
 + (NSMutableURLRequest *)JBRSSFeedDiscoverRequestWithURL:(NSURL *)URL
 {
     NSString *URLString = [NSString stringWithFormat:@"%@%@",

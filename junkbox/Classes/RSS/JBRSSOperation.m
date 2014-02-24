@@ -1,5 +1,7 @@
 #import "JBRSSOperation.h"
 #import "JBRSSOperationQueue.h"
+/// NSFoundation-Extension
+#import "NSData+JSON.h"
 /// Connection
 #import "StatusCode.h"
 /// Pods
@@ -26,6 +28,14 @@
             NSString *errorMessage = [[NSString alloc] initWithData:object encoding:NSUTF8StringEncoding];
             if ([errorMessage isEqualToString:@"Not Authorized"]) {
                 eCode = http::statusCode::UNAUTHORIZED;
+            }
+        }
+        else if ([object isKindOfClass:[NSData class]]) {
+            NSDictionary *json = [object JSON];
+            if (json && [json isKindOfClass:[NSDictionary class]]){
+                if ([[json allKeys] containsObject:@"ErrorCode"]) {
+                    eCode = [json[@"ErrorCode"] integerValue];
+                }
             }
         }
         if (eCode >= http::statusCode::ERROR) {

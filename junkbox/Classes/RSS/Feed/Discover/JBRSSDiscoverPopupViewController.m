@@ -271,12 +271,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     JBRSSDiscover *discover = discovers[index];
     JBRSSFeedSubscribeOperation *operation = nil;
     operation = [[JBRSSFeedSubscribeOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-        NSDictionary *JSON = [object JSON];
-        JBLog(@"%@", JSON);
         // ステータスバー
         dispatch_async(dispatch_get_main_queue(), ^ () {
             // 失敗
-            if (error || [JSON[@"isSuccess"] boolValue] == NO) {
+            if (error) {
                     [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Failed Adding RSS Feed", @"RSSフィードの登録に失敗しました")
                                                                           duration:2.5f
                                                                           animated:YES];
@@ -305,10 +303,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     JBRSSDiscover *discover = discovers[index];
     JBRSSFeedSetRateOperation *operation = nil;
     operation = [[JBRSSFeedSetRateOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-        NSDictionary *JSON = [object JSON];
-        JBLog(@"%@", JSON);
         // 失敗
-        if (error || [JSON[@"isSuccess"] boolValue] == NO) {
+        if (error) {
             dispatch_async(dispatch_get_main_queue(), ^ () {
                 [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Failed Adding RSS Feed", @"RSSフィードの登録に失敗しました")
                                                                       duration:2.5f

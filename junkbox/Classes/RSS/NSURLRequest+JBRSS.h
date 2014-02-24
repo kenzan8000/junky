@@ -33,6 +33,13 @@
 + (NSMutableURLRequest *)JBRSSUnreadRequestWithSubscribeId:(NSString *)subscribeId;
 
 /**
+ * フィードを既読化
+ * @param subscribeId フィードのsubscribeId
+ * @return request
+ */
++ (NSMutableURLRequest *)JBRSSTouchAllRequestWithSubscribeId:(NSString *)subscribeId;
+
+/**
  * URLからフィードを探す
  * @param URL URL
  * @return request

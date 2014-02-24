@@ -234,9 +234,7 @@
     JBRSSPinAddOperation *operation = [[JBRSSPinAddOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error)
         {
             // 成功
-            NSDictionary *JSON = [object JSON];
-            JBLog(@"%@", JSON);
-            if (error == nil && [[JSON allKeys] containsObject:@"isSuccess"] && [JSON[@"isSuccess"] boolValue]) {
+            if (error == nil) {
                 return;
             }
             // 失敗
@@ -292,9 +290,7 @@
     JBRSSPinRemoveOperation *operation = [[JBRSSPinRemoveOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error)
         {
             // 成功
-            NSDictionary *JSON = [object JSON];
-            JBLog(@"%@", JSON);
-            if (error == nil && [[JSON allKeys] containsObject:@"isSuccess"] && [JSON[@"isSuccess"] boolValue]) {
+            if (error == nil) {
                 return;
             }
             // 失敗

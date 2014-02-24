@@ -51,6 +51,16 @@
                                     <outlet property="delegate" destination="nGA-IY-Ie1" id="tGr-ll-Qtu"/>
                                 </connections>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kp0-8B-MfH" customClass="JBQBFlatButton">
+                                <rect key="frame" x="116" y="240" width="88" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchedUpInsideWithReloadButton:" destination="nGA-IY-Ie1" eventType="touchUpInside" id="5UY-G3-Thv"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" id="SS8-Vc-TiZ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="24"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -121,6 +131,7 @@
                         <outlet property="indexOfUnreadListLabel" destination="Fl5-ic-pId" id="8w1-P4-LBW"/>
                         <outlet property="nextButton" destination="4Pv-qM-GFS" id="dvT-h0-gQt"/>
                         <outlet property="previousButton" destination="nyL-Rh-vC3" id="fEu-lT-8un"/>
+                        <outlet property="reloadButton" destination="kp0-8B-MfH" id="6ii-TR-kw6"/>
                         <outlet property="webView" destination="Pam-7s-c1a" id="NNj-fw-kYw"/>
                     </connections>
                 </viewController>

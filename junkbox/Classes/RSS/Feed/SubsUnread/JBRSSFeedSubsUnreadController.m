@@ -3,6 +3,7 @@
 #import "JBRSSConstant.h"
 #import "JBRSSFeedSubsUnreadTableViewCell.h"
 #import "JBRSSFeedSubsUnread.h"
+#import "JBRSSFeedTouchAllOperation.h"
 #import "JBRSSOperationQueue.h"
 #import "JBRSSFeedUnreadLists.h"
 #import "JBNavigationBarTitleView.h"
@@ -203,6 +204,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [unread setIsUnread:NO];
         [cell designWithIsFinishedLoading:[unread isFinishedLoading]
                                  isUnread:[unread isUnread]];
+
+        // 既読API実行
+        JBRSSFeedTouchAllOperation *operation = [[JBRSSFeedTouchAllOperation alloc] initWithHandler:
+            ^ (NSHTTPURLResponse *response, id object, NSError *error) {
+                if (error) {
+                    NSLog(@"%@", error);
+                }
+            }
+                                                                                        subscribeId:unread.subscribeId
+        ];
+        [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
+        [[JBRSSOperationQueue defaultQueue] addOperation:operation];
     }
     // 遷移
     [self performSegueWithIdentifier:kStoryboardSeguePushRSSFeedUnreadController

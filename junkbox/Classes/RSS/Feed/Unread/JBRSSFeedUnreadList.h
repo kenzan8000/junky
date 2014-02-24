@@ -61,7 +61,11 @@
 /// 詳細リスト
 @property (nonatomic, strong) NSMutableArray *list;
 /// フィード詳細リストロード処理
-@property (nonatomic, strong) JBRSSFeedUnreadOperation *operation;
+@property (strong) JBRSSFeedUnreadOperation *operation;
+/// フィードのsubscribeId
+@property (nonatomic, strong) NSString *subscribeId;
+/// フィードの読み込みに失敗したかどうかのフラグ(operationをもう一度やり直す場合、フラグは元に戻される)
+@property (nonatomic, assign) BOOL isFailedLoad;
 /// 未読かどうか
 @property (nonatomic, assign) BOOL isUnread;
 

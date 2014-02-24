@@ -28,39 +28,24 @@
 @synthesize listDelegate;
 @synthesize listsDelegate;
 @synthesize list;
+@synthesize subscribeId;
 @synthesize operation;
 @synthesize updateQueue;
+@synthesize isFailedLoad;
 @synthesize isUnread;
 
 
 #pragma mark - initializer
-- (id)initWithSubscribeId:(NSString *)subscribeId
+- (id)initWithSubscribeId:(NSString *)sId
              listDelegate:(id<JBRSSFeedUnreadListDelegate>)listDel
             listsDelegate:(id<JBRSSFeedUnreadListsDelegate>)listsDel
 {
     self = [super init];
     if (self) {
+        self.subscribeId = sId;
         self.listDelegate = listDel;
         self.listsDelegate = listsDel;
         self.list = [NSMutableArray arrayWithArray:@[]];
-
-        __weak __typeof(self) weakSelf = self;
-        // フィード詳細取得
-        JBRSSFeedUnreadOperation *op = [[JBRSSFeedUnreadOperation alloc] initWithSubscribeId:subscribeId
-                                                                                     handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-            // 成功
-            if (error == nil) {
-                NSDictionary *JSON = [object JSON];
-                JBLog(@"%@", JSON);
-                [weakSelf finishLoadListWithJSON:JSON];
-
-                return;
-            }
-            // 失敗
-            [weakSelf failLoadListWithError:error];
-        }];
-        self.operation = op;
-
         // 詳細リストの更新処理
         NSString *queueName = [NSString stringWithFormat:@"%@.%@",
             [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
@@ -68,6 +53,7 @@
         ];
         self.updateQueue = dispatch_queue_create([queueName cStringUsingEncoding:[NSString defaultCStringEncoding]], NULL);
 
+        self.isFailedLoad = NO;
         self.isUnread = YES;
     }
     return self;
@@ -80,13 +66,31 @@
     self.updateQueue = nil;
     self.operation = nil;
     self.list = nil;
+    self.subscribeId = nil;
 }
 
 
 #pragma mark - api
 - (void)loadFeedFromWebAPI
 {
-    [[JBRSSOperationQueue defaultQueue] addOperation:self.operation];
+    self.isFailedLoad = NO;
+    __weak __typeof(self) weakSelf = self;
+    // フィード詳細取得
+    JBRSSFeedUnreadOperation *op = [[JBRSSFeedUnreadOperation alloc] initWithSubscribeId:self.subscribeId
+                                                                                 handler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
+        // 成功
+        if (error == nil) {
+            NSDictionary *JSON = [object JSON];
+            JBLog(@"%@", JSON);
+            [weakSelf finishLoadListWithJSON:JSON];
+
+            return;
+        }
+        // 失敗
+        [weakSelf failLoadListWithError:error];
+    }];
+    [[JBRSSOperationQueue defaultQueue] addOperation:op];
+    self.operation = op;
 }
 
 - (void)stopLoadingFeedFromWebAPI
@@ -146,6 +150,7 @@
  */
 - (void)failLoadListWithError:(NSError *)error
 {
+    self.isFailedLoad = YES;
     __weak __typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^ () {
         if (weakSelf.listsDelegate && [weakSelf.listsDelegate respondsToSelector:@selector(unreadListsDidFailLoadWithError:list:)]) {
@@ -185,7 +190,7 @@
 
 - (BOOL)isFinishedLoading
 {
-    return ([self count] > 0);
+    return [self.operation isFinished];
 }
 
 

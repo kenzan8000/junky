@@ -6,6 +6,7 @@
 
 #pragma mark - class
 @class JBNavigationBarTitleView;
+@class JBQBFlatButton;
 
 
 #pragma mark - JBRSSFeedUnreadController
@@ -37,6 +38,9 @@
 /// 次の記事へ
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
 
+/// 記事一覧読み込み失敗した時のためのリロードボタン
+@property (nonatomic, weak) IBOutlet JBQBFlatButton *reloadButton;
+
 
 #pragma mark - event listener
 /**
@@ -50,6 +54,12 @@
  * @param button button
  */
 - (IBAction)touchedUpInsideWithNextButton:(UIButton *)button;
+
+/*
+ * 記事一覧リロードボタン押下
+ * @param button button
+ */
+- (IBAction)touchedUpInsideWithReloadButton:(UIButton *)button;
 
 
 #pragma mark - api

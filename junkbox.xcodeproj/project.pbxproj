@@ -75,6 +75,7 @@
 		E6BAB8C617B0131300C1FEC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C517B0131300C1FEC1 /* UIKit.framework */; };
 		E6BAB8C817B0131300C1FEC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C717B0131300C1FEC1 /* Foundation.framework */; };
 		E6BAB8CA17B0131300C1FEC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BAB8C917B0131300C1FEC1 /* CoreGraphics.framework */; };
+		E6C036D418BB7E9200742DCA /* JBRSSFeedTouchAllOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C036D318BB7E9200742DCA /* JBRSSFeedTouchAllOperation.m */; };
 		E6C7BE5818A87F62007A80E4 /* JBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE5718A87F62007A80E4 /* JBNavigationController.m */; };
 		E6C7BE6118A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE5E18A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m */; };
 		E6C7BE6418A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C7BE6318A89A6F007A80E4 /* JBPopViewControllerAnimatedTransitioning.m */; };
@@ -243,6 +244,8 @@
 		E6BAB8C517B0131300C1FEC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E6BAB8C717B0131300C1FEC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E6BAB8C917B0131300C1FEC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E6C036D218BB7E9200742DCA /* JBRSSFeedTouchAllOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBRSSFeedTouchAllOperation.h; sourceTree = "<group>"; };
+		E6C036D318BB7E9200742DCA /* JBRSSFeedTouchAllOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBRSSFeedTouchAllOperation.m; sourceTree = "<group>"; };
 		E6C7BE5618A87F62007A80E4 /* JBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBNavigationController.h; sourceTree = "<group>"; };
 		E6C7BE5718A87F62007A80E4 /* JBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBNavigationController.m; sourceTree = "<group>"; };
 		E6C7BE5D18A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBPushViewControllerAnimatedTransitioning.h; sourceTree = "<group>"; };
@@ -710,6 +713,8 @@
 				E6C9006B186400840007449D /* JBRSSFeedSubsUnreadList.m */,
 				E6C9006C186400840007449D /* JBRSSFeedSubsUnreadOperation.h */,
 				E6C9006D186400840007449D /* JBRSSFeedSubsUnreadOperation.m */,
+				E6C036D218BB7E9200742DCA /* JBRSSFeedTouchAllOperation.h */,
+				E6C036D318BB7E9200742DCA /* JBRSSFeedTouchAllOperation.m */,
 				E6C90068186400840007449D /* JBRSSFeedSubsUnreadController.h */,
 				E6C90069186400840007449D /* JBRSSFeedSubsUnreadController.m */,
 				E6C9006E186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.h */,
@@ -1099,6 +1104,7 @@
 				E64BB4E118B6828B008A0B5F /* JBLicenceViewController.m in Sources */,
 				E6A8DC6718962ED200AE5C51 /* JBTabBarController.m in Sources */,
 				E6C7BE6118A8980B007A80E4 /* JBPushViewControllerAnimatedTransitioning.m in Sources */,
+				E6C036D418BB7E9200742DCA /* JBRSSFeedTouchAllOperation.m in Sources */,
 				E6AD1C8818AF720000F1EE6E /* JBPullToRefreshHeaderView.m in Sources */,
 				E6E4FEE0188C58E10068D929 /* JBSidebarMenu.m in Sources */,
 				E6C90073186400840007449D /* JBRSSFeedSubsUnreadList.m in Sources */,
