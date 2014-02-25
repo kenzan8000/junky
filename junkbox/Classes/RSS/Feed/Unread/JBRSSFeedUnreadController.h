@@ -7,6 +7,22 @@
 #pragma mark - class
 @class JBNavigationBarTitleView;
 @class JBQBFlatButton;
+@class JBRSSFeedUnreadController;
+
+
+#pragma mark - JBRSSFeedUnreadControllerDelegate
+/// Delegate
+@protocol JBRSSFeedUnreadControllerDelegate <NSObject>
+
+
+/**
+ * フィードを既読
+ * @param vc JBRSSFeedUnreadController
+ */
+- (void)feedWillTouchAllWithRSSFeedUnreadController:(JBRSSFeedUnreadController *)vc;
+
+
+@end
 
 
 #pragma mark - JBRSSFeedUnreadController
@@ -40,6 +56,9 @@
 
 /// 記事一覧読み込み失敗した時のためのリロードボタン
 @property (nonatomic, weak) IBOutlet JBQBFlatButton *reloadButton;
+
+/// Delegate
+@property (nonatomic, weak) id<JBRSSFeedUnreadControllerDelegate> delegate;
 
 
 #pragma mark - event listener

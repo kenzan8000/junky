@@ -1,9 +1,7 @@
 #import "JBRSSFeedSubsUnreadController.h"
-#import "JBRSSFeedUnreadController.h"
 #import "JBRSSConstant.h"
 #import "JBRSSFeedSubsUnreadTableViewCell.h"
 #import "JBRSSFeedSubsUnread.h"
-#import "JBRSSFeedTouchAllOperation.h"
 #import "JBRSSOperationQueue.h"
 #import "JBRSSFeedUnreadLists.h"
 #import "JBNavigationBarTitleView.h"
@@ -121,6 +119,7 @@
 {
     if ([[segue identifier] isEqualToString:kStoryboardSeguePushRSSFeedUnreadController]) {
         JBRSSFeedUnreadController *vc = (JBRSSFeedUnreadController *)[segue destinationViewController];
+        [vc setDelegate:self];
         JBRSSFeedUnreadList *unread = [self.unreadLists listWithIndex:self.indexOfselectCell];
         [vc setUnreadList:unread];
     }
@@ -197,26 +196,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     self.indexOfselectCell = [self.subsUnreadList indexWithIndexPath:indexPath];
     [self.tableView deselectRowAtIndexPath:indexPath
                                   animated:YES];
-    // 既読化
-    JBRSSFeedSubsUnreadTableViewCell *cell = (JBRSSFeedSubsUnreadTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    JBRSSFeedUnreadList *unread = [self.unreadLists listWithIndex:[self.subsUnreadList indexWithIndexPath:indexPath]];
-    if ([unread count] > 0) {
-        [unread setIsUnread:NO];
-        [cell designWithIsFinishedLoading:[unread count] > 0
-                                 isUnread:[unread isUnread]];
-
-        // 既読API実行
-        JBRSSFeedTouchAllOperation *operation = [[JBRSSFeedTouchAllOperation alloc] initWithHandler:
-            ^ (NSHTTPURLResponse *response, id object, NSError *error) {
-                if (error) {
-                    NSLog(@"%@", error);
-                }
-            }
-                                                                                        subscribeId:unread.subscribeId
-        ];
-        [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
-        [[JBRSSOperationQueue defaultQueue] addOperation:operation];
-    }
     // 遷移
     [self performSegueWithIdentifier:kStoryboardSeguePushRSSFeedUnreadController
                               sender:self];
@@ -330,6 +309,25 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [self presentViewController:vc
                          JBAnimated:YES
                          completion:^ () {}];
+    }
+}
+
+
+#pragma mark - JBRSSFeedUnreadControllerDelegate
+/**
+ * フィードを既読
+ * @param vc JBRSSFeedUnreadController
+ */
+- (void)feedWillTouchAllWithRSSFeedUnreadController:(JBRSSFeedUnreadController *)vc
+{
+    // 既読化
+    NSIndexPath *indexPath = [self.subsUnreadList indexPathWithIndex:self.indexOfselectCell];
+    JBRSSFeedSubsUnreadTableViewCell *cell = (JBRSSFeedSubsUnreadTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    JBRSSFeedUnreadList *unread = [self.unreadLists listWithIndex:[self.subsUnreadList indexWithIndexPath:indexPath]];
+    if ([unread count] > 0) {
+        [unread setIsUnread:NO];
+        [cell designWithIsFinishedLoading:[unread count] > 0
+                                 isUnread:[unread isUnread]];
     }
 }
 

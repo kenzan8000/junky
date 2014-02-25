@@ -17,8 +17,10 @@
 #import "MTStatusBarOverlay.h"
 #import "DejalActivityView.h"
 #import "IonIcons.h"
+#import "Reachability.h"
 /// Pods-Extension
 #import "JBQBFlatButton.h"
+#import "SSGentleAlertView+Junkbox.h"
 
 
 #pragma mark - JBRSSFeedUnreadController
@@ -37,6 +39,7 @@
 @synthesize indexOfUnreadListLabel;
 @synthesize URLLabel;
 @synthesize reloadButton;
+@synthesize delegate;
 
 
 #pragma mark - initializer
@@ -139,17 +142,23 @@
         [self.titleView setTitle:NSLocalizedString(@"Getting Unread Article Failed", @"未読の記事取得に失敗しました")];
         [self.reloadButton setHidden:NO];
     }
-    // unread listの読み込みがまだの場合
-    else if (self.unreadList.count == 0) {
-        // 未読0件
+    // unread listの読み込みがまだ && 読み込み中
+    else if (self.unreadList.count == 0 && [self.unreadList isFinishedLoading] == NO) {
+        [self.reloadButton setHidden:YES];
+        [self.unreadList setListDelegate:self];
+        [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
+        [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
+    }
+    // 既読 or 未読0件
+    else {
         if ([self.unreadList isFinishedLoading]) {
             [self.titleView setTitle:NSLocalizedString(@"No Unread Article", @"未読の記事がありません")];
         }
-        // 読み込み中
-        else {
-            [self.unreadList setListDelegate:self];
-            [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
-            [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
+        // 既読
+        if (self.delegate &&
+            [self.delegate respondsToSelector:@selector(feedWillTouchAllWithRSSFeedUnreadController:)]) {
+            [self.delegate feedWillTouchAllWithRSSFeedUnreadController:self];
+            [self touchAllToWebAPI];
         }
     }
 }
@@ -246,21 +255,17 @@ didFailLoadWithError:error];
     [self setIndexOfUnreadListBackgroundViewPositionByScrollViewY];
     [self setIndexOfUnreadListWithIndex:self.indexOfUnreadList];
 
-    // 既読API実行
-    JBRSSFeedTouchAllOperation *operation = [[JBRSSFeedTouchAllOperation alloc] initWithHandler:
-        ^ (NSHTTPURLResponse *response, id object, NSError *error) {
-            if (error) {
-                NSLog(@"%@", error);
-            }
-        }
-                                                                                    subscribeId:list.subscribeId
-    ];
-    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
-    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
+    // 既読
+    if (self.delegate &&
+        [self.delegate respondsToSelector:@selector(feedWillTouchAllWithRSSFeedUnreadController:)]) {
+        [self.delegate feedWillTouchAllWithRSSFeedUnreadController:self];
+        [self touchAllToWebAPI];
+    }
 }
 
 - (void)unreadListDidFailLoadWithError:(NSError *)error
 {
+    [DejalActivityView removeView];
     [self.reloadButton setHidden:NO];
     // エラー処理
          // 401
@@ -353,8 +358,18 @@ didFailLoadWithError:error];
 
 - (IBAction)touchedUpInsideWithReloadButton:(UIButton *)button
 {
-    [self.reloadButton setHidden:YES];
+    if ([[Reachability reachabilityForInternetConnection] isReachable] == NO) {
+        [SSGentleAlertView showWithMessage:NSLocalizedString(@"Cannot access the Network.", @"not reachable")
+                              buttonTitles:@[NSLocalizedString(@"Confirm", @"確認")]
+                                  delegate:nil];
+        return;
+    }
+
     [self.unreadList loadFeedFromWebAPI];
+    [self.reloadButton setHidden:YES];
+    [self.unreadList setListDelegate:self];
+    [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
 }
 
 - (void)scrollViewDidPulled
@@ -454,6 +469,23 @@ didFailLoadWithError:error];
         self.indexOfUnreadListBackgroundView.frame.origin.x, paddingY,
         self.indexOfUnreadListBackgroundView.frame.size.width, self.indexOfUnreadListBackgroundView.frame.size.height
     )];
+}
+
+/**
+ * フィードを既読化
+ */
+- (void)touchAllToWebAPI
+{
+    JBRSSFeedTouchAllOperation *operation = [[JBRSSFeedTouchAllOperation alloc] initWithHandler:
+        ^ (NSHTTPURLResponse *response, id object, NSError *error) {
+            if (error) {
+                NSLog(@"%@", error);
+            }
+        }
+                                                                                    subscribeId:self.unreadList.subscribeId
+    ];
+    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [[JBRSSOperationQueue defaultQueue] addOperation:operation];
 }
 
 

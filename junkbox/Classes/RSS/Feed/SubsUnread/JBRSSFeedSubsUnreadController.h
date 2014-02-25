@@ -2,11 +2,12 @@
 #import "JBRSSFeedSubsUnreadList.h"
 #import "JBRSSFeedUnreadLists.h"
 #import "JBBarButtonView.h"
+#import "JBRSSFeedUnreadController.h"
 
 
 #pragma mark - JBRSSFeedSubsUnreadController
 /// RSSフィード未読一覧
-@interface JBRSSFeedSubsUnreadController : TableViewController <JBRSSFeedSubsUnreadListDelegate, JBRSSFeedUnreadListsDelegate, JBBarButtonViewDelegate> {
+@interface JBRSSFeedSubsUnreadController : TableViewController <JBRSSFeedSubsUnreadListDelegate, JBRSSFeedUnreadListsDelegate, JBBarButtonViewDelegate, JBRSSFeedUnreadControllerDelegate> {
 }
 
 

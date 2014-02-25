@@ -10,7 +10,7 @@ pod 'ISHTTPOperation', '~> 1.1.0'
 # Core Data
 pod 'NLCoreData'
 # Social Bookmark
-pod 'HatenaBookmarkSDK', :git => 'https://github.com/hatena/Hatena-Bookmark-iOS-SDK.git'
+pod 'HatenaBookmarkSDK'
 # User Interface
 pod 'DejalActivityView'
 pod 'EDStarRating'
@@ -20,7 +20,7 @@ pod 'NKToggleOverlayButton', '~> 1.0.0'
 pod 'QBFlatButton'
 pod 'RNFrostedSidebar', '~> 0.2.0'
 pod 'SSGentleAlertView'
-pod 'SAMBadgeView', :git => 'https://github.com/soffes/SAMBadgeView.git'
+pod 'SAMBadgeView'
 # Font
 pod 'ionicons'
 # XML Parser
