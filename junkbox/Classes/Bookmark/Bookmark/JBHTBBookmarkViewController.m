@@ -13,7 +13,7 @@
 
 
 #pragma mark - synthesize
-@synthesize closeButton;
+//@synthesize closeButton;
 
 
 #pragma mark - initializer
@@ -22,7 +22,7 @@
 #pragma mark - release
 - (void)dealloc
 {
-    self.closeButton = nil;
+//    self.closeButton = nil;
 }
 
 
@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+/*
     // NavigationBar
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexadecimal:0x4682b4ff];
         // タイトル
@@ -55,16 +55,7 @@
     [emptyButtonView setHidden:YES];
     [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:emptyButtonView]]
                                        animated:NO];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+*/
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -83,6 +74,7 @@
  * ボタン押下
  * @param barButtonView barButtonView
  */
+/*
 - (void)touchedUpInsideButtonWithBarButtonView:(JBBarButtonView *)barButtonView
 {
     if (barButtonView == self.closeButton) {
@@ -91,6 +83,7 @@
                                  completion:^ () { }];
     }
 }
+*/
 
 
 @end

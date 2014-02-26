@@ -5,13 +5,15 @@
 
 #pragma mark - JBHTBBookmarkViewController
 /// ブックマーク
-@interface JBHTBBookmarkViewController : HTBHatenaBookmarkViewController <JBBarButtonViewDelegate> {
+@interface JBHTBBookmarkViewController : HTBHatenaBookmarkViewController {
 }
+//@interface JBHTBBookmarkViewController : HTBHatenaBookmarkViewController <JBBarButtonViewDelegate> {
+//}
 
 
 #pragma mark - property
 /// 閉じるボタン
-@property (nonatomic, strong) JBBarButtonView *closeButton;
+//@property (nonatomic, strong) JBBarButtonView *closeButton;
 
 
 @end

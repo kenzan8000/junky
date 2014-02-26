@@ -1,7 +1,7 @@
 #pragma mark - constant
 
 
-#pragma mark - Storyboard
+#pragma mark - URL
 /// App Store URL
 #define kURLAppStore                                @"http://itunes.apple.com/us/app/junky/id"
 
@@ -25,6 +25,7 @@
 /// ライセンス情報画面遷移
 #define kStoryboardSeguePushLicenceController       @"pushJBLicenceViewCntroller"
 
+
 #pragma mark - Notification
 /// RSS Reader ログイン開始
 #define kNotificationRSSLoginStart                              @"JBNotificationRSSLoginStart"
@@ -38,6 +39,7 @@
 #define kNotificationModalBookmarkLoginControllerWillDismiss    @"JBNotificationBookmarkLoginControllerDismiss"
 /// ModalViewControllerをdismissする
 #define kNotificationModalViewControllerWillDismiss             @"JBNotificationModalViewControllerWillDismiss"
+
 
 #pragma mark - Model
 #define kXCDataModelName                            @"JBModel"
