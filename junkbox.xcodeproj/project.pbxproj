@@ -28,6 +28,9 @@
 		E62D4A9918ACE7C600BD37A1 /* JBBookmarkCatalogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E62D4A9818ACE7C600BD37A1 /* JBBookmarkCatalogTableViewCell.xib */; };
 		E630B7BF17B6237000B0407A /* NSDictionary+HTTPBody.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7BE17B6237000B0407A /* NSDictionary+HTTPBody.m */; };
 		E630B7C217B62E7800B0407A /* NSURLRequest+JBRSS.m in Sources */ = {isa = PBXBuildFile; fileRef = E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */; };
+		E64636EE18BF9D3A0059E1D6 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E64636E618BF9D3A0059E1D6 /* Icon-40@2x.png */; };
+		E64636F018BF9D3A0059E1D6 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E64636E818BF9D3A0059E1D6 /* Icon-60@2x.png */; };
+		E64636F418BF9D3A0059E1D6 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E64636EC18BF9D3A0059E1D6 /* Icon-Small@2x.png */; };
 		E648C97118A9EC7800737CA4 /* JBBookmarkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C96E18A9EC7800737CA4 /* JBBookmarkOperation.m */; };
 		E648C97218A9EC7800737CA4 /* JBBookmarkOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C97018A9EC7800737CA4 /* JBBookmarkOperationQueue.m */; };
 		E648C97518A9EE6600737CA4 /* NSURLRequest+JBBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = E648C97418A9EE6600737CA4 /* NSURLRequest+JBBookmark.m */; };
@@ -169,6 +172,9 @@
 		E630B7BE17B6237000B0407A /* NSDictionary+HTTPBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HTTPBody.m"; sourceTree = "<group>"; };
 		E630B7C017B62E7800B0407A /* NSURLRequest+JBRSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+JBRSS.h"; sourceTree = "<group>"; };
 		E630B7C117B62E7800B0407A /* NSURLRequest+JBRSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+JBRSS.m"; sourceTree = "<group>"; };
+		E64636E618BF9D3A0059E1D6 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
+		E64636E818BF9D3A0059E1D6 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		E64636EC18BF9D3A0059E1D6 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		E648C96C18A9E90C00737CA4 /* JBBookmarkConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkConstant.h; sourceTree = "<group>"; };
 		E648C96D18A9EC7800737CA4 /* JBBookmarkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBookmarkOperation.h; sourceTree = "<group>"; };
 		E648C96E18A9EC7800737CA4 /* JBBookmarkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBookmarkOperation.m; sourceTree = "<group>"; };
@@ -440,6 +446,7 @@
 			children = (
 				E6AD1C8618AF720000F1EE6E /* JBPullToRefreshHeaderView.h */,
 				E6AD1C8718AF720000F1EE6E /* JBPullToRefreshHeaderView.m */,
+				E691072C18ADE1AE00D67A61 /* Label */,
 				E6AD1C8B18AF747B00F1EE6E /* JBPullToRefreshHeaderView.xib */,
 				E6EC3ABE18AE04A3000E9791 /* JBBlinkView.h */,
 				E6EC3ABF18AE04A3000E9791 /* JBBlinkView.m */,
@@ -506,6 +513,9 @@
 		E68EB9DC17B01624006711A6 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				E64636E618BF9D3A0059E1D6 /* Icon-40@2x.png */,
+				E64636E818BF9D3A0059E1D6 /* Icon-60@2x.png */,
+				E64636EC18BF9D3A0059E1D6 /* Icon-Small@2x.png */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -543,7 +553,8 @@
 				E691072E18ADE1AE00D67A61 /* JBOutlineLabel.h */,
 				E691072F18ADE1AE00D67A61 /* JBOutlineLabel.m */,
 			);
-			path = Label;
+			name = Label;
+			path = ../Label;
 			sourceTree = "<group>";
 		};
 		E6BAB8B917B0131300C1FEC1 = {
@@ -839,7 +850,6 @@
 		E6FC100317B16FA800A12BED /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				E691072C18ADE1AE00D67A61 /* Label */,
 				E6006D4318AB98A100A7EF11 /* Popup */,
 				E67E6E901889DFF200D36A47 /* View */,
 				E6FC100417B16FA800A12BED /* ViewController */,
@@ -962,6 +972,7 @@
 				E68EB9E717B01624006711A6 /* Default.png in Resources */,
 				E6FED2A018ABB21B0099ED79 /* JBRSSDiscoverTableViewCell.xib in Resources */,
 				E6F08352186AE5D2007FEDD4 /* JBBookmark.storyboard in Resources */,
+				E64636F018BF9D3A0059E1D6 /* Icon-60@2x.png in Resources */,
 				E62D4A9918ACE7C600BD37A1 /* JBBookmarkCatalogTableViewCell.xib in Resources */,
 				E60A4B85189592A5007AA0A7 /* JBRSSPin.storyboard in Resources */,
 				E68EB9E817B01624006711A6 /* Default@2x.png in Resources */,
@@ -969,6 +980,7 @@
 				E64BB4D818B6811F008A0B5F /* JBSettingHintTableViewCell.xib in Resources */,
 				E68EB9F817B01AE7006711A6 /* Localizable.strings in Resources */,
 				E64BB48B18B61354008A0B5F /* JBSetting.storyboard in Resources */,
+				E64636F418BF9D3A0059E1D6 /* Icon-Small@2x.png in Resources */,
 				E64BB48618B60EA1008A0B5F /* acknowledgements.plist in Resources */,
 				E67E6E981889DFF200D36A47 /* JBBarButtonView.xib in Resources */,
 				E6C90076186400840007449D /* JBRSSFeedSubsUnreadTableViewCell.xib in Resources */,
@@ -977,6 +989,7 @@
 				E64BB4DC18B6811F008A0B5F /* JBSettingSocialTableViewCell.xib in Resources */,
 				E60A4B89189592A5007AA0A7 /* JBRSSPinTableViewCell.xib in Resources */,
 				E67E6E9A1889DFF200D36A47 /* JBNavigationBarTitleView.xib in Resources */,
+				E64636EE18BF9D3A0059E1D6 /* Icon-40@2x.png in Resources */,
 				E6FED2A618ABE6E00099ED79 /* common_clear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
