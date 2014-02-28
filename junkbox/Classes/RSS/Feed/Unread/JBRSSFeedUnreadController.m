@@ -127,13 +127,13 @@
                        forState:UIControlStateNormal];
     self.reloadButton.margin = 2.0f;
     self.reloadButton.depth = 2.0f;
-    [self.reloadButton setFaceColor:[UIColor colorWithHexadecimal:0xf1c40fff]
+    [self.reloadButton setFaceColor:[UIColor colorWithHexadecimal:0x7f8c8dff]
                            forState:UIControlStateNormal];
-    [self.reloadButton setFaceColor:[UIColor colorWithHexadecimal:0xf39c12ff]
+    [self.reloadButton setFaceColor:[UIColor colorWithHexadecimal:0x687378ff]
                            forState:UIControlStateHighlighted];
-    [self.reloadButton setSideColor:[UIColor colorWithHexadecimal:0xf39c12ff]
+    [self.reloadButton setSideColor:[UIColor colorWithHexadecimal:0x687378ff]
                            forState:UIControlStateNormal];
-    [self.reloadButton setSideColor:[UIColor colorWithHexadecimal:0xf57415ff]
+    [self.reloadButton setSideColor:[UIColor colorWithHexadecimal:0x505a5fff]
                            forState:UIControlStateHighlighted];
     [self.reloadButton setHidden:YES];
 

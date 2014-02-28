@@ -12,6 +12,8 @@
 #import "MTStatusBarOverlay.h"
 #import "HatenaBookmarkSDK.h"
 #import "IonIcons.h"
+/// Pods-Extension
+#import "SSGentleAlertView+Junkbox.h"
 
 
 #pragma mark - JBBookmarkCatalogController
@@ -68,8 +70,6 @@
     self.bookmarkList = [JBBookmarkList sharedInstance];
     [self.bookmarkList setDelegate:self];
     [self.bookmarkList loadFromLocal];
-    if ([HTBHatenaBookmarkManager sharedManager].authorized) {
-    }
 
     // ナビゲーションバー
         // タイトル
@@ -103,6 +103,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.loginButtonView.alpha = ([HTBHatenaBookmarkManager sharedManager].authorized) ? 0.3f : 1.0f;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -221,27 +222,14 @@ shouldReloadTableForSearchString:(NSString *)searchString
 {
     // ログイン
     if (barButtonView == self.loginButtonView) {
-        // Notification
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(showOAuthLoginViewWithNotification:)
-                                                     name:kHTBLoginStartNotification
-                                                   object:nil];
-        // Login
-        [[HTBHatenaBookmarkManager sharedManager] logout];
-        __weak __typeof(self) weakSelf = self;
-        [[HTBHatenaBookmarkManager sharedManager] authorizeWithSuccess:^ () {
-            // Statusbar
-            [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the bookmark list...", @"ブックマーク一覧取得")
-                                                    animated:YES];
-            // Bookmark一覧インポート
-            [weakSelf.bookmarkList loadFromWebAPI];
-            // dismiss
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationModalBookmarkLoginControllerWillDismiss
-                                                                object:nil
-                                                              userInfo:@{}];
+        if ([HTBHatenaBookmarkManager sharedManager].authorized) {
+            [SSGentleAlertView showWithMessage:NSLocalizedString(@"Do you logout current account and login?", @"今ログインしているアカウントをログアウトしてからログインしますか？")
+                                  buttonTitles:@[NSLocalizedString(@"No", @"いいえ"), NSLocalizedString(@"Yes", @"はい")]
+                                      delegate:self];
         }
-                                                               failure:^ (NSError *error) {
-        }];
+        else {
+            [self prepareLogin];
+        }
     }
     else if (barButtonView == self.searchButtonView) {
         [self.searchBar becomeFirstResponder];
@@ -274,6 +262,22 @@ shouldReloadTableForSearchString:(NSString *)searchString
     //[self.pullToRefreshHeaderView finishRefreshing];
     [self.refreshControl endRefreshing];
     [[MTStatusBarOverlay sharedInstance] hide];
+}
+
+
+#pragma mark - SSGentleAlertViewDelegate
+- (void)alertView:(SSGentleAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)index
+{
+    switch (index) {
+        // No
+        case 0:
+            break;
+        // Yes
+        case 1:
+            [self prepareLogin];
+            break;
+    }
 }
 
 
@@ -326,6 +330,33 @@ shouldReloadTableForSearchString:(NSString *)searchString
 
 
 #pragma mark - private api
+/**
+ * はてなブックマークログインをする前の準備処理
+ */
+- (void)prepareLogin
+{
+    // Notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showOAuthLoginViewWithNotification:)
+                                                 name:kHTBLoginStartNotification
+                                               object:nil];
+    // Login
+    [[HTBHatenaBookmarkManager sharedManager] logout];
+    __weak __typeof(self) weakSelf = self;
+    [[HTBHatenaBookmarkManager sharedManager] authorizeWithSuccess:^ () {
+        // Statusbar
+        [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the bookmark list...", @"ブックマーク一覧取得")
+                                                animated:YES];
+        // Bookmark一覧インポート
+        [weakSelf.bookmarkList loadFromWebAPI];
+        // dismiss
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationModalBookmarkLoginControllerWillDismiss
+                                                            object:nil
+                                                          userInfo:@{}];
+    }
+                                                           failure:^ (NSError *error) {
+    }];
+}
 
 
 @end

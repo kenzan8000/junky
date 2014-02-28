@@ -5,6 +5,7 @@
 #import "JBRSSDiscoverPopupViewController.h"
 #import "JBRSSPinList.h"
 #import "JBRSSConstant.h"
+#import "JBRSSLogin.h"
 /// NSFoundation-Extension
 #import "NSData+JSON.h"
 /// UIKit-Extension
@@ -34,8 +35,7 @@
     if (self) {
         self.type = t;
         BOOL hatebuIsAuthorized = [HTBHatenaBookmarkManager sharedManager].authorized;
-        NSString *ldrApiKey = [[NSUserDefaults standardUserDefaults] stringForKey:kUserDefaultsLivedoorReaderApiKey];
-        BOOL ldrIsAuthorized = !(ldrApiKey == nil || [ldrApiKey isKindOfClass:[NSNull class]] || [ldrApiKey isEqualToString:@""]);
+        BOOL ldrIsAuthorized = [[JBRSSLogin sharedInstance] authorized];
         if (hatebuIsAuthorized == NO && ldrIsAuthorized == NO) {
             self.type = JBSidebarMenuTypeNone;
         }
