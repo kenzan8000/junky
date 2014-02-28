@@ -446,7 +446,6 @@
 			children = (
 				E6AD1C8618AF720000F1EE6E /* JBPullToRefreshHeaderView.h */,
 				E6AD1C8718AF720000F1EE6E /* JBPullToRefreshHeaderView.m */,
-				E691072C18ADE1AE00D67A61 /* Label */,
 				E6AD1C8B18AF747B00F1EE6E /* JBPullToRefreshHeaderView.xib */,
 				E6EC3ABE18AE04A3000E9791 /* JBBlinkView.h */,
 				E6EC3ABF18AE04A3000E9791 /* JBBlinkView.m */,
@@ -553,8 +552,7 @@
 				E691072E18ADE1AE00D67A61 /* JBOutlineLabel.h */,
 				E691072F18ADE1AE00D67A61 /* JBOutlineLabel.m */,
 			);
-			name = Label;
-			path = ../Label;
+			path = Label;
 			sourceTree = "<group>";
 		};
 		E6BAB8B917B0131300C1FEC1 = {
@@ -853,6 +851,7 @@
 				E6006D4318AB98A100A7EF11 /* Popup */,
 				E67E6E901889DFF200D36A47 /* View */,
 				E6FC100417B16FA800A12BED /* ViewController */,
+				E691072C18ADE1AE00D67A61 /* Label */,
 				E6C7BE5918A8980B007A80E4 /* Animation */,
 			);
 			path = UIKit;
