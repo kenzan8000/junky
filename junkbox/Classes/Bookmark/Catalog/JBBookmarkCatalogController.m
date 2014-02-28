@@ -103,7 +103,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.loginButtonView.alpha = ([HTBHatenaBookmarkManager sharedManager].authorized) ? 0.3f : 1.0f;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -288,6 +287,11 @@ clickedButtonAtIndex:(NSInteger)index
  */
 - (void)showOAuthLoginViewWithNotification:(NSNotification *)notification
 {
+    // Statusbar
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^ () {
+        [[MTStatusBarOverlay sharedInstance] hide];
+    });
+
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:kHTBLoginStartNotification
                                                   object:nil];
@@ -335,6 +339,9 @@ clickedButtonAtIndex:(NSInteger)index
  */
 - (void)prepareLogin
 {
+    // Statusbar
+    [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Preparing login Hatena Bookmark", @"ログイン準備")
+                                            animated:YES];
     // Notification
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showOAuthLoginViewWithNotification:)
@@ -345,7 +352,7 @@ clickedButtonAtIndex:(NSInteger)index
     __weak __typeof(self) weakSelf = self;
     [[HTBHatenaBookmarkManager sharedManager] authorizeWithSuccess:^ () {
         // Statusbar
-        [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the bookmark list...", @"ブックマーク一覧取得")
+        [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the Bookmark list...", @"ブックマーク一覧取得")
                                                 animated:YES];
         // Bookmark一覧インポート
         [weakSelf.bookmarkList loadFromWebAPI];
@@ -355,6 +362,12 @@ clickedButtonAtIndex:(NSInteger)index
                                                           userInfo:@{}];
     }
                                                            failure:^ (NSError *error) {
+        // Statusbar
+        dispatch_async(dispatch_get_main_queue(), ^ () {
+            [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Hatena Bookmark Login Failed", @"Hatena Bookmarkのログインに失敗しました")
+                                                                  duration:2.5f
+                                                                  animated:YES];
+        });
     }];
 }
 

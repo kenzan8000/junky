@@ -76,7 +76,9 @@
  *                    Bookmark
  * *************************************************/
 "Hatena Bookmark" = "Hatena Bookmark";
-"Getting the bookmark list..." = "ブックマーク一覧を読み込んでいます...";
+"Preparing login Hatena Bookmark" = "Hatena Bookmark ログインの準備をしています";
+"Hatena Bookmark Login Failed" = "Hatena Bookmarkのログインに失敗しました";
+"Getting the Bookmark list..." = "ブックマーク一覧を読み込んでいます...";
 "Do you logout current account and login?" = "今ログインしているアカウントをログアウトしてからログインしますか？";
 
 
