@@ -1,4 +1,5 @@
 #import "JBRSSPinController.h"
+#import "JBRSSLogin.h"
 #import "JBRSSPinTableViewCell.h"
 #import "JBRSSPinList.h"
 #import "JBRSSPin.h"
@@ -87,12 +88,14 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.loginButtonView setHidden:[[JBRSSLogin sharedInstance] authorizeIsActive]];
     [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self.loginButtonView setHidden:[[JBRSSLogin sharedInstance] authorizeIsActive]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -212,11 +215,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // ログイン
     if (barButtonView == self.loginButtonView) {
-        UINavigationController *vc = [UINavigationController new];
-        [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
-        [self presentViewController:vc
-                         JBAnimated:YES
-                         completion:^ () {}];
+        [self login];
     }
 }
 
@@ -236,6 +235,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)loginDidSuccess:(NSNotification *)notification
 {
     [self.pinList loadAllPinFromWebAPI];
+}
+
+/**
+ * ログイン
+ */
+- (void)login
+{
+    UINavigationController *vc = [UINavigationController new];
+    [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
+    [self presentViewController:vc
+                     JBAnimated:YES
+                     completion:^ () {}];
 }
 
 

@@ -6,6 +6,7 @@
 #import "JBRSSFeedUnreadLists.h"
 #import "JBNavigationBarTitleView.h"
 #import "JBOutlineLabel.h"
+#import "JBRSSLogin.h"
 #import "UIViewController+ModalAnimatedTransition.h"
 /// Connection
 #import "StatusCode.h"
@@ -17,6 +18,8 @@
 #import "UIColor+Hexadecimal.h"
 #import "UIStoryboard+UIKit.h"
 #import "UINib+UIKit.h"
+/// Pods-Extension
+#import "SSGentleAlertView+Junkbox.h"
 
 
 #pragma mark - JBRSSFeedSubsUnreadController
@@ -97,11 +100,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.loginButtonView setHidden:[[JBRSSLogin sharedInstance] authorizeIsActive]];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self.loginButtonView setHidden:[[JBRSSLogin sharedInstance] authorizeIsActive]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -304,11 +309,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // ログイン
     if (barButtonView == self.loginButtonView) {
-        UINavigationController *vc = [UINavigationController new];
-        [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
-        [self presentViewController:vc
-                         JBAnimated:YES
-                         completion:^ () {}];
+        [self login];
     }
 }
 
@@ -367,6 +368,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Getting the unread feed list...", @"未読フィード一覧読み込み")
                                                 animated:YES];
     });
+}
+
+/**
+ * ログイン
+ */
+- (void)login
+{
+    UINavigationController *vc = [UINavigationController new];
+    [vc setViewControllers:@[[UIStoryboard UIKitFromName:kStoryboardRSSLogin]]];
+    [self presentViewController:vc
+                     JBAnimated:YES
+                     completion:^ () {}];
 }
 
 

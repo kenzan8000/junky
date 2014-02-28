@@ -6,7 +6,8 @@
 @implementation JBRSSLogin
 
 
-#pragma mark - property
+#pragma mark - synthesize
+@synthesize authorizeIsActive;
 
 
 #pragma mark - class method
@@ -18,6 +19,17 @@
         _JBRSSLogin = [JBRSSLogin new];
     });
     return _JBRSSLogin;
+}
+
+
+#pragma mark - initializer
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.authorizeIsActive = NO;
+    }
+    return self;
 }
 
 

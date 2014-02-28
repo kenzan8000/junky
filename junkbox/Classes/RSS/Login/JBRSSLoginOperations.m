@@ -1,5 +1,6 @@
 #import "JBRSSConstant.h"
 #import "JBLoginOperation.h"
+#import "JBRSSLogin.h"
 #import "JBRSSLoginOperations.h"
 #import "JBRSSOperationQueue.h"
 #import "NSURLRequest+JBRSS.h"
@@ -112,6 +113,10 @@
                                                 userInfo:@{}]);
         return;
     }
+
+    // ログイン中
+    [[JBRSSLogin sharedInstance] setAuthorizeIsActive:YES];
+
     // RSS Readerに新しくログインする場合、他のRSS関連の通信をすべて止める
     [[JBRSSOperationQueue defaultQueue] cancelAllOperations];
     // セッションクリア
@@ -142,6 +147,9 @@
             [[JBRSSOperationQueue defaultQueue] setMaxConcurrentOperationCount:kMaxOperationCountOfRSSConnection];
 
             h(response, object, loginError);
+
+            // ログイン終了
+            [[JBRSSLogin sharedInstance] setAuthorizeIsActive:NO];
         }
         else {
             // セッションをセット
@@ -171,6 +179,9 @@
         }
 
         h(response, object, loginError);
+
+        // ログイン終了
+        [[JBRSSLogin sharedInstance] setAuthorizeIsActive:NO];
     };
 
     // Connection1

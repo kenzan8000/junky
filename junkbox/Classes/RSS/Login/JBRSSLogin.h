@@ -1,10 +1,12 @@
 #pragma mark - JBRSSLogin
-/// RSS Reader Cookie保存
+/// RSS Reader ログイン関係
 @interface JBRSSLogin : NSObject {
 }
 
 
 #pragma mark - property
+/// ログイン処理中かどうか
+@property (nonatomic, assign) BOOL authorizeIsActive;
 
 
 #pragma mark - class method
