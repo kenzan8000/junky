@@ -21,6 +21,7 @@ pod 'QBFlatButton'
 pod 'RNFrostedSidebar', '~> 0.2.0'
 pod 'SSGentleAlertView'
 pod 'SAMBadgeView'
+pod 'TYMActivityIndicatorView'
 # Font
 pod 'ionicons'
 # XML Parser

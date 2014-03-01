@@ -6,6 +6,7 @@
 #import "UINib+UIKit.h"
 // Pods
 #import "IonIcons.h"
+#import "TYMActivityIndicatorView.h"
 
 
 #pragma mark - JBBookmarkLoginController
@@ -14,6 +15,7 @@
 
 #pragma mark - synthesize
 @synthesize closeButton;
+@synthesize indicatorView;
 
 
 #pragma mark - initializer
@@ -22,6 +24,9 @@
 #pragma mark - release
 - (void)dealloc
 {
+    [self.indicatorView stopAnimating];
+    [self.indicatorView removeFromSuperview];
+    self.indicatorView = nil;
     self.closeButton = nil;
 }
 
@@ -30,6 +35,13 @@
 - (void)loadView
 {
     [super loadView];
+
+    self.indicatorView = [[TYMActivityIndicatorView alloc] initWithActivityIndicatorStyle:TYMActivityIndicatorViewStyleNormal];
+    [self.indicatorView setBackgroundImage:nil];
+    [self.indicatorView setHidesWhenStopped:YES];
+    [self.indicatorView stopAnimating];
+    [self.view addSubview:self.indicatorView];
+    self.indicatorView.center = self.view.center;
 }
 
 - (void)viewDidLoad
@@ -112,6 +124,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     if ([HTBLoginWebViewController instancesRespondToSelector:@selector(webViewDidStartLoad:)]) {
         [super webViewDidStartLoad:webView];
     }
+    [self.indicatorView startAnimating];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -119,6 +132,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     if ([HTBLoginWebViewController instancesRespondToSelector:@selector(webViewDidFinishLoad:)]) {
         [super webViewDidFinishLoad:webView];
     }
+    [self.indicatorView stopAnimating];
 }
 
 - (void)webView:(UIWebView *)webView
@@ -128,6 +142,7 @@ didFailLoadWithError:(NSError *)error
         [super webView:webView
   didFailLoadWithError:error];
     }
+    [self.indicatorView stopAnimating];
 }
 
 

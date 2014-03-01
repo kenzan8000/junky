@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JBWebViewController">
             <connections>
+                <outlet property="indicatorView" destination="jC5-fb-2vP" id="UJ7-CZ-t50"/>
                 <outlet property="view" destination="ayv-HH-Max" id="jXm-gW-iHZ"/>
                 <outlet property="webView" destination="TOb-Zz-VHy" id="GdS-fY-fIM"/>
                 <outlet property="webViewProgressView" destination="xAw-Pm-fix" id="8dq-sK-wXy"/>
@@ -24,6 +25,11 @@
                         <outlet property="delegate" destination="-1" id="JQY-9P-Oty"/>
                     </connections>
                 </webView>
+                <view contentMode="scaleToFill" id="jC5-fb-2vP" customClass="TYMActivityIndicatorView">
+                    <rect key="frame" x="142" y="221" width="37" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="xAw-Pm-fix">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>

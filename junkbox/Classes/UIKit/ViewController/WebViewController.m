@@ -1,4 +1,5 @@
 #import "WebViewController.h"
+#import "TYMActivityIndicatorView.h"
 
 
 #pragma mark - WebViewController
@@ -8,11 +9,13 @@
 #pragma mark - synthesize
 @synthesize webView;
 @synthesize refreshControl;
+@synthesize indicatorView;
 
 
 #pragma mark - release
 - (void)dealloc
 {
+    [self.indicatorView stopAnimating];
     [self.refreshControl removeFromSuperview];
     self.refreshControl = nil;
 }
@@ -32,6 +35,12 @@
                             action:@selector(scrollViewDidPulled)
                   forControlEvents:UIControlEventValueChanged];
     [self.webView.scrollView addSubview:self.refreshControl];
+
+    // Indicator
+    [self.indicatorView setActivityIndicatorViewStyle:TYMActivityIndicatorViewStyleNormal];
+    [self.indicatorView setBackgroundImage:nil];
+    [self.indicatorView setHidesWhenStopped:YES];
+    [self.indicatorView stopAnimating];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,11 +81,13 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
+    [self.indicatorView startAnimating];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self.refreshControl endRefreshing];
+    [self.indicatorView stopAnimating];
 }
 
 - (void)webView:(UIWebView *)webView
@@ -84,6 +95,7 @@ didFailLoadWithError:(NSError *)error
 {
     [self.webView.scrollView setContentSize:CGSizeMake(self.webView.frame.size.width, self.webView.scrollView.contentSize.height)];
     [self.refreshControl endRefreshing];
+    [self.indicatorView stopAnimating];
 }
 
 
