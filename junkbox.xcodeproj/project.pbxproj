@@ -249,7 +249,7 @@
 		E6AD1C8618AF720000F1EE6E /* JBPullToRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBPullToRefreshHeaderView.h; sourceTree = "<group>"; };
 		E6AD1C8718AF720000F1EE6E /* JBPullToRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBPullToRefreshHeaderView.m; sourceTree = "<group>"; };
 		E6AD1C8B18AF747B00F1EE6E /* JBPullToRefreshHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JBPullToRefreshHeaderView.xib; sourceTree = "<group>"; };
-		E6BAB8C217B0131300C1FEC1 /* debug.junkbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debug.junkbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6BAB8C217B0131300C1FEC1 /* debug.Junky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debug.Junky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6BAB8C517B0131300C1FEC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E6BAB8C717B0131300C1FEC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E6BAB8C917B0131300C1FEC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -571,7 +571,7 @@
 		E6BAB8C317B0131300C1FEC1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E6BAB8C217B0131300C1FEC1 /* debug.junkbox.app */,
+				E6BAB8C217B0131300C1FEC1 /* debug.Junky.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -926,7 +926,7 @@
 			);
 			name = junkbox;
 			productName = junkbox;
-			productReference = E6BAB8C217B0131300C1FEC1 /* debug.junkbox.app */;
+			productReference = E6BAB8C217B0131300C1FEC1 /* debug.Junky.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1186,7 +1186,7 @@
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
 				INFOPLIST_FILE = junkbox/Resources/Plists/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "debug.$(TARGET_NAME)";
+				PRODUCT_NAME = debug.Junky;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1228,7 +1228,7 @@
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
 				INFOPLIST_FILE = junkbox/Resources/Plists/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Junky;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};

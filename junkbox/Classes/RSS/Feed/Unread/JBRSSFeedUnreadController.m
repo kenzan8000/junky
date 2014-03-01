@@ -142,18 +142,23 @@
         [self.titleView setTitle:NSLocalizedString(@"Getting Unread Article Failed", @"未読の記事取得に失敗しました")];
         [self.reloadButton setHidden:NO];
     }
-    // unread listの読み込みがまだ && 読み込み中
-    else if (self.unreadList.count == 0 && [self.unreadList isFinishedLoading] == NO) {
-        [self.reloadButton setHidden:YES];
-        [self.unreadList setListDelegate:self];
-        [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
-        [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
-    }
-    // 既読 or 未読0件
-    else {
-        if ([self.unreadList isFinishedLoading]) {
-            [self.titleView setTitle:NSLocalizedString(@"No Unread Article", @"未読の記事がありません")];
+    else if (self.unreadList.count == 0) {
+        // unread listの読み込みがまだ && 読み込み中
+        if ([self.unreadList isFinishedLoading] == NO) {
+            [self.reloadButton setHidden:YES];
+            [self.unreadList setListDelegate:self];
+            [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
+            [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
         }
+        // 未読0件
+        else {
+            if ([self.unreadList isFinishedLoading]) {
+                [self.titleView setTitle:NSLocalizedString(@"No Unread Article", @"未読の記事がありません")];
+            }
+        }
+    }
+    // 既読
+    else {
         // 既読
         if (self.delegate &&
             [self.delegate respondsToSelector:@selector(feedWillTouchAllWithRSSFeedUnreadController:)]) {
@@ -240,7 +245,7 @@ didFailLoadWithError:error];
     [DejalActivityView removeView];
 
     // 既読だった場合
-    if (self.unreadList.count == 0) {
+    if (list.count == 0) {
         [self.titleView setTitle:NSLocalizedString(@"No Unread Article", @"未読の記事がありません")];
         return;
     }

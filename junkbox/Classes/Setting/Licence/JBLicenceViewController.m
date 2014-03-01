@@ -51,7 +51,13 @@
                                                                    icon:icon_arrow_left_c];
     [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:self.backButtonView]]
                                       animated:NO];
-
+        //
+    JBBarButtonView *emptyButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
+                                                                               title:NSLocalizedString(@"Menu", @"メニューボタン")
+                                                                                icon:icon_navicon];
+    [emptyButtonView setHidden:YES];
+    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem spaceBarButtonItemWithWidth:-16], [[UIBarButtonItem alloc] initWithCustomView:emptyButtonView]]
+                                       animated:NO];
     // Licence
     [self initializeLicence];
 }
