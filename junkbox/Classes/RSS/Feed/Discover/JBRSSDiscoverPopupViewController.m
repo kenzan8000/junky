@@ -271,19 +271,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     JBRSSDiscover *discover = discovers[index];
     JBRSSFeedSubscribeOperation *operation = nil;
     operation = [[JBRSSFeedSubscribeOperation alloc] initWithHandler:^ (NSHTTPURLResponse *response, id object, NSError *error) {
-        // ステータスバー
-        dispatch_async(dispatch_get_main_queue(), ^ () {
-            // 失敗
-            if (error) {
+        // 失敗
+        if (error) {
+            // ステータスバー
+            dispatch_async(dispatch_get_main_queue(), ^ () {
                     [[MTStatusBarOverlay sharedInstance] postImmediateErrorMessage:NSLocalizedString(@"Failed Adding RSS Feed", @"RSSフィードの登録に失敗しました")
                                                                           duration:2.5f
                                                                           animated:YES];
-            }
-            else {
-                [JBRSSDiscoverPopupViewController doSetRateOperationWithDiscovers:discovers
-                                                                            index:index];
-            }
-        });
+            });
+        }
+        else {
+            [JBRSSDiscoverPopupViewController doSetRateOperationWithDiscovers:discovers
+                                                                        index:index];
+        }
     }
                                                                  URL:discover.feedlink
     ];
