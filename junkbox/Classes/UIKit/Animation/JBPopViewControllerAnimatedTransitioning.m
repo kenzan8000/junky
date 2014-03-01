@@ -46,7 +46,14 @@
         toView.alpha = 1.0f;
     }
                      completion:^ (BOOL finished) {
-        [transitionContext completeTransition:YES];
+        if ([transitionContext transitionWasCancelled]) {
+            [toVC.view removeFromSuperview];
+        }
+        else {
+            [fromVC.view removeFromSuperview];
+        }
+
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
 }
 

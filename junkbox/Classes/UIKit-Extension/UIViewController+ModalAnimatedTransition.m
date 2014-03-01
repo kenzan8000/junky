@@ -8,10 +8,10 @@
 #pragma mark - notification
 - (void)JBModalViewControllerWillDismissWithNotification:(NSNotification *)notification
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:kNotificationModalViewControllerWillDismiss
-                                                  object:nil];
-    [self dismissJBAnimation];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self
+//                                                    name:kNotificationModalViewControllerWillDismiss
+//                                                  object:nil];
+//    [self dismissJBAnimation];
 }
 
 
@@ -20,10 +20,9 @@
                    JBAnimated:(BOOL)animated
                    completion:(void (^)(void))completion
 {
-    if (animated) {
-        [self presentJBAnimation];
-    }
-
+//    if (animated) {
+//        [self presentJBAnimation];
+//    }
     [self presentViewController:viewController
                        animated:animated
                      completion:completion];
@@ -32,12 +31,11 @@
 - (void)dismissViewControllerJBAnimated:(BOOL)animated
                              completion:(void (^)(void))completion
 {
-    if (animated) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationModalViewControllerWillDismiss
-                                                            object:nil
-                                                          userInfo:@{}];
-    }
-
+//    if (animated) {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationModalViewControllerWillDismiss
+//                                                            object:nil
+//                                                          userInfo:@{}];
+//    }
     [self dismissViewControllerAnimated:animated
                              completion:completion];
 }

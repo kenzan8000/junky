@@ -19,6 +19,7 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
 
     self.interactivePopGestureRecognizer.delegate = self;
+    self.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -41,7 +42,7 @@
     [super viewDidDisappear:animated];
 }
 
-
+/*
 #pragma mark - UINavigationControllerDelegate
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
@@ -58,7 +59,7 @@
     }
     return nil;
 }
-
+*/
 
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
@@ -67,7 +68,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     // UIScreenEdgePanGestureRecognizer
     UIScreenEdgePanGestureRecognizer *edgePanGestureRecognizer = nil;
     UIGestureRecognizer *canceledGestureRecognizer = nil;
-    if ([gestureRecognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]]) {
+    if (gestureRecognizer == self.interactivePopGestureRecognizer) {
         edgePanGestureRecognizer = (UIScreenEdgePanGestureRecognizer *)gestureRecognizer;
         canceledGestureRecognizer = otherGestureRecognizer;
     }
