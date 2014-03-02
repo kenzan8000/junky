@@ -1222,14 +1222,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53D3013BD4F540AEB55F7CE7 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kenzan Hase (6RYZ4RB738)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kenzan Hase (6RYZ4RB738)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
 				INFOPLIST_FILE = junkbox/Resources/Plists/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Junky;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "D58758A7-446F-49E4-9C35-0B1AB4195C0A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = release;
