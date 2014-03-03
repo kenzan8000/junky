@@ -15,11 +15,11 @@
 #import "UINib+UIKit.h"
 /// Pods
 #import "MTStatusBarOverlay.h"
-#import "DejalActivityView.h"
 #import "IonIcons.h"
 #import "Reachability.h"
 /// Pods-Extension
 #import "JBQBFlatButton.h"
+#import "TYMActivityIndicatorView.h"
 #import "SSGentleAlertView+Junkbox.h"
 
 
@@ -35,6 +35,7 @@
 @synthesize nextButton;
 @synthesize backButtonView;
 @synthesize pinButtonView;
+@synthesize indicatorView;
 @synthesize indexOfUnreadListBackgroundView;
 @synthesize indexOfUnreadListLabel;
 @synthesize URLLabel;
@@ -137,6 +138,12 @@
                            forState:UIControlStateHighlighted];
     [self.reloadButton setHidden:YES];
 
+    // Indicator
+    [self.indicatorView setActivityIndicatorViewStyle:TYMActivityIndicatorViewStyleNormal];
+    [self.indicatorView setBackgroundImage:nil];
+    [self.indicatorView setHidesWhenStopped:YES];
+    [self.indicatorView stopAnimating];
+
     // unread listの読み込みが失敗していた場合
     if (self.unreadList.isFailedLoad) {
         [self.titleView setTitle:NSLocalizedString(@"Getting Unread Article Failed", @"未読の記事取得に失敗しました")];
@@ -148,7 +155,7 @@
             [self.reloadButton setHidden:YES];
             [self.unreadList setListDelegate:self];
             [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
-            [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
+            [self.indicatorView startAnimating];
         }
         // 未読0件
         else {
@@ -242,7 +249,7 @@ didFailLoadWithError:error];
 - (void)unreadListDidFinishLoadWithList:(JBRSSFeedUnreadList *)list
 {
     // アニメーション終了
-    [DejalActivityView removeView];
+      [self.indicatorView stopAnimating];
 
     // 既読だった場合
     if (list.count == 0) {
@@ -270,7 +277,7 @@ didFailLoadWithError:error];
 
 - (void)unreadListDidFailLoadWithError:(NSError *)error
 {
-    [DejalActivityView removeView];
+      [self.indicatorView stopAnimating];
     [self.reloadButton setHidden:NO];
     // エラー処理
          // 401
@@ -374,7 +381,7 @@ didFailLoadWithError:error];
     [self.reloadButton setHidden:YES];
     [self.unreadList setListDelegate:self];
     [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
-    [DejalActivityView activityViewForView:self.view withLabel:NSLocalizedString(@"Loading...", @"読み込み中")];
+    [self.indicatorView startAnimating];
 }
 
 - (void)scrollViewDidPulled

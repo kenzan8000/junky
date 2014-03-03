@@ -1,6 +1,5 @@
 PODS:
   - AFNetworking (1.3.3)
-  - DejalActivityView (1.2)
   - EDStarRating (1.1)
   - HatenaBookmarkSDK (1.1.1):
     - AFNetworking (~> 1.0)
@@ -25,7 +24,6 @@ PODS:
   - XMLDictionary (1.3)
 
 DEPENDENCIES:
-  - DejalActivityView
   - EDStarRating
   - HatenaBookmarkSDK
   - ionicons
@@ -44,7 +42,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
-  DejalActivityView: 3a7f7a2be287c0f25f547762815c40709b02169c
   EDStarRating: 6761f41fd040f1cde155e2885dddc96461620f67
   HatenaBookmarkSDK: 2447855afdf5e36131ca7a4f1c57a5e52983664c
   ionicons: 50c5368bc6e4dbd1a26559aff0b67f2ed8640c48

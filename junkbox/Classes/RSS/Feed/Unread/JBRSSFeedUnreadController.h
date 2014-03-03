@@ -8,6 +8,7 @@
 @class JBNavigationBarTitleView;
 @class JBQBFlatButton;
 @class JBRSSFeedUnreadController;
+@class TYMActivityIndicatorView;
 
 
 #pragma mark - JBRSSFeedUnreadControllerDelegate
@@ -53,6 +54,9 @@
 @property (nonatomic, weak) IBOutlet UIButton *previousButton;
 /// 次の記事へ
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
+
+/// インジケーター
+@property (nonatomic, weak) IBOutlet TYMActivityIndicatorView *indicatorView;
 
 /// 記事一覧読み込み失敗した時のためのリロードボタン
 @property (nonatomic, weak) IBOutlet JBQBFlatButton *reloadButton;

@@ -28,7 +28,7 @@
                 <view contentMode="scaleToFill" id="jC5-fb-2vP" customClass="TYMActivityIndicatorView">
                     <rect key="frame" x="142" y="221" width="37" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="xAw-Pm-fix">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>

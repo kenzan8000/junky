@@ -119,6 +119,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <view contentMode="scaleToFill" id="MK2-pP-RSy" customClass="TYMActivityIndicatorView">
+                                <rect key="frame" x="142" y="243" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -129,6 +134,7 @@
                         <outlet property="URLLabel" destination="KZT-Bh-6hL" id="qvp-Xi-3j8"/>
                         <outlet property="indexOfUnreadListBackgroundView" destination="SS8-Vc-TiZ" id="s2I-2o-liY"/>
                         <outlet property="indexOfUnreadListLabel" destination="Fl5-ic-pId" id="8w1-P4-LBW"/>
+                        <outlet property="indicatorView" destination="MK2-pP-RSy" id="gXx-fo-A3v"/>
                         <outlet property="nextButton" destination="4Pv-qM-GFS" id="dvT-h0-gQt"/>
                         <outlet property="previousButton" destination="nyL-Rh-vC3" id="fEu-lT-8un"/>
                         <outlet property="reloadButton" destination="kp0-8B-MfH" id="6ii-TR-kw6"/>

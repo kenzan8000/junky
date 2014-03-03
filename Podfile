@@ -12,7 +12,6 @@ pod 'NLCoreData'
 # Social Bookmark
 pod 'HatenaBookmarkSDK'
 # User Interface
-pod 'DejalActivityView'
 pod 'EDStarRating'
 pod 'MTStatusBarOverlay'
 pod 'NJKWebViewProgress'
