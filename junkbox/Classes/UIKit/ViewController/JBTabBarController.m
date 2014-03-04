@@ -69,6 +69,7 @@
         [IonIcons imageWithIcon:icon_ios7_bookmarks size:32 color:unselectedColor],
         [IonIcons imageWithIcon:icon_gear_b size:32 color:unselectedColor],
     ];
+/*
     // ラベル
     NSArray *titles = @[
         NSLocalizedString(@"Feed", nil),
@@ -82,17 +83,21 @@
         [UIColor colorWithHexadecimal:0x2488cbff],
         [UIColor colorWithHexadecimal:0x2f3c3dff],
     ];
+*/
     for (NSInteger i = 0; i < self.tabBar.items.count; i++) {
         UITabBarItem *item = self.tabBar.items[i];
         [item setSelectedImage:selectedImages[i]];
         [item setImage:images[i]];
+/*
         [item setTitle:titles[i]];
         [item setTitleTextAttributes:@{NSForegroundColorAttributeName:selectedColors[i]}
                             forState:UIControlStateSelected];
+*/
     }
+/*
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:unselectedColor}
                                              forState:UIControlStateNormal];
-
+*/
     // 背景色
     [[UITabBar appearance] setBarTintColor:[UIColor colorWithHexadecimal:0xecf0f1ff]];
 }

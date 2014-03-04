@@ -78,7 +78,7 @@
     [self.titleLabel setHidden:YES];
     [self.titleButton setHidden:NO];
     self.titleButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.titleButton.titleLabel.minimumFontSize = 12;
+    [self.titleButton.titleLabel setMinimumScaleFactor:0.6f];
 }
 
 

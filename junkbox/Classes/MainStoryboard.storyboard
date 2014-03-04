@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Pin Navigation Controller - あとで読む-->
+        <!--Pin Navigation Controller-->
         <scene sceneID="IsI-Sn-aYF">
             <objects>
                 <viewController storyboardIdentifier="JBReadLaterNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8iQ-wp-W6e" customClass="JBRSSPinNavigationController" sceneMemberID="viewController">
@@ -14,15 +14,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="あとで読む" id="Ujg-g1-q0i">
-                        <inset key="imageInsets" minX="-1" minY="-1" maxX="-1" maxY="-1"/>
+                    <tabBarItem key="tabBarItem" title="" id="Ujg-g1-q0i">
+                        <inset key="imageInsets" minX="-6" minY="0.0" maxX="-6" maxY="-12"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xL-4Q-Cwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="431" y="-186"/>
         </scene>
-        <!--Bookmark Controller - ブックマーク-->
+        <!--Bookmark Controller-->
         <scene sceneID="TdN-8i-m4h">
             <objects>
                 <viewController storyboardIdentifier="JBBookmarkController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iba-jl-RLC" customClass="JBBookmarkController" sceneMemberID="viewController">
@@ -42,15 +42,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ブックマーク" id="vCS-BO-cCH">
-                        <inset key="imageInsets" minX="-1" minY="-1" maxX="-1" maxY="-1"/>
+                    <tabBarItem key="tabBarItem" title="" id="vCS-BO-cCH">
+                        <inset key="imageInsets" minX="-6" minY="0.0" maxX="-6" maxY="-12"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PR-Fg-irf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="431" y="471"/>
         </scene>
-        <!--Setting Navigation Controller - 設定-->
+        <!--Setting Navigation Controller-->
         <scene sceneID="xIj-ku-YY3">
             <objects>
                 <viewController storyboardIdentifier="JBSettingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lsk-YM-xyA" customClass="JBSettingNavigationController" sceneMemberID="viewController">
@@ -59,15 +59,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="設定" id="asd-Zl-02s">
-                        <inset key="imageInsets" minX="-1" minY="-1" maxX="-1" maxY="-1"/>
+                    <tabBarItem key="tabBarItem" title="" id="asd-Zl-02s">
+                        <inset key="imageInsets" minX="-6" minY="0.0" maxX="-6" maxY="-12"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHb-0i-cZ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="431" y="1171"/>
         </scene>
-        <!--Controller - フィード-->
+        <!--Controller-->
         <scene sceneID="6BI-rp-K6T">
             <objects>
                 <viewController storyboardIdentifier="JBRSSController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fCC-bM-0oL" customClass="JBRSSController" sceneMemberID="viewController">
@@ -76,8 +76,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="フィード" id="09z-7E-8dy">
-                        <inset key="imageInsets" minX="-1" minY="-1" maxX="-1" maxY="-1"/>
+                    <tabBarItem key="tabBarItem" title="" id="09z-7E-8dy">
+                        <inset key="imageInsets" minX="-6" minY="0.0" maxX="-6" maxY="-12"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeV-9k-MMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
