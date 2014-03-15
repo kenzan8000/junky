@@ -35,6 +35,7 @@
 @synthesize previousButton;
 @synthesize nextButton;
 @synthesize backButtonView;
+@synthesize linkButton;
 @synthesize pinButtonView;
 @synthesize indicatorView;
 @synthesize indexOfUnreadListBackgroundView;
@@ -101,6 +102,18 @@
         [buttons[i] setTitle:buttonTitles[i]
                     forState:UIControlStateNormal];
     }
+
+    // リンクボタン
+    [self.linkButton setFaceColor:[UIColor colorWithHexadecimal:0xe9f0f1c9]
+                           forState:UIControlStateNormal];
+    [self.linkButton setFaceColor:[UIColor colorWithHexadecimal:0xc9d0d1ff]
+                           forState:UIControlStateHighlighted];
+    [self.linkButton setSideColor:[UIColor colorWithHexadecimal:0xe9f0f1c9]
+                           forState:UIControlStateNormal];
+    [self.linkButton setSideColor:[UIColor colorWithHexadecimal:0xc9d0d1ff]
+                           forState:UIControlStateHighlighted];
+    self.linkButton.depth = 0.0f;
+    self.linkButton.margin = 0.0f;
 
     // WebView読み込み
     [self loadWebView];

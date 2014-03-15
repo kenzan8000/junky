@@ -5,6 +5,7 @@
 
 #pragma mark - class
 @class JBNavigationBarTitleView;
+@class QBFlatButton;
 @class JBQBFlatButton;
 @class JBRSSFeedUnreadController;
 @class TYMActivityIndicatorView;
@@ -53,6 +54,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *previousButton;
 /// 次の記事へ
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
+/// リンクボタン
+@property (nonatomic, weak) IBOutlet QBFlatButton *linkButton;
 
 /// インジケーター
 @property (nonatomic, weak) IBOutlet TYMActivityIndicatorView *indicatorView;
