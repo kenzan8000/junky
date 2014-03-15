@@ -1,11 +1,13 @@
 #Junky
 ===============
 
-## What is Junky?
+![Screenshot](https://raw2.github.com/kenzan8000/junky/master/Screenshot/Screenshot.gif "Screenshot")
+
+## Features
 Junky is iOS application which is Livedoor Reader and Hatena Bookmark client.
 You can read internet news like a junky by iPhone.
 
-## How to install
+## Installation
 1. Input terminal. (You have to install CocoaPods. http://cocoapods.org/)
 ```terminal
 git clone https://github.com/kenzan8000/junky.git
