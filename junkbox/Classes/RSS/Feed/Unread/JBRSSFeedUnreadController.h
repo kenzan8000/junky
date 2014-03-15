@@ -1,6 +1,5 @@
 #import "WebViewController.h"
 #import "JBRSSFeedUnreadList.h"
-#import "JBNavigationBarTitleView.h"
 #import "JBBarButtonView.h"
 
 
@@ -28,7 +27,7 @@
 
 #pragma mark - JBRSSFeedUnreadController
 /// RSSフィード詳細
-@interface JBRSSFeedUnreadController : WebViewController <UIScrollViewDelegate, JBRSSFeedUnreadListDelegate, JBNavigationBarTitleViewDelegate, JBBarButtonViewDelegate> {
+@interface JBRSSFeedUnreadController : WebViewController <UIScrollViewDelegate, JBRSSFeedUnreadListDelegate, JBBarButtonViewDelegate> {
 }
 
 
@@ -78,11 +77,17 @@
  */
 - (IBAction)touchedUpInsideWithNextButton:(UIButton *)button;
 
-/*
+/**
  * 記事一覧リロードボタン押下
  * @param button button
  */
 - (IBAction)touchedUpInsideWithReloadButton:(UIButton *)button;
+
+/**
+ * リンクボタンを押下
+ * @param button button
+ */
+- (IBAction)touchedUpInsideWithLinkButton:(UIButton *)button;
 
 
 #pragma mark - api

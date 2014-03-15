@@ -5,6 +5,7 @@
 #import "JBBlinkView.h"
 #import "JBRSSOperationQueue.h"
 #import "JBRSSFeedTouchAllOperation.h"
+#import "JBNavigationBarTitleView.h"
 /// Connection
 #import "StatusCode.h"
 /// NSFoundation-Extension
@@ -77,8 +78,6 @@
     // ナビゲーションバー
         // タイトル
     self.titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
-    self.titleView.delegate = self;
-    [self.titleView useButton];
     self.navigationItem.titleView = self.titleView;
         // 戻る
     self.backButtonView = [JBBarButtonView defaultBarButtonWithDelegate:self
@@ -289,20 +288,6 @@ didFailLoadWithError:error];
 }
 
 
-#pragma mark - JBNavigationBarTitleViewDelegate
-/**
- * タイトルボタン押下
- * @param titleView titleView
- */
-- (void)touchedUpInsideTitleButtonWithNavigationBarTitleViewDelegate:(JBNavigationBarTitleView *)titleView
-{
-    JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
-    if (unread) {
-        [self openURL:unread.link];
-    }
-}
-
-
 #pragma mark - JBBarButtonViewDelegate
 /**
  * ボタン押下
@@ -382,6 +367,14 @@ didFailLoadWithError:error];
     [self.unreadList setListDelegate:self];
     [self.unreadList setOperationQueuePriority:NSOperationQueuePriorityVeryHigh];
     [self.indicatorView startAnimating];
+}
+
+- (IBAction)touchedUpInsideWithLinkButton:(UIButton *)button
+{
+    JBRSSFeedUnread *unread = [self.unreadList unreadWithIndex:self.indexOfUnreadList];
+    if (unread) {
+        [self openURL:unread.link];
+    }
 }
 
 - (void)scrollViewDidPulled

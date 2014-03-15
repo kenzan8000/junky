@@ -70,6 +70,8 @@
 - (void)useLabel
 {
     [self.titleLabel setHidden:NO];
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.titleLabel setMinimumScaleFactor:0.6f];
     [self.titleButton setHidden:YES];
 }
 
