@@ -222,6 +222,7 @@ shouldStartLoadWithRequest:request
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
     [super webViewDidStartLoad:self.webView];
+    [self.indicatorView stopAnimating];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
