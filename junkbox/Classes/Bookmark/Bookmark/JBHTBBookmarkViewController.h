@@ -1,6 +1,6 @@
 #import "HTBHatenaBookmarkViewController.h"
 // Pods
-#import "JBBarButtonView.h"
+//#import "JBBarButtonView.h"
 
 
 #pragma mark - JBHTBBookmarkViewController

@@ -1,11 +1,11 @@
 #import "JBHTBBookmarkViewController.h"
-#import "JBNavigationBarTitleView.h"
+//#import "JBNavigationBarTitleView.h"
 // UIKit-Extension
-#import "UIBarButtonItem+Space.h"
-#import "UIColor+Hexadecimal.h"
-#import "UINib+UIKit.h"
+//#import "UIBarButtonItem+Space.h"
+//#import "UIColor+Hexadecimal.h"
+//#import "UINib+UIKit.h"
 // Pods
-#import "IonIcons.h"
+//#import "IonIcons.h"
 
 
 #pragma mark - JBHTBBookmarkViewController
@@ -35,13 +35,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 /*
     // NavigationBar
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexadecimal:0x4682b4ff];
         // タイトル
     JBNavigationBarTitleView *titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
-    [titleView setTitle:NSLocalizedString(@"Hatena Bookmark", @"はてブ")];
+    [titleView setTitle:self.title];
     self.navigationItem.titleView = titleView;
+*/
+/*
         // 閉じるボタン
     self.closeButton = [JBBarButtonView defaultBarButtonWithDelegate:self
                                                                title:nil
