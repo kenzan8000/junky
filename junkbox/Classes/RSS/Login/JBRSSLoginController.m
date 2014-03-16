@@ -328,7 +328,7 @@ clickedButtonAtIndex:(NSInteger)index
                                                         completion:^ () {}];
         // ステータスバーにログイン中の表示
         dispatch_async(dispatch_get_main_queue(), ^ () {
-            [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Authorizing...", @"ログイン中")
+            [[MTStatusBarOverlay sharedInstance] postMessage:NSLocalizedString(@"Livedoor Reader Authorizing...", @"ログイン中")
                                                     animated:YES];
         });
     }
