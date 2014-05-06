@@ -460,7 +460,7 @@ didFailLoadWithError:error];
 
     if (self.unreadList) {
         NSInteger i = (self.unreadList.count > 0) ? self.indexOfUnreadList+1 : 0;
-        [self.indexOfUnreadListLabel setText:[NSString stringWithFormat:@"%d / %d", i, self.unreadList.count]];
+        [self.indexOfUnreadListLabel setText:[NSString stringWithFormat:@"%@ / %@", @(i), @(self.unreadList.count)]];
     }
     else {
         [self.indexOfUnreadListLabel setText:@""];

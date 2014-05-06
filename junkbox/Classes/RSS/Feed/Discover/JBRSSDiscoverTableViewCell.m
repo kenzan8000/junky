@@ -100,14 +100,14 @@
 - (void)setDiscover:(JBRSSDiscover *)discover
 {
         // 設定
-    if (discover.isSubscribing != self.subscribeButton.isOn) {
+    if (discover.isSubscribing != self.subscribeButton.isSelected) {
         [self.subscribeButton toggle:nil];
     }
 
     // ラベル
     [self.titleLabel setText:discover.title];
     [self.subscribersCountLabel setText:
-        [NSString stringWithFormat:@"%d %@", discover.subscribersCount, NSLocalizedString(@"users", @"users")]
+        [NSString stringWithFormat:@"%@ %@", @(discover.subscribersCount), NSLocalizedString(@"users", @"users")]
     ];
     [self.linkLabel setText:[discover.feedlink absoluteString]];
 

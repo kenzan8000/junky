@@ -935,7 +935,7 @@
 		E6BAB8BA17B0131300C1FEC1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Kenzan Hase";
 				TargetAttributes = {
 					E6BAB8C117B0131300C1FEC1 = {
@@ -1172,6 +1172,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "20A282F9-683C-4394-AA8A-C9439019E2F6";
 				SDKROOT = iphoneos;
 			};
 			name = debug;
@@ -1213,6 +1214,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "1BC2E717-F75F-482B-A40E-22FE5464A824";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

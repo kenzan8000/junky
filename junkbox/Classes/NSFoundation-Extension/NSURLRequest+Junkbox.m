@@ -38,7 +38,7 @@
    forHTTPHeaderField:@"Content-Type"];
 
     NSData *HTTPBody = [parameters HTTPBodyValue];
-    [request setValue:[NSString stringWithFormat:@"%d", [HTTPBody length]]
+    [request setValue:[NSString stringWithFormat:@"%@", @([HTTPBody length])]
    forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody:HTTPBody];
 
