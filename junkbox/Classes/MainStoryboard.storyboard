@@ -14,9 +14,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="Ujg-g1-q0i">
-                        <inset key="imageInsets" minX="-6" minY="0.0" maxX="-6" maxY="-12"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" id="Ujg-g1-q0i"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xL-4Q-Cwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,9 +40,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="vCS-BO-cCH">
-                        <inset key="imageInsets" minX="-6" minY="0.0" maxX="-6" maxY="-12"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" id="vCS-BO-cCH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PR-Fg-irf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -59,9 +55,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="asd-Zl-02s">
-                        <inset key="imageInsets" minX="-6" minY="0.0" maxX="-6" maxY="-12"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" id="asd-Zl-02s"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHb-0i-cZ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,9 +70,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="09z-7E-8dy">
-                        <inset key="imageInsets" minX="-6" minY="0.0" maxX="-6" maxY="-12"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" id="09z-7E-8dy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeV-9k-MMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -49,8 +49,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     [self.window makeKeyAndVisible];
 
     // NavigationBar
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexadecimal:0x34495eff]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexadecimal:0xffffffff]}];
+    //[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexadecimal:0x34495eff]];
+    //[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexadecimal:0xffffffff]}];
     // StatusBar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 

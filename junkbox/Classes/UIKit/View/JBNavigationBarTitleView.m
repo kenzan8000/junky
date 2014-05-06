@@ -58,12 +58,19 @@
 - (void)setTitle:(NSString *)title
 {
     [self.titleLabel setText:title];
-    [self.titleLabel setTextColor:[UIColor whiteColor]];
     [self.titleButton setTitle:title
                       forState:UIControlStateNormal];
+/*
+    [self.titleLabel setTextColor:[UIColor whiteColor]];
     [self.titleButton setTitleColor:[UIColor whiteColor]
                            forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor colorWithHexadecimal:0xbdc3c7ff]
+                           forState:UIControlStateHighlighted];
+*/
+    [self.titleLabel setTextColor:[UIColor darkGrayColor]];
+    [self.titleButton setTitleColor:[UIColor darkGrayColor]
+                           forState:UIControlStateNormal];
+    [self.titleButton setTitleColor:[UIColor grayColor]
                            forState:UIControlStateHighlighted];
 }
 

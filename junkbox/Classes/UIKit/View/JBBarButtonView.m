@@ -53,10 +53,16 @@
                                             title:(NSString *)title
                                              icon:(NSString *)icon
 {
+/*
     return [JBBarButtonView defaultBarButtonWithDelegate:del
                                                    title:title
                                                     icon:icon
                                                    color:[UIColor colorWithHexadecimal:0xecf0f1ff]];
+*/
+    return [JBBarButtonView defaultBarButtonWithDelegate:del
+                                                   title:title
+                                                    icon:icon
+                                                   color:[UIColor colorWithHexadecimal:0x007affff]];
 }
 
 + (JBBarButtonView *)defaultBarButtonWithDelegate:(id<JBBarButtonViewDelegate>)del
@@ -88,10 +94,15 @@
 - (void)setTitle:(NSString *)title
 {
     [self.labelButton setTitle:title forState:UIControlStateNormal];
+/*
     [self.labelButton setTitleColor:[UIColor whiteColor]
                            forState:UIControlStateNormal];
     [self.labelButton setTitleColor:[UIColor colorWithHexadecimal:0xbdc3c7ff]
                            forState:UIControlStateHighlighted];
+*/
+    [self.labelButton setTitleColor:[UIColor colorWithHexadecimal:0x007affff]
+                           forState:UIControlStateNormal];
+
     [self showLabelButton];
 }
 
