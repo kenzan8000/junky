@@ -54,8 +54,8 @@
  */
 - (void)designTabBar
 {
-    UIColor *unselectedColor = [UIColor colorWithHexadecimal:0xffa800ff];
-    UIColor *selectedColor = [UIColor colorWithHexadecimal:0xffffffff];
+    UIColor *unselectedColor = [UIColor colorWithHexadecimal:0xaaaaaaff];
+    UIColor *selectedColor = [UIColor colorWithHexadecimal:0x007affff];
     // 選択
     NSArray *selectedImages = @[
         [IonIcons imageWithIcon:icon_social_rss size:36 color:selectedColor],
