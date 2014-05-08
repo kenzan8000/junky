@@ -49,7 +49,7 @@
     [super viewDidLoad];
 
     // NavigationBar
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexadecimal:0x4682b4ff];
+//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexadecimal:0x4682b4ff];
         // タイトル
     JBNavigationBarTitleView *titleView = [UINib UIKitFromClassName:NSStringFromClass([JBNavigationBarTitleView class])];
     [titleView setTitle:NSLocalizedString(@"Hatena Bookmark", @"はてブ")];

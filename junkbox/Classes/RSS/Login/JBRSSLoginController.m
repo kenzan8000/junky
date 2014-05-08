@@ -112,10 +112,10 @@
 
     // ログインボタン
     [self.loginButton setTitle:NSLocalizedString(@"Login", @"ログイン") forState:UIControlStateNormal];
-    [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0xff7058ff] forState:UIControlStateNormal];
-    [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateHighlighted];
-    [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0xe74c3cff] forState:UIControlStateNormal];
-    [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0xc0392bff] forState:UIControlStateHighlighted];
+    [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0xffa800ff] forState:UIControlStateNormal];
+    [self.loginButton setFaceColor:[UIColor colorWithHexadecimal:0xe08200ff] forState:UIControlStateHighlighted];
+    [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0xe08200ff] forState:UIControlStateNormal];
+    [self.loginButton setSideColor:[UIColor colorWithHexadecimal:0xc16000ff] forState:UIControlStateHighlighted];
     BOOL isTextfieldEnough = [self isTextfieldEnoughWithUsername:self.IDTextField.text
                                                         password:self.passwordTextField.text];
     [self designLoginButtonWithIsTextfieldEnough:isTextfieldEnough];

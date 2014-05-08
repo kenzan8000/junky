@@ -75,7 +75,7 @@
     if (title && icon) {
         [barButtonView setTitle:title
                           image:[IonIcons imageWithIcon:icon
-                                                   size:28
+                                                   size:24
                                                   color:color]
                        forState:UIControlStateNormal];
     }
@@ -84,7 +84,7 @@
     }
     else if (icon) {
         [barButtonView setImage:[IonIcons imageWithIcon:icon
-                                                   size:28
+                                                   size:24
                                                   color:color]
                        forState:UIControlStateNormal];
     }
