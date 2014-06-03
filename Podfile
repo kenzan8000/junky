@@ -2,7 +2,7 @@ post_install do | installer |
   require 'fileutils'
   FileUtils.cp_r('Pods/Pods-acknowledgements.plist', 'junkbox/Resources/Plists/acknowledgements.plist', :remove_destination => true)
 end
-platform :ios, "5.0"
+platform :ios, "6.0"
 xcodeproj 'junkbox.xcodeproj'
 # Connection
 pod 'Reachability'
@@ -21,6 +21,7 @@ pod 'RNFrostedSidebar', '~> 0.2.0'
 pod 'SSGentleAlertView'
 pod 'SAMBadgeView'
 pod 'TYMActivityIndicatorView'
+pod 'YLGIFImage'
 # Font
 pod 'ionicons'
 # XML Parser

@@ -80,7 +80,7 @@ clickedButtonAtIndex:(NSInteger)index
 {
     NSString *title = [self.reviewButton titleForState:UIControlStateNormal];
     if ([title isEqualToString:NSLocalizedString(@"Review", @"レビュー導線")]) {
-        [SSGentleAlertView showWithMessage:NSLocalizedString(@"If you like 'Junky', please rate it. Thanks!", @"Junkyが気に入ったらぜひレビューして下さい♪")
+        [SSGentleAlertView showWithMessage:NSLocalizedString(@"If you like 'RSS Bookmark', please rate it. Thanks!", @"RSS Bookmarkが気に入ったらぜひレビューして下さい♪")
                               buttonTitles:@[NSLocalizedString(@"No, Thanks", @"レビューしない"), NSLocalizedString(@"Rate Now", @"レビューする")]
                                   delegate:self];
     }

@@ -179,25 +179,25 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)initializeCellList
 {
     self.sectionTitleList = @[
-        NSLocalizedString(@"RSS Reader", @"RSSリーダー"),
-        NSLocalizedString(@"Social Bookmark", @"ソーシャルブックマーク"),
+//        NSLocalizedString(@"RSS Reader", @"RSSリーダー"),
+//        NSLocalizedString(@"Social Bookmark", @"ソーシャルブックマーク"),
         NSLocalizedString(@"Hint", @"ヒント"),
         NSLocalizedString(@"Social", @"ソーシャル"),
         NSLocalizedString(@"Licence", @"ライセンス情報"),
     ];
     self.sectionIconList = @[
-        [IonIcons imageWithIcon:icon_social_rss size:64 color:[UIColor darkGrayColor]],
-        [IonIcons imageWithIcon:icon_ios7_bookmarks size:64 color:[UIColor darkGrayColor]],
+//        [IonIcons imageWithIcon:icon_social_rss size:64 color:[UIColor darkGrayColor]],
+//        [IonIcons imageWithIcon:icon_ios7_bookmarks size:64 color:[UIColor darkGrayColor]],
         [IonIcons imageWithIcon:icon_help_circled size:64 color:[UIColor darkGrayColor]],
         [IonIcons imageWithIcon:icon_android_friends size:64 color:[UIColor darkGrayColor]],
         [IonIcons imageWithIcon:icon_ios7_copy size:64 color:[UIColor darkGrayColor]],
     ];
 
     self.cellClassList = @[
-        @[
-        ],
-        @[
-        ],
+//        @[
+//        ],
+//        @[
+//        ],
         @[
             [JBSettingHintTableViewCell class],
             [JBSettingHintTableViewCell class],
@@ -214,10 +214,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         ],
     ];
     self.cellTitleList = @[
-        @[
-        ],
-        @[
-        ],
+//        @[
+//        ],
+//        @[
+//        ],
         @[
             NSLocalizedString(@"Feed", @"フィード"),
             NSLocalizedString(@"Read Later", @"あとで読む"),
@@ -234,14 +234,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         ],
     ];
     self.cellIconList = @[
+//        @[
+//        ],
+//        @[
+//        ],
         @[
-        ],
-        @[
-        ],
-        @[
-            [IonIcons imageWithIcon:icon_social_rss size:64 color:[UIColor colorWithHexadecimal:0xff9e42ff]],
-            [IonIcons imageWithIcon:icon_pin size:64 color:[UIColor colorWithHexadecimal:0xff6c5cff]],
-            [IonIcons imageWithIcon:icon_ios7_bookmarks size:64 color:[UIColor colorWithHexadecimal:0x54b8fbff]],
+            [IonIcons imageWithIcon:icon_social_rss size:64 color:[UIColor colorWithHexadecimal:0x888888ff]],
+            [IonIcons imageWithIcon:icon_pin size:64 color:[UIColor colorWithHexadecimal:0x888888ff]],
+            [IonIcons imageWithIcon:icon_ios7_bookmarks size:64 color:[UIColor colorWithHexadecimal:0x888888ff]],
         ],
         @[
             [IonIcons imageWithIcon:icon_social_apple size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
@@ -250,7 +250,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             [IonIcons imageWithIcon:icon_social_github size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
         ],
         @[
-            [IonIcons imageWithIcon:icon_ios7_copy size:64 color:[UIColor colorWithHexadecimal:0x2ecc71ff]],
+            [IonIcons imageWithIcon:icon_ios7_copy size:64 color:[UIColor colorWithHexadecimal:0x888888ff]],
         ],
     ];
 }

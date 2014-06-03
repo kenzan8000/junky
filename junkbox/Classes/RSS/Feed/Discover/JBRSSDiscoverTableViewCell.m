@@ -91,7 +91,7 @@
 #pragma mark - api
 - (void)setDiscover:(JBRSSDiscover *)discover
 {
-        // 設定
+    // 設定
     if (discover.isSubscribing != self.subscribeButton.isSelected) {
         [self.subscribeButton setSelected:!(self.subscribeButton.isSelected)
                                  animated:YES];
@@ -119,4 +119,3 @@
 
 
 @end
-

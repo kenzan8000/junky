@@ -7,11 +7,11 @@ PODS:
   - ionicons (1.1)
   - ISHTTPOperation (1.1.1)
   - MTStatusBarOverlay (0.9.1)
-  - NJKWebViewProgress (0.2.2):
+  - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core
     - NJKWebViewProgress/ProgressView
-  - NJKWebViewProgress/Core (0.2.2)
-  - NJKWebViewProgress/ProgressView (0.2.2)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
   - NKToggleOverlayButton (2.0.0)
   - NLCoreData (0.5.3)
   - QBFlatButton (1.0)
@@ -22,6 +22,7 @@ PODS:
   - SSGentleAlertView (1.0.1)
   - TYMActivityIndicatorView (0.2.0)
   - XMLDictionary (1.4)
+  - YLGIFImage (0.11)
 
 DEPENDENCIES:
   - EDStarRating
@@ -39,24 +40,26 @@ DEPENDENCIES:
   - SSGentleAlertView
   - TYMActivityIndicatorView
   - XMLDictionary
+  - YLGIFImage
 
 SPEC CHECKSUMS:
-  AFNetworking: e403d4333a4e1956cb3fe42364c3c879f820c9a0
-  EDStarRating: 4954b62647884e7b2d37c4720d4a1f758b5a3435
-  HatenaBookmarkSDK: 2447855afdf5e36131ca7a4f1c57a5e52983664c
-  ionicons: 50c5368bc6e4dbd1a26559aff0b67f2ed8640c48
-  ISHTTPOperation: 6268956d564f3cab0584838e996f2f4520d903b2
-  MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
-  NJKWebViewProgress: 4f905b9ab7eb91525dc899cacebd2941a6d4553b
-  NKToggleOverlayButton: 900102df7953fd0e89d44d39a940732a1d17508b
-  NLCoreData: bde75667607f7b66a08ef1d78d39b8bc5eed433f
-  QBFlatButton: c0714adb21a8ef29d2cfb7410da5aa5002619030
-  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
-  RNFrostedSidebar: 36339438a07088fd3ee3926db03af499477ee048
-  SAMBadgeView: 7eba9d24f817ed27c0a22ae0ae71e9e4577a7522
-  SFHFKeychainUtils: d1ae332c4ef51a67d7e6e9292a060b42329316fd
-  SSGentleAlertView: e0125bbbf78938be5426546d2cde6128936ceef8
-  TYMActivityIndicatorView: d558631538c2956353042a20ac1544dd0ba5ee17
-  XMLDictionary: a6ede1b0f7e8acd0ee3495e93350a311be2bfd1e
+  AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
+  EDStarRating: c7b87f9866be0ea29bb054964023b8eb3f18286c
+  HatenaBookmarkSDK: 54211b3de17f7c40371a7e24b843f867e58d2a04
+  ionicons: 83f9b09405311133e7c5118819150f1cbf2c3d64
+  ISHTTPOperation: dfc268703df15b98667c1d8bef9dcd60b6205195
+  MTStatusBarOverlay: f1fef7143ed3e9ce3d2c6ee3f297079e5cab905f
+  NJKWebViewProgress: 721b57080c840c76f70ff6c2dda4f836ee1b27c1
+  NKToggleOverlayButton: f70a15fca22355b1fb9c19039628627fa092c2ba
+  NLCoreData: c31ca2e6d5a2564bded820b5d202d08b4f243099
+  QBFlatButton: 06548c44a2fdfecf7ce7d668bbde60184127d979
+  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  RNFrostedSidebar: f1d95d9b2627f13cc10e75d36e751a623eec079c
+  SAMBadgeView: 6f29c18e5dc4ddf6d843c3c5e9c9207028c2e8a8
+  SFHFKeychainUtils: 6fdda05a86d035db406c7662ec1054814b68f0fd
+  SSGentleAlertView: dc50e5bb7a77a5a6b9173a69bc347eceaa3d2659
+  TYMActivityIndicatorView: b65789b48feca6f6d546831d8ae5ad62acd58403
+  XMLDictionary: 735e81b9a043e220b0d24e9d4f16719606f2e0fc
+  YLGIFImage: ffdc4cb9faf077217aacb1cdfe69689afe403f21
 
 COCOAPODS: 0.32.1
