@@ -8,14 +8,6 @@
 #import "NKToggleOverlayButton.h"
 
 
-#pragma mark - NKToggleOverlayButton
-@interface NKToggleOverlayButton()
-
-- (void)toggle:(UITapGestureRecognizer *)recognizer;
-
-@end
-
-
 #pragma mark - JBRSSDiscoverTableViewCell
 @implementation JBRSSDiscoverTableViewCell
 
@@ -101,7 +93,8 @@
 {
         // 設定
     if (discover.isSubscribing != self.subscribeButton.isSelected) {
-        [self.subscribeButton toggle:nil];
+        [self.subscribeButton setSelected:!(self.subscribeButton.isSelected)
+                                 animated:YES];
     }
 
     // ラベル
