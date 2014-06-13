@@ -239,7 +239,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             [JBSettingSocialTableViewCell class],
             [JBSettingSocialTableViewCell class],
             [JBSettingSocialTableViewCell class],
-            [JBSettingSocialTableViewCell class],
+//            [JBSettingSocialTableViewCell class],
         ],
         @[
             [JBSettingLicenceTableViewCell class],
@@ -259,7 +259,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             NSLocalizedString(@"Review", @"レビュー導線"),
             NSLocalizedString(@"Tweet", @"ツイートする"),
             NSLocalizedString(@"Publish", @"共有する"),
-            NSLocalizedString(@"Pull Request", @"プルリクエストする"),
+//            NSLocalizedString(@"Pull Request", @"プルリクエストする"),
         ],
         @[
             NSLocalizedString(@"Licence", @"ライセンス情報"),
@@ -276,10 +276,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             [IonIcons imageWithIcon:icon_ios7_bookmarks size:64 color:[UIColor colorWithHexadecimal:0x888888ff]],
         ],
         @[
-            [IonIcons imageWithIcon:icon_social_apple size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_compose size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],//icon_social_apple
             [IonIcons imageWithIcon:icon_social_twitter size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
             [IonIcons imageWithIcon:icon_social_facebook size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
-            [IonIcons imageWithIcon:icon_social_github size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
+//            [IonIcons imageWithIcon:icon_social_github size:32 color:[UIColor colorWithHexadecimal:0xffffffff]],
         ],
         @[
             [IonIcons imageWithIcon:icon_ios7_copy size:64 color:[UIColor colorWithHexadecimal:0x888888ff]],
