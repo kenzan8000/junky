@@ -1216,7 +1216,6 @@
 			baseConfigurationReference = 53D3013BD4F540AEB55F7CE7 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
 				INFOPLIST_FILE = junkbox/Resources/Plists/info.plist;
@@ -1248,7 +1247,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "1BC2E717-F75F-482B-A40E-22FE5464A824";
+				PROVISIONING_PROFILE = "355A212A-697E-4D8A-A2C7-D2C83753ED12";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1258,14 +1257,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53D3013BD4F540AEB55F7CE7 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kenzan Hase (6RYZ4RB738)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = junkbox/Classes/prefix.pch;
 				INFOPLIST_FILE = junkbox/Resources/Plists/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "RSS Bookmark";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "355A212A-697E-4D8A-A2C7-D2C83753ED12";
 				WRAPPER_EXTENSION = app;
 			};
 			name = release;

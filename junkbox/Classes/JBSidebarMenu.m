@@ -117,10 +117,16 @@ didTapItemAtIndex:(NSUInteger)index
          * OPEN BROWSER
          ***************************** */
         images = @[
+/*
             [IonIcons imageWithIcon:icon_pin size:75 color:[UIColor colorWithHexadecimal:0xff6c5cff]],
             [IonIcons imageWithIcon:icon_ios7_bookmarks size:75 color:[UIColor colorWithHexadecimal:0x54b8fbff]],
             [IonIcons imageWithIcon:icon_social_rss size:75 color:[UIColor colorWithHexadecimal:0xff9e42ff]],
             [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0x7f8c8dff]],
+*/
+            [IonIcons imageWithIcon:icon_pin size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_ios7_bookmarks size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_social_rss size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
         ];
     }
     else if (self.type == JBSidebarMenuTypeRSS) {
@@ -130,9 +136,14 @@ didTapItemAtIndex:(NSUInteger)index
          * OPEN BROWSER
          ***************************** */
         images = @[
+            [IonIcons imageWithIcon:icon_pin size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_social_rss size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
+/*
             [IonIcons imageWithIcon:icon_pin size:75 color:[UIColor colorWithHexadecimal:0xff6c5cff]],
             [IonIcons imageWithIcon:icon_social_rss size:75 color:[UIColor colorWithHexadecimal:0xff9e42ff]],
             [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0x7f8c8dff]],
+*/
         ];
     }
     else if (self.type == JBSidebarMenuTypeBookmark) {
@@ -141,8 +152,12 @@ didTapItemAtIndex:(NSUInteger)index
          * OPEN BROWSER
          ***************************** */
         images = @[
+            [IonIcons imageWithIcon:icon_ios7_bookmarks size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
+            [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
+/*
             [IonIcons imageWithIcon:icon_ios7_bookmarks size:75 color:[UIColor colorWithHexadecimal:0x54b8fbff]],
             [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0x7f8c8dff]],
+*/
         ];
     }
     else {
@@ -150,13 +165,13 @@ didTapItemAtIndex:(NSUInteger)index
          * OPEN BROWSER
          ***************************** */
         images = @[
-            [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0x7f8c8dff]],
+            [IonIcons imageWithIcon:icon_ios7_browsers size:75 color:[UIColor colorWithHexadecimal:0xffffffff]],
         ];
     }
 
     self.sidebar = [[RNFrostedSidebar alloc] initWithImages:images];
-    [self.sidebar setTintColor:[UIColor colorWithHexadecimal:0x95a5a6a0]];
-    [self.sidebar setItemBackgroundColor:[UIColor colorWithHexadecimal:0xecf0f1ff]];
+    [self.sidebar setTintColor:[UIColor colorWithHexadecimal:0xaaaaaa66]];
+    [self.sidebar setItemBackgroundColor:[UIColor colorWithHexadecimal:0xf39c12ff]];
     [self.sidebar setShowFromRight:YES];
     [self.sidebar setDelegate:self];
 }
