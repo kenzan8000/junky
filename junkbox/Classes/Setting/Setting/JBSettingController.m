@@ -1,4 +1,5 @@
 #import "JBSettingController.h"
+#import "JBHintViewController.h"
 #import "JBNavigationBarTitleView.h"
 #import "JBSettingTableViewCell.h"
 #import "JBSettingHeaderTableViewCell.h"
@@ -21,6 +22,8 @@
 @synthesize cellIconList;
 @synthesize sectionTitleList;
 @synthesize sectionIconList;
+@synthesize selectedIndexPath;
+
 
 #pragma mark - initializer
 - (id)initWithNibName:(NSString *)nibNameOrNil
@@ -42,6 +45,7 @@
     self.cellIconList = nil;
     self.sectionTitleList = nil;
     self.sectionIconList = nil;
+    self.selectedIndexPath = nil;
 }
 
 
@@ -84,6 +88,26 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kStoryboardSeguePushHintController] == NO) {
+        return;
+    }
+
+    // Hint
+    JBHintViewController *vc = (JBHintViewController *)[segue destinationViewController];
+    NSIndexPath *indexPath = self.selectedIndexPath;
+    NSString *title = self.cellTitleList[indexPath.section][indexPath.row];
+    NSArray *titles = @[@"Feed", @"Read Later", @"Bookmark",];
+    for (NSString *t in titles) {
+        if ([title isEqualToString:NSLocalizedString(t, @"ヒントの種類")]) {
+            vc.hint = t;
+            break;
+        }
+    }
 }
 
 
@@ -144,14 +168,22 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.selectedIndexPath = indexPath;
+
     [self.tableView deselectRowAtIndexPath:indexPath
                                   animated:YES];
 
     NSString *title = self.cellTitleList[indexPath.section][indexPath.row];
     // ライセンス情報
     if ([title isEqualToString:NSLocalizedString(@"Licence", @"ライセンス情報")]) {
-        // 遷移
         [self performSegueWithIdentifier:kStoryboardSeguePushLicenceController
+                                  sender:self];
+    }
+    // ヒント
+    else if ([title isEqualToString:NSLocalizedString(@"Feed", @"フィード")] ||
+        [title isEqualToString:NSLocalizedString(@"Read Later", @"あとで読む")] ||
+        [title isEqualToString:NSLocalizedString(@"Bookmark", @"ブックマーク")]) {
+        [self performSegueWithIdentifier:kStoryboardSeguePushHintController
                                   sender:self];
     }
 }

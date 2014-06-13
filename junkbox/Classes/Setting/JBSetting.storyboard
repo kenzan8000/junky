@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vbm-rh-LZz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vbm-rh-LZz">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Setting Controller-->
@@ -29,6 +29,7 @@
                     <connections>
                         <outlet property="tableView" destination="x7M-ur-eI7" id="A7e-UF-xg6"/>
                         <segue destination="wbc-ZN-iwJ" kind="push" identifier="pushJBLicenceViewCntroller" id="pdw-KV-ffJ"/>
+                        <segue destination="anT-TS-Wb5" kind="push" identifier="pushJBHintViewCntroller" id="4VA-S3-Uyp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3d-Hh-cdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -64,6 +65,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAE-ir-hil" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="560" y="26"/>
+        </scene>
+        <!--Hint View Controller-->
+        <scene sceneID="RDc-nQ-Hko">
+            <objects>
+                <viewController id="anT-TS-Wb5" customClass="JBHintViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iGs-DA-lDU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DbN-GJ-WEk" customClass="JBQBFlatButton">
+                                <rect key="frame" x="96" y="230" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchedUpInsideWithButton:" destination="anT-TS-Wb5" eventType="touchUpInside" id="iDt-W8-bKk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rzb-Cn-2VM"/>
+                    <connections>
+                        <outlet property="playButton" destination="DbN-GJ-WEk" id="1kX-Fp-oYK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VYy-nb-PVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="560" y="711"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

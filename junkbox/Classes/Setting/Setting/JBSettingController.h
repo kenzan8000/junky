@@ -21,5 +21,8 @@
 /// セクションのアイコン
 @property (nonatomic, strong) NSArray *sectionIconList;
 
+/// 選択行
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
+
 
 @end

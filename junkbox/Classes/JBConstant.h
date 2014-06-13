@@ -24,6 +24,8 @@
 #define kStoryboardSeguePushRSSFeedUnreadController @"pushJBRSSFeedUnreadController"
 /// ライセンス情報画面遷移
 #define kStoryboardSeguePushLicenceController       @"pushJBLicenceViewCntroller"
+/// ヒント画面遷移
+#define kStoryboardSeguePushHintController          @"pushJBHintViewCntroller"
 
 
 #pragma mark - Notification
