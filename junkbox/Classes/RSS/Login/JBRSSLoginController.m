@@ -308,6 +308,10 @@ clickedButtonAtIndex:(NSInteger)index
 
 - (IBAction)touchedUpInsideWithForgotPasswordButton:(UIButton *)button
 {
+    NSURL *reminderURL = [NSURL URLWithString:kURLLivedoorReaderReminder];
+    if ([[UIApplication sharedApplication] canOpenURL:reminderURL]) {
+        [[UIApplication sharedApplication] openURL:reminderURL];
+    }
 }
 
 

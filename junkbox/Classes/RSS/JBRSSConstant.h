@@ -11,7 +11,8 @@
 
 /// Livedoor Reader
 #define kURLLivedoorReader                       @"http://reader.livedoor.com/"
-
+/// livedoor IDやパスワードを忘れた方へ
+#define kURLLivedoorReaderReminder               @"https://member.livedoor.com/reminder/"
 
 /**
  * Livedoor Reader ログイン

@@ -3,7 +3,7 @@
 
 #pragma mark - URL
 /// App Store URL
-#define kURLAppStore                                @"http://itunes.apple.com/us/app/junky/id"
+#define kURLAppStore                                @"http://itunes.apple.com/us/app/RSS-Bookmark/id889192288?ls1&mt8"
 
 
 #pragma mark - Storyboard
